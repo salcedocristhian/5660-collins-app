@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#112d49">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="5660 Notices">
+  <meta name="description" content="5660 Collins Avenue resident notices and verified project updates in English and Spanish.">
+  <title>5660 Collins | Resident Notices / Avisos</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icons/icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="./assets/app.css?v=3.0.0">
+  <script src="./assets/app.js?v=3.0.0" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main-content">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="identity" href="#home" aria-label="5660 Collins — Home">
+        <img src="./assets/condo-logo.png" alt="Fifty Six Sixty Collins Avenue" class="condo-logo" width="148" height="61">
+        <span class="identity-name"><strong>Resident Project Line</strong><small>5660 Collins Avenue · Miami Beach</small></span>
+      </a>
+      <div class="header-actions">
+        <button class="lang-btn" id="languageBtn" type="button" aria-label="Change language">ES <span aria-hidden="true">↗</span></button>
+      </div>
+    </div>
+  </header>
+  <main id="main-content">
+    <section class="hero" id="home">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-dot"></span><span data-i18n="eyebrow">5660 COLLINS · RESIDENT INFORMATION</span></div>
+          <h1 data-i18n="heroTitle">Your building.<br><em>Your updates.</em></h1>
+          <p data-i18n="heroText">A clear, reliable place for resident notices, project progress and what happens next.</p>
+          <div class="hero-actions">
+            <a class="btn btn-white" href="#notices" data-i18n="heroNotices">Read notices <span aria-hidden="true">↗</span></a>
+            <a class="btn btn-transparent" href="#projects" data-i18n="heroProjects">View projects <span aria-hidden="true">↓</span></a>
+          </div>
+        </div>
+        <div class="hero-stat" aria-live="polite">
+          <div class="hero-stat-header"><span class="live-dot"></span><span data-i18n="latestUpdate">LATEST INFORMATION</span></div>
+          <div class="hero-stat-title" id="featuredTitle">Loading resident notices…</div>
+          <p id="featuredText">We’re checking the latest published information.</p>
+          <div class="hero-stat-foot"><span id="heroFeedStatus">Checking feed</span><span id="heroDate">—</span></div>
+        </div>
+      </div>
+    </section>
+    <section class="wrap content">
+      <div class="status-row" id="feedStatusRow" role="status" aria-live="polite">
+        <span class="status-dot" id="statusDot"></span>
+        <div><strong id="feedStatusLabel">Checking for updates</strong><span id="feedStatusDetail">Please wait.</span></div>
+        <button class="refresh-btn" type="button" id="refreshBtn" aria-label="Refresh information"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14-5L4 8M4 4v4h4M4 13a8 8 0 0 0 14 5l2-2m0 4v-4h-4"/></svg> <span data-i18n="refresh">Refresh</span></button>
+      </div>
+      <div class="review-warning" id="reviewWarning" hidden><span aria-hidden="true">ⓘ</span> <span id="reviewWarningText"></span></div>
+      <section id="notices" class="block">
+        <div class="section-top"><div><div class="kicker" data-i18n="residentNotices">RESIDENT NOTICES</div><h2 data-i18n="noticeHeading">The latest, in one place.</h2><p data-i18n="noticeSub">Important developments that residents should know.</p></div><span class="count" id="noticeCount">—</span></div>
+        <div class="notice-list" id="noticeList"><div class="loading-card">Loading notices…</div></div>
+      </section>
+      <section id="projects" class="block">
+        <div class="section-top"><div><div class="kicker" data-i18n="directory">PROJECT DIRECTORY</div><h2 data-i18n="projectsHeading">Where things stand.</h2><p data-i18n="projectsSub">Permits, construction and milestones—without guesswork.</p></div></div>
+        <div class="finder"><label class="searchbox" for="searchBox"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="searchBox" type="search" autocomplete="off" placeholder="Search projects and permits" aria-label="Search projects, notices and FAQs"></label><select id="categorySelect" aria-label="Filter by category"><option value="all">All categories</option></select></div>
+        <div class="project-grid" id="projectList"><div class="loading-card">Loading project status…</div></div>
+      </section>
+      <section id="answers" class="block">
+        <div class="section-top"><div><div class="kicker" data-i18n="answerDesk">RESIDENT ANSWER DESK</div><h2 data-i18n="faqHeading">Frequently asked questions.</h2><p data-i18n="faqSub">Simple answers based on the latest dated project records.</p></div></div>
+        <div class="faq-grid"><div class="faq-list" id="faqList"><div class="loading-card">Loading answers…</div></div><aside class="contact-card" id="contact"><div class="contact-icon">?</div><h3 data-i18n="contactHeading">Need a current update?</h3><p data-i18n="contactText">For your exact floor, access or urgent building matters, contact Building Management directly.</p><a class="btn btn-navy" id="contactEmail" href="mailto:Manager@5660condo.com" data-i18n="contactButton">Email Building Management <span aria-hidden="true">↗</span></a><small data-i18n="emergency">For emergencies, call 911.</small></aside></div>
+      </section>
+      <aside class="legal"><strong data-i18n="important">Please note</strong><span data-i18n="legal">An application is not an issued permit. Work dates are estimates until confirmed by the City, contractors and Management. This site is not an emergency notification system.</span></aside>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="wrap footer-inner"><div><strong>5660 Collins Avenue</strong><small data-i18n="footer">Resident Project Line · Miami Beach, Florida</small></div><a href="#home" data-i18n="backTop">Back to top ↑</a></div></footer>
+  <nav class="mobile-nav" aria-label="Quick navigation"><a href="#notices"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6h12M8 12h12M8 18h12M3 6h.01M3 12h.01M3 18h.01"/></svg><span data-i18n="navNotices">Notices</span></a><a href="#projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg><span data-i18n="navProjects">Projects</span></a><a href="#answers"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9 9a3 3 0 0 1 6 1c0 2-3 2-3 4M12 17h.01"/></svg><span data-i18n="navAnswers">Answers</span></a><a href="#contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m3 6 9 7 9-7"/></svg><span data-i18n="navContact">Contact</span></a></nav>
+</body>
+</html>
