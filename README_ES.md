@@ -1,17 +1,17 @@
-# 5660 Collins — Corredor en Y: referencia compartida
+# 5660 Collins · Project Flow
 
-## Cambio
-El recorrido en Y ahora aparece al seleccionar cualquier piso (2–21 y PH). Se conserva el polígono continuo y las paredes segmentadas del plano residencial de referencia; no se superpone ese polígono sobre las plantas de otra configuración. El lobby central y ambas alas permanecen conectados, con aperturas originales.
+## Diseño
+Ivory con navegación Coastal Glass: fondo marfil, texto carbón, acento petróleo, tipografía de sistema y cinco iconos SVG consistentes. El menú identifica la experiencia interactiva como Sequence. Los modelos y planos existentes se conservan; no se incluyen las representaciones fotorrealistas de los mockups.
 
-Por indicación del PM ("La idea es la misma"), Interior 3D usa el plano Relats 16–20 como **referencia visual común**. No afirma que todos los pisos tengan dimensiones o distribuciones idénticas. Actual plans conserva las láminas específicas del proyecto. Los estados de obra siguen siendo hipotéticos.
+## Instalar en GitHub Pages
+1. Descomprimir este ZIP.
+2. Subir su contenido a la raíz de salcedocristhian/5660-collins-app, rama main, reemplazando los archivos coincidentes.
+3. Incluir assets/ivory.css, las demás carpetas y sw.js. No subir únicamente index.html.
+4. Esperar el despliegue y recargar la app. El caché utiliza la versión v11-project-flow.
 
-Se mantienen Exterior 3D, Resident Updates, controles Floor/Week y Gantt. Se actualizó la versión del caché offline.
+Este paquete no fue publicado automáticamente.
 
-## Publicación
-Reemplazar los archivos del paquete en salcedocristhian/5660-collins-app, rama main, conservando las carpetas incluidas. Este paquete no publica cambios por sí solo.
+## Validación
+Chromium sobre servidor HTTP local: cinco accesos, contactos y renderizado de contenido; semana y Play/Pause sincronizados. Sin errores JS en el recorrido. Sin desbordamiento horizontal del documento a 320, 390, 430 y 1280 px. Revisión visual de encabezado, contactos e interior ampliado antes de empaquetar.
 
-## Revisión visual
-En Interior 3D, seleccionar Floor 2, 18, 21 o PH y Top/Overview. El corredor debe conservar su alineación con el mismo plano de referencia. Actual plans → Hallway guide permite revisar el contorno.
-
-## Validación de esta revisión
-147 combinaciones de piso/fase generaron geometría finita y resaltado de paredes (41 segmentos). JavaScript compiló sin errores; el polígono no tiene cruces entre bordes. Datos de residentes y recursos comparados byte a byte con el paquete original. No se pudo ejecutar una revisión visual WebGL: el navegador de pruebas no estaba disponible y su descarga falló. Publicación en GitHub pendiente.
+Pendientes: Safari/iPhone físico, modo oscuro, recuperación de sesión, auditoría integral de accesibilidad y prueba offline/migración de caché. Ver UX_AUDIT_ES.md.

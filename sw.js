@@ -1,7 +1,7 @@
 /* 5660 Collins — safe offline shell for Board 3D + Resident Notices */
-const STATIC='5660-board-plus-resident-v10-audited-shell';
-const DATA='5660-board-plus-resident-v10-audited-data';
-const CORE=['./','./index.html','./resident-updates.html','./assets/app.css','./assets/app.js','./assets/condo-logo.png','./icons/icon-192.png','./icons/icon-512.png','./icons/apple-touch-icon.png','./manifest.webmanifest'];
+const STATIC='5660-board-plus-resident-v11-project-flow-shell';
+const DATA='5660-board-plus-resident-v11-project-flow-data';
+const CORE=['./','./index.html','./resident-updates.html','./assets/app.css','./assets/ivory.css','./assets/app.js','./assets/condo-logo.png','./icons/icon-192.png','./icons/icon-512.png','./icons/apple-touch-icon.png','./manifest.webmanifest'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(STATIC).then(cache=>cache.addAll(CORE)).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',event=>{event.waitUntil((async()=>{const keys=await caches.keys();await Promise.all(keys.filter(k=>k.startsWith('5660-')&&![STATIC,DATA].includes(k)).map(k=>caches.delete(k)));await self.clients.claim()})())});
 self.addEventListener('fetch',event=>{
