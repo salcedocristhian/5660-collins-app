@@ -1,0 +1,123 @@
+{
+  "asOf": "2026-10-27",
+  "source": "5660_Collins_Master_Permit_Exhibit_UPDATED_2026-10-27.xlsx",
+  "note": "Targets are estimates; permit numbers do not establish issuance.",
+  "permits": [
+    {
+      "scope": "Fire Sprinkler ELSS",
+      "reference": "FP0826-7612",
+      "status": "Issuance unverified",
+      "target": "2026-10-30"
+    },
+    {
+      "scope": "Fire Alarm ELSS",
+      "reference": "Pending",
+      "status": "Package coordination",
+      "target": "2026-11-30"
+    },
+    {
+      "scope": "Stair Pressurization / Dampers",
+      "reference": "Pending",
+      "status": "Design",
+      "target": "Jan-Feb 2027"
+    },
+    {
+      "scope": "Hallway Remediation",
+      "reference": "BC2628687",
+      "status": "Under review",
+      "target": "Nov 2026"
+    },
+    {
+      "scope": "Smoke Enclosure Doors",
+      "reference": "Pending",
+      "status": "Final design review",
+      "target": "2026-11-27"
+    },
+    {
+      "scope": "Garage Dewatering",
+      "reference": "BC2526722",
+      "status": "Revised scope",
+      "target": "TBD"
+    },
+    {
+      "scope": "Parking Lot Lighting",
+      "reference": "BPI2650249",
+      "status": "Intake only - not issued",
+      "target": "Nov-Dec 2026"
+    },
+    {
+      "scope": "Gym and Sauna",
+      "reference": "BC2627814",
+      "status": "Issued Oct 1, 2026"
+    },
+    {
+      "scope": "Gym Fire Alarm",
+      "reference": "Not confirmed",
+      "status": "Unverified"
+    },
+    {
+      "scope": "Chiller",
+      "reference": "Unverified",
+      "status": "Trade permits to verify"
+    },
+    {
+      "scope": "Chiller Pump",
+      "reference": "Not provided",
+      "status": "Reported submitted; verify"
+    },
+    {
+      "scope": "Boiler / Storage Tank",
+      "reference": "MEC2605382",
+      "status": "Corrections"
+    },
+    {
+      "scope": "Temporary Dehumidifier",
+      "reference": "Not confirmed",
+      "status": "Emergency direction; permit TBD"
+    },
+    {
+      "scope": "Stairwell Guardrails",
+      "reference": "BC2628393",
+      "status": "Review / corrections"
+    },
+    {
+      "scope": "Planter Restoration",
+      "reference": "Not confirmed",
+      "status": "Engineering"
+    }
+  ],
+  "references": [
+    [
+      "County RER",
+      "UP26079525"
+    ],
+    [
+      "County Asbestos",
+      "M2027000526"
+    ],
+    [
+      "County Approval",
+      "2027004562"
+    ],
+    [
+      "ELSS Compliance",
+      "ELSS0126-0005"
+    ],
+    [
+      "Lighting Violation",
+      "BVE26000408"
+    ],
+    [
+      "Boiler Mechanical Violation",
+      "BVM26000605"
+    ],
+    [
+      "Boiler Storage Violation",
+      "BVC26001809"
+    ],
+    [
+      "Garage Contractor Change",
+      "PAU2623002"
+    ]
+  ]
+}
