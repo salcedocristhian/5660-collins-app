@@ -60,27 +60,48 @@ $('permitList').querySelectorAll('[data-permit]').forEach(el=>el.addEventListene
 function openPermit(id){const x=permitData.find(p=>p.id===id);if(!x)return;const state={review:t('review'),issued:t('issued'),notfiled:t('notfiled'),verify:t('toverify')}[x.group]||x.group;let steps=Array.isArray(x.reviewPath)?'<h3>'+esc(t('detailReview'))+'</h3>'+x.reviewPath.map(p=>'<div class="review-step"><b>'+esc(p.state==='done'?'✓':p.state==='current'?'●':'○')+'</b> '+esc(p.label)+'<small>'+esc(p.detail||'')+'</small></div>').join(''):'';$('detailContents').innerHTML='<div class="detail-key">'+esc(state)+'</div><h2 id="detailTitle">'+esc(x.scope)+'</h2><div class="detail-ref">'+esc(x.number||'—')+'</div><div class="detail-facts"><strong>'+esc(t('detailStatus'))+'</strong><span>'+esc(x.status||state)+'</span><strong style="margin-top:17px">'+esc(t('detailNext'))+'</strong><span>'+esc(x.next||'TBD')+'</span></div>'+(x.note?'<p>'+esc(x.note)+'</p>':'')+steps+'<p class="quiet-foot">'+esc(t('estimate'))+'</p>';$('detailBackdrop').hidden=false;$('permitDetail').hidden=false;document.body.classList.add('modal-open');$('detailClose').focus()}
 function closePermit(){$('detailBackdrop').hidden=true;$('permitDetail').hidden=true;document.body.classList.remove('modal-open')}
 function renderStages(){
-const doc=modelReady?$('realModelFrame').contentDocument:null;
-const fromOld=doc&&doc.getElementById('floorStatus')?.textContent?.trim();
 const name=lang==='es'?'Restauración de pasillos':'Hallway restoration';
 $('sequenceTitle').textContent=name;
 $('sequenceSubtitle').textContent=(lang==='es'?'Semana prevista ':'Planning week ')+step+' / 34 · '+t('floor')+' '+floor;
 $('floorHeading').textContent=(lang==='es'?'En el piso ':'On Floor ')+floor;
 $('sequenceRange').value=step;
-const tasks=lang==='es'?[
-['Estabilización interina del pasillo','Oct 5, reportada'],
-['Permiso de demolición municipal','Pendiente'],
-['Remoción selectiva de drywall','Sin comenzar'],
-['Verificación ambiental AirMD','Después de remoción'],
-['Reconstrucción / acabados','En planificación']
+const es=lang==='es',levels=[...Array.from({length:20},(_,i)=>String(i+2)),'PH'];
+// Conceptual rolling workflow: 2 floors per batch; each batch receives a pilot/removal,
+// verification, rebuild and finishes. Not an authorized field schedule.
+function phase(level,w){
+const idx=levels.indexOf(String(level)),start=4+Math.floor(idx/2);
+if(w<start)return 0;
+const age=w-start;
+if(age===0)return 1;
+if(age===1)return 2;
+if(age===2||age===3)return 3;
+if(age===4)return 4;
+return 5;
+}
+const phases=es?['Pendiente de inicio','Piloto / remoción selectiva','Verificación AirMD / clearance','Reconstrucción de drywall','Acabados / pintura','Cierre previsto']:['Awaiting start','Pilot / selective removal','AirMD verification / clearance','Drywall reconstruction','Finishes / painting','Projected closeout'];
+const current=phase(floor,step);
+const tasks=es?[
+['Estabilización interina del pasillo','Reportada Oct 5'],
+['Permiso municipal BC2628687','Pendiente de confirmar emisión'],
+['Remoción selectiva de drywall',current>=1?phases[current]:'No iniciada'],
+['Verificación independiente AirMD',current>=2?phases[current]:'Después de remoción'],
+['Reconstrucción / acabados',current>=3?phases[current]:'Programación preliminar']
 ]:[
 ['Interim corridor stabilization','Reported Oct 5'],
-['City drywall demolition permit','Pending'],
-['Selective drywall removal','Not started'],
-['Independent AirMD verification','After removal'],
-['Drywall rebuild / finishes','Planning']
+['City permit BC2628687','Issuance not confirmed'],
+['Selective drywall removal',current>=1?phases[current]:'Not started'],
+['Independent AirMD verification',current>=2?phases[current]:'After removal'],
+['Drywall rebuild / finishes',current>=3?phases[current]:'Preliminary planning']
 ];
-$('floorTasks').innerHTML=tasks.map(x=>'<div class="list-row"><span class="task-name">'+esc(x[0])+'</span><span class="task-status">'+esc(x[1])+'</span></div>').join('');
+$('floorTasks').innerHTML='<div class="floor-sim-status"><strong>'+(es?'Escenario de la semana ':'Week ')+step+(es?' · Fase proyectada: ':' · Projected phase: ')+esc(phases[current])+'</strong><small>'+(es?'Simulación solamente; no indica autorización ni ejecución real.':'Scenario only; does not indicate authorized or completed work.')+'</small></div>'+tasks.map(x=>'<div class="list-row"><span class="task-name">'+esc(x[0])+'</span><span class="task-status">'+esc(x[1])+'</span></div>').join('');
+const counts=[0,0,0,0,0,0],active=[];levels.forEach(l=>{const p=phase(l,step);counts[p]++;if(p>=1&&p<=4)active.push({level:l,phase:p})});
+const summary=es?'Actividad proyectada en todos los pisos':'Projected activity across all floors';
+const group=es?['Pendientes','Piloto / remoción','AirMD / clearance','Drywall','Pintura','Cierre previsto']:['Awaiting start','Pilot / removal','AirMD / clearance','Drywall','Painting','Projected closeout'];
+const rows=counts.map((c,i)=>c?'<div class="floor-sim-row"><span>'+esc(group[i])+'</span><b>'+c+' '+(es?'pisos':'floors')+'</b></div>':'').join('');
+const detail=active.length?'<div class="floor-sim-active">'+active.map(x=>'<span>'+esc(x.level==='PH'?'PH':(es?'Piso ':'Floor ')+x.level)+' · '+esc(group[x.phase])+'</span>').join('')+'</div>':'<p class="floor-sim-muted">'+(es?'No hay trabajos simulados activos esta semana.':'No simulated active field work this week.')+'</p>';
+let box=$('allFloorWeekSummary');
+if(!box){box=document.createElement('section');box.id='allFloorWeekSummary';box.className='floor-sim-summary';$('floorTasks').insertAdjacentElement('afterend',box)}
+box.innerHTML='<h3>'+summary+'</h3><p class="floor-sim-muted">'+(es?'Semana ':'Week ')+step+' / 34 · '+(es?'22 niveles, incluidos PH':'22 levels including PH')+'</p>'+rows+detail+'<p class="floor-sim-muted">'+(es?'Secuencia ilustrativa de dos pisos por lote. No reemplaza los avisos oficiales ni el permiso.':'Illustrative two-floor batches. Does not replace official notices or permit approvals.')+'</p>';
 sync3D();
 }
 function stopPlay(){if(interval)clearInterval(interval);interval=null;playing=false;$('sequencePlay').innerHTML='<svg><use href="#ic-play"/></svg>';$('sequencePlay').setAttribute('aria-label','Play planning weeks')}
