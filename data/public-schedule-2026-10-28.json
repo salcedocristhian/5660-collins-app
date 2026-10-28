@@ -1,0 +1,198 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-10-27",
+  "source": "5660 KB Active Projects LIVE latest Oct 27 addenda; Master Permit Record Oct 27",
+  "isVerifiedCalendar": false,
+  "timeline": [
+    {
+      "name": {
+        "en": "Gym permit",
+        "es": "Permiso gimnasio"
+      },
+      "start": 0,
+      "length": 1,
+      "group": "issued",
+      "note": "BC2627814 issued October 1; reopening not scheduled"
+    },
+    {
+      "name": {
+        "en": "Sprinkler review",
+        "es": "Rociadores revisión"
+      },
+      "start": 0,
+      "length": 1,
+      "group": "review",
+      "note": "Oct 30 tentative release; not issued"
+    },
+    {
+      "name": {
+        "en": "Alarm engineering",
+        "es": "Ingeniería alarmas"
+      },
+      "start": 0,
+      "length": 1,
+      "group": "notfiled",
+      "note": "Oct 30 engineering-readiness target; no filing verified"
+    },
+    {
+      "name": {
+        "en": "Smoke doors plans",
+        "es": "Planos puertas humo"
+      },
+      "start": 0,
+      "length": 1,
+      "group": "notfiled",
+      "note": "Oct 30 signed submission package target"
+    },
+    {
+      "name": {
+        "en": "Hallway permit",
+        "es": "Permiso pasillos"
+      },
+      "start": 1,
+      "length": 1,
+      "group": "review",
+      "note": "November issuance estimated, not confirmed"
+    },
+    {
+      "name": {
+        "en": "Lighting permit",
+        "es": "Permiso iluminación"
+      },
+      "start": 1,
+      "length": 2,
+      "group": "review",
+      "note": "Nov–Dec 2026 estimated; BPI process initiated only"
+    },
+    {
+      "name": {
+        "en": "Stair engineering",
+        "es": "Ingeniería escaleras"
+      },
+      "start": 1,
+      "length": 1,
+      "group": "notfiled",
+      "note": "Coordinated package target week of Nov 10"
+    },
+    {
+      "name": {
+        "en": "Garage application",
+        "es": "Solicitud garaje"
+      },
+      "start": 1,
+      "length": 1,
+      "group": "review",
+      "note": "Nov 26 reported possible administrative action; verify"
+    }
+  ],
+  "milestones": [
+    {
+      "month": "OCT",
+      "day": "30",
+      "title": {
+        "en": "Fire sprinkler permit FP0826-7612",
+        "es": "Permiso de rociadores FP0826-7612"
+      },
+      "detail": {
+        "en": "Contractor's possible release target; City approval not confirmed",
+        "es": "Objetivo tentativo del contratista; sin emisión confirmada"
+      }
+    },
+    {
+      "month": "OCT",
+      "day": "30",
+      "title": {
+        "en": "Smoke enclosure door package",
+        "es": "Paquete de puertas de humo"
+      },
+      "detail": {
+        "en": "Target for coordinated signed permit submission; not filed yet",
+        "es": "Fecha tentativa de planos firmados; sin radicación confirmada"
+      }
+    },
+    {
+      "month": "OCT",
+      "day": "30",
+      "title": {
+        "en": "Fire alarm engineering package",
+        "es": "Ingeniería de alarma de incendio"
+      },
+      "detail": {
+        "en": "Target for engineering readiness only; actual filing unverified",
+        "es": "Objetivo de entrega de ingeniería; radicación sin confirmar"
+      }
+    },
+    {
+      "month": "OCT",
+      "day": "30",
+      "title": {
+        "en": "Stair mechanical trade drawings",
+        "es": "Planos mecánicos de escaleras"
+      },
+      "detail": {
+        "en": "Mechanical trade target only, not full multidisciplinary set",
+        "es": "Objetivo solo mecánico; no paquete integral"
+      }
+    },
+    {
+      "month": "NOV",
+      "day": "01",
+      "title": {
+        "en": "Boiler correction/extension verification",
+        "es": "Verificar prórroga de calderas"
+      },
+      "detail": {
+        "en": "Conservative follow-up date; documents conflict between Nov 1 and Nov 2",
+        "es": "Seguimiento conservador; documentos señalan fechas 1 y 2"
+      }
+    },
+    {
+      "month": "NOV",
+      "day": "10",
+      "title": {
+        "en": "Stair coordinated engineering set",
+        "es": "Ingeniería integral de escaleras"
+      },
+      "detail": {
+        "en": "Target week of Nov 10, tentative and subject to design closure",
+        "es": "Semana del 10 de noviembre, tentativo y sujeto a coordinación"
+      }
+    },
+    {
+      "month": "NOV",
+      "day": "17",
+      "title": {
+        "en": "Parking lighting violation hearing",
+        "es": "Audiencia por iluminación del parqueadero"
+      },
+      "detail": {
+        "en": "9:00 AM in latest KB; time/appearance must be confirmed",
+        "es": "9:00 AM según KB más reciente; confirmar hora y comparecencia"
+      }
+    },
+    {
+      "month": "NOV",
+      "day": "26",
+      "title": {
+        "en": "Garage permit administrative milestone",
+        "es": "Hito administrativo del permiso del garaje"
+      },
+      "detail": {
+        "en": "Reported BC2526722 preservation date, not construction completion",
+        "es": "Fecha reportada para mantener BC2526722 activo; no es fin de obra"
+      }
+    },
+    {
+      "month": "NOV",
+      "day": "—",
+      "title": {
+        "en": "Hallway permit BC2628687",
+        "es": "Permiso de pasillos BC2628687"
+      },
+      "detail": {
+        "en": "November issuance estimate, not a confirmed City deadline",
+        "es": "Emisión estimada en noviembre; no es fecha municipal confirmada"
+      }
+    }
+  ]
+}
