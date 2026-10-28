@@ -1,0 +1,432 @@
+{
+  "schemaVersion": 1,
+  "version": "2026-10-28-public-resident-snapshot-v1",
+  "source": "5660 KB - Active Projects LIVE / Core Rules LIVE / FAQ Bilingual LIVE, modified Oct 27, 2026; Stone Coastal Resources Corrective Action Plan dated Oct 21, 2026",
+  "asOf": "2026-10-27",
+  "isLiveSync": false,
+  "notice": "This is a resident-safe published snapshot, not a live connection to the private Google Drive Knowledge Base.",
+  "projects": [
+    {
+      "id": "corridor",
+      "title": {
+        "en": "Hallway remediation & drywall",
+        "es": "Remediación y drywall de pasillos"
+      },
+      "status": {
+        "en": "City permit pending",
+        "es": "Permiso municipal pendiente"
+      },
+      "summary": {
+        "en": "County approval 2027004562 was obtained October 22 and uploaded to City. BC2628687 remained applied/not issued on October 27. AirMD assessed approximately 22,715 SF of corridor-side gypsum for removal; that is not a completed demolition quantity. Future removal requires City permit, Fire/AHJ workfront and egress conditions, and written work authorization.",
+        "es": "Aprobación del Condado 2027004562 obtenida el 22 de octubre y cargada a la Ciudad. BC2628687 seguía solicitado, no emitido, el 27 de octubre. AirMD evaluó cerca de 22,715 SF de drywall de pasillos para retirar; no es una cantidad ya demolida. Se requieren permiso, coordinación con Bomberos y autorización escrita."
+      },
+      "next": {
+        "en": "City reviewer response; permit issuance and approved Fire protocols before selective demolition; AirMD clearance and reconstruction follow by area.",
+        "es": "Respuesta del revisor, emisión del permiso y protocolos de Bomberos antes de demoler; después verificación de AirMD y reconstrucción por sectores."
+      },
+      "permit": "BC2628687"
+    },
+    {
+      "id": "elevator",
+      "title": {
+        "en": "Service / freight elevator",
+        "es": "Elevador de servicio y carga"
+      },
+      "status": {
+        "en": "Operational following emergency repairs",
+        "es": "Operativo tras reparación de emergencia"
+      },
+      "summary": {
+        "en": "VTS confirmed on October 26 that emergency corrective repairs were complete, required safety tests passed, and the service elevator had returned to operation. Remaining permanent repairs are a separate permit and work phase; no issued permit for that phase was confirmed.",
+        "es": "VTS confirmó el 26 de octubre que terminaron las reparaciones de emergencia, pasaron las pruebas de seguridad y el elevador volvió a operar. Las reparaciones permanentes son una fase separada sin permiso emitido confirmado."
+      },
+      "next": {
+        "en": "Coordinate use restrictions with Building Management and await the signed City permit package for permanent repairs.",
+        "es": "Consultar restricciones con Administración y esperar el paquete firmado para el permiso de reparaciones permanentes."
+      },
+      "permit": ""
+    },
+    {
+      "id": "lighting",
+      "title": {
+        "en": "Parking lot lighting",
+        "es": "Iluminación del estacionamiento"
+      },
+      "status": {
+        "en": "Initial application; not issued",
+        "es": "Solicitud inicial; no emitido"
+      },
+      "summary": {
+        "en": "On October 27 the City registered BPI2650249 in INITIAL status. Scope: 9 new 12-foot parking poles and 7 wall-mounted exterior fixtures. This is a process-initiation record, not an electrical construction permit. The lighting code case remains open pending resolution.",
+        "es": "El 27 de octubre la Ciudad registró BPI2650249 en estado INITIAL. Alcance: 9 postes de 12 pies y 7 luminarias exteriores de pared. Es un inicio de trámite, no un permiso eléctrico emitido. El caso de infracción sigue pendiente."
+      },
+      "next": {
+        "en": "Complete the subsequent electrical permit documentation and City review. Installation is estimated to require about three weeks after permit issuance and field mobilization.",
+        "es": "Completar documentación eléctrica y revisión municipal. La instalación se estima en unas tres semanas después del permiso y la movilización."
+      },
+      "permit": "BPI2650249"
+    },
+    {
+      "id": "doors",
+      "title": {
+        "en": "Smoke enclosure doors",
+        "es": "Puertas de contención de humo"
+      },
+      "status": {
+        "en": "Coordinated drawings pending",
+        "es": "Planos coordinados pendientes"
+      },
+      "summary": {
+        "en": "Relats, Jensen Hughes and Superior Doors are coordinating elevator-lobby smoke enclosure drawings and door/frame ratings. The complete signed package had not been confirmed submitted by October 27. The October 30 submission was only a target dependent on technical approvals.",
+        "es": "Relats, Jensen Hughes y Superior Doors coordinan planos de las puertas de contención de humo y clasificaciones de marcos y aperturas. La entrega firmada no estaba confirmada al 27 de octubre. El 30 de octubre era un objetivo sujeto a aprobaciones."
+      },
+      "next": {
+        "en": "Confirm opening-by-opening ratings, completed signed drawings and actual City filing; installation requires an issued permit.",
+        "es": "Confirmar clasificación de cada apertura, planos firmados y radicación; instalación solo con permiso emitido."
+      },
+      "permit": ""
+    },
+    {
+      "id": "sprinkler",
+      "title": {
+        "en": "Fire sprinkler (ELSS)",
+        "es": "Rociadores contra incendio (ELSS)"
+      },
+      "status": {
+        "en": "City plan review / corrections",
+        "es": "Revisión municipal / correcciones"
+      },
+      "summary": {
+        "en": "Application FP0826-7612 was filed August 31. The September 23 fire-pump flow test was supplied for review. City review and correction coordination continued October 27; no issued sprinkler permit was confirmed.",
+        "es": "La solicitud FP0826-7612 se presentó el 31 de agosto. La prueba de caudal del 23 de septiembre fue enviada para revisión. Al 27 de octubre seguían las correcciones; no había permiso emitido confirmado."
+      },
+      "next": {
+        "en": "October 30 was a contractor target for possible permit release, subject to City approval; confirm actual review and issuance.",
+        "es": "El 30 de octubre era una fecha tentativa del contratista, sujeta a la Ciudad; confirmar revisión y emisión."
+      },
+      "permit": "FP0826-7612"
+    },
+    {
+      "id": "alarm",
+      "title": {
+        "en": "Building-wide fire alarm (ELSS)",
+        "es": "Alarma de incendio general (ELSS)"
+      },
+      "status": {
+        "en": "Engineering package in preparation",
+        "es": "Ingeniería en preparación"
+      },
+      "summary": {
+        "en": "The Sciens fire alarm modernization package was being finalized. An engineering package readiness target was October 30, but municipal submission, assigned permit number and issued permit were not confirmed. Existing-system corrective work is separate from the new system.",
+        "es": "Sciens finalizaba el paquete de modernización. La ingeniería tenía objetivo de preparación para el 30 de octubre; ni radicación, ni número oficial, ni emisión estaban confirmados. La reparación del sistema existente es un trabajo separado."
+      },
+      "next": {
+        "en": "Confirm written engineering release, filing dependencies and actual City permit record.",
+        "es": "Confirmar entrega de ingeniería, dependencias de radicación y número oficial."
+      },
+      "permit": ""
+    },
+    {
+      "id": "pressurization",
+      "title": {
+        "en": "Stair pressurization / dampers",
+        "es": "Presurización de escaleras y dampers"
+      },
+      "status": {
+        "en": "Engineering in coordination",
+        "es": "Ingeniería en coordinación"
+      },
+      "summary": {
+        "en": "Mechanical trade drawings had an October 30 tentative target. A fully coordinated engineering package was being planned around the week of November 10. Generator/electrical coordination and structural review remained dependencies; no issued smoke-control permit was confirmed.",
+        "es": "Planos mecánicos con objetivo tentativo 30 de octubre; paquete integral coordinado previsto para la semana del 10 de noviembre. Faltaban coordinación eléctrica/generador y revisión estructural. No había permiso emitido confirmado."
+      },
+      "next": {
+        "en": "Confirm separately the mechanical drawing milestone and the coordinated multidisciplinary package.",
+        "es": "Confirmar por separado la entrega mecánica y el paquete multidisciplinario coordinado."
+      },
+      "permit": ""
+    },
+    {
+      "id": "garage",
+      "title": {
+        "en": "Garage dewatering / stormwater",
+        "es": "Drenaje y desagüe del garaje"
+      },
+      "status": {
+        "en": "City permit not issued",
+        "es": "Permiso municipal no emitido"
+      },
+      "summary": {
+        "en": "BC2526722 remained not issued. The contractor-change process was completed, but engineering comments and the current state of some reviews were disputed in project records. A revised engineered scope and City reconciliation remained outstanding.",
+        "es": "BC2526722 seguía sin emitirse. Se completó el cambio de contratista, pero algunos comentarios de ingeniería y revisiones requieren conciliación con la Ciudad. Falta el alcance técnico revisado."
+      },
+      "next": {
+        "en": "Douglas and engineer to reconcile City comments; November 26 is a reported administrative application milestone that must be verified, not construction completion.",
+        "es": "Douglas e ingeniero deben conciliar comentarios; el 26 de noviembre es un posible hito administrativo por confirmar, no finalización de obra."
+      },
+      "permit": "BC2526722"
+    },
+    {
+      "id": "gym",
+      "title": {
+        "en": "Gym & sauna restoration",
+        "es": "Restauración del gimnasio y sauna"
+      },
+      "status": {
+        "en": "Building permit issued; reopening pending",
+        "es": "Permiso emitido; reapertura pendiente"
+      },
+      "summary": {
+        "en": "Building permit BC2627814 was issued October 1. Follow-on restoration, required inspections, fire-equipment interfaces and closeout work remain. Supplemental concrete/wall treatment was under review as of October 27; no reopening date was confirmed.",
+        "es": "El permiso BC2627814 se emitió el 1 de octubre. Faltan restauración, inspecciones, coordinación de equipos contra incendio y cierre. El tratamiento suplementario de paredes/concreto seguía en revisión al 27 de octubre; no hay fecha de reapertura."
+      },
+      "next": {
+        "en": "Confirm field approvals, inspection results and restoration milestones before announcing reopening.",
+        "es": "Confirmar autorizaciones, inspecciones y avance antes de anunciar reapertura."
+      },
+      "permit": "BC2627814"
+    },
+    {
+      "id": "boilers",
+      "title": {
+        "en": "Boiler / storage tank compliance",
+        "es": "Calderas y tanques de almacenamiento"
+      },
+      "status": {
+        "en": "City corrections outstanding",
+        "es": "Correcciones municipales pendientes"
+      },
+      "summary": {
+        "en": "Boiler-related violations BVC26001809 and BVM26000605 remain under engineering and Fire review coordination. The latest management draft refers to an extension ending November 1, while older information says November 2; the actual City document must confirm the legal date. No violation closure was verified.",
+        "es": "Las infracciones BVC26001809 y BVM26000605 siguen en coordinación con ingeniería y Bomberos. Un borrador reciente indica vencimiento el 1 de noviembre; información anterior dice 2 de noviembre. Debe verificarse con el documento municipal. No hay cierre confirmado."
+      },
+      "next": {
+        "en": "Obtain the City's written extension, complete correction package and documented acceptance before the earlier potential deadline.",
+        "es": "Obtener prórroga municipal escrita, paquete de correcciones completo y aceptación antes de la fecha más temprana posible."
+      },
+      "permit": "MEC2605382"
+    },
+    {
+      "id": "chiller",
+      "title": {
+        "en": "Chiller / mechanical controls",
+        "es": "Chiller y controles mecánicos"
+      },
+      "status": {
+        "en": "Verification pending",
+        "es": "Verificación pendiente"
+      },
+      "summary": {
+        "en": "Trane and communications vendors were coordinating equipment connectivity. Management reported a chiller-pump permit application but no official City number or receipt was available for independent verification. A completed or issued permit cannot be presumed.",
+        "es": "Trane y proveedores coordinaban conectividad de equipos. Administración reportó una solicitud de permiso para bombas, pero no hay número municipal ni recibo verificado. No se debe presumir permiso emitido."
+      },
+      "next": {
+        "en": "Confirm permit number and official City status; coordinate a single approved controls/communications layout.",
+        "es": "Confirmar número y estado municipal y coordinar un solo diseño aprobado de comunicaciones."
+      },
+      "permit": ""
+    },
+    {
+      "id": "planters",
+      "title": {
+        "en": "Planter restoration",
+        "es": "Restauración de jardineras"
+      },
+      "status": {
+        "en": "Survey deliverable pending",
+        "es": "Levantamiento topográfico pendiente"
+      },
+      "summary": {
+        "en": "Management reported that the surveyor visited October 22; the completed survey deliverable and engineering follow-up were still outstanding October 26. No construction permit or start date was established.",
+        "es": "Administración informó visita del topógrafo el 22 de octubre. El levantamiento final y la respuesta de ingeniería continuaban pendientes el 26 de octubre. No hay permiso ni inicio de construcción confirmados."
+      },
+      "next": {
+        "en": "Receive survey, define engineered scope and permit path before scheduling construction.",
+        "es": "Recibir levantamiento, definir alcance de ingeniería y permisos antes de programar obra."
+      },
+      "permit": ""
+    },
+    {
+      "id": "guardrails",
+      "title": {
+        "en": "Stairwell guardrails",
+        "es": "Barandas de escaleras"
+      },
+      "status": {
+        "en": "Review / corrections",
+        "es": "Revisión / correcciones"
+      },
+      "summary": {
+        "en": "City record BC2628393 was undergoing comments and special-inspection coordination at the latest documented review; issuance is not confirmed.",
+        "es": "BC2628393 estaba en coordinación de comentarios e inspección especial; la emisión no está confirmada."
+      },
+      "next": {
+        "en": "Confirm corrected structural drawings and current City review status.",
+        "es": "Confirmar planos estructurales corregidos y estado municipal."
+      },
+      "permit": "BC2628393"
+    },
+    {
+      "id": "humidity",
+      "title": {
+        "en": "Temporary dehumidification",
+        "es": "Deshumidificación temporal"
+      },
+      "status": {
+        "en": "Interim system operating; monitoring",
+        "es": "Sistema interino operando; monitoreo"
+      },
+      "summary": {
+        "en": "SERVPRO installed an industrial desiccant system with vertical dry-air distribution through the building catwalk. An October 6 initial reading indicated relative humidity improvement from roughly 70% to 50% over 12 hours; this is not proof of sustained clearance or permanent remediation.",
+        "es": "SERVPRO instaló un desecante industrial con distribución vertical de aire seco por el catwalk. Lecturas iniciales del 6 de octubre indicaron disminución aproximada de humedad relativa de 70% a 50% en 12 horas; no demuestra liberación permanente."
+      },
+      "next": {
+        "en": "Continue humidity logs and confirm applicable temporary electrical and Fire coordination.",
+        "es": "Continuar registros de humedad y verificar coordinación eléctrica y de Bomberos."
+      },
+      "permit": ""
+    },
+    {
+      "id": "firewatch",
+      "title": {
+        "en": "Fire Watch / corridor protection",
+        "es": "Vigilancia contra incendio y pasillos"
+      },
+      "status": {
+        "en": "Requirements depend on active work",
+        "es": "Requisitos dependen de la obra activa"
+      },
+      "summary": {
+        "en": "Outside Fire Watch for interim stabilization ended operationally October 5 after the initial encapsulation phase. That does not release future rated-wall demolition from Fire/AHJ requirements. Floor 21 and Penthouse final corridor plastic removal clearance should not be presumed without written confirmation.",
+        "es": "La vigilancia externa de la estabilización interina terminó operativamente el 5 de octubre. Eso no elimina requisitos de Bomberos para futuras demoliciones de muros resistentes al fuego. No presumir liberación final de los pisos 21 y PH sin confirmación escrita."
+      },
+      "next": {
+        "en": "Confirm Fire/AHJ-approved conditions for each new corridor workfront.",
+        "es": "Confirmar condiciones de Bomberos para cada sector nuevo."
+      },
+      "permit": ""
+    },
+    {
+      "id": "waterfront",
+      "title": {
+        "en": "Garage water discharge / coastal compliance",
+        "es": "Descarga del garaje y cumplimiento costero"
+      },
+      "status": {
+        "en": "Corrective action verification pending",
+        "es": "Verificación de corrección pendiente"
+      },
+      "summary": {
+        "en": "Stone's October 21 corrective action plan committed to remove temporary pump hoses, the turbidity curtain beneath the dock and open PVC pipes near slip 9 on October 22, and to seek County direction on authorized garage-water handling. Evidence of completion or County acceptance has not been provided in this project record.",
+        "es": "El plan de Stone del 21 de octubre comprometía retirar mangueras temporales, la cortina de turbidez bajo el muelle y PVC abiertos cerca del puesto 9 el 22 de octubre; solicitar dirección del Condado para manejar agua del garaje. No se ha recibido evidencia de ejecución o aceptación."
+      },
+      "next": {
+        "en": "Verify date-stamped closeout photographs and written County feedback. Do not discharge to tidal waters without authorization.",
+        "es": "Verificar fotografías de cierre y respuesta del Condado. No descargar al canal sin autorización."
+      },
+      "permit": ""
+    }
+  ],
+  "faqs": [
+    {
+      "question": {
+        "en": "When will hallway drywall removal start?",
+        "es": "¿Cuándo comenzará la remoción del drywall?"
+      },
+      "answer": {
+        "en": "Not until City permit BC2628687 is issued and Fire/AHJ workfront, egress, Fire Watch and environmental requirements are approved. No confirmed start date is available.",
+        "es": "No hasta que se emita BC2628687 y se aprueben condiciones de Bomberos, accesos y controles ambientales. No hay fecha confirmada."
+      }
+    },
+    {
+      "question": {
+        "en": "Does County approval mean the City demolition permit was issued?",
+        "es": "¿La aprobación del Condado equivale al permiso de demolición?"
+      },
+      "answer": {
+        "en": "No. County approval 2027004562 was received October 22, but City permit BC2628687 remained pending on October 27.",
+        "es": "No. La aprobación 2027004562 del Condado llegó el 22 de octubre; BC2628687 seguía pendiente al 27."
+      }
+    },
+    {
+      "question": {
+        "en": "Is the service elevator back in service?",
+        "es": "¿Ya funciona el elevador de servicio?"
+      },
+      "answer": {
+        "en": "Yes. VTS confirmed October 26 that emergency repairs and required safety tests were completed and the elevator was operational. Follow Building Management instructions for use.",
+        "es": "Sí. VTS confirmó el 26 de octubre que las reparaciones de emergencia y pruebas de seguridad terminaron y estaba operativo. Siga instrucciones de Administración."
+      }
+    },
+    {
+      "question": {
+        "en": "Is the parking-lot lighting permit issued?",
+        "es": "¿Ya emitieron el permiso de luces del estacionamiento?"
+      },
+      "answer": {
+        "en": "No. BPI2650249 is an initial City process record, not an issued construction permit.",
+        "es": "No. BPI2650249 es una solicitud inicial, no un permiso de construcción emitido."
+      }
+    },
+    {
+      "question": {
+        "en": "When will the gym reopen?",
+        "es": "¿Cuándo reabrirá el gimnasio?"
+      },
+      "answer": {
+        "en": "No reopening date has been confirmed. Permit BC2627814 is issued, but inspections, restoration and closeout remain.",
+        "es": "No hay fecha confirmada. BC2627814 está emitido, pero faltan inspecciones, restauración y cierre."
+      }
+    },
+    {
+      "question": {
+        "en": "Has every hallway passed environmental clearance?",
+        "es": "¿Todos los pasillos pasaron la evaluación ambiental?"
+      },
+      "answer": {
+        "en": "No such building-wide clearance has been established. AirMD floor/area-specific verification is a separate required control; limited sample results do not prove all materials or floors are cleared.",
+        "es": "No hay liberación ambiental general confirmada. AirMD verifica sectores específicos; resultados limitados no liberan todos los materiales ni pisos."
+      }
+    },
+    {
+      "question": {
+        "en": "Is asbestos present in all hallways?",
+        "es": "¿Hay asbestos en todos los pasillos?"
+      },
+      "answer": {
+        "en": "The September 22 limited hallway survey found no sampled material above 1% asbestos. It was non-destructive and does not certify untested concealed areas.",
+        "es": "El estudio limitado del 22 de septiembre no detectó materiales muestreados con más de 1% de asbestos. No certifica áreas ocultas no examinadas."
+      }
+    },
+    {
+      "question": {
+        "en": "Are timeline dates guaranteed?",
+        "es": "¿Las fechas del cronograma están garantizadas?"
+      },
+      "answer": {
+        "en": "No. Milestones are planning targets until the applicable City approvals, contractor mobilization and written schedule are confirmed.",
+        "es": "No. Son objetivos tentativos hasta aprobación municipal, movilización y programación escrita."
+      }
+    },
+    {
+      "question": {
+        "en": "Does a permit number always mean an issued permit?",
+        "es": "¿Un número de permiso significa que ya está emitido?"
+      },
+      "answer": {
+        "en": "No. An application, process-initiation number, administrative reference, County approval and issued City construction permit are different statuses.",
+        "es": "No. Solicitud, número de proceso inicial, referencia administrativa, aprobación del Condado y permiso municipal emitido son estados diferentes."
+      }
+    },
+    {
+      "question": {
+        "en": "How will work on my floor be announced?",
+        "es": "¿Cómo se avisarán los trabajos en mi piso?"
+      },
+      "answer": {
+        "en": "Building Management will communicate floor-specific dates, access restrictions and safety instructions when that workfront is approved.",
+        "es": "Administración comunicará fechas, restricciones e instrucciones por piso cuando ese sector sea autorizado."
+      }
+    }
+  ]
+}
