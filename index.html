@@ -7,8 +7,8 @@
 <meta name="description" content="Resident updates, 3D project progress, permits, schedule and contacts at 5660 Collins Avenue.">
 <link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./icons/icon-192.png">
 <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
-<link rel="stylesheet" href="./assets/resident-ios.css?v=20261028-3">
-<script src="./assets/resident-ios.js?v=20261028-3" defer></script>
+<link rel="stylesheet" href="./assets/resident-ios.css?v=20261028-4">
+<script src="./assets/resident-ios.js?v=20261028-4" defer></script>
 <title>5660 Collins · Resident Progress</title>
 </head>
 <body>
@@ -50,6 +50,13 @@
 <div class="list-row"><span class="tile plum"><svg><use href="#ic-door"/></svg></span><div class="row-copy"><strong>Smoke enclosure doors</strong><small>Drawings in coordination before permit submission.</small></div><time class="row-date">Oct 27</time></div>
 <div class="list-row"><span class="tile amber"><svg><use href="#ic-gym"/></svg></span><div class="row-copy"><strong>Gym and sauna restoration</strong><small>Permit issued Oct 1. Inspections come before reopening.</small></div><time class="row-date">Oct 27</time></div>
 </div>
+
+<h2 class="section-heading" data-t="allprojects">All project updates</h2>
+<p class="quiet-intro" data-t="projectexplainer">Select a project for the latest documented status and next step.</p>
+<div class="group-list" id="projectList"><div class="empty">Loading project information…</div></div>
+<h2 class="section-heading" data-t="questions">Resident questions</h2>
+<div class="group-list faq-list" id="faqList"></div>
+<p class="quiet-foot" id="kbFoot">Resident-safe KB snapshot · Oct 27, 2026 · Not a live City or Google Drive feed.</p>
 <p class="quiet-foot" id="updateFoot">Project information · Updated Oct 27, 2026</p>
 </section>
 <section id="tab-progress" class="screen" data-tab="progress" aria-labelledby="heading-progress" hidden>
@@ -58,16 +65,12 @@
 <div class="model-card">
 <div class="model-picture" id="modelPicture">
 <div class="model-label"><span class="small-dot"></span><span data-t="planning">Planning scenario</span></div>
-<div id="buildingIllustration" class="building-illustration" aria-label="Building overview illustration">
-<svg viewBox="0 0 500 330" role="img" aria-label="Conceptual exterior building elevation, not measured geometry"><defs><linearGradient id="buildingShade" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#eef2f0"/><stop offset="1" stop-color="#c5d7d3"/></linearGradient><pattern id="windowPattern" width="29" height="26" patternUnits="userSpaceOnUse"><rect x="7" y="4" width="15" height="18" rx="1.6" fill="#799a9a" opacity=".65"/><path d="M14 4v18" stroke="#d8e4e1"/></pattern></defs><path d="M0 243 500 230v100H0z" fill="#dbe5e0"/><path d="M98 285V38l42-19h215l38 17v250" fill="url(#buildingShade)" stroke="#a6b7b2" stroke-width="2"/><path d="M140 19v269h215V19" fill="#f8fbfa" stroke="#afbfbb"/><path d="M142 48h211v226H142z" fill="url(#windowPattern)"/><path d="M96 68h48v208H96z" fill="url(#windowPattern)"/><path d="M355 64h41v211h-41z" fill="url(#windowPattern)"/><path d="M84 44q33-22 66-24 119-25 232 3l20 20" fill="none" stroke="#fff" stroke-width="10"/><path d="M95 284h305" stroke="#8ba6a0" stroke-width="5"/><g fill="none" stroke="#7c9e9b" stroke-width="3" opacity=".7"><path d="M95 80h49M95 114h49M95 148h49M95 182h49M355 80h42M355 114h42M355 148h42M355 182h42"/></g><path d="M0 305Q120 286 255 308t245-16" fill="none" stroke="#a4bcb2" stroke-width="5"/><circle cx="64" cy="269" r="38" fill="#9ab7a3"/><circle cx="447" cy="277" r="44" fill="#a2bdab"/></svg>
-</div>
-<img id="interiorPicture" class="interior-picture" src="./hallway_16-20_trace_preview.png" alt="Hallway geometry planning preview" hidden>
-<div class="step-overlay" id="stepOverlay"></div>
-<a class="model-expand" id="modelExpand" href="./model-viewer.html" target="_blank" rel="noopener" aria-label="Open original interactive 3D viewer"><svg><use href="#ic-expand"/></svg></a>
-</div>
-</div>
-<div class="sequence-card"><div class="sequence-head"><div class="sequence-copy"><h2 id="sequenceTitle">Hallway planning</h2><p id="sequenceSubtitle">Planning step 1 of 5 · Floor 2</p></div><div class="sequence-controls"><button id="sequenceBack" type="button" aria-label="Previous stage"><svg><use href="#ic-back"/></svg></button><button id="sequencePlay" class="play-primary" type="button" aria-label="Play planning steps"><svg><use href="#ic-play"/></svg></button><button id="sequenceForward" type="button" aria-label="Next stage"><svg><use href="#ic-forward"/></svg></button></div></div><input id="sequenceRange" type="range" min="0" max="4" step="1" value="0" aria-label="Planning sequence step"></div>
-<h2 class="section-heading" id="floorHeading">On Floor 2</h2><div class="group-list" id="floorTasks"></div>
+<div id="modelLoading" class="model-loading"><span class="loader"></span><strong>Loading real 3D floor geometry…</strong><small>Interactive building model · Relats floor references</small></div>
+<iframe id="realModelFrame" title="Interactive 3D building and corridor model" aria-label="Interactive construction planning visualization" allow="fullscreen" loading="lazy"></iframe>
+<button class="model-expand" id="modelExpand" type="button" aria-label="Expand interactive 3D model"><svg><use href="#ic-expand"/></svg></button>
+</div></div>
+<div class="sequence-card"><div class="sequence-head"><div class="sequence-copy"><h2 id="sequenceTitle">Hallway planning</h2><p id="sequenceSubtitle">Planning step 1 of 5 · Floor 2</p></div><div class="sequence-controls"><button id="sequenceBack" type="button" aria-label="Previous stage"><svg><use href="#ic-back"/></svg></button><button id="sequencePlay" class="play-primary" type="button" aria-label="Play planning steps"><svg><use href="#ic-play"/></svg></button><button id="sequenceForward" type="button" aria-label="Next stage"><svg><use href="#ic-forward"/></svg></button></div></div><input id="sequenceRange" type="range" min="0" max="34" step="1" value="0" aria-label="Planning sequence step"></div>
+<h2 class="section-heading" id="floorHeading">On Floor 2</h2><div class="group-list" id="floorTasks"></div><p class="quiet-foot">The floor sequence is an illustrative scenario only; no permit-dependent drywall demolition is marked complete.</p>
 <p class="quiet-foot" data-t="modelnote">3D visualization is conceptual. The sequence does not represent completed or authorized field work.</p>
 </section>
 <section id="tab-permits" class="screen" data-tab="permits" aria-labelledby="heading-permits" hidden>
