@@ -83,6 +83,21 @@
 </section>
 <section id="tab-schedule" class="screen" data-tab="schedule" aria-labelledby="heading-schedule" hidden>
 <h1 id="heading-schedule" data-t="schedule">Schedule</h1>
+<div class="resident-floor-module" style="background:#fff;border-radius:20px;padding:20px;margin:0 0 22px;color:#14241f">
+<div style="font-size:12px;letter-spacing:.08em;color:#66756f;font-weight:700">HALLWAY RESTORATION · RESIDENT INFORMATION</div>
+<h2 style="font-size:25px;line-height:1.2;margin:10px 0 8px">Your floor schedule</h2>
+<p style="color:#66756f;margin:0 0 18px;font-size:15px">Select your floor to see remediation, drywall reconstruction and resident notices.</p>
+<label for="residentFloor" style="display:block;font-weight:700;margin-bottom:8px">Select floor</label>
+<select id="residentFloor" style="width:100%;padding:14px;border:1px solid #d7ddda;border-radius:12px;background:#f5f6f4;color:#14241f;font:inherit"></select>
+<div style="background:#f3f5f3;border-radius:14px;padding:16px;margin-top:16px">
+<div id="residentFloorHeading" style="font-weight:750;font-size:20px">Floor 2</div>
+<div style="margin-top:12px;font-weight:700">Hallway remediation</div><p style="margin:4px 0 12px;color:#53645d;font-size:14px">Prior remediation work reported complete. Floor-specific final clearance should be verified.</p>
+<div style="font-weight:700">Drywall reconstruction</div><p style="margin:4px 0 12px;color:#53645d;font-size:14px">Start date not confirmed. City permit BC2628687 remains pending in the latest available project status.</p>
+<div style="font-weight:700">Finishing and painting</div><p style="margin:4px 0;color:#53645d;font-size:14px">Schedule to be announced after reconstruction planning is confirmed.</p>
+</div>
+<div style="margin-top:16px;border-left:3px solid #b48c4c;padding:4px 0 4px 12px;color:#596960;font-size:14px"><strong>Resident notice:</strong> No confirmed floor-specific start notice has been issued here. Dates will be posted only after project-team verification. Tentative dates will be clearly identified.</div>
+</div>
+<h2 class="section-heading">Building schedule</h2>
 <div class="segmented" id="scheduleSegment" role="tablist" aria-label="Schedule view"><button class="active" data-schedule="timeline" type="button" role="tab" aria-selected="true" data-t="timeline">Timeline</button><button data-schedule="milestones" type="button" role="tab" aria-selected="false" data-t="milestones">Milestones</button></div>
 <div id="timelinePanel"><div class="timeline-card"><div class="timeline-scroll"><div class="timeline-grid" id="timelineGrid"></div></div><div class="timeline-legend"><span><b class="legend-dot issued"></b><span data-t="permitissued">Permit issued</span></span><span><b class="legend-dot review"></b><span data-t="permitreview">Permit in review</span></span><span><b class="legend-dot notfiled"></b><span data-t="permitnotfiled">Not filed</span></span><span><i class="legend-today"></i><span data-t="today">Today</span></span></div></div></div>
 <div id="milestonePanel"><h2 class="section-heading" data-t="nextmilestones">Next milestones</h2><div class="group-list" id="milestoneList"></div></div>
@@ -112,4 +127,17 @@
 </div>
 <div class="sheet-backdrop" id="detailBackdrop" hidden></div>
 <div class="detail-sheet" id="permitDetail" role="dialog" aria-modal="true" aria-labelledby="detailTitle" hidden><div class="sheet-handle"></div><button class="sheet-close" id="detailClose" type="button" aria-label="Close"><svg><use href="#ic-close"/></svg></button><div id="detailContents"></div></div>
+<script>
+(function(){
+const select=document.getElementById('residentFloor');
+const heading=document.getElementById('residentFloorHeading');
+if(!select||!heading)return;
+for(let floor=2;floor<=21;floor++){const option=document.createElement('option');option.value=String(floor);option.textContent='Floor '+floor;select.appendChild(option);}
+const ph=document.createElement('option');ph.value='PH';ph.textContent='Penthouse';select.appendChild(ph);
+let saved;try{saved=localStorage.getItem('collinsResidentFloor')}catch(e){}
+if(saved&&Array.from(select.options).some(o=>o.value===saved))select.value=saved;
+function refresh(){heading.textContent=select.value==='PH'?'Penthouse':'Floor '+select.value;try{localStorage.setItem('collinsResidentFloor',select.value)}catch(e){}}
+select.addEventListener('change',refresh);refresh();
+})();
+</script>
 </body></html>
