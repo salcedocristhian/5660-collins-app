@@ -38,7 +38,7 @@
 <symbol id="ic-close" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5 5 19"/></symbol>
 </svg>
 <div class="app-shell">
-<header class="app-top"><span>5660 Collins</span><button id="topAction" class="top-action" type="button" aria-label="Switch language">ES</button></header>
+<header class="app-top"><span>5660 Collins</span><button id="topAction" class="top-action" type="button" aria-label="Switch language">ES</button><label class="floor-picker" id="floorPicker" hidden><span class="visually-hidden">Select floor</span><select id="floorSelect" aria-label="Select building floor"></select></label></header>
 <main id="main" tabindex="-1">
 <section id="tab-updates" class="screen current" data-tab="updates" aria-labelledby="heading-updates">
 <h1 id="heading-updates" data-t="updates">Updates</h1>
@@ -54,7 +54,7 @@
 </section>
 <section id="tab-progress" class="screen" data-tab="progress" aria-labelledby="heading-progress" hidden>
 <h1 id="heading-progress" data-t="progress">Progress</h1>
-<div class="segmented" id="progressSegment" role="tablist" aria-label="Model view"><button class="active" data-view="building" type="button" role="tab" aria-selected="true" data-t="building">Building</button><button data-view="interior" type="button" role="tab" aria-selected="false" data-t="interior">Interior</button></div>
+<div class="segmented" id="progressSegment" role="tablist" aria-label="Model view"><button data-view="building" type="button" role="tab" aria-selected="false" data-t="building">Building</button><button class="active" data-view="interior" type="button" role="tab" aria-selected="true" data-t="interior">Interior</button></div>
 <div class="model-card">
 <div class="model-picture" id="modelPicture">
 <div class="model-label"><span class="small-dot"></span><span data-t="planning">Planning scenario</span></div>
