@@ -208,3 +208,25 @@ input[type=range]#weekRange{height:28px}
 #modelPlayback .panel,#modelPlayback .controls,#modelPlayback .control-main{box-shadow:none!important;border:0!important;background:transparent!important;margin:0!important;padding:0!important}
 #modelPlayback .warning{margin-top:14px;border:0!important;border-left:2px solid var(--brass)!important;border-radius:0!important;background:transparent!important;padding:2px 0 2px 12px!important;font-size:13px;line-height:1.55;color:var(--ink-2)!important}
 @media(max-width:750px){#modelPlayback #jumpToday{order:3}#modelPlayback .slide-wrap{order:2;flex:1 1 100%}}
+
+/* ===== v13.1 · Interior and Plans on phones ===== */
+@media(max-width:750px){
+  .view[data-mode='interior']{height:auto!important;min-height:0!important;overflow:visible!important}
+  .view[data-mode='interior']>#c{position:absolute!important;top:0;left:0;width:100%!important;height:420px!important}
+  .view[data-mode='interior'] #interiorMount{position:relative!important;inset:auto!important;display:flex!important;flex-direction:column;height:auto!important;overflow:visible!important;background:var(--porcelain)!important}
+  .view[data-mode='interior'] #interiorViewport{height:420px!important;flex:none!important}
+  .view[data-mode='interior'] #interiorCanvas{width:100%!important;height:100%!important}
+  #interiorDock{max-height:none!important;overflow:visible!important}
+  .view[data-mode='plan']{height:520px!important}
+}
+#interiorDock .int-controls{gap:10px!important;flex-wrap:wrap}
+#interiorDock .int-control-group{gap:6px!important;flex-wrap:wrap}
+#interiorDock .int-control-group button,#interiorDock select,#interiorDock .int-fullview{min-height:40px!important;padding:0 14px!important}
+#interiorDock details summary{font:500 13px var(--font)!important;color:var(--muted)!important}
+.plan-toolbar{background:var(--surface)!important;border-bottom:1px solid var(--hair)!important;box-shadow:none!important}
+.plan-toolbar select,.plan-toolbar button{border-radius:999px!important;border:1px solid var(--hair)!important;background:var(--surface)!important;color:var(--ink)!important;font:500 14px var(--font)!important;min-height:40px}
+.plan-scroll{background:var(--porcelain)!important}
+.plan-footer{background:var(--surface)!important;color:var(--ink-2)!important;border-top:1px solid var(--hair)!important;font:400 13px/1.5 var(--font)!important;padding:12px 16px!important;backdrop-filter:none!important}
+
+/* ===== v14 · two views (Plans removed) ===== */
+.scene-switch .mode-buttons{grid-template-columns:repeat(2,1fr)!important}

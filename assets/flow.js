@@ -31,6 +31,7 @@
     group('Current documented status', [kb, $('.readiness-strip')]);
     group('Illustrative weekly metrics', [$('.hero'), $('.metrics')]);
     group('About the 3D model', [$('#modelMount .canvas-hud'), $('#hallSourceNote'), $('.legend-note')]);
+    const ln = $('.legend-note'); if (ln) ln.innerHTML = ln.innerHTML.replace(/Switch <b>Exterior \/ Interior \/ Actual plans<\/b>/, 'Switch <b>Building / Interior</b>');
     stage.after(box);
   }
 
@@ -70,6 +71,7 @@
       $('#quickFloor')?.addEventListener('change', sync);
       sync();
     }
+    if (!modernize.bound) { modernize.bound = true; document.querySelectorAll('.mode-btn').forEach(b => b.addEventListener('click', () => { setTimeout(() => window.dispatchEvent(new Event('resize')), 60); setTimeout(() => window.dispatchEvent(new Event('resize')), 400); })); }
     const tour = $('#intTour'), dock = $('#interiorDock');
     if (tour && dock && tour.parentElement !== dock) dock.prepend(tour);
   }

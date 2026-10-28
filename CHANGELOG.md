@@ -13,3 +13,13 @@
 - Original Stone Building Solutions and MTD logos, transparent background (Stone wordmark set in navy for light surfaces).
 - Header reduced to one row of logos; camera and balconies moved into a "View options" menu; stage title shown in large type under the model; interior stage chips moved out of the 3D view.
 - Updates: inside the app, the resident page hides its own header and bottom menu.
+
+## v13.1 (2026-10-28)
+- Phones, Interior: the 3D view is 420 px tall and the controls sit below it in full (no clipped area or empty block).
+- Phones, Plans: taller view; drawing caption on a light surface instead of the dark band; toolbar restyled.
+- Model re-measures itself after switching Building / Interior / Plans.
+
+## v14 (2026-10-28)
+- Plans view removed; Progress now has Building and Interior.
+- Interior 3D: opaque matte-white walls, solid floor slab with the drawing as a faint reference, two-light setup, sharper rendering on high-density screens, no fog, closer default Overview camera; engineering label removed from the model.
+- New app icon (MTD over the building) for home screen, PWA and favicon.
