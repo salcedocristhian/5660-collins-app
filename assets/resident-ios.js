@@ -62,7 +62,7 @@ function closePermit(){$('detailBackdrop').hidden=true;$('permitDetail').hidden=
 function renderStages(){
 const doc=modelReady?$('realModelFrame').contentDocument:null;
 const fromOld=doc&&doc.getElementById('floorStatus')?.textContent?.trim();
-const name=fromOld||((step===0)?(lang==='es'?'Preparación y permisos':'Preconstruction / permits'):(lang==='es'?'Secuencia de construcción':'Construction sequence'));
+const name=lang==='es'?'Restauración de pasillos':'Hallway restoration';
 $('sequenceTitle').textContent=name;
 $('sequenceSubtitle').textContent=(lang==='es'?'Semana prevista ':'Planning week ')+step+' / 34 · '+t('floor')+' '+floor;
 $('floorHeading').textContent=(lang==='es'?'En el piso ':'On Floor ')+floor;
@@ -135,14 +135,14 @@ if(!d||!w||!d.getElementById('modelMount')||!w.CorridorInterior)throw new Error(
 const mount=d.getElementById('modelMount');
 d.body.appendChild(mount);
 const style=d.createElement('style');
-style.textContent=String.raw`html,body{height:100%!important;width:100%!important;margin:0!important;overflow:hidden!important;padding:0!important;background:#fff!important}body>*:not(#modelMount){display:none!important}#modelMount{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;min-height:0!important;max-height:none!important;border:0!important;border-radius:0!important;margin:0!important;box-shadow:none!important}#modelMount canvas{touch-action:none!important}#modelMount .canvas-hud,#modelMount .mini-hud,#modelMount .int-topnote,#modelMount .int-stagebar,#modelMount .int-progress-banner,#modelMount .int-tour,#modelMount .int-controls,#modelMount #intExpand{display:none!important}#modelMount #interiorMount{display:block!important;position:absolute!important;inset:0!important;width:100%!important;height:100%!important}#modelMount #interiorDock{display:none!important}#modelMount #interiorViewport{position:absolute!important;inset:0!important;height:100%!important;width:100%!important;min-height:0!important;overflow:hidden!important}#modelMount #interiorCanvas{height:100%!important;width:100%!important}`;
+style.textContent=String.raw`html,body{height:100%!important;width:100%!important;margin:0!important;overflow:hidden!important;padding:0!important;background:#fff!important}body>*:not(#modelMount){display:none!important}#modelMount{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;min-height:0!important;max-height:none!important;border:0!important;border-radius:0!important;margin:0!important;box-shadow:none!important}#modelMount canvas{touch-action:none!important}#modelMount .canvas-hud,#modelMount .mini-hud,#modelMount .int-topnote,#modelMount .int-stagebar,#modelMount .int-progress-banner,#modelMount .int-tour,#modelMount .int-controls,#modelMount #intExpand{display:none!important}#modelMount #interiorMount{display:none!important;position:absolute!important;inset:0!important;width:100%!important;height:100%!important}#modelMount[data-mode='interior'] #interiorMount{display:block!important}#modelMount[data-mode='exterior'] #interiorMount,#modelMount[data-mode='exterior'] #planMount{display:none!important}#modelMount[data-mode='exterior'] > #c{display:block!important;visibility:visible!important;pointer-events:auto!important;width:100%!important;height:100%!important}#modelMount #interiorDock{display:none!important}#modelMount #interiorViewport{position:absolute!important;inset:0!important;height:100%!important;width:100%!important;min-height:0!important;overflow:hidden!important}#modelMount #interiorCanvas{height:100%!important;width:100%!important}`;
 d.head.appendChild(style);
 modelReady=true;$('modelLoading').hidden=true;
 sync3D();
 setTimeout(()=>{w.dispatchEvent(new Event('resize'));sync3D()},130);
 }catch(e){modelReady=false;$('modelLoading').innerHTML='<strong>'+esc(lang==='es'?'No se pudo cargar el modelo 3D':'Unable to load the interactive 3D model')+'</strong><small>'+esc(e.message||'Please retry')+'</small>';}
 });
-iframe.src='./model-viewer.html?v=20261028-6';
+iframe.src='./model-viewer.html?v=20261028-7';
 }
 function sync3D(){
 if(!modelReady)return;
@@ -150,9 +150,9 @@ try{
 const iframe=$('realModelFrame'),d=iframe.contentDocument,w=iframe.contentWindow;
 const select=d.getElementById('floorSelect');
 if(select&&select.value!==floor){select.value=floor;select.dispatchEvent(new Event('change',{bubbles:true}))}
-if(w.CorridorInterior&&w.CorridorInterior.mode!==(view==='building'?'exterior':'interior'))w.CorridorInterior.showMode(view==='building'?'exterior':'interior');
+if(w.CorridorInterior){const desired=view==='building'?'exterior':'interior';if(w.CorridorInterior.mode!==desired)w.CorridorInterior.showMode(desired);const mount=d.getElementById('modelMount');if(mount)mount.dataset.mode=desired;}
 const range=d.getElementById('weekRange');if(range&&Number(range.value)!==step){range.value=step;range.dispatchEvent(new Event('input',{bubbles:true}))}
-const val=d.getElementById('floorStatus')?.textContent?.trim();if(val)$('sequenceTitle').textContent=val;
+const val=d.getElementById('floorStatus')?.textContent?.trim();if(val){const status=$('scenarioStatus');if(status)status.textContent=val;}
 }catch(e){console.warn('3D sync:',e)}
 }
 $('detailClose').addEventListener('click',closePermit);$('detailBackdrop').addEventListener('click',closePermit);document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePermit();if(modelFullscreen)$('modelExpand').click()}});
