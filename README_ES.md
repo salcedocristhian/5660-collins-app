@@ -1,4 +1,4 @@
-# 5660 Collins · Progress (v12)
+# 5660 Collins · Progress (v13)
 
 ## Qué cambia en esta versión
 - **Progress** (antes «Sequence»): el modelo 3D va primero. Las notas, avisos, métricas ilustrativas y la información técnica del modelo se movieron a **«Details and disclosures»**, debajo de la secuencia, en acordeones. «This is a planning scenario» queda abierto por defecto.

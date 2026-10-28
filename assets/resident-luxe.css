@@ -7,3 +7,26 @@ h1,h2,h3{font-weight:500!important;letter-spacing:-.025em}
 .notice-card,.project-card,.hero-stat,.faq-list,.contact-card{border-radius:22px;border-color:#E1E5E3;box-shadow:none}
 .btn-navy,.btn{border-radius:999px}
 .site-header{background:rgba(244,245,243,.9);border-bottom-color:#E1E5E3}
+/* v12.1 contrast fix: hero sits on a light surface (ivory.css removes the dark gradient) */
+.hero{background:transparent!important;color:#17201E}
+.hero h1{color:#17201E}
+.hero h1 em{color:#1F4D47}
+.hero-copy>p,.hero p{color:#4C5653}
+.hero .eyebrow{color:#5B6663!important}
+.hero-stat{background:#FFFFFF;border:1px solid #E1E5E3;color:#17201E}
+.hero-stat-header{color:#5B6663}
+.hero-stat-title{color:#17201E;font-weight:500;letter-spacing:-.02em}
+.hero-stat p{color:#2C3533}
+.hero-stat-foot{color:#5B6663;border-top-color:#E1E5E3}
+.hero .btn-transparent{color:#17201E;border:1px solid #D5DBD8;background:#FFFFFF}
+.hero .btn-white{color:#FFFFFF;background:#1F4D47;border-color:#1F4D47}
+
+/* v13: inside the app, the app header and bottom bar take over */
+.embedded .site-header,.embedded .mobile-nav,.embedded .skip{display:none!important}
+.embedded body{padding-bottom:110px}
+.embedded .hero{padding-top:8px!important}
+.hero h1{font-size:clamp(34px,9vw,56px)!important;font-weight:500!important;letter-spacing:-.035em!important;line-height:1.04!important}
+.hero-stat{border-radius:26px!important;padding:24px!important}
+.notice-card{border-radius:24px!important;border:1px solid #E1E5E3!important;border-top-width:1px!important}
+.notice-card::before{display:none!important}
+.tag,.badge,.chip{border-radius:999px!important;letter-spacing:.02em!important;font-weight:600!important}

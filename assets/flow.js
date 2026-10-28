@@ -1,4 +1,4 @@
-/* 5660 Collins · Progress v12 — sequence-first layout + Permits tab. Original 3D scripts untouched. */
+/* 5660 Collins · Progress v13 — sequence-first layout + Permits tab. Original 3D scripts untouched. */
 (() => {
   'use strict';
   const $ = (s, r = document) => r.querySelector(s);
@@ -32,6 +32,46 @@
     group('Illustrative weekly metrics', [$('.hero'), $('.metrics')]);
     group('About the 3D model', [$('#modelMount .canvas-hud'), $('#hallSourceNote'), $('.legend-note')]);
     stage.after(box);
+  }
+
+
+  /* 3 · v13: calmer model area, stage title under the model, view options tucked away */
+  function modernize() {
+    const head = $('#modelMount')?.closest('.panel')?.querySelector('.panel-head');
+    const cam = $('#cameraSelect'), balc = $('#balc');
+    if (head && cam && !$('#flowOptions')) {
+      const holder = cam.parentElement;
+      const wrap = el('div', 'flow-options'); wrap.id = 'flowOptions';
+      const btn = el('button', 'flow-options-btn'); btn.type = 'button'; btn.setAttribute('aria-expanded', 'false'); btn.setAttribute('aria-controls', 'flowOptionsMenu'); btn.setAttribute('aria-label', 'View options');
+      btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg>';
+      const menu = el('div', 'flow-options-menu'); menu.id = 'flowOptionsMenu'; menu.hidden = true;
+      const l1 = el('label', null, 'Camera'); l1.append(cam);
+      menu.append(l1); if (balc) menu.append(balc);
+      wrap.append(btn, menu); holder.replaceWith(wrap);
+      btn.addEventListener('click', () => { const o = menu.hidden; menu.hidden = !o; btn.setAttribute('aria-expanded', String(o)); });
+      document.addEventListener('click', e => { if (!wrap.contains(e.target) && !menu.hidden) { menu.hidden = true; btn.setAttribute('aria-expanded', 'false'); } });
+      document.addEventListener('keydown', e => { if (e.key === 'Escape' && !menu.hidden) { menu.hidden = true; btn.setAttribute('aria-expanded', 'false'); btn.focus(); } });
+    }
+    const pb = $('#modelPlayback');
+    if (pb && !$('#flowNow')) {
+      const now = el('div', 'flow-now'); now.id = 'flowNow'; now.setAttribute('aria-live', 'polite');
+      const title = el('h3', 'flow-now-title', 'Preconstruction');
+      const sub = el('p', 'flow-now-sub', '');
+      now.append(title, sub); pb.prepend(now);
+      const range = $('#weekRange');
+      const sync = () => {
+        const wt = $('#weekTitle')?.textContent?.trim(); if (wt) title.textContent = wt;
+        const v = range ? +range.value : 0, max = range ? +range.max : 34;
+        const floor = $('#quickFloor')?.selectedOptions?.[0]?.textContent?.trim();
+        sub.textContent = (v === 0 ? 'Before work starts' : `Week ${v} of ${max}`) + (floor ? `, ${floor}` : '') + ', planning scenario';
+      };
+      ['#weekTitle', '#weekNum'].forEach(s => { const n = $(s); if (n) new MutationObserver(sync).observe(n, { childList: true, characterData: true, subtree: true }); });
+      range?.addEventListener('input', sync); range?.addEventListener('change', sync);
+      $('#quickFloor')?.addEventListener('change', sync);
+      sync();
+    }
+    const tour = $('#intTour'), dock = $('#interiorDock');
+    if (tour && dock && tour.parentElement !== dock) dock.prepend(tour);
   }
 
   /* 2 · Permits */
@@ -131,6 +171,7 @@
 
   function init() {
     relocateDisclosures();
+    modernize(); setTimeout(modernize, 1200);
     if ($('#permitsPane')) loadPermits();
     if (location.hash === '#permits') setTimeout(() => $('#unifiedNav button[data-target="permits"]')?.click(), 0);
   }
