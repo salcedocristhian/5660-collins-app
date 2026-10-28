@@ -1,7 +1,23 @@
-# Auditoría UI/UX — 5660
+# Auditoría previa al paquete — 5660 Collins
 
-Corregido: navegación principal fija abajo con área segura iPhone; logos sin tarjetas ni carrusel; plano ajustado al ancho y alto disponible; cambio de semana sin scrollIntoView que desplazaba la página; Gantt con desplazamiento lateral propio; enlace de residentes fuera de su encabezado; altura del iframe adaptada al contenido para un único desplazamiento vertical; foco de teclado visible.
+## Corregido y comprobado
+- Logo original: inversión de color conserva contraste y detalle; revisión visual en navegador.
+- Navegación: cinco accesos probados con servidor HTTP local, feed e iframe.
+- Contactos: jerarquía y estilos uniformes; revisión visual móvil.
+- Interior: controles fuera del lienzo, sin Zone A/B; etapas y detalles desplegables.
+- Pantalla completa: Play/Pause y semana sincronizados con el escenario. Slider W05 y reproducción hasta W06 comprobados.
+- Sin errores JavaScript en el recorrido ejecutado.
+- Documento sin desbordamiento horizontal a 320, 390, 430 y 1280 px. Gantt conserva su scroll propio.
+- Tipografía de sistema, movimiento reducido y controles del dock de 44 px.
+- Renderizado omite trabajo cuando el modelo está fuera de vista o la pestaña está oculta; reproducción se pausa al ocultar la página. Resolución y sombras reducidas en móvil.
 
-La navegación interna de residentes queda dentro de su contenido cuando se abre en la app, para evitar dos barras fijas superpuestas. En la página independiente conserva su menú inferior.
+## Pendientes antes de lanzamiento comercial
+- Safari/iPhone físico: gestos, teclado, instalación PWA, safe areas y consumo de batería.
+- Modo oscuro: no implementado; interfaz declarada clara.
+- Persistencia de sesión: aún sin recuperación de piso, semana y cámara al cerrar.
+- Offline y actualizaciones: existe service worker con versión nueva; falta prueba end-to-end sin red y migración desde versiones publicadas.
+- Accesibilidad: falta lector de pantalla y auditoría completa de contraste/foco en todas las vistas.
+- Rendimiento: se omiten renders fuera de vista, pero siguen programándose callbacks; no es todavía renderizado totalmente bajo demanda.
+- No publicado en GitHub durante esta revisión.
 
-Pendiente de validación visual en navegador/iPhone: legibilidad de controles 3D en pantallas pequeñas, redimensionamiento del iframe y comportamiento Safari. La descarga del navegador de prueba no estuvo disponible en este entorno. No se ha publicado en GitHub.
+Validación realizada en Chromium headless sobre servidor local; no equivale a certificación nativa iOS.
