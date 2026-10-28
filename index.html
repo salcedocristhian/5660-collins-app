@@ -104,10 +104,10 @@
 <div class="master-schedule" id="masterSchedule">
  <div class="ms-top"><div><strong>Master Construction Schedule</strong><small>Weekly planning · preliminary forecasts</small></div><span class="ms-pill">Draft</span></div>
  <div class="ms-tabs" role="tablist" aria-label="Construction schedule views"><button type="button" class="on" data-msview="gantt">Gantt</button><button type="button" data-msview="list">List</button><button type="button" data-msview="kanban">Kanban</button></div>
- <div class="ms-controls"><label>Window <select id="msWindow"><option value="12">12 weeks</option><option value="26" selected>26 weeks</option><option value="52">52 weeks</option></select></label><span>Week 1 = tentative field start per scope</span></div>
+ <div class="ms-controls"><label>Window <select id="msWindow"><option value="12">12 weeks</option><option value="26" selected>26 weeks</option><option value="52">52 weeks</option></select></label><span>W1 = Oct 26–Nov 1 · estimated starts</span></div>
  <div id="msContent" aria-live="polite"></div>
  <div class="ms-key"><span><i style="background:#b58b48"></i> Pilot / calibration</span><span><i style="background:#23564c"></i> Field production</span><span><i style="background:#d7dcd9"></i> Not scheduled</span></div>
- <p class="ms-disclaimer">Preliminary schedule. Durations are planning estimates, not confirmed start dates or contractual commitments. The first on-site week of each new scope is for mobilization, pilot execution and production calibration while productive work proceeds. Forecasts will be reviewed after actual field productivity is measured. Permit issuance, inspections, site conditions and coordination may change the sequence. Floor-specific notices will be issued when confirmed.</p>
+ <p class="ms-disclaimer">Preliminary schedule. Durations are planning estimates, not confirmed start dates or contractual commitments. The gold segment marks the first on-site week of each new scope (pilot). All plotted starts are tentative, contingent on permit issuance and notice to proceed. The first on-site week of each new scope is for mobilization, pilot execution and production calibration while productive work proceeds. Forecasts will be reviewed after actual field productivity is measured. Permit issuance, inspections, site conditions and coordination may change the sequence. Floor-specific notices will be issued when confirmed.</p>
 </div>
 <div class="segmented" id="scheduleSegment" role="tablist" aria-label="Schedule view"><button class="active" data-schedule="timeline" type="button" role="tab" aria-selected="true" data-t="timeline">Timeline</button><button data-schedule="milestones" type="button" role="tab" aria-selected="false" data-t="milestones">Milestones</button></div>
 <div id="timelinePanel"><div class="timeline-card"><div class="timeline-scroll"><div class="timeline-grid" id="timelineGrid"></div></div><div class="timeline-legend"><span><b class="legend-dot issued"></b><span data-t="permitissued">Permit issued</span></span><span><b class="legend-dot review"></b><span data-t="permitreview">Permit in review</span></span><span><b class="legend-dot notfiled"></b><span data-t="permitnotfiled">Not filed</span></span><span><i class="legend-today"></i><span data-t="today">Today</span></span></div></div></div>
@@ -154,18 +154,18 @@ select.addEventListener('change',refresh);refresh();
 <script>
 (function(){
 const projects=[
-{name:"Fire Sprinkler · ELSS",weeks:44,start:null,status:"Permitting",rate:"Production TBD after pilot",permit:"FP0826-7612"},
-{name:"Fire Alarm · ELSS",weeks:44,start:null,status:"Planning",rate:"Production TBD after pilot",permit:"Permit pending"},
-{name:"Smoke Enclosure Doors",weeks:12,start:null,status:"Permitting",rate:"2 floors/week · approx. 11 installation weeks",permit:"Permit pending"},
-{name:"Hallway Remediation / Drywall",weeks:10,start:null,status:"Permitting",rate:"8–12 weeks estimated · production TBD",permit:"BC2628687"},
-{name:"Stair Pressurization / Dampers",weeks:22,start:null,status:"Planning",rate:"17–26 weeks · system-based",permit:"Engineering pending"},
-{name:"Garage Dewatering / Stormwater",weeks:18,start:null,status:"Permitting",rate:"13–22 weeks · phased",permit:"BC2526722"},
-{name:"Parking Lot Lighting",weeks:3,start:null,status:"Permitting",rate:"3 weeks field execution",permit:"BPI2650249 · intake only"},
-{name:"Gym & Sauna Restoration",weeks:6,start:null,status:"In Progress",rate:"4–8 weeks remaining; no new pilot assumed",permit:"BC2627814 · issued",pilot:false},
-{name:"Gym Fire Alarm / Equipment",weeks:3,start:null,status:"Planning",rate:"2–4 weeks",permit:"Unverified"},
-{name:"Chiller Mechanical / Electrical",weeks:5,start:null,status:"In Progress",rate:"4–6 weeks remaining; verify",permit:"Trade permit unverified",pilot:false},
-{name:"Chiller Pump Replacement",weeks:5,start:null,status:"Planning",rate:"4–5 weeks estimated",permit:"Unverified"},
-{name:"Boiler / Storage Tank",weeks:6,start:null,status:"Permitting",rate:"4–8 weeks estimated",permit:"MEC2605382"},
+{name:"Fire Sprinkler · ELSS",weeks:44,start:1,status:"Permitting",rate:"10-month contract forecast · productivity after pilot",permit:"FP0826-7612 · Oct 30 issuance target"},
+{name:"Fire Alarm · ELSS",weeks:44,start:5,status:"Planning",rate:"10-month forecast · production after pilot",permit:"Permit target Nov 30"},
+{name:"Smoke Enclosure Doors",weeks:12,start:5,status:"Permitting",rate:"2 floors/week · ~11 installation weeks",permit:"Nov 27 issuance estimate"},
+{name:"Hallway Remediation / Drywall",weeks:10,start:4,status:"Permitting",rate:"8–12 weeks · phased demolition, clearance, rebuild, finishing",permit:"BC2628687 · City pending"},
+{name:"Stair Pressurization / Dampers",weeks:22,start:18,status:"Planning",rate:"17–26 weeks · equipment, controls, commissioning",permit:"Jan–Feb 2027 issuance forecast"},
+{name:"Garage Dewatering / Stormwater",weeks:18,start:null,status:"Permitting",rate:"13–22 weeks · start TBD pending revised scope",permit:"BC2526722 · not issued"},
+{name:"Parking Lot Lighting",weeks:3,start:9,status:"Permitting",rate:"3 field weeks after permit; pilot in week 1",permit:"BPI2650249 · intake only"},
+{name:"Gym & Sauna Restoration",weeks:6,start:0,status:"In Progress",rate:"4–8 weeks remaining · no new pilot",permit:"BC2627814 · issued",pilot:false},
+{name:"Gym Fire Alarm / Equipment",weeks:3,start:7,status:"Planning",rate:"2–4 weeks · subject to approvals",permit:"Permit unverified"},
+{name:"Chiller Mechanical / Electrical",weeks:5,start:0,status:"In Progress",rate:"4–6 weeks remaining · verify",permit:"Trade permit unverified",pilot:false},
+{name:"Chiller Pump Replacement",weeks:5,start:null,status:"Planning",rate:"4–5 weeks · start TBD",permit:"Unverified"},
+{name:"Boiler / Storage Tank",weeks:6,start:null,status:"Permitting",rate:"4–8 weeks · correction release pending",permit:"MEC2605382"},
 {name:"Stairwell Guardrails",weeks:null,start:null,status:"Permitting",rate:"Duration TBD",permit:"BC2628393"},
 {name:"Planter Restoration",weeks:null,start:null,status:"Planning",rate:"Duration TBD",permit:"Engineering pending"}
 ];
@@ -174,7 +174,7 @@ const safe=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;
 function render(){const n=Number(document.getElementById("msWindow").value);root.querySelectorAll("[data-msview]").forEach(b=>{const on=b.dataset.msview===view;b.classList.toggle("on",on);b.setAttribute("aria-selected",String(on))});
 if(view==="list"){out.innerHTML=projects.map(p=>'<div class="ms-listrow"><div><strong>'+safe(p.name)+'</strong><small>'+safe(p.status)+' · '+safe(p.permit)+'</small><small>'+safe(p.rate)+'</small></div><b>'+(p.weeks?p.weeks+' wk':'TBD')+'</b></div>').join("");return}
 if(view==="kanban"){out.innerHTML='<div class="ms-board">'+["Planning","Permitting","In Progress","Completed"].map(status=>'<div class="ms-column"><h3>'+status+' · '+projects.filter(p=>p.status===status).length+'</h3>'+projects.filter(p=>p.status===status).map(p=>'<div class="ms-card"><strong>'+safe(p.name)+'</strong><small>'+(p.weeks?p.weeks+' weeks':'TBD')+'</small><small>'+safe(p.permit)+'</small></div>').join("")+'</div>').join("")+'</div>';return}
-out.innerHTML='<div class="ms-weeklabels"><span>W1</span><span>W'+Math.ceil(n/4)+'</span><span>W'+Math.ceil(n/2)+'</span><span>W'+Math.ceil(n*3/4)+'</span><span>W'+n+'</span></div>'+projects.map(p=>{const bar=p.start===null?'':('<span class="ms-production" style="left:'+(p.start/n*100)+'%;width:'+(Math.min(p.weeks||0,n-p.start)/n*100)+'%"></span>'+(p.pilot===false?'':'<span class="ms-pilot" style="left:'+(p.start/n*100)+'%;width:'+(100/n)+'%"></span>'));return '<div class="ms-item"><div class="ms-itemhead"><strong>'+safe(p.name)+'</strong><small>'+(p.weeks?p.weeks+' weeks':'TBD')+'</small></div><div class="ms-track">'+bar+'</div><div class="ms-detail">'+safe(p.status)+' · '+safe(p.rate)+'<br>Start not confirmed · '+safe(p.permit)+'</div></div>'}).join("");
+out.innerHTML='<div class="ms-weeklabels"><span>W1</span><span>W'+Math.ceil(n/4)+'</span><span>W'+Math.ceil(n/2)+'</span><span>W'+Math.ceil(n*3/4)+'</span><span>W'+n+'</span></div>'+projects.map(p=>{const bar=p.start===null?'':('<span class="ms-production" style="left:'+(p.start/n*100)+'%;width:'+(Math.min(p.weeks||0,n-p.start)/n*100)+'%"></span>'+(p.pilot===false?'':'<span class="ms-pilot" style="left:'+(p.start/n*100)+'%;width:'+(100/n)+'%"></span>'));return '<div class="ms-item"><div class="ms-itemhead"><strong>'+safe(p.name)+'</strong><small>'+(p.weeks?p.weeks+' weeks':'TBD')+'</small></div><div class="ms-track">'+bar+'</div><div class="ms-detail">'+safe(p.status)+' · '+safe(p.rate)+'<br>Tentative field start · '+safe(p.permit)+'</div></div>'}).join("");
 }
 root.querySelectorAll("[data-msview]").forEach(b=>b.addEventListener("click",()=>{view=b.dataset.msview;render()}));document.getElementById("msWindow").addEventListener("change",render);render();
 })();
