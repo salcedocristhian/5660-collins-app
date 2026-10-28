@@ -21,3 +21,8 @@
 - No publicado en GitHub durante esta revisión.
 
 Validación realizada en Chromium headless sobre servidor local; no equivale a certificación nativa iOS.
+
+## v12-progress (27/10/2026)
+- Comprobado en Chromium headless a 390 y 1280 px: navegación de 5 pestañas, apertura directa con `#permits`, filtros y detalle de permisos, y ausencia de errores JavaScript (salvo las fuentes externas sin red).
+- Sin desbordamiento horizontal.
+- Pendiente: Safari/iPhone físico y revisión con lector de pantalla del nuevo panel de permisos.

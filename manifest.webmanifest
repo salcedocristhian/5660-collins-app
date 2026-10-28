@@ -1,13 +1,13 @@
 {
   "id": "./",
-  "name": "5660 Collins | Project Flow",
-  "short_name": "5660 Flow",
-  "description": "5660 Collins 3D project visualization and bilingual resident project updates.",
+  "name": "5660 Collins | Progress",
+  "short_name": "5660 Collins",
+  "description": "5660 Collins construction progress, permits and bilingual resident updates.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#f8f7f3",
-  "theme_color": "#f8f7f3",
+  "background_color": "#F4F5F3",
+  "theme_color": "#F4F5F3",
   "lang": "en-US",
   "icons": [
     {

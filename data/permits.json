@@ -1,0 +1,348 @@
+{
+  "schemaVersion": 1,
+  "version": "2026-10-27-permits-v1",
+  "updatedAt": "2026-10-27",
+  "approvalStatus": "draft",
+  "approvalNote": "PM draft from the Master Permit Exhibit of Oct 27, 2026. Confirm with Building Management before resident distribution.",
+  "display": {
+    "showCodeCases": true
+  },
+  "disclaimer": "Planning dates are not commitments. A permit or application number is not proof of issuance.",
+  "keyDates": [
+    {
+      "date": "2026-10-30",
+      "title": "Fire sprinkler permit target",
+      "ref": "FP0826-7612",
+      "qualifier": "Target, not confirmed",
+      "board": false
+    },
+    {
+      "date": "2026-11-17",
+      "title": "Lighting violation hearing, 9:30 AM",
+      "ref": "BVE26000408",
+      "qualifier": "Magistrate hearing",
+      "board": true
+    },
+    {
+      "date": "2026-11-26",
+      "title": "Garage application must stay active",
+      "ref": "BC2526722",
+      "qualifier": "Reported date, confirm",
+      "board": true
+    },
+    {
+      "date": "2026-12-31",
+      "title": "ELSS permit approvals",
+      "ref": "ELSS0126-0005",
+      "qualifier": "Reported, verify terms",
+      "board": true
+    }
+  ],
+  "items": [
+    {
+      "id": "sprinkler",
+      "group": "review",
+      "scope": "Fire sprinkler (ELSS)",
+      "number": "FP0826-7612",
+      "status": "City comments; correction package resubmittal",
+      "next": "Target Oct 30, 2026",
+      "bond": "Yes",
+      "duration": "10 months",
+      "completion": "Aug 2027, est.",
+      "note": "Submitted Aug 31. First City comments Sep 18. Updated fire pump flow test performed Sep 23. Additional stairwell heads under City comments."
+    },
+    {
+      "id": "corridor",
+      "group": "review",
+      "scope": "Hallway remediation / drywall",
+      "number": "BC2628687",
+      "status": "County approved; City final review",
+      "next": "Nov 2026, est.",
+      "bond": "Yes",
+      "duration": "8–12 weeks",
+      "completion": "Feb–Mar 2027, est.",
+      "note": "Not issued. Work on site cannot start until the City issues this permit and the Fire Department confirms work areas and Fire Watch conditions.",
+      "reviewPath": [
+        {
+          "label": "Application filed",
+          "detail": "September 2026; cost affidavit requested Sep 28",
+          "state": "done"
+        },
+        {
+          "label": "County RER submitted",
+          "detail": "UP26079525, Oct 1",
+          "state": "done"
+        },
+        {
+          "label": "County asbestos review approved",
+          "detail": "M2027000526, Oct 21",
+          "state": "done"
+        },
+        {
+          "label": "County approval",
+          "detail": "2027004562, Oct 22",
+          "state": "done"
+        },
+        {
+          "label": "City final review",
+          "detail": "In progress",
+          "state": "current"
+        },
+        {
+          "label": "Fire Department conditions",
+          "detail": "Work areas and Fire Watch, to be confirmed in writing",
+          "state": "next"
+        },
+        {
+          "label": "Permit issued, work can start",
+          "detail": "Not yet",
+          "state": "next"
+        }
+      ]
+    },
+    {
+      "id": "garage",
+      "group": "review",
+      "scope": "Garage dewatering / stormwater",
+      "number": "BC2526722",
+      "status": "Revised scope / intake",
+      "next": "Keep application active by Nov 26 (reported)",
+      "bond": "Yes",
+      "duration": "3–5 months, est.",
+      "completion": "Q2–Q3 2027, est.",
+      "note": "City comments outstanding since Dec 2025. Change of contractor PAU2623002 completed. Reported abandonment date must be confirmed."
+    },
+    {
+      "id": "lighting",
+      "group": "review",
+      "scope": "Parking lot lighting",
+      "number": "BPI2650249",
+      "status": "Intake only; not an issued permit",
+      "next": "Nov–Dec 2026, est.",
+      "bond": "No",
+      "duration": "3 weeks (field)",
+      "completion": "Jan–Feb 2027, est.",
+      "note": "Process initiation only. Linked to violation BVE26000408."
+    },
+    {
+      "id": "guardrails",
+      "group": "review",
+      "scope": "Stairwell guardrails",
+      "number": "BC2628393",
+      "status": "Review / corrections",
+      "next": "TBD",
+      "bond": "TBD",
+      "duration": "TBD",
+      "completion": "TBD",
+      "note": "City comments outstanding since Aug 27."
+    },
+    {
+      "id": "boiler",
+      "group": "review",
+      "scope": "Boiler / storage tank corrections",
+      "number": "MEC2605382",
+      "status": "Corrections; issuance unverified",
+      "next": "TBD",
+      "bond": "TBD",
+      "duration": "4–8 weeks, est.",
+      "completion": "TBD",
+      "note": "Related to code cases BVM26000605 and BVC26001809."
+    },
+    {
+      "id": "rer",
+      "group": "review",
+      "scope": "Hallway – County RER / DERM",
+      "number": "UP26079525",
+      "status": "Submitted Oct 1, 2026",
+      "next": "Linked to BC2628687",
+      "bond": "—",
+      "duration": "Administrative review",
+      "completion": "Linked to BC2628687"
+    },
+    {
+      "id": "gym",
+      "group": "issued",
+      "scope": "Gym & sauna restoration",
+      "number": "BC2627814",
+      "status": "Issued Oct 1, 2026",
+      "next": "Inspections and closeout",
+      "bond": "TBD",
+      "duration": "4–8 weeks left, est.",
+      "completion": "Dec 2026–Jan 2027"
+    },
+    {
+      "id": "county",
+      "group": "issued",
+      "scope": "Hallway – County approval",
+      "number": "2027004562",
+      "status": "Approved Oct 22, 2026",
+      "next": "—",
+      "bond": "—",
+      "duration": "Approval milestone",
+      "completion": "Oct 22, 2026"
+    },
+    {
+      "id": "asbestos",
+      "group": "issued",
+      "scope": "Hallway – County asbestos",
+      "number": "M2027000526",
+      "status": "Approved Oct 21, 2026",
+      "next": "—",
+      "bond": "—",
+      "duration": "Administrative review",
+      "completion": "—"
+    },
+    {
+      "id": "coc",
+      "group": "issued",
+      "scope": "Garage – change of contractor",
+      "number": "PAU2623002",
+      "status": "Completed / closed",
+      "next": "—",
+      "bond": "—",
+      "duration": "Administrative",
+      "completion": "Completed"
+    },
+    {
+      "id": "alarm",
+      "group": "notfiled",
+      "scope": "Fire alarm (ELSS)",
+      "number": "Not assigned",
+      "status": "Permit package in preparation",
+      "next": "Nov 30, 2026, est.",
+      "bond": "Yes",
+      "duration": "10 months",
+      "completion": "Sep 2027, est."
+    },
+    {
+      "id": "doors",
+      "group": "notfiled",
+      "scope": "Smoke enclosure doors",
+      "number": "Not assigned",
+      "status": "Drawings in coordination",
+      "next": "Nov 27, 2026, est.",
+      "bond": "No",
+      "duration": "8–12 weeks",
+      "completion": "Feb–Mar 2027, est."
+    },
+    {
+      "id": "pressurization",
+      "group": "notfiled",
+      "scope": "Stair pressurization / dampers",
+      "number": "Not assigned",
+      "status": "Engineering in progress",
+      "next": "Jan–Feb 2027, est.",
+      "bond": "TBD",
+      "duration": "4–6 months, est.",
+      "completion": "Q3 2027, est."
+    },
+    {
+      "id": "gymalarm",
+      "group": "notfiled",
+      "scope": "Gym fire alarm / equipment",
+      "number": "Not confirmed",
+      "status": "Scope coordination",
+      "next": "Nov–Dec 2026, est.",
+      "bond": "TBD",
+      "duration": "2–4 weeks, est.",
+      "completion": "Dec 2026–Jan 2027"
+    },
+    {
+      "id": "dehumid",
+      "group": "notfiled",
+      "scope": "Temporary dehumidifier electrical",
+      "number": "Not confirmed",
+      "status": "Emergency direction; permit TBD",
+      "next": "TBD",
+      "bond": "TBD",
+      "duration": "TBD",
+      "completion": "TBD",
+      "note": "Written authorization from the Chief Electrical Inspector to proceed with emergency temporary connection while the permit is prepared."
+    },
+    {
+      "id": "planters",
+      "group": "notfiled",
+      "scope": "Planter restoration",
+      "number": "No number yet",
+      "status": "Survey / engineering",
+      "next": "TBD",
+      "bond": "TBD",
+      "duration": "TBD",
+      "completion": "TBD"
+    },
+    {
+      "id": "chiller",
+      "group": "verify",
+      "scope": "Chiller – mechanical / electrical",
+      "number": "Trade permit IDs unverified",
+      "status": "Existing trade work; verify",
+      "next": "Verify",
+      "bond": "TBD",
+      "duration": "2–4 weeks left, est.",
+      "completion": "Nov–Dec 2026, est."
+    },
+    {
+      "id": "chillerpump",
+      "group": "verify",
+      "scope": "Chiller pump replacement",
+      "number": "Application ID not provided",
+      "status": "Trane reports submitted; verify",
+      "next": "Verify",
+      "bond": "TBD",
+      "duration": "2–4 weeks, est.",
+      "completion": "TBD"
+    },
+    {
+      "id": "elss",
+      "group": "case",
+      "scope": "ELSS overall compliance",
+      "number": "ELSS0126-0005",
+      "status": "Program reference, not a trade permit",
+      "next": "Dec 31, 2026 permit approvals (reported)",
+      "bond": "N/A",
+      "duration": "ELSS-wide",
+      "completion": "—",
+      "note": "Verify AHJ extension terms."
+    },
+    {
+      "id": "bve",
+      "group": "case",
+      "scope": "Lighting violation",
+      "number": "BVE26000408",
+      "status": "Code case",
+      "next": "Hearing Nov 17, 2026, 9:30 AM",
+      "bond": "No",
+      "duration": "—",
+      "completion": "—",
+      "note": "Present BPI2650249 and correction plan."
+    },
+    {
+      "id": "bvm",
+      "group": "case",
+      "scope": "Boiler mechanical violation",
+      "number": "BVM26000605",
+      "status": "Code case",
+      "next": "Compliance extension – verify",
+      "bond": "TBD",
+      "duration": "—",
+      "completion": "—",
+      "note": "Nov 1 vs Nov 2 dates appear in different reports."
+    },
+    {
+      "id": "bvc",
+      "group": "case",
+      "scope": "Boiler / storage tank violation",
+      "number": "BVC26001809",
+      "status": "Code case",
+      "next": "Compliance extension – verify",
+      "bond": "TBD",
+      "duration": "—",
+      "completion": "—"
+    }
+  ],
+  "sources": [
+    "5660 Collins Master Permit Exhibit, updated Oct 27, 2026",
+    "City correction reports MEC2605382 / BC2628393",
+    "Project correspondence, Sep–Oct 2026"
+  ]
+}

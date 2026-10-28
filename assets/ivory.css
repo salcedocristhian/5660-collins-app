@@ -11,6 +11,3 @@ header{background:var(--ivory);border:0;box-shadow:none;backdrop-filter:none;gap
 @media(prefers-reduced-transparency:reduce){#unifiedNav{background:#fffefa;backdrop-filter:none}}
 @media print{#unifiedNav{display:none!important}body{padding-bottom:0}}
 .head-center b{color:var(--ink)!important;font-weight:550!important}.head-center .head-kicker{color:var(--muted)}
-
-/* 5660 resident portal: prioritize 3D interior display */
-@media(max-width:700px){#interiorViewport, .interior-viewport{min-height: min(65dvh,650px)!important} .interior-controls{position:relative!important}}
