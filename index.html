@@ -25,9 +25,17 @@
 #tab-updates .row-copy small{font-size:14px!important;line-height:1.45!important}
 #tab-updates .row-date{font-size:12px!important}
 #tab-updates .feature-pill{display:none!important}
-</style><script src="./assets/push-config.js?v=1"></script>
+</style><style>
+/* Unified iOS-style header actions: compact, aligned, matching surfaces */
+.app-top{display:flex!important;align-items:center!important;justify-content:space-between!important;column-gap:0!important}
+.app-top #collins-header-actions{display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:8px!important;margin-left:auto!important;flex-shrink:0!important}
+.app-top #collins-push-control{display:flex!important;align-items:center!important;justify-content:center!important;margin:0!important;padding:0!important;flex:0 0 44px!important}
+.app-top #collins-push-control button,.app-top #topAction{width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important;border:0!important;border-radius:50%!important;background:#e4e9e5!important;color:#1f4d47!important;box-shadow:none!important;display:flex!important;align-items:center!important;justify-content:center!important;padding:0!important;font-size:14px!important;font-weight:700!important;line-height:1!important}
+.app-top #collins-push-control button svg{width:21px;height:21px}
+</style>
+<script src="./assets/push-config.js?v=1"></script>
 <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-<script src="./assets/push-client.js?v=2" defer></script>
+<script src="./assets/push-client.js?v=3" defer></script>
 </head>
 <body>
 <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="svg-defs">
