@@ -144,7 +144,7 @@ sync3D();
 setTimeout(()=>{w.dispatchEvent(new Event('resize'));sync3D()},130);
 }catch(e){modelReady=false;$('modelLoading').innerHTML='<strong>'+esc(lang==='es'?'No se pudo cargar el modelo 3D':'Unable to load the interactive 3D model')+'</strong><small>'+esc(e.message||'Please retry')+'</small>';}
 });
-iframe.src='./model-viewer.html?v=20261028-7';
+iframe.src='./model-viewer.html?v=20261029-recovered13';
 }
 function sync3D(){
 if(!modelReady)return;
