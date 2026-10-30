@@ -26,17 +26,11 @@
 .bottom-tabs .nav-item svg{width:21px;height:21px;flex-shrink:0}
 @media(max-width:370px){.bottom-tabs{padding-left:3px;padding-right:3px}.bottom-tabs .nav-item span{font-size:9px}}
 
-/* 2026-10-29 · Resident interior architectural-plan presentation.
-   Preserve the original interactive model and sequencing engine. */
-#tab-progress .model-card{border-radius:22px;overflow:hidden;background:#fff}
-#tab-progress .model-picture{height:clamp(350px,74vw,620px);background:#fff}
-#tab-progress .model-picture iframe{width:100%;height:100%;border:0}
-#tab-progress .model-label{top:17px;left:17px;max-width:60%;background:rgba(255,255,255,.92);border-radius:14px;padding:8px 11px;color:#a17c3e;font-weight:700}
-#tab-progress .model-expand{right:17px;bottom:17px;border-radius:50%;background:#fff;box-shadow:0 2px 12px #00000012}
-#tab-progress .sequence-card{border-radius:22px;padding:22px 20px 24px;margin-top:14px}
-#tab-progress .sequence-copy h2{font-size:clamp(21px,5.6vw,27px);line-height:1.18;letter-spacing:-.04em}
-#tab-progress .sequence-copy p{margin-top:9px;font-size:15px}
-#tab-progress .sequence-controls button{width:43px;height:43px}
-#tab-progress .sequence-controls button.play-primary{width:57px;height:57px}
-#tab-progress #sequenceRange{margin-top:20px;accent-color:#1f4d47}
-@media(max-width:430px){#tab-progress .model-picture{height:clamp(360px,91vw,470px)}#tab-progress .sequence-card{padding:20px 18px}#tab-progress .sequence-controls{gap:5px}#tab-progress .sequence-controls button{width:38px;height:38px}#tab-progress .sequence-controls button.play-primary{width:52px;height:52px}}
+
+/* Reference screenshot: My Floor > architectural plan > Floor Overview. */
+#tab-progress .model-picture{height:clamp(340px,74vw,520px);background:#fff}
+#tab-progress .model-card{border-radius:22px;background:#fff;overflow:hidden}
+#tab-progress .model-label{top:16px;left:16px;color:#a17c3e;background:rgba(255,255,255,.92);padding:7px 9px;border-radius:10px}
+#tab-progress .model-expand{right:14px;bottom:14px;border-radius:50%;background:#fff}
+#tab-progress .sequence-card{margin-top:14px;border-radius:20px}
+@media(max-width:430px){#tab-progress .model-picture{height:clamp(330px,73vw,400px)}}
