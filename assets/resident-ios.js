@@ -133,7 +133,7 @@ const iframe=$('realModelFrame');
 iframe.addEventListener('load',()=>{
 try{
 const d=iframe.contentDocument,w=iframe.contentWindow;
-if(!d||!w||!d.getElementById('modelMount')||!w.CorridorInterior)throw new Error('3D elements not available');
+if(!d||!w||!d.getElementById('modelMount')||!w.CorridorInterior)throw new Error('The original architectural model is not currently available in the repository.');
 const mount=d.getElementById('modelMount');
 d.body.appendChild(mount);
 const style=d.createElement('style');
@@ -144,7 +144,7 @@ sync3D();
 setTimeout(()=>{w.dispatchEvent(new Event('resize'));sync3D()},130);
 }catch(e){modelReady=false;$('modelLoading').innerHTML='<strong>'+esc(lang==='es'?'No se pudo cargar el modelo 3D':'Unable to load the interactive 3D model')+'</strong><small>'+esc(e.message||'Please retry')+'</small>';}
 });
-iframe.src='./model-viewer.html?v=20261029-recovered13';
+iframe.src='./model-viewer.html?v=20261029-original14';
 }
 function sync3D(){
 if(!modelReady)return;
