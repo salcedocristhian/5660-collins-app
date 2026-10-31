@@ -152,6 +152,14 @@ header{padding-top:8px!important;padding-bottom:10px!important;min-height:0!impo
 .hctl{width:100%!important;min-width:0!important}
 #floorSeg .plans-tab{margin:0!important}
 @media(min-width:650px){#floorSeg{max-width:680px!important}#floorSeg button{font-size:15px!important}}
+</style><style id="plans-focus-final">
+/* Plan sheets are a dedicated reading mode: hide all sequence and trade information. */
+body.plans-active #intPanel,body.plans-active #bldPanel,body.plans-active #iTools,body.plans-active #bTools,body.plans-active .stages,body.plans-active .transport,body.plans-active .detail{display:none!important}
+body.plans-active .viewer{background:#194a87!important}
+body.plans-active .bp{z-index:50!important;display:flex!important}
+body.plans-active .bp[hidden]{display:none!important}
+#floorSeg{grid-template-columns:minmax(0,1.1fr) minmax(0,1.1fr) minmax(0,.5fr) minmax(0,.75fr)!important}
+#floorSeg button{overflow:hidden;text-overflow:clip;white-space:nowrap;min-width:0}
 </style></head>
 <body>
 <div class="wrap">
@@ -398,7 +406,7 @@ function buildFloor(key){
   const wg=new THREE.ExtrudeGeometry(shapes,{depth:H,bevelEnabled:false,curveSegments:1});
   wg.rotateX(-Math.PI/2);
   const walls=new THREE.Mesh(wg,[M.wallTop,M.wall]);walls.renderOrder=-1;g.add(walls);
-  const slab=new THREE.Mesh(new THREE.PlaneGeometry(900,900),M.slab);
+  /* Opaque legacy floor plane removed; corridor geometry remains. */
   /* Do not add the 900x900 opaque slab: it hides the floor geometry and creates the flat gray field. */
 
   const it={panelsOld:[],panelsNew:[],carpet:[],ram:[],verify:[],pipes:[],heads:[],fa:[],doors:[],airmd:[],brushes:[],exit:null,crew:[],doorCrew:[],flash:null};
@@ -554,7 +562,7 @@ scrub.addEventListener('input',()=>{pause();setTime(+scrub.value);});
 document.querySelectorAll('[data-speed]').forEach(b=>b.onclick=()=>{speed=+b.dataset.speed;document.querySelectorAll('[data-speed]').forEach(x=>x.setAttribute('aria-pressed',x===b));});
 const SHEET={'2-15':'Planta típica pisos 2–15 · hoja A-1.1','16-20':'Planta típica pisos 16–20 · hoja A-1.2','21':'Penthouse (PH) · hoja A-1.3'};
 let floorKey='16-20';
-document.querySelectorAll('[data-floor]').forEach(b=>b.onclick=()=>{floorKey=b.dataset.floor;document.querySelectorAll('[data-floor]').forEach(x=>x.setAttribute('aria-pressed',x===b));$('stamp').textContent=SHEET[floorKey];buildFloor(floorKey);apply(time);if(bpOn)bpSync();try{history.replaceState(null,'','#piso-'+floorKey);}catch(e){}});
+document.querySelectorAll('[data-floor]').forEach(b=>b.onclick=()=>{floorKey=b.dataset.floor;document.querySelectorAll('[data-floor]').forEach(x=>x.setAttribute('aria-pressed',x===b));$('stamp').textContent=SHEET[floorKey];buildFloor(floorKey);apply(time);if(bpOn){curSheet='floor';bpSync();bpScroll.classList.remove('zoom');bpScroll.scrollTo(0,0);}try{history.replaceState(null,'','#piso-'+floorKey);}catch(e){}});
 const bpEl=$('bp'),bpImg=$('bpImg'),bpScroll=$('bpScroll'),sheetList=$('sheetList');let bpOn=false,curSheet='A-1.0';
 const LG=window.LOGOS||{};$('lgRelats').src=LG.relats||'';$('lgSuperior').src=LG.superior||'';
 const SH=window.SHEETS||[];
@@ -571,8 +579,9 @@ function bpSync(){let by='relats',src='',cap='';
   $('lgRelats').classList.toggle('on',by==='relats');$('lgSuperior').classList.toggle('on',by==='superior');
   const n=NOTES[by];$('bpNote').hidden=!n;$('bpNote').textContent=n;renderList();}
 function openList(open){sheetList.hidden=!open;$('sheetBtn').setAttribute('aria-expanded',open);}
+function syncPlansUi(){const p=bpOn;document.querySelectorAll('#intPanel,#bldPanel').forEach(el=>{if(p){el.dataset.plansHidden='1';el.style.display='none';}else{el.style.removeProperty('display');delete el.dataset.plansHidden;}});document.querySelectorAll('#iTools,#bTools').forEach(el=>{if(p)el.style.display='none';else el.style.removeProperty('display');});}
 function setBP(on,sheet){bpOn=on;document.body.classList.toggle('plans-active',on);bpEl.hidden=!on;$('bpCap').hidden=!on;$('stamp').hidden=on;$('bpBtn').setAttribute('aria-pressed',on);openList(false);
-  if(on){if(sheet)curSheet=sheet;bpSync();bpScroll.classList.remove('zoom');bpScroll.scrollTo(0,0);}}
+  if(on){if(sheet)curSheet=sheet;bpSync();bpScroll.classList.remove('zoom');bpScroll.scrollTo(0,0);}syncPlansUi();}
 $('bpBtn').onclick=()=>setBP(!bpOn,bpOn?null:'A-1.0');
 $('sheetBtn').onclick=()=>openList(sheetList.hidden);
 sheetList.onclick=e=>{const b=e.target.closest('button[data-id]');if(!b)return;curSheet=b.dataset.id;bpSync();openList(false);bpScroll.classList.remove('zoom');bpScroll.scrollTo(0,0);};
