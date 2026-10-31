@@ -665,7 +665,7 @@ root.querySelectorAll("[data-msview]").forEach(b=>b.addEventListener("click",()=
    const d=frame.contentDocument;if(!d)return;
    if(d.getElementById('collins-unified-ui'))return;
    const style=d.createElement('style');style.id='collins-unified-ui';
-   style.textContent=':root{color-scheme:light dark} body{overflow-x:hidden} .mode-switch,.view-switch{display:none!important}';
+   style.textContent=':root{color-scheme:light} html,body{overflow-x:hidden;background:#f2f3f1!important} .mode-switch,.view-switch{display:none!important}';
    d.head.appendChild(style);
    const candidates=[...d.querySelectorAll('button')].filter(b=>/^(Edificio|Pasillo|Building|Corridor)$/i.test((b.textContent||'').trim()));
    if(candidates.length>=2){const a=candidates[0],b=candidates[1];const parent=a.parentElement;if(parent&&parent===b.parentElement)parent.style.display='none';}
