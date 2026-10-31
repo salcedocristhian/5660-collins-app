@@ -38,7 +38,7 @@ h1{font-size:1.45rem;font-weight:600;letter-spacing:-.015em;margin:0;line-height
 .seg{display:inline-flex;background:var(--chip);border-radius:12px;padding:3px;gap:2px}
 .seg button{border:0;background:transparent;color:var(--ink);font:inherit;font-size:.88rem;font-weight:500;padding:8px 12px;border-radius:9px;cursor:pointer;min-height:38px}
 .seg button[aria-pressed="true"]{background:var(--surface);box-shadow:0 1px 2px rgba(0,0,0,.12)}
-.viewer{position:relative;border-radius:20px;overflow:hidden;background:var(--scene);height:min(62vh,560px);min-height:340px;border:1px solid var(--line)}
+.viewer{position:relative;border-radius:20px;overflow:hidden;background:var(--scene);height:460px;min-height:340px;border:1px solid var(--line)}
 #mount{position:absolute;inset:0;touch-action:none}
 #mount canvas{display:block;width:100%;height:100%}
 .vtools{position:absolute;top:10px;right:10px;left:10px;display:flex;gap:6px;flex-wrap:nowrap;justify-content:flex-end}
@@ -121,6 +121,7 @@ details p,details li{color:var(--muted);font-size:.88rem;max-width:72ch}
 details ul{padding-left:18px;margin:4px 0}
 button:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--petrol);outline-offset:2px}
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+@media(max-width:560px){.viewer{height:360px}.wrap{padding:12px 10px 24px}.chips,.stages{flex-wrap:wrap;overflow-x:visible}header{padding-right:48px}}
 </style>
 </head>
 <body>
@@ -128,7 +129,7 @@ button:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid
   <header>
     <div>
       <h1 id="hTitle">5660 Collins Avenue</h1>
-      <p class="sub" id="hSub">El edificio completo, piso por piso · escenario de planificación</p>
+      <p style="font-size:.8rem;color:var(--muted)">Simulación de planificación · No representa avance ejecutado ni aprobaciones.</p><p class="sub" id="hSub">El edificio completo, piso por piso · escenario de planificación</p>
     </div>
     <div class="hctl">
     <div class="seg mode" role="group" aria-label="Vista">
@@ -451,7 +452,7 @@ function buildFloor(key){
   });
   {const w=makeWorker('servpro');w.position.copy(EXIT).add(new THREE.Vector3(1.6,0,1.2));g.add(w);it.crew.push({w,st:0,fixed:true});}
   D.doors.forEach((d,i)=>{const w=makeWorker('superior');w.position.copy(P(d.x,d.y)).add(new THREE.Vector3(i?-2.2:2.2,0,i?-1.8:1.8));w.rotation.y=i?Math.PI*0.15:-Math.PI*0.85;g.add(w);it.doorCrew.push({w,t:i*0.45});});
-  {const fl=labelSprite('Clearance AirMD ✓');fl.material.color=new THREE.Color(0xB9F5CF);fl.position.copy(J);fl.position.y=H+7;fl.visible=false;g.add(fl);it.flash=fl;}
+  {const fl=labelSprite('Clearance AirMD · simulación');fl.material.color=new THREE.Color(0xB9F5CF);fl.position.copy(J);fl.position.y=H+7;fl.visible=false;g.add(fl);it.flash=fl;}
   items=it;scene.add(g);
 }
 function themeGround(){const v=getComputedStyle(document.documentElement).getPropertyValue('--scene').trim()||'#E9ECE8';const c=new THREE.Color(v).convertSRGBToLinear();const lum=c.r*0.3+c.g*0.6+c.b*0.1;M.slab.color.copy(c).multiplyScalar(lum>0.5?0.7:0.9);}
@@ -728,6 +729,13 @@ if(m){floorKey=m[1];document.querySelectorAll('[data-floor]').forEach(x=>x.setAt
 themeGround();resize();buildFloor(floorKey);setTime(0);
 if(m){setMode('interior');}else{bIntro=0;setMode('building');}
 $('loading').remove();requestAnimationFrame(loop);
+
+window.addEventListener('message',e=>{if(e.source!==parent||e.origin!==location.origin)return;
+ if(e.data?.type==='collins-visibility'){visible=!!e.data.visible;if(!visible){pause();bPause();}else resize();}
+ if(e.data?.type==='collins-floor'&&['2-15','16-20','21'].includes(e.data.key))setMode('interior',e.data.key);
+});
+let reportedHeight=0;
+new ResizeObserver(()=>{const height=Math.ceil(document.querySelector('.wrap').getBoundingClientRect().height+32);if(height!==reportedHeight){reportedHeight=height;parent.postMessage({type:'collins-height',height},location.origin);}}).observe(document.querySelector('.wrap'));
 })();
 </script>
 </body>
