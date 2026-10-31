@@ -657,7 +657,7 @@ root.querySelectorAll("[data-msview]").forEach(b=>b.addEventListener("click",()=
  const frame=document.createElement('iframe');frame.id='reconstructionFrame';frame.title='Reconstrucción interactiva de pasillos · planos Relats';frame.loading='lazy';frame.src='./reconstruction.html?v=20261030-interior-fix2#piso-16-20';picture.appendChild(frame);
  function currentFloor(){const select=document.getElementById('myFloorNumber');return select?select.value:'19';}
  function floorKey(f){return f==='PH'?'21':Number(f)<=16?'2-15':'16-20';}
- function sync(){const active=!!document.querySelector('#progressSegment [data-view="interior"][aria-selected="true"]');tab.classList.toggle('has-reconstruction',active);const visible=active&&!tab.hidden;
+ function sync(){const active=document.querySelector('#progressSegment [data-view].active')?.dataset.view==='interior';tab.classList.toggle('has-reconstruction',active);const visible=active&&!tab.hidden;
  frame.contentWindow?.postMessage({type:'collins-visibility',visible},location.origin);
  if(active){const play=document.getElementById('sequencePlay');if((play?.getAttribute('aria-label')||'').startsWith('Pause'))play.click();}}
  function harmonizeViewer(){
@@ -684,8 +684,8 @@ root.querySelectorAll("[data-msview]").forEach(b=>b.addEventListener("click",()=
   frame.contentWindow.postMessage({type:'collins-floor',key:floorKey(currentFloor())},location.origin);sync();});
  document.getElementById('myFloorNumber')?.addEventListener('change',()=>frame.contentWindow.postMessage({type:'collins-floor',key:floorKey(currentFloor())},location.origin));
  window.addEventListener('message',e=>{if(e.source!==frame.contentWindow||e.origin!==location.origin)return;if(e.data?.type==='collins-height'&&Number.isFinite(e.data.height))frame.style.height=Math.min(4500,Math.max(650,e.data.height))+'px';});
- document.querySelectorAll('#progressSegment [data-view],.nav-item').forEach(b=>b.addEventListener('click',()=>requestAnimationFrame(sync)));
- new MutationObserver(sync).observe(tab,{attributes:true,attributeFilter:['hidden']});sync();
+ document.querySelectorAll('#progressSegment [data-view],.nav-item').forEach(b=>b.addEventListener('click',()=>{requestAnimationFrame(sync);setTimeout(sync,100)}));
+ new MutationObserver(sync).observe(tab,{attributes:true,attributeFilter:['hidden']});new MutationObserver(sync).observe(document.getElementById('progressSegment'),{subtree:true,attributes:true,attributeFilter:['class','aria-selected']});sync();
 }if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();})();
 </script>
 
