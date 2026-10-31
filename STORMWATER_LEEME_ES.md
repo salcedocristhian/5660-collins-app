@@ -59,3 +59,22 @@
 - Cada fase: vista superior con el área trazada de CP-100 (trama y borde de color: I rojo, II naranja, III azul), barricadas, rampa cerrada o en uso, escalera "no bloquear egreso" y salida de vehículos; luego, paso a paso con cámara: retiro de hierro fundido, PVC nuevo, drenajes, CCTV/CIPP, estación(es) de bombeo, grietas y juntas, impermeabilización y rayado, trench drain (I y III) y reapertura en verde.
 - Asignación de trabajos por ubicación dentro de cada área de CP-100 (estación #1 en Fase I; #2 y #3 en Fase II; #4 en Fase III). Las bombas de alquiler se retiran cuando se reemplaza su estación.
 - Estructura e impermeabilización (BID-100): grietas con inyección epoxi, juntas de expansión e impermeabilización de tráfico con rayado nuevo. Ubicaciones ESQUEMÁTICAS: las hojas S-100, S-400 y S-407 a S-412 no están en el expediente. La losa que recibe la membrana (38,675 ft²) debe confirmarse.
+
+## v16-ct1 · Interior: plan de contención por semanas (rolling 3 semanas)
+- Respaldo previo: /backups/repo-v15-ph1-* (no incluido en el ZIP).
+- Progress › Interior abre en "Plan por semanas"; "Secuencia por oficio" conserva la secuencia de 9 etapas.
+- Grupos de 3 pisos (2–4, 5–7, 8–10, 11/12/14, 15–17, 18–20, 21/PH) × 2 alas (A: oeste + norte; B: este) × 3 semanas.
+- Semana 1: SERVPRO instala contención (polietileno ~2 ft, cremalleras rojas, cinta azul), demolición selectiva, limpieza HEPA, visita AirMD PRV.
+- Semana 2: con PRV aprobado y verificación Fire/AHJ (independiente) la cuadrilla de drywall reconstruye el ala A mientras SERVPRO trabaja el ala B (dos cuadrillas simultáneas).
+- Semana 3: ala B reconstruida, inspecciones, acabados, limpieza, retiro autorizado de contención y liberación del grupo; solo entonces inicia el siguiente grupo.
+- PRV es una compuerta explícita: la visita no es PASS. Opción "Falla → retrabajo" por grupo y ala: HOLD, retrabajo, re-limpieza y re-prueba; el cronograma se recorre.
+- Todo resultado positivo aparece como "SIMULADO — NO ES UNA APROBACIÓN OFICIAL". El estado real del permiso no cambia.
+- Ruta libre propuesta de 3 ft (línea verde punteada) con avisos naranjas donde el ancho libre del modelo es < 3 ft; no se afirma cumplimiento de código.
+- Controles: reproducir/pausar, anterior/siguiente, línea de tiempo, 1×/1.5×/2×, piso, semana, fase y ala; bilingüe ES/EN.
+- Supuestos a validar: asignación de alas, lado de la contención (lado con más paneles afectados), duraciones de actividades.
+
+## v16-ct2 · Building coherente con Interior + secuencia por oficio en el mismo piso
+- Building usa el mismo cronograma del plan por semanas de Interior (grupos de 3 pisos, 2 alas, compuertas PRV y Fire/AHJ, HOLD si se simula falla de PRV). La línea de tiempo llega hasta la última semana del plan (21 nominal, más si hay HOLD). Colores: Servpro, AirMD PRV, drywall, inspecciones/liberación, pintura, HOLD (rojo) y grupo liberado.
+- La ficha del piso en Building indica las semanas del grupo y la actividad de cada ala.
+- Plan por semanas: por defecto se queda en el piso elegido; la opción "Seguir los grupos al reproducir" vuelve a saltar de grupo.
+- Secuencia por oficio: selector de piso que se mantiene al reproducir, lista "qué sigue" con la semana de cada trade según el plan (rociadores, alarma y puertas: permisos aparte, sin fecha) y cámara que sigue cada trade (se desactiva si el usuario mueve la cámara).
