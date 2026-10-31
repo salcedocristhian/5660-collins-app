@@ -665,7 +665,7 @@ root.querySelectorAll("[data-msview]").forEach(b=>b.addEventListener("click",()=
 <script>
 (function(){function init(){
  const tab=document.getElementById('tab-progress'),picture=document.getElementById('modelPicture');
- const frame=document.createElement('iframe');frame.id='reconstructionFrame';frame.title='Reconstrucción interactiva de pasillos · planos Relats';frame.loading='lazy';frame.src='./reconstruction.html?v=20261031-mobile-language-v5#piso-2-15';picture.appendChild(frame);
+ const frame=document.createElement('iframe');frame.id='reconstructionFrame';frame.title='Reconstrucción interactiva de pasillos · planos Relats';frame.loading='lazy';frame.src='./reconstruction.html?v=20261031-plans-floor-fix-v6#piso-2-15';picture.appendChild(frame);
  function currentFloor(){const select=document.getElementById('myFloorNumber');return select?select.value:'19';}
  function floorKey(f){return f==='PH'?'21':Number(f)<=15?'2-15':Number(f)<=20?'16-20':'21';}
  function sync(){const active=document.querySelector('#progressSegment [data-view].active')?.dataset.view==='interior';tab.classList.toggle('has-reconstruction',active);const visible=!tab.hidden;
