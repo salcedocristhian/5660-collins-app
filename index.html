@@ -643,6 +643,8 @@ root.querySelectorAll("[data-msview]").forEach(b=>b.addEventListener("click",()=
 #tab-progress.has-reconstruction #realModelFrame,#tab-progress.has-reconstruction #modelLoading,#tab-progress.has-reconstruction .model-inline-playback,#tab-progress.has-reconstruction .model-label,#tab-progress.has-reconstruction .floor-play-console,#tab-progress.has-reconstruction .sequence-card,#tab-progress.has-reconstruction #floorTasks,#tab-progress.has-reconstruction #floorHeading,#tab-progress.has-reconstruction #floorTasks+.quiet-foot{display:none!important}
 #tab-progress.has-reconstruction .model-fullscreen #reconstructionFrame{height:100dvh!important}
 #tab-progress.has-reconstruction #modelExpand{top:12px;bottom:auto;right:12px}
+/* One shared Building/Interior selector; hide duplicated embedded mode controls. */
+#tab-progress #reconstructionFrame{color-scheme:light dark}
 #tab-progress:not(.has-reconstruction) #realModelFrame,#tab-progress:not(.has-reconstruction) #modelLoading,#tab-progress:not(.has-reconstruction) .model-inline-playback,#tab-progress:not(.has-reconstruction) .model-label{display:none!important}
 #tab-progress:not(.has-reconstruction) #modelPicture{height:auto!important;min-height:400px}
 #tab-progress:not(.has-reconstruction) #reconstructionFrame{display:block!important;position:relative;inset:auto;height:1400px}
