@@ -644,6 +644,9 @@ root.querySelectorAll("[data-msview]").forEach(b=>b.addEventListener("click",()=
 #tab-progress.has-reconstruction .model-fullscreen #reconstructionFrame{height:100dvh!important}
 #tab-progress.has-reconstruction #modelExpand{top:12px;bottom:auto;right:12px}
 /* Both Building and Interior use reconstruction.html, never model-viewer.html. */
+#tab-progress #realModelFrame{display:none!important;visibility:hidden!important}
+#tab-progress #reconstructionFrame{display:block!important;visibility:visible!important}
+
 #tab-progress #reconstructionFrame{display:block!important;position:relative;inset:auto;width:100%;height:1400px;background:#f2f3f1!important}
 #tab-progress #modelPicture{height:auto!important;min-height:400px;background:#f2f3f1!important}
 #tab-progress #realModelFrame,#tab-progress #modelLoading,#tab-progress .model-inline-playback,#tab-progress .model-label,#tab-progress .floor-play-console,#tab-progress .sequence-card,#tab-progress #floorTasks,#tab-progress #floorHeading,#tab-progress #floorTasks+.quiet-foot{display:none!important}
@@ -651,7 +654,7 @@ root.querySelectorAll("[data-msview]").forEach(b=>b.addEventListener("click",()=
 <script>
 (function(){function init(){
  const tab=document.getElementById('tab-progress'),picture=document.getElementById('modelPicture');
- const frame=document.createElement('iframe');frame.id='reconstructionFrame';frame.title='Reconstrucción interactiva de pasillos · planos Relats';frame.loading='lazy';frame.src='./reconstruction.html?v=20261030-interior-fix2#piso-16-20';picture.appendChild(frame);
+ const frame=document.createElement('iframe');frame.id='reconstructionFrame';frame.title='Reconstrucción interactiva de pasillos · planos Relats';frame.loading='lazy';frame.src='./reconstruction.html?v=20261031-reconstruction-only#piso-16-20';picture.appendChild(frame);
  function currentFloor(){const select=document.getElementById('myFloorNumber');return select?select.value:'19';}
  function floorKey(f){return f==='PH'?'21':Number(f)<=16?'2-15':'16-20';}
  function sync(){const active=document.querySelector('#progressSegment [data-view].active')?.dataset.view==='interior';tab.classList.toggle('has-reconstruction',active);const visible=!tab.hidden;
@@ -663,7 +666,7 @@ root.querySelectorAll("[data-msview]").forEach(b=>b.addEventListener("click",()=
    const buttons=[...d.querySelectorAll('button')];
    const wanted=mode==='building'?/^(Edificio|Building)$/i:/^(Pasillo|Corridor|Interior)$/i;
    const button=buttons.find(b=>wanted.test((b.textContent||'').trim()));
-   if(button&&!button.classList.contains('active')&&button.getAttribute('aria-selected')!=='true')button.click();
+   if(button){const selected=button.classList.contains('active')||button.getAttribute('aria-selected')==='true'||button.getAttribute('aria-pressed')==='true';if(!selected&&frame.dataset.requestedMode!==mode){frame.dataset.requestedMode=mode;button.click();}else if(selected)frame.dataset.requestedMode=mode;}
   }catch(e){console.warn('Embedded mode sync unavailable',e);}
  }
  function harmonizeViewer(){
