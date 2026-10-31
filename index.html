@@ -653,7 +653,17 @@ root.querySelectorAll("[data-msview]").forEach(b=>b.addEventListener("click",()=
  function sync(){const active=!!document.querySelector('#progressSegment [data-view="interior"][aria-selected="true"]');tab.classList.toggle('has-reconstruction',active);const visible=active&&!tab.hidden;
  frame.contentWindow?.postMessage({type:'collins-visibility',visible},location.origin);
  if(active){const play=document.getElementById('sequencePlay');if((play?.getAttribute('aria-label')||'').startsWith('Pause'))play.click();}}
- frame.addEventListener('load',()=>{frame.contentWindow.postMessage({type:'collins-floor',key:floorKey(currentFloor())},location.origin);sync();});
+ function cleanPlanList(){
+  try{
+   const doc=frame.contentDocument;if(!doc)return;
+   const targets=[...doc.querySelectorAll('button,li,[role="option"],[role="menuitem"]')].filter(el=>/Planta del piso seleccionado/i.test(el.textContent||''));
+   for(const el of targets){if((el.textContent||'').length<180)el.remove();}
+  }catch(e){console.warn('Plan list cleanup unavailable',e);}
+ }
+ frame.addEventListener('load',()=>{
+  cleanPlanList();
+  try{const doc=frame.contentDocument;if(doc?.body)new MutationObserver(cleanPlanList).observe(doc.body,{childList:true,subtree:true});}catch(e){}
+  frame.contentWindow.postMessage({type:'collins-floor',key:floorKey(currentFloor())},location.origin);sync();});
  document.getElementById('myFloorNumber')?.addEventListener('change',()=>frame.contentWindow.postMessage({type:'collins-floor',key:floorKey(currentFloor())},location.origin));
  window.addEventListener('message',e=>{if(e.source!==frame.contentWindow||e.origin!==location.origin)return;if(e.data?.type==='collins-height'&&Number.isFinite(e.data.height))frame.style.height=Math.min(4500,Math.max(650,e.data.height))+'px';});
  document.querySelectorAll('#progressSegment [data-view],.nav-item').forEach(b=>b.addEventListener('click',()=>requestAnimationFrame(sync)));
