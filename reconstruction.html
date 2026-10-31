@@ -396,6 +396,31 @@ let floorGroup=null, items=null;
 function buildFloor(key){
   if(floorGroup){scene.remove(floorGroup);floorGroup.traverse(o=>{if(o.geometry)o.geometry.dispose();});}
   const F=D[key]; const g=new THREE.Group(); floorGroup=g;
+  // Relats A-1.1: corridor-side return walls missing from the traced outline.
+  // Stop short of the intersection and preserve the door/vestibule openings.
+  const panelSet=F.panels.slice();
+  if(key==='2-15'){
+    for(const patch of [
+      {seg:'left',side:-1,from:2.65,to:8.45},
+      {seg:'right',side:-1,from:2.65,to:8.45},
+      {seg:'right',side:1,from:2.65,to:8.45}
+    ]){
+      const line=F.lines.find(l=>l.name===patch.seg);
+      if(!line)continue;
+      const dx=line.b[0]-line.a[0],dy=line.b[1]-line.a[1],L=Math.hypot(dx,dy);
+      const ux=dx/L,uy=dy/L,nx=-uy,ny=ux;
+      const signOf=p=>Math.sign((p.x-line.a[0])*nx+(p.y-line.a[1])*ny);
+      const ref=F.panels.filter(p=>p.seg===patch.seg&&signOf(p)===patch.side)
+        .sort((a,b)=>((a.x-b.x)*ux+(a.y-b.y)*uy))[0];
+      if(!ref)continue;
+      const offset=(ref.x-line.a[0])*nx+(ref.y-line.a[1])*ny;
+      const mid=(patch.from+patch.to)/2;
+      panelSet.push({x:line.a[0]+ux*mid+nx*offset,
+        y:line.a[1]+uy*mid+ny*offset,
+        ang:ref.ang,n:ref.n.slice(),seg:patch.seg,
+        t:Math.max(0,ref.t*0.5),w:patch.to-patch.from});
+    }
+  }
   // walls
   let minx=1e9,maxx=-1e9,miny=1e9,maxy=-1e9;
   const shapes=[];
@@ -436,22 +461,27 @@ function buildFloor(key){
   });
   // panels + studs
   const studGeo=new THREE.BoxGeometry(0.14,H-0.2,0.3);
-  const studs=new THREE.InstancedMesh(studGeo,M.stud,F.panels.length*3);let si=0;
+  const studs=new THREE.InstancedMesh(studGeo,M.stud,panelSet.length*3);let si=0;
   const dummy=new THREE.Object3D();
-  F.panels.forEach(p=>{
+  panelSet.forEach(p=>{
     const n=new THREE.Vector3(p.n[0],0,p.n[1]);
     const base=P(p.x,p.y);
-    const rotY=-p.ang;
-    [-1.33,0,1.33].forEach(o=>{dummy.position.copy(base).addScaledVector(new THREE.Vector3(Math.cos(p.ang),0,Math.sin(p.ang)),o).addScaledVector(n,-0.15);dummy.position.y=(H-0.2)/2;dummy.rotation.set(0,rotY,0);dummy.updateMatrix();studs.setMatrixAt(si++,dummy.matrix);});
-    const geo=new THREE.BoxGeometry(3.96,H-0.15,0.14);
+    const rotY=-p.ang,pw=p.w||3.96;
+    (p.w?[-pw/3,0,pw/3]:[-1.33,0,1.33]).forEach(o=>{dummy.position.copy(base).addScaledVector(new THREE.Vector3(Math.cos(p.ang),0,Math.sin(p.ang)),o).addScaledVector(n,-0.15);dummy.position.y=(H-0.2)/2;dummy.rotation.set(0,rotY,0);dummy.updateMatrix();studs.setMatrixAt(si++,dummy.matrix);});
+    const geo=new THREE.BoxGeometry(pw,H-0.15,0.14);
     const old=new THREE.Mesh(geo,new THREE.MeshStandardMaterial({map:moldTex,roughness:.95,transparent:true}));
     old.rotation.y=rotY;old.userData.base=base.clone().addScaledVector(n,-0.37);old.userData.n=n;
     const nw=new THREE.Mesh(geo,new THREE.MeshStandardMaterial({map:newTex,color:NEWC.clone(),roughness:.85,transparent:true,opacity:0}));
     nw.rotation.y=rotY;nw.userData.base=base.clone().addScaledVector(n,-0.37);nw.userData.n=n;
-    const pt=new THREE.Mesh(new THREE.BoxGeometry(3.98,H-0.13,0.03),M.paint);pt.rotation.y=rotY;
+    const pt=new THREE.Mesh(new THREE.BoxGeometry(pw+0.02,H-0.13,0.03),M.paint);pt.rotation.y=rotY;
     const tdir=new THREE.Vector3(Math.cos(p.ang),0,Math.sin(p.ang));pt.userData={base:base.clone().addScaledVector(n,-0.46),tdir};pt.visible=false;
     const bag=makeBag();bag.visible=false;const rt=routeFor(base,n,p.seg);
-    g.add(old,nw,pt,bag);it.panelsOld.push({m:old,t:p.t,bag,rt});it.panelsNew.push({m:nw,t:p.t,pt,seg:p.seg});
+    // Opaque core gives both corridor faces their missing wall silhouette.
+    // It is removed with the infected drywall, not left permanently in place.
+    const back=new THREE.Mesh(new THREE.BoxGeometry(pw-0.04,H-0.19,0.15),
+      new THREE.MeshStandardMaterial({color:0xE2DAC6,roughness:.94,transparent:true,opacity:1,depthWrite:true,side:THREE.DoubleSide}));
+    back.rotation.y=rotY;back.userData.base=base.clone().addScaledVector(n,-0.19);
+    g.add(back,old,nw,pt,bag);it.panelsOld.push({m:old,back,t:p.t,bag,rt});it.panelsNew.push({m:nw,t:p.t,pt,seg:p.seg});
   });
   studs.instanceMatrix.needsUpdate=true;g.add(studs);
   // sprinklers + FA along each corridor line
@@ -469,7 +499,7 @@ function buildFloor(key){
     am.add(body,legs,halo);am.userData={a,dir,L};am.visible=false;g.add(am);it.airmd.push(am);
     const crewSide=side.clone();
     [['servpro',0,0.9],['servpro',1,-0.9],['airmd',3,-1.6],['sciens',6,-1.0]].forEach(([k,st,off])=>{const w=makeWorker(k);g.add(w);it.crew.push({w,st,a,dir,L,off,side:crewSide,ph:li*1.3});});
-    [1,-1].forEach(sg=>{const ds=F.panels.filter(p=>p.seg===ln.name&&(p.n[0]*side.x+p.n[1]*side.z)*sg>0).map(p=>Math.abs((p.x-CX-a.x)*side.x+(p.y-CZ-a.z)*side.z));
+    [1,-1].forEach(sg=>{const ds=panelSet.filter(p=>p.seg===ln.name&&(p.n[0]*side.x+p.n[1]*side.z)*sg>0).map(p=>Math.abs((p.x-CX-a.x)*side.x+(p.y-CZ-a.z)*side.z));
       if(!ds.length)return;const off=ds.reduce((x,y)=>x+y,0)/ds.length-0.75;const br=makeBrush();br.rotation.y=-Math.atan2(side.z*sg,side.x*sg);br.visible=false;g.add(br);
       it.brushes.push({m:br,a,dir,L,side:side.clone().multiplyScalar(sg),off,seg:ln.name,ph:sg>0?0:1.7});});
   });
@@ -505,8 +535,9 @@ function apply(time){
   const [si,sp]=stageAt(time);
   const ps=i=>i<si?1:(i===si?sp:0);
   const p0=ps(0);
-  it.panelsOld.forEach(({m,t,bag,rt})=>{const e=local(p0,t,0.5);const a=clamp(e/0.28);
+  it.panelsOld.forEach(({m,back,t,bag,rt})=>{const e=local(p0,t,0.5);const a=clamp(e/0.28);
     m.visible=a<1;m.material.opacity=1-a;m.scale.set(1-0.75*a,1-0.78*a,1);m.position.copy(m.userData.base).addScaledVector(m.userData.n,-a*1.1);m.position.y=(H-0.15)/2*(1-0.78*a);
+    back.visible=m.visible;back.material.opacity=1-a;back.scale.copy(m.scale);back.position.copy(back.userData.base).addScaledVector(m.userData.n,-a*1.1);back.position.y=(H-0.19)/2*(1-0.78*a);
     const show=clamp((e-0.18)/0.1);const f=clamp((e-0.3)/0.7);bag.visible=show>0&&f<1;
     if(bag.visible){const L=rt.cum[rt.cum.length-1]*f;let k=1;while(k<rt.cum.length-1&&rt.cum[k]<L)k++;const seg=rt.cum[k]-rt.cum[k-1]||1;const u=clamp((L-rt.cum[k-1])/seg);
       bag.position.lerpVectors(rt.pts[k-1],rt.pts[k],u);bag.position.y=0;const sc=show*(f>0.94?(1-f)/0.06:1);bag.scale.setScalar(Math.max(0.001,sc));
