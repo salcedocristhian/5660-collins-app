@@ -654,9 +654,9 @@ root.querySelectorAll("[data-msview]").forEach(b=>b.addEventListener("click",()=
 <script>
 (function(){function init(){
  const tab=document.getElementById('tab-progress'),picture=document.getElementById('modelPicture');
- const frame=document.createElement('iframe');frame.id='reconstructionFrame';frame.title='Reconstrucción interactiva de pasillos · planos Relats';frame.loading='lazy';frame.src='./reconstruction.html?v=20261031-reconstruction-only#piso-16-20';picture.appendChild(frame);
+ const frame=document.createElement('iframe');frame.id='reconstructionFrame';frame.title='Reconstrucción interactiva de pasillos · planos Relats';frame.loading='lazy';frame.src='./reconstruction.html?v=20261031-apple-palette#piso-2-15';picture.appendChild(frame);
  function currentFloor(){const select=document.getElementById('myFloorNumber');return select?select.value:'19';}
- function floorKey(f){return f==='PH'?'21':Number(f)<=16?'2-15':'16-20';}
+ function floorKey(f){return f==='PH'?'21':Number(f)<=15?'2-15':Number(f)<=20?'16-20':'21';}
  function sync(){const active=document.querySelector('#progressSegment [data-view].active')?.dataset.view==='interior';tab.classList.toggle('has-reconstruction',active);const visible=!tab.hidden;
  frame.contentWindow?.postMessage({type:'collins-visibility',visible},location.origin);setEmbeddedMode(active?'interior':'building');
  if(active){const play=document.getElementById('sequencePlay');if((play?.getAttribute('aria-label')||'').startsWith('Pause'))play.click();}}
@@ -674,7 +674,7 @@ root.querySelectorAll("[data-msview]").forEach(b=>b.addEventListener("click",()=
    const d=frame.contentDocument;if(!d)return;
    if(d.getElementById('collins-unified-ui'))return;
    const style=d.createElement('style');style.id='collins-unified-ui';
-   style.textContent=':root{color-scheme:light} html,body{overflow-x:hidden;background:#f2f3f1!important} .mode-switch,.view-switch{display:none!important}';
+   style.textContent=':root{color-scheme:light!important;--bg:#f2f3f1;--panel:#ffffff;--text:#17251f;--muted:#64766c;--accent:#5b9fa2}html,body{overflow-x:hidden;background:#f2f3f1!important;color:#17251f!important}.mode-switch,.view-switch{display:none!important}h1,h2,h3,.lead,.intro,.subtitle{color:#17251f!important}p,.sub,.description,.eyebrow{color:#586b62!important}button{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",sans-serif} .viewer{border-radius:22px!important;overflow:hidden} @media(prefers-color-scheme:dark){:root{color-scheme:dark!important;--bg:#101716;--panel:#1b2421;--text:#edf4f0;--muted:#b5c7bc}html,body{background:#101716!important;color:#edf4f0!important}h1,h2,h3,.lead,.intro,.subtitle{color:#edf4f0!important}p,.sub,.description,.eyebrow{color:#b5c7bc!important}}';
    d.head.appendChild(style);
    const candidates=[...d.querySelectorAll('button')].filter(b=>/^(Edificio|Pasillo|Building|Corridor)$/i.test((b.textContent||'').trim()));
    if(candidates.length>=2){const a=candidates[0],b=candidates[1];const parent=a.parentElement;if(parent&&parent===b.parentElement)parent.style.display='none';}
