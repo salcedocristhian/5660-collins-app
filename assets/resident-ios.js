@@ -127,7 +127,7 @@ const w=$('realModelFrame').contentWindow;
 if(w){try{w.dispatchEvent(new Event('resize'))}catch{}}
 });
 function load3D(){
-if(modelRequested)return;
+if(view==='interior'||modelRequested)return;
 modelRequested=true;
 const iframe=$('realModelFrame');
 iframe.addEventListener('load',()=>{
@@ -147,6 +147,8 @@ setTimeout(()=>{w.dispatchEvent(new Event('resize'));sync3D()},130);
 iframe.src='./model-viewer.html?v=20261029-architectural15';
 }
 function sync3D(){
+if(view==='interior')return;
+if(!modelRequested){load3D();return;}
 if(!modelReady)return;
 try{
 const iframe=$('realModelFrame'),d=iframe.contentDocument,w=iframe.contentWindow;
