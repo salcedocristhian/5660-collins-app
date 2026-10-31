@@ -36,7 +36,14 @@
 <script src="./assets/push-config.js?v=1"></script>
 <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 <script src="./assets/push-client.js?v=3" defer></script>
-<style id="planPlaybackStyle">#tab-progress .model-picture{position:relative}#tab-progress .model-inline-playback{position:absolute;left:50%;bottom:15px;transform:translateX(-50%);z-index:8;display:flex;align-items:center;gap:8px;padding:7px 11px;background:rgba(255,255,255,.96);border:1px solid #e1e8e5;border-radius:999px;box-shadow:0 4px 18px #132b2920;white-space:nowrap}#tab-progress .model-inline-playback button{border:0;border-radius:50%;width:42px;height:42px;background:#edf2ef;color:#244d46;font-size:26px;display:grid;place-items:center;cursor:pointer}#tab-progress .model-inline-playback .plan-play{width:49px;height:49px;background:#1d5047;color:white;font-size:20px}#tab-progress #planWeek{font-size:12px;color:#526a63;font-weight:650;padding-right:5px}#tab-progress .sequence-mini-dock{display:none!important}#tab-progress .model-expand{bottom:20px;right:12px}@media(max-width:380px){#tab-progress .model-inline-playback{gap:4px;padding:5px}#tab-progress .model-inline-playback button{width:35px;height:35px}#tab-progress .model-inline-playback .plan-play{width:43px;height:43px}}</style><style id="retire-stale-floor-overview">#myFloorInfo,.my-floor-info{display:none!important}</style></head>
+<style id="planPlaybackStyle">#tab-progress .model-picture{position:relative}#tab-progress .model-inline-playback{position:absolute;left:50%;bottom:15px;transform:translateX(-50%);z-index:8;display:flex;align-items:center;gap:8px;padding:7px 11px;background:rgba(255,255,255,.96);border:1px solid #e1e8e5;border-radius:999px;box-shadow:0 4px 18px #132b2920;white-space:nowrap}#tab-progress .model-inline-playback button{border:0;border-radius:50%;width:42px;height:42px;background:#edf2ef;color:#244d46;font-size:26px;display:grid;place-items:center;cursor:pointer}#tab-progress .model-inline-playback .plan-play{width:49px;height:49px;background:#1d5047;color:white;font-size:20px}#tab-progress #planWeek{font-size:12px;color:#526a63;font-weight:650;padding-right:5px}#tab-progress .sequence-mini-dock{display:none!important}#tab-progress .model-expand{bottom:20px;right:12px}@media(max-width:380px){#tab-progress .model-inline-playback{gap:4px;padding:5px}#tab-progress .model-inline-playback button{width:35px;height:35px}#tab-progress .model-inline-playback .plan-play{width:43px;height:43px}}</style><style id="retire-stale-floor-overview">#myFloorInfo,.my-floor-info{display:none!important}</style><style id="progress-model-first">
+/* The global app header remains available on other tabs; Progress opens on the model. */
+#tab-progress #heading-progress{display:none!important}
+#tab-progress{padding-top:4px!important}
+#tab-progress #progressSegment{margin-top:0!important;margin-bottom:8px!important}
+#tab-progress #modelPicture{margin-top:0!important}
+#tab-progress #reconstructionFrame{border-radius:22px!important}
+</style></head>
 <body>
 <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="svg-defs">
 <symbol id="ic-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 8-3 10h18c0-2-3-3-3-10M10 22h4"/></symbol>
@@ -654,7 +661,7 @@ root.querySelectorAll("[data-msview]").forEach(b=>b.addEventListener("click",()=
 <script>
 (function(){function init(){
  const tab=document.getElementById('tab-progress'),picture=document.getElementById('modelPicture');
- const frame=document.createElement('iframe');frame.id='reconstructionFrame';frame.title='Reconstrucción interactiva de pasillos · planos Relats';frame.loading='lazy';frame.src='./reconstruction.html?v=20261031-relats-geometry-v2#piso-2-15';picture.appendChild(frame);
+ const frame=document.createElement('iframe');frame.id='reconstructionFrame';frame.title='Reconstrucción interactiva de pasillos · planos Relats';frame.loading='lazy';frame.src='./reconstruction.html?v=20261031-plans-first-v3#piso-2-15';picture.appendChild(frame);
  function currentFloor(){const select=document.getElementById('myFloorNumber');return select?select.value:'19';}
  function floorKey(f){return f==='PH'?'21':Number(f)<=15?'2-15':Number(f)<=20?'16-20':'21';}
  function sync(){const active=document.querySelector('#progressSegment [data-view].active')?.dataset.view==='interior';tab.classList.toggle('has-reconstruction',active);const visible=!tab.hidden;
