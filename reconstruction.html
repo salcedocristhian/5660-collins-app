@@ -406,18 +406,8 @@ function buildFloor(key){
   });
   const wg=new THREE.ExtrudeGeometry(shapes,{depth:H,bevelEnabled:false,curveSegments:1});
   wg.rotateX(-Math.PI/2);
-  /* A-1.1: the upper residential wing is existing reference construction, not
-     part of the elevator-lobby/corridor remediation.  Retain the original plan
-     data for Plans; trim only its 3D context display so the misleading
-     horizontal projection cannot cross the corridor visualization. */
-  const corridorContextCut=key==='2-15'
-    ? [new THREE.Plane(new THREE.Vector3(0,0,1),CZ-58)]
-    : [];
-  const wallMats=corridorContextCut.length
-    ? [M.wallTop.clone(),M.wall.clone()]
-    : [M.wallTop,M.wall];
-  if(corridorContextCut.length)wallMats.forEach(mat=>{mat.clippingPlanes=corridorContextCut;mat.clipShadows=true;});
-  const walls=new THREE.Mesh(wg,wallMats);walls.renderOrder=-1;g.add(walls);
+  // Preserve the original Relats outline; no arbitrary spatial clipping.
+  const walls=new THREE.Mesh(wg,[M.wallTop,M.wall]);walls.renderOrder=-1;g.add(walls);
   /* Opaque legacy floor plane removed; corridor geometry remains. */
   /* Do not add the 900x900 opaque slab: it hides the floor geometry and creates the flat gray field. */
 
@@ -574,7 +564,7 @@ scrub.addEventListener('input',()=>{pause();setTime(+scrub.value);});
 document.querySelectorAll('[data-speed]').forEach(b=>b.onclick=()=>{speed=+b.dataset.speed;document.querySelectorAll('[data-speed]').forEach(x=>x.setAttribute('aria-pressed',x===b));});
 const SHEET={'2-15':'Planta típica pisos 2–15 · hoja A-1.1','16-20':'Planta típica pisos 16–20 · hoja A-1.2','21':'Penthouse (PH) · hoja A-1.3'};
 let floorKey='16-20';
-document.querySelectorAll('[data-floor]').forEach(b=>b.onclick=()=>{floorKey=b.dataset.floor;document.querySelectorAll('[data-floor]').forEach(x=>x.setAttribute('aria-pressed',x===b));$('stamp').textContent=SHEET[floorKey];buildFloor(floorKey);apply(time);if(bpOn){curSheet='floor';bpSync();bpScroll.classList.remove('zoom');bpScroll.scrollTo(0,0);}try{history.replaceState(null,'','#piso-'+floorKey);}catch(e){}});
+document.querySelectorAll('[data-floor]').forEach(b=>b.onclick=()=>{floorKey=b.dataset.floor;document.querySelectorAll('[data-floor]').forEach(x=>x.setAttribute('aria-pressed',x===b));$('stamp').textContent=SHEET[floorKey];buildFloor(floorKey);apply(time);if(bpOn)setBP(false);goView('overview',true);try{history.replaceState(null,'','#piso-'+floorKey);}catch(e){}});
 const bpEl=$('bp'),bpImg=$('bpImg'),bpScroll=$('bpScroll'),sheetList=$('sheetList');let bpOn=false,curSheet='A-1.0';
 const LG=window.LOGOS||{};$('lgRelats').src=LG.relats||'';$('lgSuperior').src=LG.superior||'';
 const SH=window.SHEETS||[];
