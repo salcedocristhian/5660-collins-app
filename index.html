@@ -658,6 +658,17 @@ root.querySelectorAll("[data-msview]").forEach(b=>b.addEventListener("click",()=
  function sync(){const active=!!document.querySelector('#progressSegment [data-view="interior"][aria-selected="true"]');tab.classList.toggle('has-reconstruction',active);const visible=!tab.hidden;
  frame.contentWindow?.postMessage({type:'collins-visibility',visible},location.origin);
  if(active){const play=document.getElementById('sequencePlay');if((play?.getAttribute('aria-label')||'').startsWith('Pause'))play.click();}}
+ function harmonizeViewer(){
+  try{
+   const d=frame.contentDocument;if(!d)return;
+   if(d.getElementById('collins-unified-ui'))return;
+   const style=d.createElement('style');style.id='collins-unified-ui';
+   style.textContent=':root{color-scheme:light dark} body{overflow-x:hidden} .mode-switch,.view-switch{display:none!important}';
+   d.head.appendChild(style);
+   const candidates=[...d.querySelectorAll('button')].filter(b=>/^(Edificio|Pasillo|Building|Corridor)$/i.test((b.textContent||'').trim()));
+   if(candidates.length>=2){const a=candidates[0],b=candidates[1];const parent=a.parentElement;if(parent&&parent===b.parentElement)parent.style.display='none';}
+  }catch(e){console.warn('Viewer styling deferred',e);}
+ }
  function cleanPlanList(){
   try{
    const doc=frame.contentDocument;if(!doc)return;
@@ -666,8 +677,8 @@ root.querySelectorAll("[data-msview]").forEach(b=>b.addEventListener("click",()=
   }catch(e){console.warn('Plan list cleanup unavailable',e);}
  }
  frame.addEventListener('load',()=>{
-  cleanPlanList();
-  try{const doc=frame.contentDocument;if(doc?.body)new MutationObserver(cleanPlanList).observe(doc.body,{childList:true,subtree:true});}catch(e){}
+  cleanPlanList();harmonizeViewer();
+  try{const doc=frame.contentDocument;if(doc?.body)new MutationObserver(()=>{cleanPlanList();harmonizeViewer();}).observe(doc.body,{childList:true,subtree:true});}catch(e){}
   frame.contentWindow.postMessage({type:'collins-floor',key:floorKey(currentFloor())},location.origin);sync();});
  document.getElementById('myFloorNumber')?.addEventListener('change',()=>frame.contentWindow.postMessage({type:'collins-floor',key:floorKey(currentFloor())},location.origin));
  window.addEventListener('message',e=>{if(e.source!==frame.contentWindow||e.origin!==location.origin)return;if(e.data?.type==='collins-height'&&Number.isFinite(e.data.height))frame.style.height=Math.min(4500,Math.max(650,e.data.height))+'px';});
