@@ -47,6 +47,16 @@
 #tab-progress #modelPicture{position:relative!important}
 #tab-progress #modelExpand{position:absolute!important;top:auto!important;bottom:16px!important;right:16px!important;z-index:30!important;width:42px!important;height:42px!important;border-radius:14px!important}
 @media(max-width:560px){#tab-progress #modelPicture{margin-top:0!important}#tab-progress #reconstructionFrame{width:100%!important}}
+</style><style id="app-motion">
+@keyframes appFadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes appGrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.screen:not([hidden])>*{animation:appFadeUp .5s cubic-bezier(.2,.8,.2,1) both}
+.screen:not([hidden])>*:nth-child(2){animation-delay:.05s}.screen:not([hidden])>*:nth-child(3){animation-delay:.1s}.screen:not([hidden])>*:nth-child(4){animation-delay:.15s}.screen:not([hidden])>*:nth-child(5){animation-delay:.2s}.screen:not([hidden])>*:nth-child(n+6){animation-delay:.25s}
+.screen:not([hidden]) article,.screen:not([hidden]) li{animation:appFadeUp .45s cubic-bezier(.2,.8,.2,1) both}
+.screen:not([hidden]) li:nth-child(2),.screen:not([hidden]) article:nth-child(2){animation-delay:.04s}.screen:not([hidden]) li:nth-child(3),.screen:not([hidden]) article:nth-child(3){animation-delay:.08s}.screen:not([hidden]) li:nth-child(n+4),.screen:not([hidden]) article:nth-child(n+4){animation-delay:.12s}
+.collins-bottom-nav a,nav a,button{transition:transform .15s ease,color .25s,background-color .25s,opacity .25s}
+button:active,nav a:active{transform:scale(.96)}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 </style></head>
 <body>
 <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="svg-defs">

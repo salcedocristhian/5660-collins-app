@@ -15,7 +15,23 @@ body{background:var(--budget-bg)!important;color:var(--budget-ink)!important}
 :root{color-scheme:dark;--budget-bg:#101716;--budget-card:#202b27;--budget-ink:#eef5f1;--budget-muted:#baccc3;--budget-line:#3b5147}
 .stat,.panel{box-shadow:none!important}
 }
-</style></head><body><div class="wrap"><div class="header"><a class="back" href="./index.html#updates">← Back to resident app</a><button onclick="window.print()">Print</button></div><div class="eyebrow">5660 Collins Avenue · Project Financial Overview</div><h1>Budget</h1><p class="sub">Clear overview of project budgets, invoices, payments and remaining balances.</p><div class="pill">Project financial overview</div>
+</style><style id="budget-motion">
+@keyframes appFadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes appGrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.stat,.panel{animation:appFadeUp .5s cubic-bezier(.2,.8,.2,1) both}
+.stat,.panel:nth-child(2){animation-delay:.05s}.stat,.panel:nth-child(3){animation-delay:.1s}.stat,.panel:nth-child(4){animation-delay:.15s}.stat,.panel:nth-child(5){animation-delay:.2s}.stat,.panel:nth-child(n+6){animation-delay:.25s}
+.screen:not([hidden]) article,.screen:not([hidden]) li{animation:appFadeUp .45s cubic-bezier(.2,.8,.2,1) both}
+.screen:not([hidden]) li:nth-child(2),.screen:not([hidden]) article:nth-child(2){animation-delay:.04s}.screen:not([hidden]) li:nth-child(3),.screen:not([hidden]) article:nth-child(3){animation-delay:.08s}.screen:not([hidden]) li:nth-child(n+4),.screen:not([hidden]) article:nth-child(n+4){animation-delay:.12s}
+.collins-bottom-nav a,nav a,button{transition:transform .15s ease,color .25s,background-color .25s,opacity .25s}
+button:active,nav a:active{transform:scale(.96)}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+.stats .stat:nth-child(1){animation-delay:0s}.stats .stat:nth-child(2){animation-delay:.06s}.stats .stat:nth-child(3){animation-delay:.12s}.stats .stat:nth-child(4){animation-delay:.18s}
+.track .fill,.financial-summary-track>*{transform-origin:left center;animation:appGrow 1s cubic-bezier(.2,.8,.2,1) .2s both}
+</style><script>
+document.addEventListener('DOMContentLoaded',()=>{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ document.querySelectorAll('.stat strong').forEach(el=>{const m=el.textContent.match(/^\$([\d,]+)$/);if(!m)return;const v=+m[1].replace(/,/g,'');const t0=performance.now();
+  const step=now=>{const k=Math.min(1,(now-t0)/900),e=1-Math.pow(1-k,3);el.textContent='$'+Math.round(v*e).toLocaleString('en-US');if(k<1)requestAnimationFrame(step);};requestAnimationFrame(step);});});
+</script></head><body><div class="wrap"><div class="header"><a class="back" href="./index.html#updates">← Back to resident app</a><button onclick="window.print()">Print</button></div><div class="eyebrow">5660 Collins Avenue · Project Financial Overview</div><h1>Budget</h1><p class="sub">Clear overview of project budgets, invoices, payments and remaining balances.</p><div class="pill">Project financial overview</div>
 <div class="stats"><div class="stat"><small>Total Assessment</small><strong>$7,500,000</strong><span>Approved budget, all projects</span></div><div class="stat"><small>Project Budgets</small><strong>$6,367,961</strong><span>10 approved projects</span></div><div class="stat"><small>Contingency Reserve</small><strong>$1,132,039</strong><span>Funds for unplanned work</span></div><div class="stat"><small>Cash Paid</small><strong>Pending</strong><span>To be tied to HOA books</span></div></div>
 <div class="panel" id="budget-basis"><h2>About these figures</h2><p>Budgets are the approved amounts by project and do not change when estimates move. They add up to exactly $7,500,000.00. Reported costs are invoices and confirmed payments recorded so far; they are not cash paid. Cash paid will be reconciled to the Association’s HOA books in the next review.</p></div>
 <div class="panel" id="contingency-panel"></div>
