@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "version": "2026-10-28-public-resident-snapshot-v1",
-  "source": "5660 KB - Active Projects LIVE / Core Rules LIVE / FAQ Bilingual LIVE, modified Oct 27, 2026; Stone Coastal Resources Corrective Action Plan dated Oct 21, 2026",
-  "asOf": "2026-10-27",
+  "version": "2026-10-31-corridor-review-v2",
+  "source": "5660 KB - Active Projects LIVE / Core Rules LIVE / FAQ Bilingual LIVE, modified Oct 27, 2026; Stone Coastal Resources Corrective Action Plan dated Oct 21, 2026; BC2628687 City portal screenshots supplied by PM October 31, 2026 (reviews Oct 29–30)",
+  "asOf": "2026-10-31",
   "isLiveSync": false,
-  "notice": "This is a resident-safe published snapshot, not a live connection to the private Google Drive Knowledge Base.",
+  "notice": "This is a resident-safe published snapshot, not a live connection to the private Google Drive Knowledge Base. Corridor updated October 31; other projects retain their previous documented dates.",
   "projects": [
     {
       "id": "corridor",
@@ -13,18 +13,19 @@
         "es": "Remediación y drywall de pasillos"
       },
       "status": {
-        "en": "City permit pending",
-        "es": "Permiso municipal pendiente"
+        "en": "Applied; City reviews in progress; not issued",
+        "es": "Solicitado; revisiones municipales en curso; no emitido"
       },
       "summary": {
-        "en": "County approval 2027004562 was obtained October 22 and uploaded to City. BC2628687 remained applied/not issued on October 27. AirMD assessed approximately 22,715 SF of corridor-side gypsum for removal; that is not a completed demolition quantity. Future removal requires City permit, Fire/AHJ workfront and egress conditions, and written work authorization.",
-        "es": "Aprobación del Condado 2027004562 obtenida el 22 de octubre y cargada a la Ciudad. BC2628687 seguía solicitado, no emitido, el 27 de octubre. AirMD evaluó cerca de 22,715 SF de drywall de pasillos para retirar; no es una cantidad ya demolida. Se requieren permiso, coordinación con Bomberos y autorización escrita."
+        "en": "City portal screenshots shared October 31 show BC2628687 still Applied with no issue date. Intake and Fire Building passed October 29; Structural and Mechanical were Not Required October 29, and Electrical October 30. Building/Flood remain Under Review, due November 10; Plumbing/Planning/Elevator, due November 13. Submittal Version Complete remains Under Review. County approval 2027004562 was obtained October 22 and uploaded. Review due dates are not permit issuance or construction start dates.",
+        "es": "Las capturas municipales compartidas el 31 de octubre muestran BC2628687 Applied, sin fecha de emisión. Intake y Fire Building aprobaron el 29/oct; Structural y Mechanical figuran como no requeridos el 29/oct, y Electrical el 30/oct. Building/Flood siguen en revisión, con vencimiento 10/nov; Plumbing/Planning/Elevator, 13/nov. Submittal Version Complete sigue en revisión. La aprobación del Condado 2027004562 se obtuvo el 22/oct y se cargó. Las fechas de revisión no son fechas de emisión ni de inicio de obra."
       },
       "next": {
-        "en": "City reviewer response; permit issuance and approved Fire protocols before selective demolition; AirMD clearance and reconstruction follow by area.",
-        "es": "Respuesta del revisor, emisión del permiso y protocolos de Bomberos antes de demoler; después verificación de AirMD y reconstrucción por sectores."
+        "en": "Follow up on Building/Flood by November 10 and Plumbing/Planning/Elevator by November 13. Demolition requires City issuance, applicable Fire/AHJ and environmental controls, and written work authorization. No start date confirmed.",
+        "es": "Seguimiento de Building/Flood al 10/nov y Plumbing/Planning/Elevator al 13/nov. La demolición requiere emisión municipal, controles de Bomberos y ambientales y autorización escrita. Sin fecha de inicio confirmada."
       },
-      "permit": "BC2628687"
+      "permit": "BC2628687",
+      "asOf": "2026-10-31"
     },
     {
       "id": "elevator",
@@ -330,6 +331,16 @@
   "faqs": [
     {
       "question": {
+        "en": "What changed in the hallway permit review?",
+        "es": "¿Qué cambió en la revisión del permiso de pasillos?"
+      },
+      "answer": {
+        "en": "City portal screenshots shared October 31 show BC2628687 still Applied with no issue date. Intake and Fire Building passed October 29; Structural and Mechanical were Not Required October 29, and Electrical October 30. Building/Flood remain Under Review, due November 10; Plumbing/Planning/Elevator, due November 13. Submittal Version Complete remains Under Review. County approval 2027004562 was obtained October 22 and uploaded. Review due dates are not permit issuance or construction start dates.",
+        "es": "Las capturas municipales compartidas el 31 de octubre muestran BC2628687 Applied, sin fecha de emisión. Intake y Fire Building aprobaron el 29/oct; Structural y Mechanical figuran como no requeridos el 29/oct, y Electrical el 30/oct. Building/Flood siguen en revisión, con vencimiento 10/nov; Plumbing/Planning/Elevator, 13/nov. Submittal Version Complete sigue en revisión. La aprobación del Condado 2027004562 se obtuvo el 22/oct y se cargó. Las fechas de revisión no son fechas de emisión ni de inicio de obra."
+      }
+    },
+    {
+      "question": {
         "en": "When will hallway drywall removal start?",
         "es": "¿Cuándo comenzará la remoción del drywall?"
       },
@@ -344,8 +355,8 @@
         "es": "¿La aprobación del Condado equivale al permiso de demolición?"
       },
       "answer": {
-        "en": "No. County approval 2027004562 was received October 22, but City permit BC2628687 remained pending on October 27.",
-        "es": "No. La aprobación 2027004562 del Condado llegó el 22 de octubre; BC2628687 seguía pendiente al 27."
+        "en": "No. County approval 2027004562 was obtained October 22 and uploaded; City permit BC2628687 still shows Applied with no issue date in screenshots shared October 31.",
+        "es": "No. La aprobación 2027004562 se obtuvo el 22/oct y se cargó; BC2628687 sigue Applied, sin fecha de emisión, en las capturas compartidas el 31/oct."
       }
     },
     {

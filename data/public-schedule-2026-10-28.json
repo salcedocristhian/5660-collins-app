@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "asOf": "2026-10-27",
-  "source": "5660 KB Active Projects LIVE latest Oct 27 addenda; Master Permit Record Oct 27",
+  "asOf": "2026-10-31",
+  "source": "5660 KB Active Projects LIVE latest Oct 27 addenda; Master Permit Record Oct 27; corridor portal screenshots shared Oct 31 (other milestones unchanged)",
   "isVerifiedCalendar": false,
   "timeline": [
     {
@@ -52,7 +52,7 @@
       "start": 1,
       "length": 1,
       "group": "review",
-      "note": "November issuance estimated, not confirmed"
+      "note": "Building/Flood due Nov 10; Plumbing/Planning/Elevator due Nov 13; review due dates, not issuance dates"
     },
     {
       "name": {
@@ -184,14 +184,26 @@
     },
     {
       "month": "NOV",
-      "day": "—",
+      "day": "10",
       "title": {
-        "en": "Hallway permit BC2628687",
-        "es": "Permiso de pasillos BC2628687"
+        "en": "Hallway: Building / Flood reviews",
+        "es": "Pasillos: revisiones Building / Flood"
       },
       "detail": {
-        "en": "November issuance estimate, not a confirmed City deadline",
-        "es": "Emisión estimada en noviembre; no es fecha municipal confirmada"
+        "en": "Portal review due dates; BC2628687 not issued. Not a construction start.",
+        "es": "Vencimientos de revisión del portal; BC2628687 no emitido. No es inicio de obra."
+      }
+    },
+    {
+      "month": "NOV",
+      "day": "13",
+      "title": {
+        "en": "Hallway: Plumbing / Planning / Elevator",
+        "es": "Pasillos: Plumbing / Planning / Elevator"
+      },
+      "detail": {
+        "en": "Portal review due dates; issuance and work authorization still pending.",
+        "es": "Vencimientos de revisión del portal; emisión y autorización de trabajo pendientes."
       }
     }
   ]

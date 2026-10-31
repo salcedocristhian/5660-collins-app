@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "version": "2026-10-27-permits-v1",
-  "updatedAt": "2026-10-27",
+  "version": "2026-10-31-corridor-review-v2",
+  "updatedAt": "2026-10-31",
   "approvalStatus": "draft",
   "approvalNote": "PM draft from the Master Permit Exhibit of Oct 27, 2026. Confirm with Building Management before resident distribution.",
   "display": {
@@ -56,12 +56,12 @@
       "group": "review",
       "scope": "Hallway remediation / drywall",
       "number": "BC2628687",
-      "status": "County approved; City final review",
-      "next": "Nov 2026, est.",
+      "status": "Applied; City reviews in progress; not issued",
+      "next": "Building/Flood due Nov 10; Plumbing/Planning/Elevator due Nov 13",
       "bond": "Yes",
       "duration": "8–12 weeks",
       "completion": "Feb–Mar 2027, est.",
-      "note": "Not issued. Work on site cannot start until the City issues this permit and the Fire Department confirms work areas and Fire Watch conditions.",
+      "note": "City portal screenshots shared October 31 show BC2628687 still Applied with no issue date. Intake and Fire Building passed October 29; Structural and Mechanical were Not Required October 29, and Electrical October 30. Building/Flood remain Under Review, due November 10; Plumbing/Planning/Elevator, due November 13. Submittal Version Complete remains Under Review. County approval 2027004562 was obtained October 22 and uploaded. Review due dates are not permit issuance or construction start dates. Follow up on Building/Flood by November 10 and Plumbing/Planning/Elevator by November 13. Demolition requires City issuance, applicable Fire/AHJ and environmental controls, and written work authorization. No start date confirmed.",
       "reviewPath": [
         {
           "label": "Application filed",
@@ -84,18 +84,33 @@
           "state": "done"
         },
         {
-          "label": "City final review",
-          "detail": "In progress",
+          "label": "Intake / Fire Building",
+          "detail": "Pass — Oct 29, 2026",
+          "state": "done"
+        },
+        {
+          "label": "Structural / Mechanical / Electrical",
+          "detail": "Not Required — Structural/Mechanical Oct 29; Electrical Oct 30",
+          "state": "done"
+        },
+        {
+          "label": "Building / Flood",
+          "detail": "Under Review — due Nov 10, 2026",
           "state": "current"
         },
         {
-          "label": "Fire Department conditions",
-          "detail": "Work areas and Fire Watch, to be confirmed in writing",
-          "state": "next"
+          "label": "Plumbing / Planning / Elevator",
+          "detail": "Under Review — due Nov 13, 2026",
+          "state": "current"
         },
         {
-          "label": "Permit issued, work can start",
-          "detail": "Not yet",
+          "label": "Submittal Version Complete",
+          "detail": "Under Review — no individual due date visible",
+          "state": "current"
+        },
+        {
+          "label": "Permit issuance / work authorization",
+          "detail": "Not issued; Fire/AHJ controls and written authorization still required",
           "state": "next"
         }
       ]
@@ -343,6 +358,7 @@
   "sources": [
     "5660 Collins Master Permit Exhibit, updated Oct 27, 2026",
     "City correction reports MEC2605382 / BC2628393",
-    "Project correspondence, Sep–Oct 2026"
+    "Project correspondence, Sep–Oct 2026",
+    "City portal screenshots BC2628687 supplied Oct 31, 2026; completed reviews Oct 29–30"
   ]
 }

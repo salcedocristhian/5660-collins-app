@@ -1,5 +1,5 @@
 {
-  "asOf": "2026-10-27",
+  "asOf": "2026-10-31",
   "source": "5660_Collins_Master_Permit_Exhibit_UPDATED_2026-10-27.xlsx",
   "note": "Targets are estimates; permit numbers do not establish issuance.",
   "permits": [
@@ -24,8 +24,8 @@
     {
       "scope": "Hallway Remediation",
       "reference": "BC2628687",
-      "status": "Under review",
-      "target": "Nov 2026"
+      "status": "Applied; City reviews in progress; not issued",
+      "target": "Building/Flood due Nov 10; Plumbing/Planning/Elevator due Nov 13"
     },
     {
       "scope": "Smoke Enclosure Doors",
