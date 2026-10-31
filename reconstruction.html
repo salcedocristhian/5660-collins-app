@@ -864,7 +864,7 @@ function setMyFloor(label){const v=String(label||'');let f=null;if(v==='PH')f=21
   if(f){const tk=numS[f];myPin.position.set(tk.position.x+11.5,tk.position.y,tk.position.z);bSel=f;drawPin();}bRefresh();}
 function bRefresh(){bApply(performance.now());bText();$('bFacts').innerHTML=bFactsHTML();}
 const bIcon=$('bPlayIcon');
-function bPlayF(){if(bWeek>=12||bWeek<0.05){bWeek=0;$('bWeek').value=0;bIntro=performance.now();introRoof=0;bText();}bPlaying=true;bLast=performance.now();bIcon.innerHTML='<path d="M5 3.5h3.5v13H5zM11.5 3.5H15v13h-3.5z"/>';}
+function bPlayF(){if(bWeek>=12){bWeek=0;$('bWeek').value=0;bText();}bPlaying=true;bLast=performance.now();bIcon.innerHTML='<path d="M5 3.5h3.5v13H5zM11.5 3.5H15v13h-3.5z"/>';}
 function bPause(){bPlaying=false;bIcon.innerHTML='<path d="M5 3.5v13l11-6.5z"/>';}
 $('bPlay').onclick=()=>bPlaying?bPause():bPlayF();
 $('bWeek').addEventListener('input',()=>{bPause();bWeek=+$('bWeek').value;bText();});
