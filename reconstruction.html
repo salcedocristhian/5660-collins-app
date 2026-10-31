@@ -306,6 +306,7 @@ STAGES.forEach((s,i)=>{const b=document.createElement('button');b.className='sta
 const mount=$('mount');
 const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
 renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
+renderer.localClippingEnabled=true;
 renderer.outputEncoding=THREE.sRGBEncoding;
 mount.appendChild(renderer.domElement);
 const scene=new THREE.Scene();
@@ -405,7 +406,18 @@ function buildFloor(key){
   });
   const wg=new THREE.ExtrudeGeometry(shapes,{depth:H,bevelEnabled:false,curveSegments:1});
   wg.rotateX(-Math.PI/2);
-  const walls=new THREE.Mesh(wg,[M.wallTop,M.wall]);walls.renderOrder=-1;g.add(walls);
+  /* A-1.1: the upper residential wing is existing reference construction, not
+     part of the elevator-lobby/corridor remediation.  Retain the original plan
+     data for Plans; trim only its 3D context display so the misleading
+     horizontal projection cannot cross the corridor visualization. */
+  const corridorContextCut=key==='2-15'
+    ? [new THREE.Plane(new THREE.Vector3(0,0,1),CZ-58)]
+    : [];
+  const wallMats=corridorContextCut.length
+    ? [M.wallTop.clone(),M.wall.clone()]
+    : [M.wallTop,M.wall];
+  if(corridorContextCut.length)wallMats.forEach(mat=>{mat.clippingPlanes=corridorContextCut;mat.clipShadows=true;});
+  const walls=new THREE.Mesh(wg,wallMats);walls.renderOrder=-1;g.add(walls);
   /* Opaque legacy floor plane removed; corridor geometry remains. */
   /* Do not add the 900x900 opaque slab: it hides the floor geometry and creates the flat gray field. */
 
