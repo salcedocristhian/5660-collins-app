@@ -123,7 +123,16 @@ button:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 @media(max-width:560px){.viewer{height:360px}.wrap{padding:12px 10px 24px}.chips,.stages{flex-wrap:wrap;overflow-x:visible}header{padding-right:48px}}
 </style>
-</head>
+<style id="resident-progress-focus">
+/* The resident app owns the brand and page title: keep the 3D model first. */
+body{margin:0!important}
+header>div:first-child{display:none!important}
+header{padding-top:8px!important;padding-bottom:10px!important;min-height:0!important}
+.bp .bplogos,.bplogos,#lgRelats,#lgSuperior{display:none!important}
+.bpbar{justify-content:flex-end!important}
+.bp{background:#194a87!important}
+.bp .bpscroll{background:#194a87!important}
+</style></head>
 <body>
 <div class="wrap">
   <header>
@@ -527,7 +536,7 @@ document.querySelectorAll('[data-speed]').forEach(b=>b.onclick=()=>{speed=+b.dat
 const SHEET={'2-15':'Planta típica pisos 2–15 · hoja A-1.1','16-20':'Planta típica pisos 16–20 · hoja A-1.2','21':'Penthouse (PH) · hoja A-1.3'};
 let floorKey='16-20';
 document.querySelectorAll('[data-floor]').forEach(b=>b.onclick=()=>{floorKey=b.dataset.floor;document.querySelectorAll('[data-floor]').forEach(x=>x.setAttribute('aria-pressed',x===b));$('stamp').textContent=SHEET[floorKey];buildFloor(floorKey);apply(time);if(bpOn)bpSync();try{history.replaceState(null,'','#piso-'+floorKey);}catch(e){}});
-const bpEl=$('bp'),bpImg=$('bpImg'),bpScroll=$('bpScroll'),sheetList=$('sheetList');let bpOn=false,curSheet='floor';
+const bpEl=$('bp'),bpImg=$('bpImg'),bpScroll=$('bpScroll'),sheetList=$('sheetList');let bpOn=false,curSheet='A-1.0';
 const LG=window.LOGOS||{};$('lgRelats').src=LG.relats||'';$('lgSuperior').src=LG.superior||'';
 const SH=window.SHEETS||[];
 const FLOOR_SHEET={'2-15':'A-1.1','16-20':'A-1.2','21':'A-1.3'};
@@ -545,7 +554,7 @@ function bpSync(){let by='relats',src='',cap='';
 function openList(open){sheetList.hidden=!open;$('sheetBtn').setAttribute('aria-expanded',open);}
 function setBP(on,sheet){bpOn=on;bpEl.hidden=!on;$('bpCap').hidden=!on;$('stamp').hidden=on;$('bpBtn').setAttribute('aria-pressed',on);openList(false);
   if(on){if(sheet)curSheet=sheet;bpSync();bpScroll.classList.remove('zoom');bpScroll.scrollTo(0,0);}}
-$('bpBtn').onclick=()=>setBP(!bpOn,bpOn?null:'floor');
+$('bpBtn').onclick=()=>setBP(!bpOn,bpOn?null:'A-1.0');
 $('sheetBtn').onclick=()=>openList(sheetList.hidden);
 sheetList.onclick=e=>{const b=e.target.closest('button[data-id]');if(!b)return;curSheet=b.dataset.id;bpSync();openList(false);bpScroll.classList.remove('zoom');bpScroll.scrollTo(0,0);};
 bpImg.onclick=()=>{bpScroll.classList.toggle('zoom');if(bpScroll.classList.contains('zoom')){bpScroll.scrollLeft=(bpScroll.scrollWidth-bpScroll.clientWidth)/2;bpScroll.scrollTop=(bpScroll.scrollHeight-bpScroll.clientHeight)*0.4;}};
