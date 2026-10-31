@@ -686,7 +686,7 @@ root.querySelectorAll("[data-msview]").forEach(b=>b.addEventListener("click",()=
 <script>
 (function(){function init(){
  const tab=document.getElementById('tab-progress'),picture=document.getElementById('modelPicture');
- const frame=document.createElement('iframe');frame.id='reconstructionFrame';frame.title='Reconstrucción interactiva de pasillos · planos Relats';frame.loading='lazy';frame.src='./reconstruction.html?v=20261031-storm2';picture.appendChild(frame);
+ const frame=document.createElement('iframe');frame.id='reconstructionFrame';frame.title='Reconstrucción interactiva de pasillos · planos Relats';frame.loading='lazy';frame.src='./reconstruction.html?v=20261031-ph1';picture.appendChild(frame);
  function currentFloor(){const select=document.getElementById('myFloorNumber');return select?select.value:'19';}
  function floorKey(f){return f==='PH'?'21':Number(f)<=16?'2-15':Number(f)<=21?'16-20':'21';}
  function sync(){const active=document.querySelector('#progressSegment [data-view].active')?.dataset.view==='interior';tab.classList.toggle('has-reconstruction',active);const visible=!tab.hidden;
@@ -746,7 +746,7 @@ root.querySelectorAll("[data-msview]").forEach(b=>b.addEventListener("click",()=
  if(!tab||!picture||!seg)return;const btn=seg.querySelector('[data-view="storm"]');if(!btn)return;
  const f=document.createElement('iframe');f.id='stormFrame';f.title='Garage stormwater 3D construction simulation';
  let loaded=false;const lang=()=>document.documentElement.lang==='es'?'es':'en';
- function load(){if(loaded)return;loaded=true;if(window.__setStormSrc)window.__setStormSrc(f);else f.src='./stormwater.html?v=20261031-storm3&lang='+lang();picture.appendChild(f);}
+ function load(){if(loaded)return;loaded=true;if(window.__setStormSrc)window.__setStormSrc(f);else f.src='./stormwater.html?v=20261031-ph1&lang='+lang();picture.appendChild(f);}
  function post(m){try{f.contentWindow&&f.contentWindow.postMessage(m,'*');}catch(e){}}
  function sync(){const on=btn.classList.contains('active');tab.classList.toggle('has-storm',on);if(on)load();post({type:'collins-visibility',visible:on&&!tab.hidden});post({type:'collins-language',lang:lang()});}
  window.addEventListener('message',e=>{if(e.source===f.contentWindow&&e.data&&e.data.type==='collins-storm-height'&&Number.isFinite(e.data.height))f.style.height=Math.max(900,Math.min(2800,e.data.height))+'px';});
@@ -758,4 +758,31 @@ root.querySelectorAll("[data-msview]").forEach(b=>b.addEventListener("click",()=
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();})();
 </script>
 
+<style id="responsiveLayout">
+/* 5660 Collins · responsive layout v15-r1: phone (default), tablet, desktop */
+@media (min-width:768px){
+ .app-shell{max-width:min(960px,100%)}
+ .bottom-tabs{width:min(100%,960px)}
+ .app-top{padding-left:30px;padding-right:30px}
+ .screen{padding-left:28px;padding-right:28px}
+}
+@media (min-width:1100px){
+ .app-shell{max-width:1480px;display:grid;grid-template-columns:236px minmax(0,1fr);grid-template-areas:"nav top" "nav main";column-gap:0;box-shadow:none}
+ .app-top{grid-area:top;padding:34px 44px 8px}
+ #main{grid-area:main;min-width:0}
+ .bottom-tabs{grid-area:nav;grid-row:1 / span 2;position:sticky!important;top:0;left:auto!important;bottom:auto!important;transform:none!important;width:auto!important;height:100vh!important;display:flex!important;flex-direction:column;align-items:stretch;gap:4px;padding:128px 16px 24px!important;background:transparent!important;border:0!important;border-right:1px solid rgba(23,37,31,.09)!important;box-shadow:none!important;backdrop-filter:none!important;overflow:visible!important}
+ .bottom-tabs .nav-item{flex-direction:row!important;justify-content:flex-start!important;align-items:center!important;gap:12px!important;padding:11px 14px!important;border-radius:12px;width:100%!important;flex:none!important}
+ .bottom-tabs .nav-item span{font-size:15px!important;letter-spacing:0!important;overflow:visible!important}
+ .bottom-tabs .nav-item svg{width:22px!important;height:22px!important}
+ .bottom-tabs .nav-item.active{background:rgba(31,77,71,.09)}
+ .bottom-tabs .nav-item:hover{background:rgba(31,77,71,.05)}
+ .screen{padding:12px 44px 56px!important;max-width:1120px}
+ #tab-progress.screen{max-width:none}
+ #tab-progress #progressSegment{max-width:720px}
+}
+@media (min-width:1100px) and (prefers-color-scheme:dark){
+ .bottom-tabs{border-right-color:rgba(255,255,255,.08)!important}
+ .bottom-tabs .nav-item.active{background:rgba(255,255,255,.08)}
+}
+</style>
 </body></html>

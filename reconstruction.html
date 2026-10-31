@@ -122,6 +122,7 @@ details ul{padding-left:18px;margin:4px 0}
 button:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--petrol);outline-offset:2px}
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 @media(max-width:560px){.viewer{height:360px}.wrap{padding:12px 10px 24px}.chips,.stages{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}.chips::-webkit-scrollbar,.stages::-webkit-scrollbar{display:none}header{padding-right:48px}}
+.fa-sim{position:absolute;right:12px;bottom:12px;z-index:3;border:0;min-height:44px;padding:0 16px;border-radius:999px;background:#B23A2A;color:#fff;font:600 .85rem/1 inherit;font-family:inherit;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.18)}.fa-sim[aria-pressed="true"]{background:#4F5D57}.fa-sim:focus-visible{outline:2px solid #8E6A3E;outline-offset:2px}.fa-banner{position:absolute;left:12px;right:12px;top:56px;z-index:3;background:rgba(138,42,28,.94);color:#fff;border-radius:12px;padding:9px 13px;font-size:.8rem;line-height:1.4}
 </style>
 <style id="resident-progress-focus">
 /* The resident app owns the brand and page title: keep the 3D model first. */
@@ -193,7 +194,18 @@ body.plans-active .viewer{height:min(80vh,780px)!important}
 </style><style id="render-sky">
 .viewer.sky{background:linear-gradient(180deg,#A9CBE6 0%,#D6E6F1 55%,#EEF2F1 100%)!important;transition:background .6s}
 @media (prefers-color-scheme:dark){.viewer.sky{background:linear-gradient(180deg,#1E3A52 0%,#2B4457 55%,#3A4A50 100%)!important}}
-</style></head>
+</style><style id="responsiveLayout">
+@media (min-width:980px){
+ .wrap{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(330px,1fr);column-gap:24px;align-items:start;max-width:1440px}
+ .wrap>header{grid-column:1 / -1}
+ .wrap>.viewer{grid-column:1;grid-row:2;height:min(76vh,760px)!important}
+ .wrap>#bldPanel,.wrap>#intPanel{grid-column:2;grid-row:2;min-width:0}
+ .wrap .transport{margin-top:0}
+ .wrap .stages,.wrap .chips{flex-wrap:wrap!important;overflow:visible!important}
+ .wrap .detail{grid-template-columns:1fr!important}
+}
+</style>
+</head>
 <body>
 <div class="wrap">
   <header>
@@ -239,6 +251,8 @@ body.plans-active .viewer{height:min(80vh,780px)!important}
     </div>
     <div class="bchip" id="bChip" hidden></div>
     <div class="stamp" id="stamp"></div>
+    <button type="button" class="fa-sim" id="faSim" aria-pressed="false" hidden>Simular alarma</button>
+    <div class="fa-banner" id="faBanner" role="status" hidden></div>
     <div class="stamp bpcap" id="bpCap" hidden></div>
   </div>
 
@@ -354,12 +368,13 @@ function build(THREE,SD,BLD,o){o=o||{};
   Object.entries(byC).forEach(([c,arr])=>{const im=new THREE.InstancedMesh(bodyG,M(+c,{roughness:.35,metalness:.35}),arr.length);
    arr.forEach(([x,z,r],i)=>{const rot=r===0?Math.PI/2:0;ob.rotation.set(0,rot,0);ob.position.set(x,y+1.45,z);ob.updateMatrix();im.setMatrixAt(i,ob.matrix);
     ob.position.set(x,y+3.3,z);ob.updateMatrix();cab.setMatrixAt(ci++,ob.matrix);});im.castShadow=true;parent.add(im);});parent.add(cab);}
- const garCars=new THREE.Group();gar.add(garCars);cars((SD.stallsG||[]).filter(([x,z])=>!inPoly(x,z,TOW)),YB,garCars,.72);
+ const garCars=new THREE.Group();gar.add(garCars);const garCarsBy={};
+ {const all=(SD.stallsG||[]).filter(([x,z])=>!inPoly(x,z,TOW));if(o.carKey){const by={};all.forEach(s=>{const k=o.carKey(s[0],s[1]);(by[k]=by[k]||[]).push(s);});Object.keys(by).sort().forEach(k=>{const gg=new THREE.Group();garCars.add(gg);garCarsBy[k]=gg;cars(by[k],YB,gg,.72);});}else cars(all,YB,garCars,.72);}
  // ---- podium / pool deck ----
- const paver=tex(256,256,(g,w,h)=>{g.fillStyle='#E9E3D6';g.fillRect(0,0,w,h);g.strokeStyle='rgba(120,105,80,.22)';g.lineWidth=2;
+ const paver=tex(256,256,(g,w,h)=>{g.fillStyle='#E4D2B6';g.fillRect(0,0,w,h);g.strokeStyle='rgba(150,118,80,.30)';g.lineWidth=2;
   for(let i=0;i<=w;i+=64){g.beginPath();g.moveTo(i,0);g.lineTo(i,h);g.stroke();g.beginPath();g.moveTo(0,i);g.lineTo(w,i);g.stroke();}
   for(let i=0;i<500;i++){g.fillStyle='rgba(0,0,0,'+rnd()*.03+')';g.fillRect(rnd()*w,rnd()*h,2,2);}});
- paver.wrapS=paver.wrapT=THREE.RepeatWrapping;paver.repeat.set(1/8,1/8);
+ paver.wrapS=paver.wrapT=THREE.RepeatWrapping;paver.repeat.set(1/5,1/5);
  const deckMat=M(0xffffff,{map:paver,roughness:.85,transparent:true,opacity:1});
  const deckSlab=extrude(OUT,-YSB,YSB,deckMat);deckSlab.receiveShadow=true;deckSlab.castShadow=true;deck.add(deckSlab);
  const deckEdge=new THREE.LineSegments(new THREE.EdgesGeometry(deckSlab.geometry,30),new THREE.LineBasicMaterial({color:0x6E7D78}));deckEdge.visible=false;deck.add(deckEdge);
@@ -370,25 +385,74 @@ function build(THREE,SD,BLD,o){o=o||{};
   const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(p,3));const ls=new THREE.LineSegments(g,stripeM);deck.add(ls);deckAsph.push(ls);}
  const deckCars=new THREE.Group();deck.add(deckCars);
  cars((SD.stallsL||[]).filter(([x,z])=>SD.asphalt.some(a=>inPoly(x,z,a))&&!inPoly(x,z,TOW)),YD,deckCars,.7);deckAsph.push(deckCars);
- const poolM=new THREE.MeshStandardMaterial({color:0x3FA9C1,roughness:.08,metalness:.15,transparent:true,opacity:.92});
- const pool=extrude(SD.pool,0.06,YD+0.02,poolM);deck.add(pool);
- {const ring=SD.pool.concat([SD.pool[0]]).map(([x,z])=>new THREE.Vector3(x,YD+.2,z));deck.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(ring),new THREE.LineBasicMaterial({color:0xFFFFFF})));}
- const deckFurn=[];const planterM=M(0xF3F0E8),greenM=M(0x6E9A63,{roughness:.9}),treeM=M(0x4F7F4A,{roughness:.9}),trunkM=M(0x7A6450);
- SD.pods.forEach(p=>{if(p.t==='circ'){const c=new THREE.Mesh(new THREE.CylinderGeometry(p.r,p.r,2,28),planterM);c.position.set(p.c[0],YD+1,p.c[1]);c.castShadow=true;
-   const tr=new THREE.Mesh(new THREE.SphereGeometry(p.r*.9,16,12),treeM);tr.position.set(p.c[0],YD+5,p.c[1]);tr.castShadow=true;
-   const tk=new THREE.Mesh(new THREE.CylinderGeometry(.3,.4,3,8),trunkM);tk.position.set(p.c[0],YD+2.8,p.c[1]);deck.add(c,tr,tk);deckFurn.push(c,tr,tk);}
-  else{const[x0,z0]=p.a,[x1,z1]=p.b;const w=Math.abs(x1-x0),d=Math.abs(z1-z0),r=Math.min(w,d)/2,cx=(x0+x1)/2,cz=(z0+z1)/2,hw=w/2,hd=d/2;
-   const s=new THREE.Shape();s.moveTo(-hw+r,-hd);s.lineTo(hw-r,-hd);s.absarc(hw-r,-hd+r,r,-Math.PI/2,0);s.lineTo(hw,hd-r);s.absarc(hw-r,hd-r,r,0,Math.PI/2);s.lineTo(-hw+r,hd);s.absarc(-hw+r,hd-r,r,Math.PI/2,Math.PI);s.lineTo(-hw,-hd+r);s.absarc(-hw+r,-hd+r,r,Math.PI,Math.PI*1.5);
-   const g=new THREE.ExtrudeGeometry(s,{depth:1.8,bevelEnabled:false,curveSegments:10});g.rotateX(-Math.PI/2);const m=new THREE.Mesh(g,planterM);m.position.set(cx,YD,cz);m.castShadow=true;
-   const g2=new THREE.ExtrudeGeometry(s,{depth:.4,bevelEnabled:false,curveSegments:10});g2.rotateX(-Math.PI/2);g2.scale(.86,1,.8);const m2=new THREE.Mesh(g2,greenM);m2.position.set(cx,YD+1.8,cz);deck.add(m,m2);deckFurn.push(m,m2);}});
+ const poolM=new THREE.MeshStandardMaterial({color:0x37C9D3,roughness:.08,metalness:.15,transparent:true,opacity:.92});
+ const pool=extrude(SD.pool,0.06,YD+0.02,poolM);deck.add(pool);const poolParts=[pool];
+ {const ring=SD.pool.concat([SD.pool[0]]).map(([x,z])=>new THREE.Vector3(x,YD+.2,z));{const pl=new THREE.Line(new THREE.BufferGeometry().setFromPoints(ring),new THREE.LineBasicMaterial({color:0xFFFFFF}));deck.add(pl);poolParts.push(pl);}}
+ const deckFurn=[];
+ // ---- pool deck details (from owner photos: brick round planters with fan palms, hedge planters, cabana, loungers, black fence, globe lamps) ----
+ const brickM=M(0xA4583A,{roughness:.85}),gravelM=M(0x2F2F2E,{roughness:1}),hedgeM=M(0x3F6B34,{roughness:.95}),frondM=M(0x5E8C46,{roughness:.8,side:THREE.DoubleSide}),trunkM=M(0x8A7660,{roughness:.9}),
+  whiteM=M(0xFAFAF7,{roughness:.6}),blackM=M(0x1E2224,{roughness:.5,metalness:.4}),copeM=M(0xC98E5E,{roughness:.8}),tileM=new THREE.LineBasicMaterial({color:0x1D3D8C}),globeM=new THREE.MeshStandardMaterial({color:0xFFFFFF,emissive:0xFFF4D8,emissiveIntensity:.35,roughness:.3});
+ const keep=(...o)=>{o.forEach(x=>{deck.add(x);deckFurn.push(x);});};
+ function palm(x,z,y,h){const g=new THREE.Group();const tk=new THREE.Mesh(new THREE.CylinderGeometry(.35,.55,h,8),trunkM);tk.position.y=h/2;g.add(tk);
+  for(let i=0;i<11;i++){const a=i/11*Math.PI*2+rnd()*.3;const f=new THREE.Mesh(new THREE.PlaneGeometry(5.2,1.3),frondM);f.position.set(Math.cos(a)*2.3,h-.4-rnd()*.3,Math.sin(a)*2.3);f.rotation.set(0,-a,0);f.rotateZ(-.35-rnd()*.25);g.add(f);}
+  g.position.set(x,y,z);g.traverse(o=>{if(o.isMesh)o.castShadow=true;});return g;}
+ const pillShape=(hw,hd)=>{const r=Math.min(hw,hd);const s=new THREE.Shape();s.moveTo(-hw+r,-hd);s.lineTo(hw-r,-hd);s.absarc(hw-r,-hd+r,r,-Math.PI/2,0);s.lineTo(hw,hd-r);s.absarc(hw-r,hd-r,r,0,Math.PI/2);s.lineTo(-hw+r,hd);s.absarc(-hw+r,hd-r,r,Math.PI/2,Math.PI);s.lineTo(-hw,-hd+r);s.absarc(-hw+r,-hd+r,r,Math.PI,Math.PI*1.5);return s;};
+ SD.pods.forEach(pd=>{if(pd.t==='circ'){const r=Math.min(pd.r,4.2);const c=new THREE.Mesh(new THREE.CylinderGeometry(r,r,1.6,32),brickM);c.position.set(pd.c[0],YD+.8,pd.c[1]);c.castShadow=true;
+   const top=new THREE.Mesh(new THREE.CylinderGeometry(r-.45,r-.45,.1,32),gravelM);top.position.set(pd.c[0],YD+1.62,pd.c[1]);keep(c,top,palm(pd.c[0],pd.c[1],YD+1.6,6.5));}
+  else{const[x0,z0]=pd.a,[x1,z1]=pd.b;const w=Math.abs(x1-x0),d=Math.abs(z1-z0),cx=(x0+x1)/2,cz=(z0+z1)/2;
+   const g=new THREE.ExtrudeGeometry(pillShape(w/2,d/2),{depth:1.6,bevelEnabled:false,curveSegments:10});g.rotateX(-Math.PI/2);const m=new THREE.Mesh(g,brickM);m.position.set(cx,YD,cz);m.castShadow=true;
+   const g2=new THREE.ExtrudeGeometry(pillShape(w/2-.5,d/2-.5),{depth:1.9,bevelEnabled:false,curveSegments:10});g2.rotateX(-Math.PI/2);const m2=new THREE.Mesh(g2,hedgeM);m2.position.set(cx,YD+.2,cz);m2.castShadow=true;keep(m,m2);
+   const long=w>d,n=Math.max(1,Math.round(Math.max(w,d)/14));for(let k=0;k<n;k++){const f=(k+.5)/n;keep(palm(long?x0+(x1-x0)*f:cx,long?cz:z0+(z1-z0)*f,YD+1.8,5));}}});
+ // pool coping + tile line
+ {const cx=SD.pool.reduce((a,q)=>a+q[0],0)/SD.pool.length,cz=SD.pool.reduce((a,q)=>a+q[1],0)/SD.pool.length;
+  const outer=SD.pool.map(([x,z])=>{const dx=x-cx,dz=z-cz,l=Math.hypot(dx,dz)||1;return [x+dx/l*1.6,z+dz/l*1.6];});
+  const sh=shapeOf(outer);sh.holes.push(new THREE.Path(SD.pool.map(([x,z])=>new THREE.Vector2(x,-z))));const cg=new THREE.ExtrudeGeometry(sh,{depth:.18,bevelEnabled:false});cg.rotateX(-Math.PI/2);
+  const cope=new THREE.Mesh(cg,copeM);cope.position.y=YD;deck.add(cope);poolParts.push(cope);
+  const inner=SD.pool.map(([x,z])=>{const dx=x-cx,dz=z-cz,l=Math.hypot(dx,dz)||1;return new THREE.Vector3(x-dx/l*.35,YD+.12,z-dz/l*.35);});inner.push(inner[0].clone());
+  const tl=new THREE.Line(new THREE.BufferGeometry().setFromPoints(inner),tileM);deck.add(tl);poolParts.push(tl);
+  // cabana at the west end of the pool, loungers on the south side
+  const px0=Math.min(...SD.pool.map(q=>q[0])),pz0=Math.min(...SD.pool.map(q=>q[1])),pz1=Math.max(...SD.pool.map(q=>q[1])),px1=Math.max(...SD.pool.map(q=>q[0]));
+  const cab=new THREE.Group();const roof=new THREE.Mesh(new THREE.BoxGeometry(7.5,1.2,pz1-pz0+2),whiteM);roof.position.y=8.4;cab.add(roof);
+  [[-3.4,-1],[3.4,-1],[-3.4,1],[3.4,1]].forEach(([dx,s])=>{const po=new THREE.Mesh(new THREE.CylinderGeometry(.15,.15,8,6),whiteM);po.position.set(dx,4,s*(pz1-pz0)/2);cab.add(po);});
+  const curtain=new THREE.Mesh(new THREE.BoxGeometry(.2,6.5,pz1-pz0+1),new THREE.MeshStandardMaterial({color:0xF4F3EF,transparent:true,opacity:.75}));curtain.position.set(-3.6,4.6,0);cab.add(curtain);
+  for(let k=0;k<3;k++){const so=new THREE.Mesh(new THREE.BoxGeometry(2.4,1.3,5),M(0xEDE7DA));so.position.set(0,.65,(k-1)*6);cab.add(so);}
+  cab.position.set(px0-5.6,YD,(pz0+pz1)/2);cab.traverse(o=>{if(o.isMesh)o.castShadow=true;});keep(cab);
+  for(let k=0;k<6;k++){const ch=new THREE.Group();const b=new THREE.Mesh(new THREE.BoxGeometry(2.2,.45,6),whiteM);b.position.y=1.1;const bk=new THREE.Mesh(new THREE.BoxGeometry(2.2,.35,2.2),whiteM);bk.position.set(0,1.8,-2.6);bk.rotation.x=-.7;ch.add(b,bk);
+   ch.position.set(px0+3+k*6.2,YD,pz1+6.5);keep(ch);}}
+ // north (waterfront) edge: hedges, black picket fence, globe lamps — the other edges keep the glass rail
+ const NORTH=[0,1,2];const edgeAt=(i,s,off)=>{const[a0,a1]=OUT[i],[b0,b1]=OUT[i+1];const L=Math.hypot(b0-a0,b1-a1);const dx=(b0-a0)/L,dz=(b1-a1)/L;return [a0+dx*s-dz*off,a1+dz*s+dx*off,Math.atan2(b1-a1,b0-a0),L];};
+ {const posts=[];NORTH.forEach(i=>{const[, , ang,L]=edgeAt(i,0,0);
+   const rail=new THREE.Mesh(new THREE.BoxGeometry(L,.12,.12),blackM);const[mx,mz]=edgeAt(i,L/2,.3);rail.position.set(mx,YD+3.6,mz);rail.rotation.y=-ang;keep(rail);
+   const rail2=rail.clone();rail2.position.y=YD+.5;keep(rail2);
+   for(let s=0;s<L;s+=.55)posts.push(edgeAt(i,s,.3));
+   for(let s=6;s<L-4;s+=14){const[hx,hz]=edgeAt(i,s,2.6);const h=new THREE.Mesh(new THREE.BoxGeometry(10,2.3,2.6),hedgeM);h.position.set(hx,YD+1.15,hz);h.rotation.y=-ang;h.castShadow=true;keep(h);}
+   for(let s=12;s<L-4;s+=24){const[lx,lz]=edgeAt(i,s,4.6);const po=new THREE.Mesh(new THREE.CylinderGeometry(.12,.16,8,8),blackM);po.position.set(lx,YD+4,lz);const gl=new THREE.Mesh(new THREE.SphereGeometry(.65,16,12),globeM);gl.position.set(lx,YD+8.5,lz);keep(po,gl);}});
+  const im=new THREE.InstancedMesh(new THREE.BoxGeometry(.06,3.3,.06),blackM,posts.length);const ob=new THREE.Object3D();posts.forEach(([x,z],k)=>{ob.position.set(x,YD+1.95,z);ob.updateMatrix();im.setMatrixAt(k,ob.matrix);});keep(im);}
  {const OUTc=OUT.concat([OUT[0]]);const gm=new THREE.MeshStandardMaterial({color:0xBFD8DE,transparent:true,opacity:.28,roughness:.05,side:THREE.DoubleSide,depthWrite:false});
-  for(let i=0;i<OUTc.length-1;i++){const[a0,a1]=OUTc[i],[b0,b1]=OUTc[i+1];const L=Math.hypot(b0-a0,b1-a1);const w=new THREE.Mesh(new THREE.PlaneGeometry(L,3.4),gm);
-   w.position.set((a0+b0)/2,YD+1.7,(a1+b1)/2);w.rotation.y=-Math.atan2(b1-a1,b0-a0);deck.add(w);deckFurn.push(w);}}
+  for(let i=0;i<OUTc.length-1;i++){if(NORTH.includes(i))continue;const[a0,a1]=OUTc[i],[b0,b1]=OUTc[i+1];const L=Math.hypot(b0-a0,b1-a1);const w=new THREE.Mesh(new THREE.PlaneGeometry(L,3.4),gm);
+   w.position.set((a0+b0)/2,YD+1.7,(a1+b1)/2);w.rotation.y=-Math.atan2(b1-a1,b0-a0);keep(w);}}
+ // ---- marina (building view only): waterline at the podium's north edge, finger piers, pilings, moored boats ----
+ const marina=new THREE.Group();root.add(marina);marina.visible=!!o.marina;
+ if(o.marina){const YW=YB-2.4,YDK=YB+1.6;
+  const wpts=[OUT[0],OUT[1],OUT[2],OUT[3],[OUT[3][0]+40,OUT[3][1]],[OUT[3][0]+40,OUT[3][1]-90],[OUT[0][0]-40,OUT[0][1]-90],[OUT[0][0]-40,OUT[0][1]]];
+  const water=extrude(wpts,.05,YW,new THREE.MeshStandardMaterial({color:0x1FA7A0,roughness:.15,metalness:.1,transparent:true,opacity:.92}));marina.add(water);
+  const deckM=M(0xC9B79A,{roughness:.9}),pileM=M(0x6F6658,{roughness:.9}),capM=M(0xEDEDE8),hullM=M(0xFBFBFA,{roughness:.35}),navyM=M(0x23345A,{roughness:.4}),glassM=M(0x2B3A44,{roughness:.2,metalness:.4});
+  const pile=(x,z)=>{const p=new THREE.Mesh(new THREE.CylinderGeometry(.42,.42,10,10),pileM);p.position.set(x,YW+4.2,z);const c=new THREE.Mesh(new THREE.CylinderGeometry(.46,.46,.5,10),capM);c.position.set(x,YW+9.4,z);p.castShadow=true;marina.add(p,c);};
+  const boat=(x,z,ang,L)=>{const W=L*.32;const s=new THREE.Shape([new THREE.Vector2(-L/2,-W/2),new THREE.Vector2(L/2-L*.22,-W/2),new THREE.Vector2(L/2,0),new THREE.Vector2(L/2-L*.22,W/2),new THREE.Vector2(-L/2,W/2)]);
+   const g=new THREE.ExtrudeGeometry(s,{depth:2.6,bevelEnabled:true,bevelSize:.3,bevelThickness:.3,bevelSegments:2});g.rotateX(-Math.PI/2);const h=new THREE.Mesh(g,hullM);
+   const stripe=new THREE.Mesh(new THREE.BoxGeometry(L*.75,.35,W+.05),navyM);stripe.position.set(-L*.08,1.1,0);const cabin=new THREE.Mesh(new THREE.BoxGeometry(L*.28,1.6,W*.7),hullM);cabin.position.set(-L*.02,3.4,0);
+   const ws=new THREE.Mesh(new THREE.BoxGeometry(.2,1.2,W*.66),glassM);ws.position.set(L*.12,3.5,0);ws.rotation.z=.5;const tp=new THREE.Mesh(new THREE.BoxGeometry(L*.34,.18,W*.85),navyM);tp.position.set(-L*.05,5.8,0);
+   const bg=new THREE.Group();bg.add(h,stripe,cabin,ws,tp);bg.position.set(x,YW-.4,z);bg.rotation.y=ang;bg.traverse(q=>{if(q.isMesh)q.castShadow=true;});marina.add(bg);};
+  let slip=0;NORTH.forEach(i=>{const[, ,ang,L]=edgeAt(i,0,0);
+   const walk=new THREE.Mesh(new THREE.BoxGeometry(L,.35,5),deckM);const[wx,wz]=edgeAt(i,L/2,-2.6);walk.position.set(wx,YDK,wz);walk.rotation.y=-ang;marina.add(walk);
+   for(let s=10;s<L-6;s+=30){const[fx,fz]=edgeAt(i,s,-17);const f=new THREE.Mesh(new THREE.BoxGeometry(4,.35,24),deckM);f.position.set(fx,YDK,fz);f.rotation.y=-ang;marina.add(f);
+    const[p1x,p1z]=edgeAt(i,s+2.6,-29);pile(p1x,p1z);const[p2x,p2z]=edgeAt(i,s-2.6,-29);pile(p2x,p2z);const[p3x,p3z]=edgeAt(i,s+13,-31);pile(p3x,p3z);
+    if(slip++%2===0){const[bx,bz]=edgeAt(i,s+9,-18);boat(bx,bz,-ang-Math.PI/2,32);}}});}
  // seawall + ground strip (context)
  const site=new THREE.Group();root.add(site);
  const seawall=new THREE.Mesh(new THREE.BoxGeometry(900,3.4,1.6),M(0xCFCBC0));seawall.position.set(0,YB-1.6,-113.2);seawall.receiveShadow=true;site.add(seawall);
- function setDeckMode(mode){const cut=mode==='cut';deckSlab.visible=!cut;deckEdge.visible=cut;deckAsph.forEach(x=>x.visible=!cut);deckFurn.forEach(x=>x.visible=!cut);}
- return {root,gar,garCars,deck,site,OUT,TOW,inPoly,floorMat,lineMat,wallMat,perimMat,colMat,deckSlab,deckMat,deckEdge,deckAsph,deckFurn,pool,setDeckMode,YB,YD,YSB};}
+ function setDeckMode(mode){const cut=mode==='cut';poolParts.forEach(x=>x.visible=!cut);deckSlab.visible=!cut;deckEdge.visible=cut;deckAsph.forEach(x=>x.visible=!cut);deckFurn.forEach(x=>x.visible=!cut);}
+ return {root,gar,garCars,garCarsBy,deck,site,marina,OUT,TOW,inPoly,floorMat,lineMat,wallMat,perimMat,colMat,deckSlab,deckMat,deckEdge,deckAsph,deckFurn,pool,setDeckMode,YB,YD,YSB};}
 return {build};})();
 </script>
 <script>
@@ -398,6 +462,7 @@ const D=window.PLAN_DATA;
 const EN={"Remediación de moho": "Mold remediation", "Retiro de alfombra": "Carpet removal", "Ram Board temporal": "Temporary Ram Board", "Inspección AirMD": "AirMD inspection", "Drywall nuevo": "New drywall", "Pintura": "Painting", "Rociadores y alarma de incendio": "Fire sprinklers and alarm", "Puertas del vestíbulo": "Lobby doors", "Se retiran los paneles de drywall con moho, desde el cruce hacia los extremos. Cada panel sale en bolsa sellada de remediación por el ascensor de servicio. Quedan los parales metálicos a la vista.": "Moldy drywall panels are removed from the intersection outward. Each panel leaves in a sealed remediation bag through the service elevator, leaving the metal studs exposed.", "La alfombra mostaza existente se levanta por tramos y sale del edificio.": "The existing mustard carpet is lifted section by section and taken out of the building.", "Se extiende protección de cartón sobre el piso, con las juntas selladas con cinta, para el tránsito de obra y de residentes.": "Cardboard floor protection is laid with taped seams for construction and resident traffic.", "AirMD hace la verificación post-remediación de cada área. Cuando un tramo pasa, se marca en verde; al final, el destello verde indica el clearance. Ningún tramo se reconstruye sin esa liberación.": "AirMD performs post-remediation verification of each area. Each section that passes turns green; the final green flash marks clearance. No section is rebuilt without that release.", "Se instalan los paneles nuevos sobre los parales existentes y se cierran los muros por tramos.": "New panels are installed on the existing studs and the walls are closed section by section.", "La brocha recorre el pasillo y el drywall cambia a blanco con acabado eggshell a su paso.": "The brush travels down the corridor and the drywall turns eggshell white as it passes.", "Tubería de rociadores, cabezas y dispositivos de alarma a lo largo del pasillo. La ubicación es esquemática.": "Sprinkler piping, heads and alarm devices along the corridor. Locations are schematic.", "Se instalan los dos pares de puertas D del vestíbulo de ascensores: marco de 71\", hojas de 39¾\" y 27¾\", con retenedores magnéticos UL 228 que se liberan con la alarma.": "Both pairs of type D doors are installed at the elevator lobby: 71\" frame, 39¾\" and 27¾\" leaves, with UL 228 magnetic hold-opens that release on alarm.", "Permiso municipal BC2628687 en revisión: no emitido": "City permit BC2628687 under review: not issued", "Condiciones de Bomberos (áreas de trabajo y Fire Watch) por confirmar por escrito": "Fire Department conditions (work areas and Fire Watch) to be confirmed in writing", "Aprobación del Condado 2027004562 obtenida el 22/10": "County approval 2027004562 obtained on 10/22", "Depende del permiso BC2628687": "Depends on permit BC2628687", "Alcance de alfombra nueva aparte de esta secuencia": "New carpet is a separate scope, not part of this sequence", "Protección temporal; se mantiene hasta el final de la secuencia": "Temporary protection; stays until the end of the sequence", "Liberación por área: requisito previo a la reconstrucción": "Release by area: required before reconstruction", "Resultados de laboratorio del 23/10: 8 de 10 muestras con crecimiento de moho": "Lab results of 10/23: mold growth in 8 of 10 samples", "Inspección municipal de muros antes de liberar el Fire Watch": "City wall inspection before the Fire Watch is released", "Muro tipo W1: yeso tipo “X” de 5/8\" en ambas caras (hoja A-1.1)": "Wall type W1: 5/8\" type \"X\" gypsum both faces (sheet A-1.1)", "Acabado eggshell blanco según la secuencia acordada": "White eggshell finish per the agreed sequence", "Rociadores FP0826-7612: comentarios de la Ciudad, en corrección": "Sprinklers FP0826-7612: City comments being corrected", "Alarma de incendio: paquete en preparación, sin número de permiso": "Fire alarm: package in preparation, no permit number yet", "Bajo permisos separados del ELSS (A-1.0, nota 3)": "Under separate ELSS permits (A-1.0, note 3)", "Planos de Relats A-1.0 a A-1.3 sellados el 30/10/2026": "Relats drawings A-1.0 to A-1.3 sealed 10/30/2026", "Permiso de puertas: no radicado; David propone iniciar el primer ciclo de comentarios": "Door permit: not filed; David proposes starting the first comment cycle", "Planos de taller (Superior Doors) requieren aprobación escrita antes de comprar; su hoja de marzo aún muestra 90 min": "Shop drawings (Superior Doors) need written approval before purchase; their March sheet still shows 90 min", "Ejecuta: ": "Performed by: ", "Ver detalle de puerta": "View door detail", "Reconstrucción de pasillos": "Corridor reconstruction", "El edificio completo, piso por piso · escenario de planificación": "The whole building, floor by floor · planning scenario", "Escenario de planificación sobre los planos de Relats del 30 de octubre": "Planning scenario based on the Relats drawings of October 30", "Simulación de planificación · No representa avance ejecutado ni aprobaciones.": "Planning simulation · Does not represent completed work or approvals.", "Edificio": "Building", "Pasillo": "Corridor", "Pisos 2–16": "Floors 2–16", "Pisos 17–21": "Floors 17–21", "Planos": "Plans", "General": "Overview", "Vestíbulo": "Lobby", "Aérea": "Aerial", "Lateral": "Side", "Girar": "Rotate", "Pasillos ELSS": "ELSS corridors", "Fachada 2028": "2028 facade", "Balcones": "Balconies", "Penthouse mecánico": "Mechanical penthouse", "Alturas": "Heights", "Inicio": "Start", "Fin": "End", "Antes": "Before", "Sem. 12": "Wk 12", "Lista de planos": "Drawing list", "Cargando el modelo…": "Loading the model…", "Pendiente": "Pending", "Demolición selectiva · Servpro": "Selective demolition · Servpro", "Verificación AirMD": "AirMD verification", "Drywall rated": "Rated drywall", "Aprobación de muros y liberación del Fire Watch": "Wall approval and Fire Watch release", "Primer y pintura": "Primer and paint", "Terminado": "Complete", "Demolición": "Demolition", "AirMD": "AirMD", "Drywall": "Drywall", "Inspección": "Inspection", "11, 12 y 14": "11, 12 & 14", "21 y PH": "21 & PH", "Planta típica pisos 2–16 (sin 13) · hoja A-1.1": "Typical plan, floors 2–16 (no 13th) · sheet A-1.1", "Planta típica pisos 17–21 · hoja A-1.2": "Typical plan, floors 17–21 · sheet A-1.2", "Penthouse (PH) · hoja A-1.3": "Penthouse (PH) · sheet A-1.3", "Planta del piso seleccionado": "Plan of the selected floor", "Ubicación, alcance y notas": "Location, scope and notes", "Pisos 2–16 (Relats: 2nd–15th)": "Floors 2–16 (Relats: 2nd–15th)", "Pisos 17–21 (Relats: 16th–20th)": "Floors 17–21 (Relats: 16th–20th)", "PH (Relats: 21st)": "PH (Relats: 21st)", "Puertas · elevaciones y herrajes": "Doors · elevations and hardware", "Ascensor de servicio": "Service elevator", "Clearance AirMD · simulación": "AirMD clearance · simulation", "Clearance AirMD ✓": "AirMD clearance ✓", "200 ft · 21 niveles": "200 ft · 21 levels", "142 ft · ala norte": "142 ft · north wing", "Penthouse mecánico · 32 ft": "Mechanical penthouse · 32 ft", "PB": "G", "Tu piso": "Your floor"};
 let LANG='es';try{if(parent&&parent!==window){const pl=parent.document.documentElement.lang||'';if(pl)LANG=pl.slice(0,2)==='en'?'en':'es';}}catch(e){}
 try{const q=new URLSearchParams(location.search).get('lang');if(q)LANG=q==='en'?'en':'es';}catch(e){}
+Object.assign(EN,{'Nomenclatura de planos (NFPA 170, vía FBC 2023 / NFPA 72): SD detector de humo · S/V altavoz-strobe · V strobe · F estación manual · CR relé de control':'Drawing nomenclature (NFPA 170, via FBC 2023 / NFPA 72): SD smoke detector · S/V speaker-strobe · V strobe · F manual pull station · CR control relay','Alarma contra incendio':'Fire alarm','Sciens reemplaza el sistema EST por Siemens Cerberus Pro, un piso a la vez y en las mismas ubicaciones: detectores de humo en el techo, speaker-strobes en los muros y estaciones manuales junto a las salidas. Al terminar el piso se hace la prueba: los strobes destellan sincronizados y suena el mensaje de voz. Posiciones ilustrativas.':'Sciens replaces the EST system with Siemens Cerberus Pro, one floor at a time and in the same locations: smoke detectors on the ceiling, speaker-strobes on the walls and pull stations next to the exits. When the floor is done it is tested: the strobes flash in sync and the voice message plays. Positions are illustrative.','Mientras un piso no se transfiere, sigue protegido por el sistema actual':'Until a floor is transferred, it stays protected by the current system','Dentro de las unidades se reemplazan altavoces y bases audibles; Sciens coordinará el acceso con Administración':'Speakers and audible bases are also replaced inside the units; Sciens will coordinate access with Management','Rociadores: tubería y cabezas':'Sprinklers: piping and heads','Antes de cerrar los muros se instala la tubería de rociadores sobre el pasillo y sus cabezas, según el ELSS: pasillos, sobre las puertas de las unidades y lobbies de elevador. La ubicación es esquemática.':'Before the walls are closed, sprinkler piping is installed above the corridor with its heads, per the ELSS: corridors, above unit doors and elevator lobbies. Locations are schematic.','Simular alarma':'Simulate alarm','Detener simulación':'Stop simulation','Prueba de alarma · simulación. Mensaje de voz de ejemplo: “Se ha reportado una emergencia. Diríjase a la escalera más cercana.”':'Alarm test · simulation. Sample voice message: “An emergency has been reported. Proceed to the nearest stairway.”'});
 const t=x=>LANG==='en'?(EN[x]!==undefined?EN[x]:x):x;const tr=t;const L=(es,en)=>LANG==='en'?en:es;
 document.documentElement.lang=LANG;
 const STAGES=[
@@ -409,17 +474,19 @@ const STAGES=[
   s:[['none','Protección temporal; se mantiene hasta el final de la secuencia']]},
  {co:'airmd',t:'Inspección AirMD',b:'AirMD hace la verificación post-remediación de cada área. Cuando un tramo pasa, se marca en verde; al final, el destello verde indica el clearance. Ningún tramo se reconstruye sin esa liberación.',
   s:[['pending','Liberación por área: requisito previo a la reconstrucción'],['none','Resultados de laboratorio del 23/10: 8 de 10 muestras con crecimiento de moho']]},
+ {co:'sciens',t:'Rociadores: tubería y cabezas',b:'Antes de cerrar los muros se instala la tubería de rociadores sobre el pasillo y sus cabezas, según el ELSS: pasillos, sobre las puertas de las unidades y lobbies de elevador. La ubicación es esquemática.',
+  s:[['pending','Rociadores FP0826-7612: comentarios de la Ciudad, en corrección'],['none','Bajo permisos separados del ELSS (A-1.0, nota 3)']]},
  {t:'Drywall nuevo',b:'Se instalan los paneles nuevos sobre los parales existentes y se cierran los muros por tramos.',
   s:[['pending','Inspección municipal de muros antes de liberar el Fire Watch'],['none','Muro tipo W1: yeso tipo “X” de 5/8" en ambas caras (hoja A-1.1)']]},
  {t:'Pintura',b:'La brocha recorre el pasillo y el drywall cambia a blanco con acabado eggshell a su paso.',
   s:[['none','Acabado eggshell blanco según la secuencia acordada']]},
- {co:'sciens',t:'Rociadores y alarma de incendio',b:'Tubería de rociadores, cabezas y dispositivos de alarma a lo largo del pasillo. La ubicación es esquemática.',
-  s:[['pending','Rociadores FP0826-7612: comentarios de la Ciudad, en corrección'],['pending','Alarma de incendio: paquete en preparación, sin número de permiso'],['none','Bajo permisos separados del ELSS (A-1.0, nota 3)']]},
+ {co:'sciens',t:'Alarma contra incendio',b:'Sciens reemplaza el sistema EST por Siemens Cerberus Pro, un piso a la vez y en las mismas ubicaciones: detectores de humo en el techo, speaker-strobes en los muros y estaciones manuales junto a las salidas. Al terminar el piso se hace la prueba: los strobes destellan sincronizados y suena el mensaje de voz. Posiciones ilustrativas.',
+  s:[['pending','Alarma de incendio: paquete en preparación, sin número de permiso'],['none','Mientras un piso no se transfiere, sigue protegido por el sistema actual'],['none','Dentro de las unidades se reemplazan altavoces y bases audibles; Sciens coordinará el acceso con Administración'],['none','Nomenclatura de planos (NFPA 170, vía FBC 2023 / NFPA 72): SD detector de humo · S/V altavoz-strobe · V strobe · F estación manual · CR relé de control']]},
  {co:'superior',t:'Puertas del vestíbulo',b:'Se instalan los dos pares de puertas D del vestíbulo de ascensores: marco de 71", hojas de 39¾" y 27¾", con retenedores magnéticos UL 228 que se liberan con la alarma.',
   s:[['ok','Planos de Relats A-1.0 a A-1.3 sellados el 30/10/2026'],['pending','Permiso de puertas: no radicado; David propone iniciar el primer ciclo de comentarios'],['pending','Planos de taller (Superior Doors) requieren aprobación escrita antes de comprar; su hoja de marzo aún muestra 90 min']]}
 ];
 const N=STAGES.length, STAGE_MS=5200;
-const DUR=[1.7,1,1,1,1.1,1.6,1,1].map(x=>x*STAGE_MS);const START=[];let acc0=0;DUR.forEach(d=>{START.push(acc0);acc0+=d;});const TOTAL=acc0;
+const DUR=[1.7,1,1,1,1,1.1,1.6,1.8,1].map(x=>x*STAGE_MS);const START=[];let acc0=0;DUR.forEach(d=>{START.push(acc0);acc0+=d;});const TOTAL=acc0;
 function stageAt(t){let si=N-1;for(let i=0;i<N;i++){if(t<START[i]+DUR[i]){si=i;break;}}return [si,Math.max(0,Math.min(1,(t-START[si])/DUR[si]))];}
 const $=id=>document.getElementById(id);
 
@@ -517,6 +584,41 @@ function walk(w,dir,ph,moving){const s=moving?Math.sin(ph):0;w.userData.l1.rotat
 function makeBrush(){const b=new THREE.Group();const hd=new THREE.Mesh(new THREE.CylinderGeometry(0.09,0.12,1.5,10),M.handle);hd.rotation.z=Math.PI/2;hd.position.x=-1.15;
   const fe=new THREE.Mesh(new THREE.BoxGeometry(0.35,0.42,0.75),M.ferrule);fe.position.x=-0.3;const br=new THREE.Mesh(new THREE.BoxGeometry(0.45,0.36,0.7),M.bristle);br.position.x=0.08;b.add(hd,fe,br);b.scale.setScalar(2.4);return b;}
 
+// ---------- fire alarm devices (Sciens: EST -> Siemens Cerberus Pro) ----------
+const FA_M={oldBody:new THREE.MeshStandardMaterial({color:0x8F8A7E,roughness:.85}),newBody:new THREE.MeshStandardMaterial({color:0xC62828,roughness:.45}),newTrim:new THREE.MeshStandardMaterial({color:0xF7F5F0,roughness:.5}),red:new THREE.MeshStandardMaterial({color:0xC8352A,roughness:.45}),oldRed:new THREE.MeshStandardMaterial({color:0x6E4440,roughness:.85}),grille:new THREE.MeshStandardMaterial({color:0x8E1C1C,roughness:.7}),relay:new THREE.MeshStandardMaterial({color:0xC62828,roughness:.5})};
+const FA_GLOW=(()=>{const c=document.createElement('canvas');c.width=c.height=64;const g=c.getContext('2d');const r=g.createRadialGradient(32,32,0,32,32,32);r.addColorStop(0,'rgba(255,255,255,1)');r.addColorStop(.35,'rgba(255,250,225,.8)');r.addColorStop(1,'rgba(255,240,200,0)');g.fillStyle=r;g.fillRect(0,0,64,64);return new THREE.CanvasTexture(c);})();
+function faDevice(type,old){const g=new THREE.Group();const body=old?FA_M.oldBody:FA_M.newBody;
+  if(type==='smoke'){const b=new THREE.Mesh(new THREE.CylinderGeometry(0.36,0.38,0.16,24),body);b.position.y=-0.08;const c=new THREE.Mesh(new THREE.CylinderGeometry(0.22,0.24,0.1,20),body);c.position.y=-0.2;g.add(b,c);
+    if(!old){const l=new THREE.Mesh(new THREE.SphereGeometry(0.05,8,6),new THREE.MeshBasicMaterial({color:0x4a120d}));l.position.set(0.2,-0.22,0);g.add(l);g.userData.led=l;}}
+  else if(type==='spk'||type==='strobe'){const h=type==='spk'?0.62:0.42;const b=new THREE.Mesh(new THREE.BoxGeometry(0.5,h,0.16),body);b.position.z=0.08;g.add(b);
+    if(type==='spk'){const gr=new THREE.Mesh(new THREE.CylinderGeometry(0.17,0.17,0.04,20),old?FA_M.oldBody:FA_M.grille);gr.rotation.x=Math.PI/2;gr.position.set(0,-0.1,0.17);g.add(gr);}
+    const ln=new THREE.Mesh(new THREE.BoxGeometry(0.22,0.12,0.06),old?FA_M.oldBody:new THREE.MeshBasicMaterial({color:0xD6E1E8}));ln.position.set(0,h/2-0.12,0.18);g.add(ln);
+    if(!old){g.userData.lens=ln;if(type==='spk'){const ring=new THREE.Mesh(new THREE.RingGeometry(0.34,0.42,36),new THREE.MeshBasicMaterial({color:0x7FB8E6,transparent:true,opacity:0,side:THREE.DoubleSide,depthWrite:false}));ring.position.set(0,-0.1,0.25);ring.visible=false;g.add(ring);g.userData.ring=ring;}}}
+  else if(type==='pull'){const b=new THREE.Mesh(new THREE.BoxGeometry(0.4,0.55,0.14),old?FA_M.oldRed:FA_M.red);b.position.z=0.07;const hd=new THREE.Mesh(new THREE.BoxGeometry(0.26,0.08,0.06),old?body:FA_M.newTrim);hd.position.set(0,0.06,0.16);g.add(b,hd);}
+  else{const b=new THREE.Mesh(new THREE.BoxGeometry(0.55,0.3,0.42),old?FA_M.oldBody:FA_M.relay);g.add(b);}
+  if(!old){const sp=new THREE.Sprite(new THREE.SpriteMaterial({map:FA_GLOW,color:0xFF6A50,transparent:true,opacity:0,depthWrite:false,blending:THREE.AdditiveBlending}));sp.position.z=type==='smoke'||type==='relay'?0:0.3;if(type==='smoke')sp.position.y=-0.25;sp.visible=false;g.add(sp);g.userData.glow=sp;}
+  if(!old){const code={smoke:'SD',spk:'S/V',strobe:'V',pull:'F',relay:'CR'}[type];const tg=faTag(code);
+    if(type==='smoke'||type==='relay'){tg.position.set(0,-0.75,0);}else{tg.position.set(0,type==='pull'?0.75:0.8,0.35);}g.add(tg);g.userData.tag=tg;}
+  return g;}
+const FA_TAGS={};function faTag(code){if(!FA_TAGS[code]){const c=document.createElement('canvas');const fs=44,pad=14;const x=c.getContext('2d');x.font='700 '+fs+'px Arial, sans-serif';const w=Math.ceil(x.measureText(code).width)+pad*2,h=fs+pad;c.width=w;c.height=h;
+  x.font='700 '+fs+'px Arial, sans-serif';x.fillStyle='#B71C1C';x.beginPath();if(x.roundRect)x.roundRect(0,0,w,h,10);else x.rect(0,0,w,h);x.fill();x.strokeStyle='#FFFFFF';x.lineWidth=4;x.stroke();x.fillStyle='#FFFFFF';x.textAlign='center';x.textBaseline='middle';x.fillText(code,w/2,h/2+2);
+  const tx=new THREE.CanvasTexture(c);FA_TAGS[code]={tx,ar:w/h};}
+  const d=FA_TAGS[code];const sp=new THREE.Sprite(new THREE.SpriteMaterial({map:d.tx,depthTest:false,transparent:true}));sp.renderOrder=30;const hh=0.62/1.7;sp.scale.set(hh*d.ar,hh,1);return sp;}
+let faAlarm=false;
+function faUpdate(now,si,p){const it=items;if(!it||!it.faDev)return;
+  const testing=(si===7&&p>=0.86&&p<1)||(faAlarm&&si>=7);const flashOn=testing&&(Math.floor(now/420)%2===0);
+  it.faDev.forEach(d=>{const e=si<7?0:(si>7?1:clamp((p*1.12-d.t)/0.12));const out=clamp(e*2),inn=clamp(e*2-1);
+    d.old.visible=out<1;d.old.scale.setScalar(Math.max(0.001,1-out)*1.7);
+    d.nw.visible=inn>0;const k=inn<1?1+Math.sin(inn*Math.PI)*0.35:1;d.nw.scale.setScalar(Math.max(0.001,ease(inn)*k)*1.7);
+    const u=d.nw.userData;
+    if(u.glow){const pop=inn>0&&inn<1?Math.sin(inn*Math.PI):0;const fl=(d.type==='spk'||d.type==='strobe')&&flashOn;u.glow.visible=pop>0.02||fl;u.glow.material.opacity=fl?1:pop*0.85;u.glow.material.color.setHex(fl?0xFFFFFF:0xFF6A50);u.glow.scale.setScalar(fl?3.4:1.4+pop*1.2);}
+    if(u.lens)u.lens.material.color.setHex(flashOn?0xFFFFFF:0xD6E1E8);
+    if(u.led)u.led.material.color.setHex(testing&&(Math.floor(now/300)%2===0)?0xFF2A1A:0x4a120d);
+    if(u.ring){u.ring.visible=testing;if(testing){const ph=(now*0.0011+d.ph)%1;u.ring.scale.setScalar(1+ph*9);u.ring.material.opacity=0.6*(1-ph);}}});
+  const B=!floorGroup||!floorGroup.visible;
+  const btn=document.getElementById('faSim');if(btn){btn.hidden=B||si<7;btn.setAttribute('aria-pressed',String(faAlarm));const lbl=faAlarm?t('Detener simulación'):t('Simular alarma');if(btn.textContent!==lbl)btn.textContent=lbl;}
+  const ban=document.getElementById('faBanner');if(ban)ban.hidden=B||!testing;}
+
 let floorGroup=null, items=null;
 function buildFloor(key){
   floorBuildT=performance.now();
@@ -538,7 +640,7 @@ function buildFloor(key){
   /* Opaque legacy floor plane removed; corridor geometry remains. */
   /* Do not add the 900x900 opaque slab: it hides the floor geometry and creates the flat gray field. */
 
-  const it={panelsOld:[],panelsNew:[],carpet:[],ram:[],verify:[],pipes:[],heads:[],fa:[],doors:[],airmd:[],brushes:[],exit:null,crew:[],doorCrew:[],flash:null};
+  const it={faDev:[],panelsOld:[],panelsNew:[],carpet:[],ram:[],verify:[],pipes:[],heads:[],fa:[],doors:[],airmd:[],brushes:[],exit:null,crew:[],doorCrew:[],flash:null};
   const J=P(77.8,90.5), SP=P(77.9,70.2), EXIT=P(80.6,70.2);
   const lineOf=name=>{const ln=F.lines.find(l=>l.name===name);if(!ln)return null;const a=P(ln.a[0],ln.a[1]),b=P(ln.b[0],ln.b[1]);return {a,b,dir:b.clone().sub(a).normalize(),L:a.distanceTo(b)};};
   const routeFor=(pos,n,seg)=>{const ln=lineOf(seg);const start=pos.clone().addScaledVector(n,-1.1);const pts=[start];
@@ -590,14 +692,23 @@ function buildFloor(key){
     const pg=new THREE.CylinderGeometry(0.12,0.12,1,10);pg.translate(0,0.5,0);pg.rotateX(Math.PI/2);
     const pipe=new THREE.Mesh(pg,M.pipe);pipe.position.copy(a).addScaledVector(side,0.9);pipe.position.y=H-0.55;pipe.lookAt(pipe.position.clone().add(dir));pipe.userData.L=L;g.add(pipe);it.pipes.push(pipe);
     for(let s=5;s<L;s+=10){const h=new THREE.Mesh(new THREE.CylinderGeometry(0.28,0.12,0.35,12),M.head);h.position.copy(a).addScaledVector(dir,s).addScaledVector(side,0.9);h.position.y=H-0.8;g.add(h);it.heads.push({m:h,t:s/L});}
-    for(let s=12;s<L;s+=26){const fa=new THREE.Group();const disc=new THREE.Mesh(new THREE.CylinderGeometry(0.45,0.45,0.18,20),M.fa);const led=new THREE.Mesh(new THREE.SphereGeometry(0.08,8,8),M.faRed);led.position.y=-0.1;fa.add(disc,led);fa.position.copy(a).addScaledVector(dir,s).addScaledVector(side,-0.8);fa.position.y=H-0.2;g.add(fa);it.fa.push({m:fa,t:s/L});}
+    {const wo=sg=>{const ds=F.panels.filter(p=>p.seg===ln.name&&(p.n[0]*side.x+p.n[1]*side.z)*sg>0).map(p=>Math.abs((p.x-CX-a.x)*side.x+(p.y-CZ-a.z)*side.z));return ds.length?ds.reduce((x,y)=>x+y,0)/ds.length-0.12:2.6;};
+     const add=(type,sAt,sg,y)=>{const off=sg===0?0:sg*wo(sg);const pos=a.clone().addScaledVector(dir,sAt).addScaledVector(side,off);pos.y=y;
+       const old=faDevice(type,true),nw=faDevice(type,false);old.position.copy(pos);nw.position.copy(pos);
+       if(sg!==0){const nx=-side.x*sg,nz=-side.z*sg;old.rotation.y=nw.rotation.y=Math.atan2(nx,nz);}
+       g.add(old,nw);it.faDev.push({type,old,nw,t:Math.min(0.78,sAt/L*0.78),ph:Math.random()});};
+     add('smoke',12,0,H);add('smoke',Math.max(13,L-8),0,H);
+     add('spk',8,-1,7.4);add('spk',Math.max(9,L-10),1,7.4);
+     add('pull',Math.max(10,L-2.5),1,4.0);
+     if(li===0){add('smoke',0.6,0,H);add('strobe',3.5,1,7.4);add('relay',2.2,0,H+0.35);}}
+
     // AirMD sampler travelling along the line
     const am=new THREE.Group();const body=new THREE.Mesh(new THREE.CylinderGeometry(0.5,0.6,1.4,16),M.airmd);body.position.y=3.2;
     const legs=new THREE.Mesh(new THREE.CylinderGeometry(0.06,0.06,2.6,6),M.stud);legs.position.y=1.3;
     const halo=new THREE.Mesh(new THREE.RingGeometry(1.4,1.75,40),new THREE.MeshBasicMaterial({color:0x2E9C7E,transparent:true,opacity:.6,side:THREE.DoubleSide,depthWrite:false}));halo.rotation.x=-Math.PI/2;halo.position.y=0.15;
     am.add(body,legs,halo);am.userData={a,dir,L};am.visible=false;g.add(am);it.airmd.push(am);
     const crewSide=side.clone();
-    [['servpro',0,0.9],['servpro',1,-0.9],['airmd',3,-1.6],['sciens',6,-1.0]].forEach(([k,st,off])=>{const w=makeWorker(k);g.add(w);it.crew.push({w,st,a,dir,L,off,side:crewSide,ph:li*1.3});});
+    [['servpro',0,0.9],['servpro',1,-0.9],['airmd',3,-1.6],['sciens',4,-1.0],['sciens',7,1.0]].forEach(([k,st,off])=>{const w=makeWorker(k);g.add(w);it.crew.push({w,st,a,dir,L,off,side:crewSide,ph:li*1.3});});
     [1,-1].forEach(sg=>{const ds=F.panels.filter(p=>p.seg===ln.name&&(p.n[0]*side.x+p.n[1]*side.z)*sg>0).map(p=>Math.abs((p.x-CX-a.x)*side.x+(p.y-CZ-a.z)*side.z));
       if(!ds.length)return;const off=ds.reduce((x,y)=>x+y,0)/ds.length-0.75;const br=makeBrush();br.rotation.y=-Math.atan2(side.z*sg,side.x*sg);br.visible=false;g.add(br);
       it.brushes.push({m:br,a,dir,L,side:side.clone().multiplyScalar(sg),off,seg:ln.name,ph:sg>0?0:1.7});});
@@ -648,24 +759,24 @@ function apply(time){
     m.visible=e>0&&fade>0;m.material.opacity=Math.min(0.95,(0.42*e+0.4*pass+0.5*pulse)*fade);m.material.color.setHex(pulse>0.5||pass>0.5?0x5CF29A:0x2E9C7E);});
   if(it.flash){it.flash.visible=si===3&&p3v>0.84&&p3v<1;}
   it.airmd.forEach(am=>{const p3=ps(3);am.visible=si===3&&p3>0&&p3<1;const {a,dir,L}=am.userData;am.position.copy(a).addScaledVector(dir,clamp(p3*1.1)*L);});
-  const p5=ps(5),bT=clamp(p5*1.08);
-  it.panelsNew.forEach(({m,t,pt})=>{const e=local(ps(4),t);m.visible=e>0;m.material.opacity=e;m.position.copy(m.userData.base).addScaledVector(m.userData.n,-(1-e)*1.4);m.position.y=(H-0.15)/2;
+  const p5=ps(6),bT=clamp(p5*1.08);
+  it.panelsNew.forEach(({m,t,pt})=>{const e=local(ps(5),t);m.visible=e>0;m.material.opacity=e;m.position.copy(m.userData.base).addScaledVector(m.userData.n,-(1-e)*1.4);m.position.y=(H-0.15)/2;
     const pnt=p5>=1?1:clamp((bT-t)/0.06+0.5);pt.visible=pnt>0.001&&e>=1;{const done=pnt>=0.999;if(m.userData.painted!==done){m.userData.painted=done;m.material.map=done?null:newTex;m.material.color.copy(done?EGG:NEWC);m.material.roughness=done?0.55:0.85;m.material.needsUpdate=true;}}
     if(pt.visible){pt.scale.x=Math.max(0.001,pnt);pt.position.copy(pt.userData.base).addScaledVector(pt.userData.tdir,-(1-pnt)*pt.userData.w/2);pt.position.y=(H-0.13)/2;}});
-  it.brushes.forEach(b=>{b.m.visible=si===5&&p5>0&&p5<1;if(!b.m.visible)return;const s=bT*b.L;
+  it.brushes.forEach(b=>{b.m.visible=si===6&&p5>0&&p5<1;if(!b.m.visible)return;const s=bT*b.L;
     b.m.position.copy(b.a).addScaledVector(b.dir,s).addScaledVector(b.side,b.off);b.m.position.y=1.4+(0.5+0.5*Math.sin(time*0.011+b.ph))*(H-2.6);});
-  const p6=ps(6);
+  const p6=ps(4);
   it.pipes.forEach(pp=>{const e=ease(p6);pp.visible=e>0.001;pp.scale.set(1,1,Math.max(0.001,e*pp.userData.L));});
   it.heads.forEach(({m,t})=>{const e=local(p6,t,0.12);m.visible=e>0;m.scale.setScalar(Math.max(0.001,e));});
-  it.fa.forEach(({m,t})=>{const e=local(p6,t*0.9+0.1,0.12);m.visible=e>0;m.scale.setScalar(Math.max(0.001,e));});
-  {const pp=[ps(0),ps(1),0,ps(3),0,0,ps(6),0];
+  faUpdate(performance.now(),si,ps(7));
+  {const pp=[ps(0),ps(1),0,ps(3),ps(4),0,0,ps(7),0];
   it.crew.forEach(c=>{const p=pp[c.st];c.w.visible=si===c.st&&p>0&&p<1;if(!c.w.visible)return;
     if(c.fixed){walk(c.w,null,time*0.012,true);c.w.userData.a1.rotation.x=-1.1;c.w.userData.a2.rotation.x=-1.1;return;}
-    const f=c.st===6?ease(p):clamp(p*(c.st===0?1.25:1.12));const s=Math.min(c.L,Math.max(0,f*c.L+(c.st===3?-1.5:0)));
+    const f=c.st===7?ease(clamp(p/0.85)):c.st===4?ease(p):clamp(p*(c.st===0?1.25:1.12));const s=Math.min(c.L,Math.max(0,f*c.L+(c.st===3?-1.5:0)));
     c.w.position.copy(c.a).addScaledVector(c.dir,s).addScaledVector(c.side,c.off);walk(c.w,c.dir,time*0.012+c.ph,true);
-    if(c.st===6){c.w.userData.a1.rotation.x=-2.6;c.w.userData.a2.rotation.x=-2.6;}});}
-  const p7=ps(7);
-  it.doorCrew.forEach(c=>{const e=local(p7,c.t,0.5);c.w.visible=si===7&&p7>0&&e<1;if(c.w.visible){const sw=Math.sin(time*0.01+c.t*5);c.w.userData.a1.rotation.x=-1.2+sw*0.35;c.w.userData.a2.rotation.x=-0.9-sw*0.35;}});
+    if(c.st===4||c.st===7){c.w.userData.a1.rotation.x=-2.6;c.w.userData.a2.rotation.x=-2.6;}});}
+  const p7=ps(8);
+  it.doorCrew.forEach(c=>{const e=local(p7,c.t,0.5);c.w.visible=si===8&&p7>0&&e<1;if(c.w.visible){const sw=Math.sin(time*0.01+c.t*5);c.w.userData.a1.rotation.x=-1.2+sw*0.35;c.w.userData.a2.rotation.x=-0.9-sw*0.35;}});
   it.doors.forEach(d=>{const e=local(p7,d.t,0.5);d.g.visible=e>0;
     const rise=clamp(e/0.45);d.parts.forEach(o=>{o.scale.y=Math.max(0.001,rise);});
     const close=ease(clamp((e-0.45)/0.55));d.a.visible=d.b.visible=e>0.4;
@@ -689,6 +800,7 @@ const icon=$('playIcon');
 function play(){if(time>=TOTAL)time=0;playing=true;last=performance.now();icon.innerHTML='<path d="M5 3.5h3.5v13H5zM11.5 3.5H15v13h-3.5z"/>';$('playBtn').setAttribute('aria-label','Pausar secuencia');}
 function pause(){playing=false;icon.innerHTML='<path d="M5 3.5v13l11-6.5z"/>';$('playBtn').setAttribute('aria-label','Reproducir secuencia');}
 $('playBtn').onclick=()=>playing?pause():play();
+{const fb=$('faSim');if(fb)fb.onclick=()=>{faAlarm=!faAlarm;};const bn=$('faBanner');if(bn)bn.textContent=t('Prueba de alarma · simulación. Mensaje de voz de ejemplo: “Se ha reportado una emergencia. Diríjase a la escalera más cercana.”');}
 scrub.addEventListener('input',()=>{pause();setTime(+scrub.value);});
 document.querySelectorAll('[data-speed]').forEach(b=>b.onclick=()=>{speed=+b.dataset.speed;document.querySelectorAll('[data-speed]').forEach(x=>x.setAttribute('aria-pressed',x===b));});
 const SHEET={'2-15':'Planta típica pisos 2–16 (sin 13) · hoja A-1.1','16-20':'Planta típica pisos 17–21 · hoja A-1.2','21':'Penthouse (PH) · hoja A-1.3'};
@@ -741,6 +853,7 @@ function loop(now){requestAnimationFrame(loop);if(!visible)return;
   if(bTick)bTick(now);
   if(floorGroup&&floorBuildT){const e=ease(clamp((now-floorBuildT)/800));floorGroup.scale.y=Math.max(0.001,e);floorGroup.position.y=(1-e)*-2;if(e>=1)floorBuildT=0;}
   if(playing){time+=(now-last)*speed;last=now;if(time>=TOTAL){time=TOTAL;pause();}scrub.value=time;apply(time);updateText();}
+  else if(items&&floorGroup&&floorGroup.visible){const q=stageAt(time);faUpdate(now,q[0],q[0]===7?q[1]:(q[0]>7?1:0));}
   if(camAnim){const k=clamp((now-camAnim.s)/900);const e=ease(k);cam.position.lerpVectors(camAnim.fp,camAnim.tp,e);controls.target.lerpVectors(camAnim.ft,camAnim.tt,e);if(k>=1)camAnim=null;}
   controls.update();renderer.render(scene,cam);}
 
@@ -867,7 +980,7 @@ const gnd=new THREE.Mesh(new THREE.PlaneGeometry(2400,2400),M.slab);gnd.rotation
   const l1=labelSprite('Collins Avenue');l1.scale.set(48,12,1);l1.position.set(-70,12,roadZ);ctx.add(l1);
   const l2=labelSprite('Indian Creek');l2.scale.set(42,10.5,1);l2.position.set(-60,12,wz);ctx.add(l2);}
 // podium: pool deck, lobby-level parking and lower garage (RJM 25-009 P-001/P-101)
-if(window.CollinsPodium&&window.STORM_DATA){try{const POD=CollinsPodium.build(THREE,window.STORM_DATA,BLD,{CX,CZ,YB:-7});bG.add(POD.root);ctx.position.y=-7;if(ctx.userData.water)ctx.userData.water.position.y-=2.2;shadowGround.position.y=-7.15;window.__podium=POD;}catch(e){console.warn('Podium unavailable',e);}}
+if(window.CollinsPodium&&window.STORM_DATA){try{const POD=CollinsPodium.build(THREE,window.STORM_DATA,BLD,{CX,CZ,YB:-7,marina:true});bG.add(POD.root);ctx.position.y=-7;if(ctx.userData.water)ctx.userData.water.position.y-=2.2;shadowGround.position.y=-7.15;window.__podium=POD;}catch(e){console.warn('Podium unavailable',e);}}
 // dimensions (Skytek)
 const dims=new THREE.Group();bG.add(dims);
 function dimLine(x,z,h,txt){const g=new THREE.Group();const m=new THREE.LineBasicMaterial({color:0x8E6A3E});
