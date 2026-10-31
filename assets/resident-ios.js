@@ -127,6 +127,8 @@ const w=$('realModelFrame').contentWindow;
 if(w){try{w.dispatchEvent(new Event('resize'))}catch{}}
 });
 function load3D(){
+/* Legacy model-viewer disabled: reconstruction.html is the sole 3D source. */
+return;
 if(view==='interior'||modelRequested)return;
 modelRequested=true;
 const iframe=$('realModelFrame');
