@@ -132,6 +132,19 @@ header{padding-top:8px!important;padding-bottom:10px!important;min-height:0!impo
 .bpbar{justify-content:flex-end!important}
 .bp{background:#194a87!important}
 .bp .bpscroll{background:#194a87!important}
+</style><style id="plans-independent-view">
+/* Plans is a peer view to the 3D cameras, not a camera button. */
+#floorSeg{display:flex!important;flex-wrap:wrap!important;gap:6px!important}
+#floorSeg[hidden]{display:none!important}
+#floorSeg .plans-tab{background:#e5ebe7;color:#254d43;border:1px solid #cbd9d1}
+#floorSeg .plans-tab[aria-pressed="true"]{background:#245f5d!important;color:#fff!important}
+.plans-active #mount,.plans-active #iTools,.plans-active #bTools,.plans-active #stamp,.plans-active #bChip{visibility:hidden!important;pointer-events:none!important}
+.plans-active .bp{display:flex!important;position:absolute!important;inset:0!important;z-index:20!important}
+.plans-active .viewer{background:#194a87!important}
+.plans-active .bpscroll{min-height:0!important;flex:1!important}
+.plans-active #floorSeg{position:relative;z-index:21}
+#iTools{gap:6px!important}
+@media(max-width:560px){#floorSeg{gap:4px!important}#floorSeg button{padding:9px 11px!important;font-size:13px!important}}
 </style></head>
 <body>
 <div class="wrap">
@@ -148,7 +161,7 @@ header{padding-top:8px!important;padding-bottom:10px!important;min-height:0!impo
     <div class="seg" id="floorSeg" role="group" aria-label="Piso">
       <button data-floor="2-15" aria-pressed="false">Pisos 2–15</button>
       <button data-floor="16-20" aria-pressed="true">Pisos 16–20</button>
-      <button data-floor="21" aria-pressed="false">PH</button>
+      <button data-floor="21" aria-pressed="false">PH</button><button id="bpBtn" class="plans-tab" aria-pressed="false" type="button">Planos</button>
     </div>
     </div>
   </header>
@@ -169,7 +182,6 @@ header{padding-top:8px!important;padding-bottom:10px!important;min-height:0!impo
       <button data-view="overview">General</button>
       <button data-view="corridor">Pasillo</button>
       <button data-view="lobby">Vestíbulo</button>
-      <button id="bpBtn" aria-pressed="false">Planos</button>
     </div>
     <div class="vtools" id="bTools" hidden>
       <button data-bview="bAerial">Aérea</button>
@@ -380,7 +392,7 @@ function buildFloor(key){
   wg.rotateX(-Math.PI/2);
   const walls=new THREE.Mesh(wg,[M.wallTop,M.wall]);walls.renderOrder=-1;g.add(walls);
   const slab=new THREE.Mesh(new THREE.PlaneGeometry(900,900),M.slab);
-  slab.rotation.x=-Math.PI/2;slab.position.set((minx+maxx)/2-CX,-0.02,(miny+maxy)/2-CZ);g.add(slab);
+  /* Do not add the 900x900 opaque slab: it hides the floor geometry and creates the flat gray field. */
 
   const it={panelsOld:[],panelsNew:[],carpet:[],ram:[],verify:[],pipes:[],heads:[],fa:[],doors:[],airmd:[],brushes:[],exit:null,crew:[],doorCrew:[],flash:null};
   const J=P(77.8,90.5), SP=P(77.9,70.2), EXIT=P(80.6,70.2);
@@ -552,7 +564,7 @@ function bpSync(){let by='relats',src='',cap='';
   $('lgRelats').classList.toggle('on',by==='relats');$('lgSuperior').classList.toggle('on',by==='superior');
   const n=NOTES[by];$('bpNote').hidden=!n;$('bpNote').textContent=n;renderList();}
 function openList(open){sheetList.hidden=!open;$('sheetBtn').setAttribute('aria-expanded',open);}
-function setBP(on,sheet){bpOn=on;bpEl.hidden=!on;$('bpCap').hidden=!on;$('stamp').hidden=on;$('bpBtn').setAttribute('aria-pressed',on);openList(false);
+function setBP(on,sheet){bpOn=on;document.body.classList.toggle('plans-active',on);bpEl.hidden=!on;$('bpCap').hidden=!on;$('stamp').hidden=on;$('bpBtn').setAttribute('aria-pressed',on);openList(false);
   if(on){if(sheet)curSheet=sheet;bpSync();bpScroll.classList.remove('zoom');bpScroll.scrollTo(0,0);}}
 $('bpBtn').onclick=()=>setBP(!bpOn,bpOn?null:'A-1.0');
 $('sheetBtn').onclick=()=>openList(sheetList.hidden);
