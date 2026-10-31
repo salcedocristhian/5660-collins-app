@@ -667,7 +667,7 @@ root.querySelectorAll("[data-msview]").forEach(b=>b.addEventListener("click",()=
  const tab=document.getElementById('tab-progress'),picture=document.getElementById('modelPicture');
  const frame=document.createElement('iframe');frame.id='reconstructionFrame';frame.title='Reconstrucción interactiva de pasillos · planos Relats';frame.loading='lazy';frame.src='./reconstruction.html?v=20261031-interior-floor-nav-v8';picture.appendChild(frame);
  function currentFloor(){const select=document.getElementById('myFloorNumber');return select?select.value:'19';}
- function floorKey(f){return f==='PH'?'21':Number(f)<=15?'2-15':Number(f)<=20?'16-20':'21';}
+ function floorKey(f){return f==='PH'?'21':Number(f)<=16?'2-15':Number(f)<=21?'16-20':'21';}
  function sync(){const active=document.querySelector('#progressSegment [data-view].active')?.dataset.view==='interior';tab.classList.toggle('has-reconstruction',active);const visible=!tab.hidden;
  frame.contentWindow?.postMessage({type:'collins-visibility',visible},location.origin);setEmbeddedMode(active?'interior':'building');
  if(active){const play=document.getElementById('sequencePlay');if((play?.getAttribute('aria-label')||'').startsWith('Pause'))play.click();}}
@@ -694,15 +694,15 @@ root.querySelectorAll("[data-msview]").forEach(b=>b.addEventListener("click",()=
  function cleanPlanList(){
   try{
    const doc=frame.contentDocument;if(!doc)return;
-   const targets=[...doc.querySelectorAll('button,li,[role="option"],[role="menuitem"]')].filter(el=>/Planta del piso seleccionado/i.test(el.textContent||''));
+   const targets=[...doc.querySelectorAll('button,li,[role="option"],[role="menuitem"]')].filter(el=>/Planta del piso seleccionado|Plan of the selected floor/i.test(el.textContent||''));
    for(const el of targets){if((el.textContent||'').length<180)el.remove();}
   }catch(e){console.warn('Plan list cleanup unavailable',e);}
  }
  frame.addEventListener('load',()=>{
   cleanPlanList();harmonizeViewer();
   try{const doc=frame.contentDocument;if(doc?.body)new MutationObserver(()=>{cleanPlanList();harmonizeViewer();}).observe(doc.body,{childList:true,subtree:true});}catch(e){}
-  frame.contentWindow.postMessage({type:'collins-floor',key:floorKey(currentFloor())},location.origin);frame.contentWindow.postMessage({type:'collins-language',lang:document.documentElement.lang==='es'?'es':'en'},location.origin);sync();});
- document.getElementById('myFloorNumber')?.addEventListener('change',()=>frame.contentWindow.postMessage({type:'collins-floor',key:floorKey(currentFloor())},location.origin));
+  frame.contentWindow.postMessage({type:'collins-floor',key:floorKey(currentFloor())},location.origin);frame.contentWindow.postMessage({type:'collins-myfloor',label:currentFloor()},location.origin);frame.contentWindow.postMessage({type:'collins-language',lang:document.documentElement.lang==='es'?'es':'en'},location.origin);sync();});
+ document.getElementById('myFloorNumber')?.addEventListener('change',()=>{frame.contentWindow.postMessage({type:'collins-myfloor',label:currentFloor()},location.origin);frame.contentWindow.postMessage({type:'collins-floor',key:floorKey(currentFloor())},location.origin);});
  window.addEventListener('message',e=>{if(e.source!==frame.contentWindow||e.origin!==location.origin)return;if(e.data?.type==='collins-height'&&Number.isFinite(e.data.height))frame.style.height=Math.min(4500,Math.max(650,e.data.height))+'px';});
  document.querySelectorAll('#progressSegment [data-view],.nav-item').forEach(b=>b.addEventListener('click',()=>{requestAnimationFrame(sync);setTimeout(sync,100)}));
  new MutationObserver(sync).observe(tab,{attributes:true,attributeFilter:['hidden']});new MutationObserver(sync).observe(document.getElementById('progressSegment'),{subtree:true,attributes:true,attributeFilter:['class','aria-selected']});sync();

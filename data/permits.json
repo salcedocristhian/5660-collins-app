@@ -5,7 +5,7 @@
   "approvalStatus": "draft",
   "approvalNote": "PM draft from the Master Permit Exhibit of Oct 27, 2026. Confirm with Building Management before resident distribution.",
   "display": {
-    "showCodeCases": true
+    "showCodeCases": false
   },
   "disclaimer": "Planning dates are not commitments. A permit or application number is not proof of issuance.",
   "keyDates": [
@@ -18,7 +18,7 @@
     },
     {
       "date": "2026-11-17",
-      "title": "Lighting violation hearing, 9:30 AM",
+      "title": "Lighting violation hearing, 9:00 AM",
       "ref": "BVE26000408",
       "qualifier": "Magistrate hearing",
       "board": true
@@ -310,7 +310,7 @@
       "scope": "Lighting violation",
       "number": "BVE26000408",
       "status": "Code case",
-      "next": "Hearing Nov 17, 2026, 9:30 AM",
+      "next": "Hearing Nov 17, 2026, 9:00 AM",
       "bond": "No",
       "duration": "—",
       "completion": "—",
