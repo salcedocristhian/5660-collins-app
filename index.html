@@ -643,13 +643,10 @@ root.querySelectorAll("[data-msview]").forEach(b=>b.addEventListener("click",()=
 #tab-progress.has-reconstruction #realModelFrame,#tab-progress.has-reconstruction #modelLoading,#tab-progress.has-reconstruction .model-inline-playback,#tab-progress.has-reconstruction .model-label,#tab-progress.has-reconstruction .floor-play-console,#tab-progress.has-reconstruction .sequence-card,#tab-progress.has-reconstruction #floorTasks,#tab-progress.has-reconstruction #floorHeading,#tab-progress.has-reconstruction #floorTasks+.quiet-foot{display:none!important}
 #tab-progress.has-reconstruction .model-fullscreen #reconstructionFrame{height:100dvh!important}
 #tab-progress.has-reconstruction #modelExpand{top:12px;bottom:auto;right:12px}
-/* Building: dedicated exterior model. Interior: reconstruction viewer only. */
-#tab-progress:not(.has-reconstruction) #reconstructionFrame{display:none!important}
-#tab-progress:not(.has-reconstruction) #realModelFrame{display:block!important}
-#tab-progress:not(.has-reconstruction) #modelPicture{height:clamp(350px,65vh,650px)!important;min-height:350px;background:#f2f3f1!important}
-#tab-progress:not(.has-reconstruction) #modelLoading,#tab-progress:not(.has-reconstruction) .model-inline-playback,#tab-progress:not(.has-reconstruction) .model-label{display:flex}
-#tab-progress.has-reconstruction #modelPicture{background:#f2f3f1!important}
-#tab-progress #reconstructionFrame{background:#f2f3f1!important}
+/* Both Building and Interior use reconstruction.html, never model-viewer.html. */
+#tab-progress #reconstructionFrame{display:block!important;position:relative;inset:auto;width:100%;height:1400px;background:#f2f3f1!important}
+#tab-progress #modelPicture{height:auto!important;min-height:400px;background:#f2f3f1!important}
+#tab-progress #realModelFrame,#tab-progress #modelLoading,#tab-progress .model-inline-playback,#tab-progress .model-label,#tab-progress .floor-play-console,#tab-progress .sequence-card,#tab-progress #floorTasks,#tab-progress #floorHeading,#tab-progress #floorTasks+.quiet-foot{display:none!important}
 </style>
 <script>
 (function(){function init(){
@@ -657,9 +654,18 @@ root.querySelectorAll("[data-msview]").forEach(b=>b.addEventListener("click",()=
  const frame=document.createElement('iframe');frame.id='reconstructionFrame';frame.title='Reconstrucción interactiva de pasillos · planos Relats';frame.loading='lazy';frame.src='./reconstruction.html?v=20261030-interior-fix2#piso-16-20';picture.appendChild(frame);
  function currentFloor(){const select=document.getElementById('myFloorNumber');return select?select.value:'19';}
  function floorKey(f){return f==='PH'?'21':Number(f)<=16?'2-15':'16-20';}
- function sync(){const active=document.querySelector('#progressSegment [data-view].active')?.dataset.view==='interior';tab.classList.toggle('has-reconstruction',active);const visible=active&&!tab.hidden;
- frame.contentWindow?.postMessage({type:'collins-visibility',visible},location.origin);
+ function sync(){const active=document.querySelector('#progressSegment [data-view].active')?.dataset.view==='interior';tab.classList.toggle('has-reconstruction',active);const visible=!tab.hidden;
+ frame.contentWindow?.postMessage({type:'collins-visibility',visible},location.origin);setEmbeddedMode(active?'interior':'building');
  if(active){const play=document.getElementById('sequencePlay');if((play?.getAttribute('aria-label')||'').startsWith('Pause'))play.click();}}
+ function setEmbeddedMode(mode){
+  try{
+   const d=frame.contentDocument;if(!d)return;
+   const buttons=[...d.querySelectorAll('button')];
+   const wanted=mode==='building'?/^(Edificio|Building)$/i:/^(Pasillo|Corridor|Interior)$/i;
+   const button=buttons.find(b=>wanted.test((b.textContent||'').trim()));
+   if(button&&!button.classList.contains('active')&&button.getAttribute('aria-selected')!=='true')button.click();
+  }catch(e){console.warn('Embedded mode sync unavailable',e);}
+ }
  function harmonizeViewer(){
   try{
    const d=frame.contentDocument;if(!d)return;
