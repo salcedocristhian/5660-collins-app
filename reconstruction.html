@@ -145,6 +145,13 @@ header{padding-top:8px!important;padding-bottom:10px!important;min-height:0!impo
 .plans-active #floorSeg{position:relative;z-index:21}
 #iTools{gap:6px!important}
 @media(max-width:560px){#floorSeg{gap:4px!important}#floorSeg button{padding:9px 11px!important;font-size:13px!important}}
+</style><style id="floor-selector-mobile">
+#floorSeg{width:100%!important;display:grid!important;grid-template-columns:1.15fr 1.15fr .55fr .85fr!important;gap:4px!important;flex-wrap:nowrap!important;align-items:stretch!important}
+#floorSeg[hidden]{display:none!important}
+#floorSeg button{min-width:0!important;white-space:nowrap!important;line-height:1.2!important;padding:11px 5px!important;font-size:clamp(11px,3.1vw,15px)!important;letter-spacing:-.035em!important}
+.hctl{width:100%!important;min-width:0!important}
+#floorSeg .plans-tab{margin:0!important}
+@media(min-width:650px){#floorSeg{max-width:680px!important}#floorSeg button{font-size:15px!important}}
 </style></head>
 <body>
 <div class="wrap">
@@ -751,7 +758,25 @@ themeGround();resize();buildFloor(floorKey);setTime(0);
 if(m){setMode('interior');}else{bIntro=0;setMode('building');}
 $('loading').remove();requestAnimationFrame(loop);
 
+const labels={
+'Pisos 2–15':'Floors 2–15','Pisos 16–20':'Floors 16–20','Planos':'Plans','General':'Overview','Pasillo':'Corridor','Vestíbulo':'Lobby','Aérea':'Aerial','Lateral':'Side','Girar':'Rotate','Lista de planos':'Drawing list','Inicio':'Start','Fin':'End','Remediación de moho':'Mold remediation','Retiro de alfombra':'Carpet removal','Edificio':'Building','Reconstrucción de pasillos':'Corridor reconstruction','5660 Collins Avenue':'5660 Collins Avenue'};
+const originals=new WeakMap();let viewerLang='es';
+function translateViewer(language){
+ viewerLang=language==='en'?'en':'es';document.documentElement.lang=viewerLang;
+ const reverse=Object.fromEntries(Object.entries(labels).map(([es,en])=>[en,es]));
+ document.querySelectorAll('button, .stamp, .bchip, .bpnote, .sub, #hTitle, #hSub, .transport span, .stages button').forEach(el=>{
+  if(el.children.length>0)return;
+  const current=el.textContent.trim();
+  if(!current)return;
+  if(!originals.has(el))originals.set(el,reverse[current]||current);
+  const original=originals.get(el);
+  let next=viewerLang==='en'?(labels[original]||original):original;
+  if(viewerLang==='en')next=next.replace('Planta típica pisos','Typical floor plan, floors').replace('hoja A-','sheet A-').replace('Etapa ','Stage ').replace('Semana ','Week ');
+  if(el.textContent.trim()!==next)el.textContent=next;
+ });
+}
 window.addEventListener('message',e=>{if(e.source!==parent||e.origin!==location.origin)return;
+ if(e.data?.type==='collins-language')translateViewer(e.data.lang);
  if(e.data?.type==='collins-visibility'){visible=!!e.data.visible;if(!visible){pause();bPause();}else resize();}
  if(e.data?.type==='collins-floor'&&['2-15','16-20','21'].includes(e.data.key))setMode('interior',e.data.key);
 });
