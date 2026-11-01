@@ -194,7 +194,11 @@ body.plans-active .viewer{height:min(80vh,780px)!important}
 </style><style id="render-sky">
 .viewer.sky{background:linear-gradient(180deg,#A9CBE6 0%,#D6E6F1 55%,#EEF2F1 100%)!important;transition:background .6s}
 @media (prefers-color-scheme:dark){.viewer.sky{background:linear-gradient(180deg,#1E3A52 0%,#2B4457 55%,#3A4A50 100%)!important}}
-</style><style id="contStyles">.frail{position:absolute;right:10px;top:58px;bottom:58px;z-index:3;display:flex;flex-direction:column;justify-content:space-between;gap:2px;pointer-events:none}.frail span{font-size:.62rem;line-height:1;min-width:26px;text-align:center;padding:3px 4px;border-radius:6px;background:rgba(255,255,255,.85);color:#5E6E66;transition:all .25s}.frail span.act{background:#F6DFC9;color:#7A3D12}.frail span.done{background:#CFE5DC;color:#1F5A5C}.frail span.on{background:#8E6A3E;color:#fff;transform:scale(1.25);font-weight:700}
+</style><style id="contStyles">#bChip .cc b,#bChip .ccr b{display:inline!important;font-size:inherit!important;margin:0!important}#bChip .ccr span{display:inline!important;font-size:.74rem!important}#bChip .cch{display:block}
+.cc{margin-top:6px;padding-top:6px;border-top:1px solid rgba(23,37,31,.12);display:flex;flex-direction:column;gap:3px}.cch{font-size:.7rem;font-weight:600;color:#5E6E66;text-transform:uppercase;letter-spacing:.03em}.ccr{display:flex;gap:6px;align-items:flex-start;font-size:.74rem;line-height:1.35;color:#26332D}.ccr i{width:8px;height:8px;border-radius:50%;flex:none;margin-top:4px}.ccr b{font-weight:600}.tourcard{max-width:min(70%,440px)}@media (max-width:560px){.tourcard{max-width:calc(100% - 64px)}.ccr{font-size:.68rem}}
+.wf{display:flex;flex-direction:column;gap:2px;margin-top:5px}.wfi{display:flex;align-items:center;gap:6px;font-size:.74rem}.wfi i{width:9px;height:9px;border-radius:50%;flex:none}.wfi b{font-weight:600}
+.bscen{display:inline-flex;gap:6px;align-items:center;font-size:.78rem;color:var(--muted);margin:0 0 10px 10px}.bscen select{font:inherit;font-size:.82rem;padding:5px 8px;border-radius:9px;border:1px solid var(--line);background:var(--surface);color:var(--ink)}#cShared .warnc{color:#9B5A00}#cShared .dep{color:var(--muted)}
+.frail{position:absolute;right:10px;top:58px;bottom:58px;z-index:3;display:flex;flex-direction:column;justify-content:space-between;gap:2px;pointer-events:none}.frail span{font-size:.62rem;line-height:1;min-width:26px;text-align:center;padding:3px 4px;border-radius:6px;background:rgba(255,255,255,.85);color:#5E6E66;transition:all .25s}.frail span.act{background:#F6DFC9;color:#7A3D12}.frail span.done{background:#CFE5DC;color:#1F5A5C}.frail span.on{background:#8E6A3E;color:#fff;transform:scale(1.25);font-weight:700}
 .guide{border:0;border-radius:999px;background:#8E6A3E;color:#fff;font:inherit;font-weight:600;font-size:.88rem;padding:9px 16px;min-height:40px;cursor:pointer;margin:0 0 10px}.guide[aria-pressed="true"]{background:#4F5D57}.guide:focus-visible{outline:2px solid var(--petrol);outline-offset:2px}.tourcard{position:absolute;left:12px;top:12px;z-index:4;max-width:min(62%,380px);background:rgba(255,255,255,.95);color:#17251F;border-radius:14px;padding:9px 13px;display:flex;flex-direction:column;gap:3px;box-shadow:0 2px 10px rgba(0,0,0,.1)}.tourcard b{font-size:.92rem}.tourcard span{font-size:.8rem;color:#33433C;line-height:1.4}.tourcard .tdone{color:#1F5A5C;font-weight:600}
 .imode{margin:0 0 10px}#iShared .transport{flex-wrap:wrap}#iShared .scrub{flex:1 1 100%;order:5;min-width:0}#iShared .csel{margin-bottom:6px}#cShared{margin:0 0 10px;color:var(--ink)}.cnav{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:1.1rem;cursor:pointer;flex:none}
 .csel{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:4px 0 10px}.csel label{display:flex;flex-direction:column;font-size:.72rem;color:var(--muted);gap:2px}.csel select{font:inherit;font-size:.85rem;padding:6px 8px;border-radius:9px;border:1px solid var(--line);background:var(--surface);color:var(--ink);min-height:36px}
@@ -274,6 +278,7 @@ body.plans-active .viewer{height:min(80vh,780px)!important}
 
   <div id="bldPanel">
     <button type="button" class="guide" id="guideBtnB" aria-pressed="false">▶ Guía</button>
+    <label class="bscen"><span data-i18n="Escenario|Scenario">Escenario</span> <select id="bScen"></select></label>
     <div class="transport">
       <button class="play" id="bPlay" aria-label="Reproducir semanas">
         <svg id="bPlayIcon" viewBox="0 0 20 20" fill="currentColor"><path d="M5 3.5v13l11-6.5z"/></svg>
@@ -308,6 +313,7 @@ body.plans-active .viewer{height:min(80vh,780px)!important}
     <div class="csel">
       <label><span data-i18n="Piso|Floor">Piso</span><select id="cFloor"></select></label>
       <label><span data-i18n="Semana|Week">Semana</span><select id="cWeek"></select></label>
+      <label><span data-i18n="Escenario|Scenario">Escenario</span><select id="cScen"></select></label>
       <label class="cfollow"><input type="checkbox" id="cFollow"> <span data-i18n="Seguir los grupos al reproducir|Follow groups while playing">Seguir los grupos al reproducir</span></label>
     </div>
     <p class="cnote" id="cShared"></p>
@@ -506,11 +512,11 @@ const D=window.PLAN_DATA;
 const EN={"Remediación de moho": "Mold remediation", "Retiro de alfombra": "Carpet removal", "Ram Board temporal": "Temporary Ram Board", "Inspección AirMD": "AirMD inspection", "Drywall nuevo": "New drywall", "Pintura": "Painting", "Rociadores y alarma de incendio": "Fire sprinklers and alarm", "Puertas del vestíbulo": "Lobby doors", "Se retiran los paneles de drywall con moho, desde el cruce hacia los extremos. Cada panel sale en bolsa sellada de remediación por el ascensor de servicio. Quedan los parales metálicos a la vista.": "Moldy drywall panels are removed from the intersection outward. Each panel leaves in a sealed remediation bag through the service elevator, leaving the metal studs exposed.", "La alfombra mostaza existente se levanta por tramos y sale del edificio.": "The existing mustard carpet is lifted section by section and taken out of the building.", "Se extiende protección de cartón sobre el piso, con las juntas selladas con cinta, para el tránsito de obra y de residentes.": "Cardboard floor protection is laid with taped seams for construction and resident traffic.", "AirMD hace la verificación post-remediación de cada área. Cuando un tramo pasa, se marca en verde; al final, el destello verde indica el clearance. Ningún tramo se reconstruye sin esa liberación.": "AirMD performs post-remediation verification of each area. Each section that passes turns green; the final green flash marks clearance. No section is rebuilt without that release.", "Se instalan los paneles nuevos sobre los parales existentes y se cierran los muros por tramos.": "New panels are installed on the existing studs and the walls are closed section by section.", "La brocha recorre el pasillo y el drywall cambia a blanco con acabado eggshell a su paso.": "The brush travels down the corridor and the drywall turns eggshell white as it passes.", "Tubería de rociadores, cabezas y dispositivos de alarma a lo largo del pasillo. La ubicación es esquemática.": "Sprinkler piping, heads and alarm devices along the corridor. Locations are schematic.", "Se instalan los dos pares de puertas D del vestíbulo de ascensores: marco de 71\", hojas de 39¾\" y 27¾\", con retenedores magnéticos UL 228 que se liberan con la alarma.": "Both pairs of type D doors are installed at the elevator lobby: 71\" frame, 39¾\" and 27¾\" leaves, with UL 228 magnetic hold-opens that release on alarm.", "Permiso municipal BC2628687 en revisión: no emitido": "City permit BC2628687 under review: not issued", "Condiciones de Bomberos (áreas de trabajo y Fire Watch) por confirmar por escrito": "Fire Department conditions (work areas and Fire Watch) to be confirmed in writing", "Aprobación del Condado 2027004562 obtenida el 22/10": "County approval 2027004562 obtained on 10/22", "Depende del permiso BC2628687": "Depends on permit BC2628687", "Alcance de alfombra nueva aparte de esta secuencia": "New carpet is a separate scope, not part of this sequence", "Protección temporal; se mantiene hasta el final de la secuencia": "Temporary protection; stays until the end of the sequence", "Liberación por área: requisito previo a la reconstrucción": "Release by area: required before reconstruction", "Resultados de laboratorio del 23/10: 8 de 10 muestras con crecimiento de moho": "Lab results of 10/23: mold growth in 8 of 10 samples", "Inspección municipal de muros antes de liberar el Fire Watch": "City wall inspection before the Fire Watch is released", "Muro tipo W1: yeso tipo “X” de 5/8\" en ambas caras (hoja A-1.1)": "Wall type W1: 5/8\" type \"X\" gypsum both faces (sheet A-1.1)", "Acabado eggshell blanco según la secuencia acordada": "White eggshell finish per the agreed sequence", "Rociadores FP0826-7612: comentarios de la Ciudad, en corrección": "Sprinklers FP0826-7612: City comments being corrected", "Alarma de incendio: paquete en preparación, sin número de permiso": "Fire alarm: package in preparation, no permit number yet", "Bajo permisos separados del ELSS (A-1.0, nota 3)": "Under separate ELSS permits (A-1.0, note 3)", "Planos de Relats A-1.0 a A-1.3 sellados el 30/10/2026": "Relats drawings A-1.0 to A-1.3 sealed 10/30/2026", "Permiso de puertas: no radicado; David propone iniciar el primer ciclo de comentarios": "Door permit: not filed; David proposes starting the first comment cycle", "Planos de taller (Superior Doors) requieren aprobación escrita antes de comprar; su hoja de marzo aún muestra 90 min": "Shop drawings (Superior Doors) need written approval before purchase; their March sheet still shows 90 min", "Ejecuta: ": "Performed by: ", "Ver detalle de puerta": "View door detail", "Reconstrucción de pasillos": "Corridor reconstruction", "El edificio completo, piso por piso · escenario de planificación": "The whole building, floor by floor · planning scenario", "Escenario de planificación sobre los planos de Relats del 30 de octubre": "Planning scenario based on the Relats drawings of October 30", "Simulación de planificación · No representa avance ejecutado ni aprobaciones.": "Planning simulation · Does not represent completed work or approvals.", "Edificio": "Building", "Pasillo": "Corridor", "Pisos 2–16": "Floors 2–16", "Pisos 17–21": "Floors 17–21", "Planos": "Plans", "General": "Overview", "Vestíbulo": "Lobby", "Aérea": "Aerial", "Lateral": "Side", "Girar": "Rotate", "Pasillos ELSS": "ELSS corridors", "Fachada 2028": "2028 facade", "Balcones": "Balconies", "Penthouse mecánico": "Mechanical penthouse", "Alturas": "Heights", "Inicio": "Start", "Fin": "End", "Antes": "Before", "Sem. 12": "Wk 12", "Lista de planos": "Drawing list", "Cargando el modelo…": "Loading the model…", "Pendiente": "Pending", "Demolición selectiva · Servpro": "Selective demolition · Servpro", "Verificación AirMD": "AirMD verification", "Drywall rated": "Rated drywall", "Aprobación de muros y liberación del Fire Watch": "Wall approval and Fire Watch release", "Primer y pintura": "Primer and paint", "Terminado": "Complete", "Demolición": "Demolition", "AirMD": "AirMD", "Drywall": "Drywall", "Inspección": "Inspection", "11, 12 y 14": "11, 12 & 14", "21 y PH": "21 & PH", "Planta típica pisos 2–16 (sin 13) · hoja A-1.1": "Typical plan, floors 2–16 (no 13th) · sheet A-1.1", "Planta típica pisos 17–21 · hoja A-1.2": "Typical plan, floors 17–21 · sheet A-1.2", "Penthouse (PH) · hoja A-1.3": "Penthouse (PH) · sheet A-1.3", "Planta del piso seleccionado": "Plan of the selected floor", "Ubicación, alcance y notas": "Location, scope and notes", "Pisos 2–16 (Relats: 2nd–15th)": "Floors 2–16 (Relats: 2nd–15th)", "Pisos 17–21 (Relats: 16th–20th)": "Floors 17–21 (Relats: 16th–20th)", "PH (Relats: 21st)": "PH (Relats: 21st)", "Puertas · elevaciones y herrajes": "Doors · elevations and hardware", "Ascensor de servicio": "Service elevator", "Clearance AirMD · simulación": "AirMD clearance · simulation", "Clearance AirMD ✓": "AirMD clearance ✓", "200 ft · 21 niveles": "200 ft · 21 levels", "142 ft · ala norte": "142 ft · north wing", "Penthouse mecánico · 32 ft": "Mechanical penthouse · 32 ft", "PB": "G", "Tu piso": "Your floor"};
 let LANG='es';try{if(parent&&parent!==window){const pl=parent.document.documentElement.lang||'';if(pl)LANG=pl.slice(0,2)==='en'?'en':'es';}}catch(e){}
 try{const q=new URLSearchParams(location.search).get('lang');if(q)LANG=q==='en'?'en':'es';}catch(e){}
-Object.assign(EN,{'Todos los trades terminados':'All trades complete','Esperando el siguiente trade':'Waiting for the next trade','Moho · Servpro':'Mold · Servpro','Alfombra':'Carpet','Rociadores':'Sprinklers','Alarma':'Fire alarm','Puertas':'Doors','Terminado':'Complete','En espera':'Waiting','Contención y demolición · Servpro':'Containment and demolition · Servpro','Verificación AirMD (PRV)':'AirMD verification (PRV)','Reconstrucción de drywall':'Drywall reconstruction','Inspecciones, Fire/AHJ y liberación':'Inspections, Fire/AHJ and release','Acabados y pintura':'Finishes and paint','Grupo liberado':'Group released','HOLD · PRV no aprobado':'HOLD · PRV not passed','Servpro':'Servpro','AirMD PRV':'AirMD PRV','Inspección':'Inspection','Liberado':'Released','HOLD':'HOLD','Nomenclatura de planos (NFPA 170, vía FBC 2023 / NFPA 72): SD detector de humo · S/V altavoz-strobe · V strobe · F estación manual · CR relé de control':'Drawing nomenclature (NFPA 170, via FBC 2023 / NFPA 72): SD smoke detector · S/V speaker-strobe · V strobe · F manual pull station · CR control relay','Alarma contra incendio':'Fire alarm','Sciens reemplaza el sistema EST por Siemens Cerberus Pro, un piso a la vez y en las mismas ubicaciones: detectores de humo en el techo, speaker-strobes en los muros y estaciones manuales junto a las salidas. Al terminar el piso se hace la prueba: los strobes destellan sincronizados y suena el mensaje de voz. Posiciones ilustrativas.':'Sciens replaces the EST system with Siemens Cerberus Pro, one floor at a time and in the same locations: smoke detectors on the ceiling, speaker-strobes on the walls and pull stations next to the exits. When the floor is done it is tested: the strobes flash in sync and the voice message plays. Positions are illustrative.','Mientras un piso no se transfiere, sigue protegido por el sistema actual':'Until a floor is transferred, it stays protected by the current system','Dentro de las unidades se reemplazan altavoces y bases audibles; Sciens coordinará el acceso con Administración':'Speakers and audible bases are also replaced inside the units; Sciens will coordinate access with Management','Rociadores: tubería y cabezas':'Sprinklers: piping and heads','Antes de cerrar los muros se instala la tubería de rociadores sobre el pasillo y sus cabezas, según el ELSS: pasillos, sobre las puertas de las unidades y lobbies de elevador. La ubicación es esquemática.':'Before the walls are closed, sprinkler piping is installed above the corridor with its heads, per the ELSS: corridors, above unit doors and elevator lobbies. Locations are schematic.','Simular alarma':'Simulate alarm','Detener simulación':'Stop simulation','Prueba de alarma · simulación. Mensaje de voz de ejemplo: “Se ha reportado una emergencia. Diríjase a la escalera más cercana.”':'Alarm test · simulation. Sample voice message: “An emergency has been reported. Proceed to the nearest stairway.”'});
+Object.assign(EN,{'Servpro trabaja por alas en grupos de 3 pisos: en la semana 1 instala contenciones de polietileno con cremalleras y cinta en los muros afectados del ala A, retira el drywall con moho dentro de la contención, limpia con HEPA y coordina la visita PRV de AirMD; en la semana 2 hace lo mismo en el ala B. Siempre queda la ruta libre propuesta de 3 ft, sujeta a la aprobación del Fire Marshal.':'Servpro works wing by wing on groups of 3 floors: in week 1 it installs polyethylene containments with zipper doors and tape along the affected walls of wing A, removes the mold-affected drywall inside the containment, HEPA-cleans and coordinates the AirMD PRV visit; in week 2 it does the same on wing B. The proposed 3-ft clear path is kept at all times, subject to Fire Marshal approval.','Cuando el grupo queda liberado, la cuadrilla de rociadores avanza un piso por semana: tubería sobre el pasillo y cabezas según el ELSS (pasillos, sobre las puertas de las unidades y lobbies de elevador). La instalación es progresiva; la prueba hidrostática, la inspección y la aceptación se registran aparte. Ubicación esquemática.':'Once the group is released, the sprinkler crew advances one floor per week: piping above the corridor and heads per the ELSS (corridors, above unit doors and elevator lobbies). Installation is progressive; hydrostatic testing, inspection and acceptance are tracked separately. Locations are schematic.','Permiso de rociadores FP0826-7612: no emitido':'Sprinkler permit FP0826-7612: not issued','Inspección y prueba hidrostática: pendientes, no se asumen':'Inspection and hydrostatic test: pending, not assumed','Trabajar dos trades en el mismo piso requiere coordinación en campo y autorización del Fire Marshal':'Two trades on the same floor require field coordination and Fire Marshal authorization','La cuadrilla de alarma de Sciens avanza un piso por semana, independiente de la de rociadores: primero verifica y termina el cableado existente y luego reemplaza los dispositivos EST por Siemens Cerberus Pro en las mismas ubicaciones. La prueba del piso es una simulación: la prueba integrada del sistema y la aceptación final no se asumen. Posiciones ilustrativas.':'Sciens\' alarm crew advances one floor per week, independent of the sprinkler crew: it first verifies and terminates the existing wiring, then replaces the EST devices with Siemens Cerberus Pro in the same locations. The floor test is a simulation: integrated system testing and final acceptance are not assumed. Positions are illustrative.','Prueba integrada, comisionamiento y aceptación final del ELSS: seguimiento aparte':'Integrated testing, commissioning and final ELSS acceptance: tracked separately','Dependencia aparte: no se programa en esta simulación (permiso de puertas no radicado)':'Separate dependency: not scheduled in this simulation (door permit not filed)','Todos los trades terminados':'All trades complete','Esperando el siguiente trade':'Waiting for the next trade','Moho · Servpro':'Mold · Servpro','Alfombra':'Carpet','Rociadores':'Sprinklers','Alarma':'Fire alarm','Puertas':'Doors','Terminado':'Complete','En espera':'Waiting','Contención y demolición · Servpro':'Containment and demolition · Servpro','Verificación AirMD (PRV)':'AirMD verification (PRV)','Reconstrucción de drywall':'Drywall reconstruction','Inspecciones, Fire/AHJ y liberación':'Inspections, Fire/AHJ and release','Acabados y pintura':'Finishes and paint','Grupo liberado':'Group released','HOLD · PRV no aprobado':'HOLD · PRV not passed','Servpro':'Servpro','AirMD PRV':'AirMD PRV','Inspección':'Inspection','Liberado':'Released','HOLD':'HOLD','Nomenclatura de planos (NFPA 170, vía FBC 2023 / NFPA 72): SD detector de humo · S/V altavoz-strobe · V strobe · F estación manual · CR relé de control':'Drawing nomenclature (NFPA 170, via FBC 2023 / NFPA 72): SD smoke detector · S/V speaker-strobe · V strobe · F manual pull station · CR control relay','Alarma contra incendio':'Fire alarm','Sciens reemplaza el sistema EST por Siemens Cerberus Pro, un piso a la vez y en las mismas ubicaciones: detectores de humo en el techo, speaker-strobes en los muros y estaciones manuales junto a las salidas. Al terminar el piso se hace la prueba: los strobes destellan sincronizados y suena el mensaje de voz. Posiciones ilustrativas.':'Sciens replaces the EST system with Siemens Cerberus Pro, one floor at a time and in the same locations: smoke detectors on the ceiling, speaker-strobes on the walls and pull stations next to the exits. When the floor is done it is tested: the strobes flash in sync and the voice message plays. Positions are illustrative.','Mientras un piso no se transfiere, sigue protegido por el sistema actual':'Until a floor is transferred, it stays protected by the current system','Dentro de las unidades se reemplazan altavoces y bases audibles; Sciens coordinará el acceso con Administración':'Speakers and audible bases are also replaced inside the units; Sciens will coordinate access with Management','Rociadores: tubería y cabezas':'Sprinklers: piping and heads','Antes de cerrar los muros se instala la tubería de rociadores sobre el pasillo y sus cabezas, según el ELSS: pasillos, sobre las puertas de las unidades y lobbies de elevador. La ubicación es esquemática.':'Before the walls are closed, sprinkler piping is installed above the corridor with its heads, per the ELSS: corridors, above unit doors and elevator lobbies. Locations are schematic.','Simular alarma':'Simulate alarm','Detener simulación':'Stop simulation','Prueba de alarma · simulación. Mensaje de voz de ejemplo: “Se ha reportado una emergencia. Diríjase a la escalera más cercana.”':'Alarm test · simulation. Sample voice message: “An emergency has been reported. Proceed to the nearest stairway.”'});
 const t=x=>LANG==='en'?(EN[x]!==undefined?EN[x]:x):x;const tr=t;const L=(es,en)=>LANG==='en'?en:es;
 document.documentElement.lang=LANG;
 const STAGES=[
- {co:'servpro',t:'Remediación de moho',b:'Se retiran los paneles de drywall con moho, desde el cruce hacia los extremos. Cada panel sale en bolsa sellada de remediación por el ascensor de servicio. Quedan los parales metálicos a la vista.',
+ {co:'servpro',t:'Remediación de moho',b:'Servpro trabaja por alas en grupos de 3 pisos: en la semana 1 instala contenciones de polietileno con cremalleras y cinta en los muros afectados del ala A, retira el drywall con moho dentro de la contención, limpia con HEPA y coordina la visita PRV de AirMD; en la semana 2 hace lo mismo en el ala B. Siempre queda la ruta libre propuesta de 3 ft, sujeta a la aprobación del Fire Marshal.',
   s:[['pending','Permiso municipal BC2628687 en revisión: no emitido'],['pending','Condiciones de Bomberos (áreas de trabajo y Fire Watch) por confirmar por escrito'],['ok','Aprobación del Condado 2027004562 obtenida el 22/10']]},
  {co:'servpro',t:'Retiro de alfombra',b:'La alfombra mostaza existente se levanta por tramos y sale del edificio.',
   s:[['pending','Depende del permiso BC2628687'],['none','Alcance de alfombra nueva aparte de esta secuencia']]},
@@ -518,16 +524,16 @@ const STAGES=[
   s:[['none','Protección temporal; se mantiene hasta el final de la secuencia']]},
  {co:'airmd',t:'Inspección AirMD',b:'AirMD hace la verificación post-remediación de cada área. Cuando un tramo pasa, se marca en verde; al final, el destello verde indica el clearance. Ningún tramo se reconstruye sin esa liberación.',
   s:[['pending','Liberación por área: requisito previo a la reconstrucción'],['none','Resultados de laboratorio del 23/10: 8 de 10 muestras con crecimiento de moho']]},
- {co:'sciens',t:'Rociadores: tubería y cabezas',b:'Antes de cerrar los muros se instala la tubería de rociadores sobre el pasillo y sus cabezas, según el ELSS: pasillos, sobre las puertas de las unidades y lobbies de elevador. La ubicación es esquemática.',
-  s:[['pending','Rociadores FP0826-7612: comentarios de la Ciudad, en corrección'],['none','Bajo permisos separados del ELSS (A-1.0, nota 3)']]},
+ {co:'sciens',t:'Rociadores: tubería y cabezas',b:'Cuando el grupo queda liberado, la cuadrilla de rociadores avanza un piso por semana: tubería sobre el pasillo y cabezas según el ELSS (pasillos, sobre las puertas de las unidades y lobbies de elevador). La instalación es progresiva; la prueba hidrostática, la inspección y la aceptación se registran aparte. Ubicación esquemática.',
+  s:[['pending','Permiso de rociadores FP0826-7612: no emitido'],['none','Inspección y prueba hidrostática: pendientes, no se asumen'],['none','Trabajar dos trades en el mismo piso requiere coordinación en campo y autorización del Fire Marshal']]},
  {t:'Drywall nuevo',b:'Se instalan los paneles nuevos sobre los parales existentes y se cierran los muros por tramos.',
   s:[['pending','Inspección municipal de muros antes de liberar el Fire Watch'],['none','Muro tipo W1: yeso tipo “X” de 5/8" en ambas caras (hoja A-1.1)']]},
  {t:'Pintura',b:'La brocha recorre el pasillo y el drywall cambia a blanco con acabado eggshell a su paso.',
   s:[['none','Acabado eggshell blanco según la secuencia acordada']]},
- {co:'sciens',t:'Alarma contra incendio',b:'Sciens reemplaza el sistema EST por Siemens Cerberus Pro, un piso a la vez y en las mismas ubicaciones: detectores de humo en el techo, speaker-strobes en los muros y estaciones manuales junto a las salidas. Al terminar el piso se hace la prueba: los strobes destellan sincronizados y suena el mensaje de voz. Posiciones ilustrativas.',
-  s:[['pending','Alarma de incendio: paquete en preparación, sin número de permiso'],['none','Mientras un piso no se transfiere, sigue protegido por el sistema actual'],['none','Dentro de las unidades se reemplazan altavoces y bases audibles; Sciens coordinará el acceso con Administración'],['none','Nomenclatura de planos (NFPA 170, vía FBC 2023 / NFPA 72): SD detector de humo · S/V altavoz-strobe · V strobe · F estación manual · CR relé de control']]},
+ {co:'sciens',t:'Alarma contra incendio',b:'La cuadrilla de alarma de Sciens avanza un piso por semana, independiente de la de rociadores: primero verifica y termina el cableado existente y luego reemplaza los dispositivos EST por Siemens Cerberus Pro en las mismas ubicaciones. La prueba del piso es una simulación: la prueba integrada del sistema y la aceptación final no se asumen. Posiciones ilustrativas.',
+  s:[['pending','Alarma de incendio: paquete en preparación, sin número de permiso'],['none','Mientras un piso no se transfiere, sigue protegido por el sistema actual'],['none','Prueba integrada, comisionamiento y aceptación final del ELSS: seguimiento aparte'],['none','Nomenclatura de planos (NFPA 170, vía FBC 2023 / NFPA 72): SD detector de humo · S/V altavoz-strobe · V strobe · F estación manual · CR relé de control']]},
  {co:'superior',t:'Puertas del vestíbulo',b:'Se instalan los dos pares de puertas D del vestíbulo de ascensores: marco de 71", hojas de 39¾" y 27¾", con retenedores magnéticos UL 228 que se liberan con la alarma.',
-  s:[['ok','Planos de Relats A-1.0 a A-1.3 sellados el 30/10/2026'],['pending','Permiso de puertas: no radicado; David propone iniciar el primer ciclo de comentarios'],['pending','Planos de taller (Superior Doors) requieren aprobación escrita antes de comprar; su hoja de marzo aún muestra 90 min']]}
+  s:[['none','Dependencia aparte: no se programa en esta simulación (permiso de puertas no radicado)'],['ok','Planos de Relats A-1.0 a A-1.3 sellados el 30/10/2026'],['pending','Permiso de puertas: no radicado; David propone iniciar el primer ciclo de comentarios'],['pending','Planos de taller (Superior Doors) requieren aprobación escrita antes de comprar; su hoja de marzo aún muestra 90 min']]}
 ];
 const N=STAGES.length, STAGE_MS=5200;
 const DUR=[1.7,1,1,1,1,1.1,1.6,1.8,1].map(x=>x*STAGE_MS);const START=[];let acc0=0;DUR.forEach(d=>{START.push(acc0);acc0+=d;});const TOTAL=acc0;
@@ -536,7 +542,7 @@ const $=id=>document.getElementById(id);
 
 // ---------- UI ----------
 const stagesEl=$('stages');
-STAGES.forEach((s,i)=>{const b=document.createElement('button');b.className='stage';b.setAttribute('role','listitem');b.innerHTML='<span class="n">'+(i+1)+'</span><span class="lbl">'+t(s.t)+'</span>';b.onclick=()=>{if(typeof masterT==='function'&&masterT(CONT.level)){contPlay(false);CONT.day=masterT(CONT.level)[i][0]+.01;lastUI='';}else{setTime(START[i]+DUR[i]*0.999);pause();}};stagesEl.appendChild(b);});
+const CHIP_ORD=[0,1,2,3,6,4,5,7,8];STAGES.forEach((s,i)=>{const b=document.createElement('button');b.className='stage';b.style.order=String(CHIP_ORD[i]);b.setAttribute('role','listitem');b.innerHTML='<span class="n">'+(CHIP_ORD[i]+1)+'</span><span class="lbl">'+t(s.t)+'</span>';b.onclick=()=>{if(typeof masterT==='function'&&masterT(CONT.level)){if(!masterT(CONT.level)[i])return;contPlay(false);CONT.day=masterT(CONT.level)[i][0]+.01;lastUI='';}else{setTime(START[i]+DUR[i]*0.999);pause();}};stagesEl.appendChild(b);});
 
 // ---------- Three ----------
 const mount=$('mount');
@@ -665,39 +671,44 @@ function faUpdate(now,si,p){const it=items;if(!it||!it.faDev)return;
 
 // ================= ROLLING CONTAINMENT PLAN (3 floors × 2 wings × 3 weeks) =================
 // Planning simulation only. Gates shown as SIMULATED never change real project or permit status.
-const CONT={on:true,day:0,playing:false,speed:1.5,last:0,level:null,wing:'A',fail:{},sch:null,built:null,follow:false};
+const CONT={scen:'lag',on:true,day:0,playing:false,speed:1.5,last:0,level:null,wing:'A',fail:{},sch:null,built:null,follow:false};
 const LEVELS=[2,3,4,5,6,7,8,9,10,11,12,14,15,16,17,18,19,20,21,'PH'];
 const lvlKey=l=>l==='PH'?'21':(l<=16?'2-15':'16-20');
 const lvlName=l=>l==='PH'?'PH':String(l);
 const GROUPS=[];for(let i=0;i<LEVELS.length;i+=3)GROUPS.push(LEVELS.slice(i,i+3));
 const WINGS={A:['left','spine'],B:['right']};
-const CDUR={contain:.6,demo:1,clean:.5,move:.4,demo2:1,clean2:.5,prv:.5,hold:1.2,reclean:.5,retest:.5,fire:.5,rebuild:2.5,insp:.4,finish:1.2,fclean:.2,remove:.3,release:.4};
-const CREW={contain:'servpro',demo:'servpro',clean:'servpro',move:'servpro',demo2:'servpro',clean2:'servpro',hold:'servpro',reclean:'servpro',remove:'servpro',prv:'airmd',retest:'airmd',rebuild:'drywall',finish:'drywall',fclean:'drywall',fire:'gate',insp:'gate',release:'gate'};
-const ACT_T={contain:['Instalación de contención · muro 1','Containment installation · wall 1'],demo:['Demolición selectiva · muro 1','Selective drywall removal · wall 1'],clean:['Limpieza HEPA · muro 1','HEPA cleaning · wall 1'],move:['Traslado de la contención al muro 2','Containment moved to wall 2'],demo2:['Demolición selectiva · muro 2','Selective drywall removal · wall 2'],clean2:['Limpieza HEPA · muro 2','HEPA cleaning · wall 2'],prv:['Visita AirMD PRV · resultado pendiente','AirMD PRV visit · result pending'],
+const CDUR={contain:.3,demo:1,clean:.5,swap:.3,demo2:1,clean2:.5,lab:.9,lab2:.9,prv:.5,hold:1.2,reclean:.5,retest:.5,fire:0.3,rebuild:2.2,insp:0.3,finish:1.0,fclean:0.2,remove:0.2,release:0.2};
+const CREW={contain:'servpro',demo:'servpro',clean:'servpro',swap:'servpro',demo2:'servpro',clean2:'servpro',lab:'gate',lab2:'gate',hold:'servpro',reclean:'servpro',remove:'servpro',prv:'airmd',retest:'airmd',rebuild:'drywall',finish:'drywall',fclean:'drywall',fire:'gate',insp:'gate',release:'gate'};
+const ACT_T={contain:['Contenciones en tramos alternos (paso 1)','Containments on alternating sections (pass 1)'],demo:['Demolición selectiva · paso 1','Selective drywall removal · pass 1'],clean:['Limpieza HEPA · paso 1','HEPA cleaning · pass 1'],swap:['Traslado de contenciones a los tramos libres','Containments moved to the free sections'],demo2:['Demolición selectiva · paso 2','Selective drywall removal · pass 2'],clean2:['Limpieza HEPA · paso 2','HEPA cleaning · pass 2'],lab:['Laboratorio AirMD · resultado PRV pendiente','AirMD lab · PRV result pending'],lab2:['Laboratorio AirMD · resultado de re-prueba pendiente','AirMD lab · re-test result pending'],prv:['Visita AirMD PRV · resultado pendiente','AirMD PRV visit · result pending'],
  hold:['HOLD · retrabajo','HOLD · rework'],reclean:['Re-limpieza','Re-cleaning'],retest:['Re-prueba AirMD PRV','AirMD PRV re-test'],fire:['Verificación Fire Marshal / AHJ','Fire Marshal / AHJ verification'],rebuild:['Reconstrucción de drywall','Drywall reconstruction'],
  insp:['Inspección de construcción','Construction inspection'],finish:['Acabados y pintura','Finishes and paint'],fclean:['Limpieza final','Final cleaning'],remove:['Retiro autorizado de la contención','Authorized containment removal'],release:['Liberación del grupo','Group release']};
-const PHASES=['contain','demo','clean','move','demo2','clean2','prv','fire','rebuild','insp','finish','remove'];
+const PHASES=['contain','demo','clean','swap','demo2','clean2','prv','fire','rebuild','insp','finish','remove'];
 function computeSchedule(){const groups=[];let g0=0;
  GROUPS.forEach((levels,gi)=>{
   const wing=(w,t0,minRebuild,dwFree)=>{const acts=[];let t=t0;const add=(k)=>{acts.push({k,s:t,e:t+CDUR[k]});t+=CDUR[k];};
-   add('contain');add('demo');add('clean');add('move');add('demo2');add('clean2');add('prv');const fail=!!CONT.fail[gi+'-'+w];if(fail){add('hold');add('reclean');add('retest');}
+   add('contain');add('demo');add('clean');add('swap');add('demo2');add('clean2');add('prv');add('lab');const fail=!!CONT.fail[gi+'-'+w];if(fail){add('hold');add('reclean');add('retest');add('lab2');}
    const prvPass=t;add('fire');t=Math.max(t,minRebuild,dwFree);add('rebuild');add('insp');add('finish');add('fclean');return {w,acts,fail,prvPass,dwFree:t};};
   const A=wing('A',g0,g0+5,g0);const bStart=Math.max(g0+5,A.prvPass);const B=wing('B',bStart,g0+10,A.dwFree);
   const prvB=B.acts.find(a=>a.k==='prv');const ra=Math.max(A.dwFree,prvB.s);A.acts.push({k:'remove',s:ra,e:ra+CDUR.remove});
   B.acts.push({k:'remove',s:B.dwFree,e:B.dwFree+CDUR.remove});
   const rs=Math.max(ra+CDUR.remove,B.dwFree+CDUR.remove);const release={k:'release',s:rs,e:rs+CDUR.release};
   groups.push({gi,levels,start:g0,end:release.e,wings:{A,B},release});g0=Math.ceil((release.e-1e-6)/5)*5;});
- /* fire alarm: 1 floor/week in corridors after each group release (pending Sciens confirmation); doors: 2 floors/week */const FA_FLOOR=5,DOOR_FLOOR=2.5;let faFree=0,doorFree=0;
+ // follow-on trades start in the week after each group's release; one floor per week per trade, each with its own crew
+ const SC=CONT.scen||'lag';const wk=dd=>Math.floor(dd/5+1e-6);let spW=0,faW=0;
  groups.forEach(G=>{const A=G.wings.A,B=G.wings.B;const f=(w,k)=>w.acts.find(a=>a.k===k);const last=(w,ks)=>Math.max(...w.acts.filter(a=>ks.includes(a.k)).map(a=>a.e));
-  const base=[[A.acts[0].s,last(B,['clean2','reclean','hold'])],[f(A,'demo').s,f(B,'demo2').e],[f(A,'clean').s,last(B,['clean2','reclean'])],[f(A,'prv').s,last(B,['prv','retest'])],
-   [A.prvPass,Math.max(f(B,'rebuild').s,B.prvPass+.3)],[f(A,'rebuild').s,f(B,'insp').e],[f(A,'finish').s,f(B,'fclean').e]];
-  G.trades={};G.levels.forEach(l=>{const fa0=Math.max(G.release.e,faFree);const fa=[fa0,fa0+FA_FLOOR];faFree=fa[1];const d0=Math.max(fa[1],doorFree);const dr=[d0,d0+DOOR_FLOOR];doorFree=dr[1];G.trades[l]=base.concat([fa,dr]);});});
- return {groups,total:Math.max(g0,Math.ceil(doorFree/5)*5),contEnd:g0};}
+  const base=[[A.acts[0].s,last(B,['clean2','reclean','hold'])],[f(A,'demo').s,f(B,'demo2').e],[f(A,'clean').s,last(B,['clean2','reclean'])],[f(A,'prv').s,last(B,['lab','lab2'])],
+   null,[f(A,'rebuild').s,f(B,'insp').e],[f(A,'finish').s,f(B,'fclean').e]];
+  const relW=wk(G.release.e-1e-6)+1;G.trades={};G.levels.forEach(l=>{const sw=Math.max(spW,relW);spW=sw+1;const fw=SC==='par'?Math.max(faW,sw):Math.max(faW,sw+1);faW=fw+1;
+   const T=base.slice();T[4]=[sw*5,sw*5+5];G.trades[l]=T.concat([[fw*5,fw*5+5],null]);});});
+ const workEnd=Math.max(g0,spW*5,faW*5);const allowance=SC==='plan'?140:0;
+ return {groups,total:Math.max(workEnd,allowance),workEnd,contEnd:g0,scen:SC};}
 function masterT(level){if(!CONT.sch||level==null)return null;const G=CONT.sch.groups[groupOfLevel(level)];return G&&G.trades?G.trades[level]:null;}
-function mPSL(level,i){const T=masterT(level);if(!T)return 0;const w=T[i];return clamp((CONT.day-w[0])/Math.max(.01,w[1]-w[0]));}
+function floorDone(l){const T=masterT(l);if(!T)return false;return T.every((w,i)=>!w||mPSL(l,i)>=1);}
+function lastEnd(T){return Math.max(...T.filter(Boolean).map(w=>w[1]));}
+function mPSL(level,i){const T=masterT(level);if(!T)return 0;const w=T[i];if(!w)return 0;return clamp((CONT.day-w[0])/Math.max(.01,w[1]-w[0]));}
 function mPS(i){return mPSL(CONT.level,i);}
 function focusStage(){const T=masterT(CONT.level);if(!T)return 0;let f=-1;for(let i=0;i<9;i++){const p=mPS(i);if(p>0&&p<1)f=i;}if(f>=0)return f;for(let i=0;i<9;i++)if(mPS(i)<=0)return i;return 8;}
-const TRADE_COND=[0,0,0,0,1,0,0,1,1];
+const TRADE_COND=[0,0,0,0,1,0,0,1,2];
 let APPLY_MASK=null;
 function groupOfLevel(l){return GROUPS.findIndex(g=>g.includes(l));}
 function groupAtDay(d){const s=CONT.sch;for(const g of s.groups){if(d<g.end||g===s.groups[s.groups.length-1])if(d>=g.start||g.gi===0)return g;}
@@ -716,51 +727,54 @@ function makeCrewWorker(color,label){const w=new THREE.Group();const shirt=new T
  const a1=new THREE.Mesh(WG.arm,shirt);a1.position.set(-0.95,3.75,0);const a2=a1.clone();a2.position.x=0.95;const hd=new THREE.Mesh(WG.head,WM.skin);hd.position.y=5.5;const ht=new THREE.Mesh(WG.hat,WM.hat);ht.position.y=5.72;
  const tag=textSprite(label,'rgba(22,32,30,.9)','#FFFFFF',1.7);tag.position.y=8.3;w.add(l1,l2,tor,a1,a2,hd,ht,tag);w.userData={l1,l2,a1,a2,tag};w.visible=false;return w;}
 function buildCont(F,g){
- const out={wings:{A:[],B:[]},path:[],warn:[],minClear:{A:99,B:99}};const grp=new THREE.Group();g.add(grp);out.grp=grp;
+ // Containments never face each other: each corridor is split into sections and the two walls alternate (pass 0 / pass 1),
+ // so at any cross-section only one wall is contained and the clear path uses the free side.
+ const out={wings:{A:[],B:[]},path:[],warn:[],minClear:{A:99,B:99},secs:[]};const grp=new THREE.Group();g.add(grp);out.grp=grp;
  F.lines.forEach(ln=>{const wing=WINGS.A.includes(ln.name)?'A':(WINGS.B.includes(ln.name)?'B':null);if(!wing)return;
   const a=P(ln.a[0],ln.a[1]),b=P(ln.b[0],ln.b[1]);const L=a.distanceTo(b);const dir=b.clone().sub(a).normalize();const side=new THREE.Vector3(-dir.z,0,dir.x);
   const pan={'1':[],'-1':[]};F.panels.forEach((p,pi)=>{if(p.seg!==ln.name)return;const vx=p.x-CX-a.x,vz=p.y-CZ-a.z;const d=vx*side.x+vz*side.z,s=vx*dir.x+vz*dir.z;pan[d>0?'1':'-1'].push({pi,d:Math.abs(d),s,w:p.w||4});});
-  const sum=k=>pan[k].reduce((x,q)=>x+q.w,0);const cs0=sum('1')>=sum('-1')?1:-1;[cs0,-cs0].forEach((cs,sideI)=>{const mine=pan[String(cs)],oth=pan[String(-cs)];if(!mine.length)return;
-  const med=arr=>{const v=arr.map(q=>q.d).sort((x,y)=>x-y);return v.length?v[Math.floor(v.length/2)]:2.9;};const wd=med(mine),od=oth.length?med(oth):2.9;
-  let s0=Math.min(...mine.map(q=>q.s-q.w/2)),s1=Math.max(...mine.map(q=>q.s+q.w/2));s0=Math.max(s0,3.5);s1=Math.min(s1,L-.6);if(s1-s0<3){s0=Math.max(.6,s1-3);}
-  const DEP=2.0,fo=cs*(wd-DEP);const len=s1-s0;
+  const med=arr=>{const v=arr.map(q=>q.d).sort((x,y)=>x-y);return v.length?v[Math.floor(v.length/2)]:2.9;};const wdP=med(pan['1']),wdM=med(pan['-1']);const DEP=2.0;
+  const all=[...pan['1'],...pan['-1']];if(!all.length)return;let r0=Math.min(...all.map(q=>q.s-q.w/2)),r1=Math.max(...all.map(q=>q.s+q.w/2));r0=Math.max(r0,.6);r1=Math.min(r1,L-.6);
+  const nSec=Math.max(2,Math.round((r1-r0)/11));const secL=(r1-r0)/nSec;
   const at=(s,o,y)=>a.clone().addScaledVector(dir,s).addScaledVector(side,o).setY(y||0);const rotY=-Math.atan2(dir.z,dir.x);
-  const C=new THREE.Group();grp.add(C);
-  // sheets: front face, ceiling, two end faces (geometry starts at s0 so it can unroll)
-  const fg=new THREE.PlaneGeometry(1,H-.1);fg.translate(.5,(H-.1)/2,0);const front=new THREE.Mesh(fg,CM.poly);front.position.copy(at(s0,fo));front.rotation.y=rotY;front.scale.x=len;C.add(front);{const rg=new THREE.BoxGeometry(1,.12,.12);rg.translate(.5,0,0);const r1=new THREE.Mesh(rg,CM.pole);r1.position.y=H-.15;front.add(r1);const r2=new THREE.Mesh(rg,CM.tape);r2.position.y=.08;front.add(r2);}{const eg2=new THREE.EdgesGeometry(fg);front.add(new THREE.LineSegments(eg2,CM.edge));}
-  const tg=new THREE.PlaneGeometry(1,DEP);tg.rotateX(-Math.PI/2);tg.translate(.5,H-.12,0);const top=new THREE.Mesh(tg,CM.poly);top.position.copy(at(s0,cs*(wd-DEP/2)));top.rotation.y=rotY;top.scale.x=len;C.add(top);top.add(new THREE.LineSegments(new THREE.EdgesGeometry(tg),CM.edge));
-  const eg=new THREE.PlaneGeometry(DEP,H-.1);eg.translate(0,(H-.1)/2,0);const e0=new THREE.Mesh(eg,CM.poly);e0.position.copy(at(s0,cs*(wd-DEP/2)));e0.rotation.y=rotY+Math.PI/2;const e1=e0.clone();e1.position.copy(at(s1,cs*(wd-DEP/2)));C.add(e0,e1);
-  const poles=[];for(let s=s0;s<=s1+.01;s+=Math.max(4,len/Math.max(1,Math.round(len/6)))){const pl=new THREE.Mesh(new THREE.CylinderGeometry(.07,.07,H-.1,8),CM.pole);pl.position.copy(at(s,fo,(H-.1)/2));C.add(pl);poles.push(pl);}
-  const zips=[];for(let s=s0+5;s<s1-3;s+=11){[-.45,.45].forEach(dz=>{const z=new THREE.Mesh(new THREE.BoxGeometry(.14,H-.9,.05),CM.zip);z.position.copy(at(s+dz,fo-cs*.04,(H-.9)/2+.1));z.rotation.y=rotY;C.add(z);zips.push(z);});}
-  const tapes=[];const tp=(sa,oa,sb,ob)=>{const A0=at(sa,oa,.03),B0=at(sb,ob,.03);const Lt=A0.distanceTo(B0);const m=new THREE.Mesh(new THREE.BoxGeometry(Lt,.02,.16),CM.tape);m.position.copy(A0).add(B0).multiplyScalar(.5);m.rotation.y=-Math.atan2(B0.z-A0.z,B0.x-A0.x);C.add(m);tapes.push(m);};
-  tp(s0,fo,s1,fo);tp(s0,fo,s0,cs*wd);tp(s1,fo,s1,cs*wd);
-  const cl=new THREE.Mesh(new THREE.BoxGeometry(2.2,H-.4,DEP-.3),CM.clean.clone());cl.rotation.y=rotY;cl.visible=false;C.add(cl);
-  const halo=new THREE.Mesh(new THREE.BoxGeometry(1,H-.05,DEP+.15),new THREE.MeshBasicMaterial({color:0xD32F2F,transparent:true,opacity:0,depthWrite:false}));halo.geometry.translate(.5,(H-.05)/2,0);halo.position.copy(at(s0,cs*(wd-DEP/2)));halo.rotation.y=rotY;halo.scale.x=len;C.add(halo);
-  const badge=textSprite('PRV','#2E7D4C','#FFFFFF',1.9);badge.position.copy(at((s0+s1)/2,cs*(wd-DEP/2),H+3.2));badge.visible=false;C.add(badge);
-  const sheets=[front,top,e0,e1];
-  const panelIdx=mine.slice().sort((x,y)=>x.s-y.s).map(q=>q.pi);
-  // egress path (proposed 3-ft clear path) on the free side of the corridor
-  const po=(fo+(-cs*od))/2;const clear=(wd-DEP)+od;
-  out.wings[wing].push({sideI,ln,a,dir,side,L,cs,wd,od,s0,s1,fo,C,sheets,poles,zips,tapes,cl,halo,badge,panelIdx,po,clear,at});
-  out.minClear[wing]=Math.min(out.minClear[wing],clear);
-  // constriction samples
-  for(let s=s0;s<=s1;s+=3){const nm=mine.reduce((b2,q)=>Math.abs(q.s-s)<Math.abs(b2.s-s)?q:b2,mine[0]);const no=oth.length?oth.reduce((b2,q)=>Math.abs(q.s-s)<Math.abs(b2.s-s)?q:b2,oth[0]):null;
-   const wl=Math.abs(nm.s-s)<6?nm.d:wd,ol=no&&Math.abs(no.s-s)<6?no.d:od;const cw=wl-DEP+ol;out.minClear[wing]=Math.min(out.minClear[wing],cw);
-   if(cw<3&&!out.warn.some(w=>w.wing===wing&&Math.abs(w.s-s)<6&&w.ln===ln.name)){const sp=textSprite('⚠ '+cw.toFixed(1)+' ft','#E07B00','#FFFFFF',1.5);sp.position.copy(at(s,po,H+1.2));grp.add(sp);
-    const mk=new THREE.Mesh(new THREE.CylinderGeometry(.55,.55,.06,3),new THREE.MeshBasicMaterial({color:0xF59E0B}));mk.position.copy(at(s,po,.08));grp.add(mk);out.warn.push({wing,s,ln:ln.name,cw,sp,mk,sideI});}}
+  const lineSecs=[];
+  for(let k=0;k<nSec;k++){const sa=r0+k*secL,sb=sa+secL;const sec={ln:ln.name,k,sa,sb,pieces:[]};lineSecs.push(sec);
+   [1,-1].forEach((cs,sideI)=>{const mine=pan[String(cs)].filter(q=>q.s>=sa-1e-6&&(q.s<sb||k===nSec-1));if(!mine.length)return;const wd=cs>0?wdP:wdM,od=cs>0?wdM:wdP;
+    const pass=(k+sideI)%2;const s0=Math.max(sa+.15,r0),s1=Math.min(sb-.15,r1);const len=s1-s0;if(len<1)return;const fo=cs*(wd-DEP);
+    const C=new THREE.Group();grp.add(C);
+    const fg=new THREE.PlaneGeometry(1,H-.1);fg.translate(.5,(H-.1)/2,0);const front=new THREE.Mesh(fg,CM.poly);front.position.copy(at(s0,fo));front.rotation.y=rotY;front.scale.x=len;C.add(front);
+    {const rg=new THREE.BoxGeometry(1,.12,.12);rg.translate(.5,0,0);const r1m=new THREE.Mesh(rg,CM.pole);r1m.position.y=H-.15;front.add(r1m);const r2m=new THREE.Mesh(rg,CM.tape);r2m.position.y=.08;front.add(r2m);front.add(new THREE.LineSegments(new THREE.EdgesGeometry(fg),CM.edge));}
+    const tg=new THREE.PlaneGeometry(1,DEP);tg.rotateX(-Math.PI/2);tg.translate(.5,H-.12,0);const top=new THREE.Mesh(tg,CM.poly);top.position.copy(at(s0,cs*(wd-DEP/2)));top.rotation.y=rotY;top.scale.x=len;C.add(top);top.add(new THREE.LineSegments(new THREE.EdgesGeometry(tg),CM.edge));
+    const eg=new THREE.PlaneGeometry(DEP,H-.1);eg.translate(0,(H-.1)/2,0);const e0=new THREE.Mesh(eg,CM.poly);e0.position.copy(at(s0,cs*(wd-DEP/2)));e0.rotation.y=rotY+Math.PI/2;const e1=e0.clone();e1.position.copy(at(s1,cs*(wd-DEP/2)));C.add(e0,e1);
+    const poles=[];[s0,(s0+s1)/2,s1].forEach(s=>{const pl=new THREE.Mesh(new THREE.CylinderGeometry(.07,.07,H-.1,8),CM.pole);pl.position.copy(at(s,fo,(H-.1)/2));C.add(pl);poles.push(pl);});
+    const zips=[];[-.45,.45].forEach(dz=>{const z=new THREE.Mesh(new THREE.BoxGeometry(.14,H-.9,.05),CM.zip);z.position.copy(at((s0+s1)/2+dz,fo-cs*.04,(H-.9)/2+.1));z.rotation.y=rotY;C.add(z);zips.push(z);});
+    const tapes=[];const tp=(sA,oa,sB,ob)=>{const A0=at(sA,oa,.03),B0=at(sB,ob,.03);const Lt=A0.distanceTo(B0);const m=new THREE.Mesh(new THREE.BoxGeometry(Lt,.02,.16),CM.tape);m.position.copy(A0).add(B0).multiplyScalar(.5);m.rotation.y=-Math.atan2(B0.z-A0.z,B0.x-A0.x);C.add(m);tapes.push(m);};
+    tp(s0,fo,s1,fo);tp(s0,fo,s0,cs*wd);tp(s1,fo,s1,cs*wd);
+    const cl=new THREE.Mesh(new THREE.BoxGeometry(Math.min(2.2,len*.6),H-.4,DEP-.3),CM.clean.clone());cl.rotation.y=rotY;cl.visible=false;C.add(cl);
+    const halo=new THREE.Mesh(new THREE.BoxGeometry(1,H-.05,DEP+.15),new THREE.MeshBasicMaterial({color:0xD32F2F,transparent:true,opacity:0,depthWrite:false}));halo.geometry.translate(.5,(H-.05)/2,0);halo.position.copy(at(s0,cs*(wd-DEP/2)));halo.rotation.y=rotY;halo.scale.x=len;C.add(halo);
+    const badge=textSprite('PRV','#2E7D4C','#FFFFFF',1.9);badge.position.copy(at((s0+s1)/2,cs*(wd-DEP/2),H+3.2));badge.visible=false;C.add(badge);
+    const po=cs>0?(wdP-DEP-wdM)/2:(wdP-wdM+DEP)/2;const clear=(wd-DEP)+od;
+    const piece={sideI,pass,ln,a,dir,side,L,cs,wd,od,s0,s1,fo,C,sheets:[front,top,e0,e1],poles,zips,tapes,cl,halo,badge,panelIdx:mine.slice().sort((x,y)=>x.s-y.s).map(q=>q.pi),po,clear,at,sec};
+    out.wings[wing].push(piece);sec.pieces.push(piece);out.minClear[wing]=Math.min(out.minClear[wing],clear);
+    // constriction check for this section (only one wall contained here)
+    for(let s=s0;s<=s1;s+=3){const near=(arr,sv,def)=>{if(!arr.length)return def;const q=arr.reduce((b2,x)=>Math.abs(x.s-sv)<Math.abs(b2.s-sv)?x:b2,arr[0]);return Math.abs(q.s-sv)<6?q.d:def;};
+     const cw=near(pan[String(cs)],s,wd)-DEP+near(pan[String(-cs)],s,od);out.minClear[wing]=Math.min(out.minClear[wing],cw);
+     if(cw<3&&!out.warn.some(w=>w.piece===piece)){const sp=textSprite('⚠ '+cw.toFixed(1)+' ft','#E07B00','#FFFFFF',1.5);sp.position.copy(at(s,po,H+1.2));grp.add(sp);
+      const mk=new THREE.Mesh(new THREE.CylinderGeometry(.55,.55,.06,3),new THREE.MeshBasicMaterial({color:0xF59E0B}));mk.position.copy(at(s,po,.08));grp.add(mk);out.warn.push({wing,s,ln:ln.name,cw,sp,mk,piece});}}
+   });}
+  // panels that fall outside every section still belong to the nearest section piece of their wall
+  [1,-1].forEach((cs,sideI)=>{pan[String(cs)].forEach(q=>{if([...out.wings.A,...out.wings.B].some(pc=>pc.panelIdx.includes(q.pi)))return;const pcs=[...out.wings[wing]].filter(pc=>pc.ln===ln&&pc.cs===cs);if(!pcs.length)return;
+   const best=pcs.reduce((b2,pc)=>Math.abs((pc.s0+pc.s1)/2-q.s)<Math.abs((b2.s0+b2.s1)/2-q.s)?pc:b2,pcs[0]);best.panelIdx.push(q.pi);});});
+  // clear path: one strip per section with three variants (wall + contained, wall − contained, none)
+  lineSecs.forEach(sec=>{sec.vars={};const offs={n:(wdP-wdM)/2,p:(wdP-DEP-wdM)/2,m:(wdP-wdM+DEP)/2};Object.keys(offs).forEach(k=>{const o=offs[k];const g2=new THREE.Group();grp.add(g2);
+    const A0=at(sec.sa,o,.05),B0=at(sec.sb,o,.05);const Lp=A0.distanceTo(B0);const ang=-Math.atan2(B0.z-A0.z,B0.x-A0.x);
+    const band=new THREE.Mesh(new THREE.BoxGeometry(Lp+.4,.03,1.1),CM.path);band.position.copy(A0).add(B0).multiplyScalar(.5);band.rotation.y=ang;g2.add(band);
+    g2.userData={A:A0,B:B0,Lp,ang};g2.visible=k==='n';sec.vars[k]=g2;});
+   out.secs.push(sec);});
  });
- });
- // proposed clear path: per corridor line, offset away from whichever wall is contained (variant 0 = no containment)
- const pathGrp=new THREE.Group();grp.add(pathGrp);out.dashes=[];out.paths=[];
- F.lines.forEach(ln=>{const a=P(ln.a[0],ln.a[1]),b=P(ln.b[0],ln.b[1]);const L=a.distanceTo(b),dir=b.clone().sub(a).normalize(),side=new THREE.Vector3(-dir.z,0,dir.x);
-  const segs=[...out.wings.A,...out.wings.B].filter(w=>w.ln.name===ln.name);const vars={0:0};segs.forEach(sg=>{vars[sg.sideI+1]=sg.po;});
-  Object.keys(vars).forEach(k=>{const o=vars[k];const g2=new THREE.Group();pathGrp.add(g2);const toExit=ln.name==='spine';
-   const A0=a.clone().addScaledVector(dir,toExit?.6:L-.8).addScaledVector(side,o).setY(.05),B0=a.clone().addScaledVector(dir,toExit?L-.8:.6).addScaledVector(side,o).setY(.05);
-   const Lp=A0.distanceTo(B0);const ang=-Math.atan2(B0.z-A0.z,B0.x-A0.x);const band=new THREE.Mesh(new THREE.BoxGeometry(Lp+1.1,.03,1.1),CM.path);band.position.copy(A0).add(B0).multiplyScalar(.5);band.rotation.y=ang;g2.add(band);
-   for(let s=.6;s<Lp-.4;s+=2.4){const dm=new THREE.Mesh(new THREE.BoxGeometry(1.1,.04,.2),CM.dash);dm.position.copy(A0).lerp(B0,s/Lp);dm.position.y=.08;dm.rotation.y=ang;g2.add(dm);out.dashes.push({m:dm,A:A0,B:B0,s,Lp,g:g2});}
-   const arr=new THREE.Mesh(new THREE.ConeGeometry(.9,1.8,3),CM.path);arr.rotation.z=-Math.PI/2;const gA=new THREE.Group();gA.add(arr);gA.position.copy(B0).setY(.12);gA.rotation.y=ang;gA.scale.y=.1;g2.add(gA);
-   g2.visible=k==='0';out.paths.push({ln:ln.name,k:+k,g:g2,A0});});});
- out.path=out.paths.length?[[out.paths[0].A0]]:[];
+ out.dashes=[];out.paths=[];out.path=out.secs.length?[[out.secs[0].vars.n.userData.A]]:[];
+ // animated white dashes ride on whichever variant is visible
+ out.secs.forEach(sec=>Object.values(sec.vars).forEach(g2=>{const u=g2.userData;for(let s=.4;s<u.Lp-.3;s+=2.4){const dm=new THREE.Mesh(new THREE.BoxGeometry(1.1,.04,.2),CM.dash);dm.position.copy(u.A).lerp(u.B,s/u.Lp);dm.position.y=.08;dm.rotation.y=u.ang;g2.add(dm);out.dashes.push({m:dm,A:u.A,B:u.B,s,Lp:u.Lp,g:g2});}}));
  out.pathLbl=textSprite(L('Ruta libre propuesta de 3 ft · no verificada','Proposed 3-ft clear path · not verified'),'rgba(46,160,67,.95)','#FFFFFF',1.5);
  if(out.path[0]){out.pathLbl.position.copy(out.path[0][0]).setY(H+2.6);grp.add(out.pathLbl);}
  out.crew={servpro:makeWorker('servpro'),drywall:makeCrewWorker(0x2F6DB5,L('Cuadrilla de drywall','Drywall crew')),airmd:makeWorker('airmd')};Object.values(out.crew).forEach(w=>grp.add(w));
@@ -768,7 +782,7 @@ function buildCont(F,g){
   const ring=new THREE.Mesh(new THREE.RingGeometry(1.2,1.5,40),new THREE.MeshBasicMaterial({color:0x2E9C7E,transparent:true,opacity:.6,side:THREE.DoubleSide,depthWrite:false}));ring.rotation.x=-Math.PI/2;ring.position.y=.1;out.sampler.add(body,legs,ring);out.sampler.userData.ring=ring;}
  out.sampler.visible=false;grp.add(out.sampler);
  out.aff=new Set();['A','B'].forEach(w=>out.wings[w].forEach(sg=>sg.panelIdx.forEach(i=>out.aff.add(i))));
- grp.visible=CONT.on;return out;}
+ grp.visible=true;return out;}
 // ---------- per-frame state ----------
 function actAt(acts,d){return acts.find(a=>d>=a.s&&d<a.e)||null;}
 function prog(acts,k,d){const a=acts.find(x=>x.k===k);if(!a)return 0;return clamp((d-a.s)/(a.e-a.s));}
@@ -777,19 +791,20 @@ function applyCont(now){const B=CONT.built;if(!B||!items)return;const sch=CONT.s
  ['A','B'].forEach(w=>{const W=G.wings[w];const acts=W.acts;
   const pc=before?0:(after?1:prog(acts,'contain',d)),pr=before?0:(after?1:prog(acts,'remove',d));
   const pMove=before?0:(after?1:prog(acts,'move',d)),pDemo2=before?0:(after?1:prog(acts,'demo2',d));let badgeShown=false;
+  const pSwap=before?0:(after?1:prog(acts,'swap',d));
   const pDemo=before?0:(after?1:prog(acts,'demo',d)),pReb=before?0:(after?1:prog(acts,'rebuild',d)),pFin=before?0:(after?1:prog(acts,'finish',d));
   const cur=before||after?null:actAt(acts,d);const ck=cur&&cur.k;
-  const prvA=acts.find(a=>a.k==='prv'),rt=acts.find(a=>a.k==='retest');
-  B.wings[w].forEach(seg=>{const s2=seg.sideI===1;const pcS=s2?clamp(pMove*2-1):pc,prS=s2?pr:clamp(pMove*2);const pDemoS=s2?pDemo2:pDemo;const inst=pcS>0&&prS<1;seg.C.visible=inst;
+  const prvA=acts.find(a=>a.k==='lab'),rt=acts.find(a=>a.k==='retest');
+  B.wings[w].forEach(seg=>{const p1=seg.pass===1;const pcS=p1?clamp(pSwap*2-1):pc,prS=p1?pr:clamp(pSwap*2);const pDemoS=p1?pDemo2:pDemo;const inst=pcS>0&&prS<1;seg.C.visible=inst;
    const unroll=ease(clamp((pcS-.25)/.75));const fold=1-ease(prS);seg.sheets.forEach((m,i)=>{if(i<2){m.scale.x=Math.max(1e-3,(seg.s1-seg.s0)*unroll);}m.scale.y=Math.max(1e-3,fold);});
    seg.sheets[2].visible=unroll>.02;seg.sheets[3].visible=unroll>.98;
    seg.poles.forEach((p,i)=>{const k=clamp(pcS*4-i/seg.poles.length*2);p.scale.y=Math.max(1e-3,ease(k)*fold);});
    seg.zips.forEach(z=>{z.visible=pcS>.85&&fold>.5;});seg.tapes.forEach(t=>{t.visible=pcS>.5&&prS<.6;});
    // cleaning sweep
-   const cleaning=inst&&(s2?(ck==='clean2'||ck==='reclean'||ck==='hold'):ck==='clean');seg.cl.visible=cleaning;if(cleaning){const k=(d-cur.s)/(cur.e-cur.s);const s=seg.s0+(seg.s1-seg.s0)*((k*1.999)%1);seg.cl.position.copy(seg.at(s,seg.cs*(seg.wd-1),(H-.4)/2));seg.cl.material.opacity=.22+.12*Math.sin(now*.01);}
+   const cleaning=inst&&(p1?(ck==='clean2'||ck==='reclean'||ck==='hold'):ck==='clean');seg.cl.visible=cleaning;if(cleaning){const k=(d-cur.s)/(cur.e-cur.s);const s=seg.s0+(seg.s1-seg.s0)*((k*1.999)%1);seg.cl.position.copy(seg.at(s,seg.cs*(seg.wd-1),(H-.4)/2));seg.cl.material.opacity=.22+.12*Math.sin(now*.01);}
    // HOLD / PRV badge
-   const failed=W.fail&&prvA&&d>=prvA.e&&rt&&d<rt.e;seg.halo.material.opacity=failed?.18+.14*Math.sin(now*.008):0;
-   let txt=null,bg='#2E7D4C';if(!before&&inst){if(ck==='prv'||ck==='retest'){txt=L('AirMD PRV · pendiente','AirMD PRV · pending');bg='#5E6E66';}
+   const failed=W.fail&&prvA&&d>=prvA.e&&rt&&d<rt.s;seg.halo.material.opacity=failed?.18+.14*Math.sin(now*.008):0;
+   let txt=null,bg='#2E7D4C';if(!before&&inst){if(ck==='prv'||ck==='retest'||ck==='lab'||ck==='lab2'){txt=L('AirMD PRV · resultado pendiente','AirMD PRV · result pending');bg='#5E6E66';}
     else if(failed){txt=L('PRV: FALLA · HOLD','PRV: FAIL · HOLD');bg='#C62828';}
     else if(d>=W.prvPass&&d<W.prvPass+CDUR.fire+.01){txt=L('PRV APROBADO (SIMULADO)','PRV PASS (SIMULATED)');}
     else if(ck==='insp'){txt=L('Inspección (SIMULADA)','Inspection (SIMULATED)');bg='#1F5A9E';}}
@@ -800,16 +815,16 @@ function applyCont(now){const B=CONT.built;if(!B||!items)return;const sch=CONT.s
     const r=clamp((pReb*1.15-k)/.15);pn.m.visible=r>0;pn.m.material.opacity=r;pn.m.position.copy(pn.m.userData.base);pn.m.position.y=(H-.15)/2;pn.pt.visible=false;
     const painted=pFin>=k;if(pn.m.userData.painted!==painted){pn.m.userData.painted=painted;pn.m.material.map=painted?null:newTex;pn.m.material.color.copy(painted?EGG:NEWC);pn.m.material.needsUpdate=true;}});});});
  // crews
- const wingOf=(k)=>{for(const w of ['A','B']){const c=actAt(G.wings[w].acts,d);if(c&&CREW[c.k]===k)return {w,c};}return null;};
- const place=(wk,key,inside,raise)=>{const wr=B.crew[key];const r=before||after?null:wingOf(key);wr.visible=!!r&&CONT.on;if(!r)return null;const sgs=B.wings[r.w];const seg=sgs.find(x=>x.C.visible)||sgs[0];if(!seg){wr.visible=false;return null;}
+ const wingOf=(k)=>{for(const w of ['A','B']){const c=actAt(G.wings[w].acts,d);if(c&&(CREW[c.k]===k||(k==='airmd'&&(c.k==='lab'||c.k==='lab2')&&false)))return {w,c};}return null;};
+ const place=(wk,key,inside,raise)=>{const wr=B.crew[key];const r=before||after?null:wingOf(key);wr.visible=!!r;if(!r)return null;const sgs=B.wings[r.w];const seg=sgs.find(x=>x.C.visible)||sgs[0];if(!seg){wr.visible=false;return null;}
   const k=(d-r.c.s)/(r.c.e-r.c.s);const s=seg.s0+1+(seg.s1-seg.s0-2)*(.5-.5*Math.cos(k*Math.PI*4));wr.position.copy(seg.at(s,inside?seg.cs*(seg.wd-1.05):seg.po,0));
   walk(wr,seg.dir,now*.012,true);if(raise){wr.userData.a1.rotation.x=-2.4;wr.userData.a2.rotation.x=-2.2+Math.sin(now*.012)*.3;}wr.rotation.y=Math.atan2(seg.dir.x,seg.dir.z);return r;};
  const rs=place('servpro','servpro',true,false),rd=place('drywall','drywall',true,true);
- const ra=before||after?null:wingOf('airmd');B.crew.airmd.visible=!!ra&&CONT.on;B.sampler.visible=!!ra&&CONT.on;
+ const ra=before||after?null:wingOf('airmd');B.crew.airmd.visible=!!ra;B.sampler.visible=!!ra;
  if(ra){const seg=B.wings[ra.w].find(x=>x.C.visible)||B.wings[ra.w][0];if(seg){const s=(seg.s0+seg.s1)/2;B.sampler.position.copy(seg.at(s,seg.cs*(seg.wd-1),0));B.crew.airmd.position.copy(seg.at(s+2.5,seg.po,0));walk(B.crew.airmd,null,now*.01,false);const k=(now*.0012)%1;B.sampler.userData.ring.scale.setScalar(1+k*1.6);B.sampler.userData.ring.material.opacity=.6*(1-k);}}
- B.paths.forEach(pv=>{const segs=[...B.wings.A,...B.wings.B].filter(x=>x.ln.name===pv.ln&&x.C.visible);const k=segs.length?segs[0].sideI+1:0;pv.g.visible=pv.k===k;});
+ B.secs.forEach(sec=>{const vp=sec.pieces.find(pc=>pc.C.visible);const k=vp?(vp.cs>0?'p':'m'):'n';Object.keys(sec.vars).forEach(kk=>{sec.vars[kk].visible=kk===k;});});
  B.dashes.forEach(o=>{if(!o.g.visible)return;const s=(o.s+now*.0015)%Math.max(.1,o.Lp-.4);o.m.position.copy(o.A).lerp(o.B,(s+.2)/o.Lp);o.m.position.y=.08;});
- B.warn.forEach(w=>{const on=CONT.on&&[...B.wings.A,...B.wings.B].some(x=>x.ln.name===w.ln&&x.sideI===w.sideI&&x.C.visible);w.sp.visible=w.mk.visible=on;});
+ B.warn.forEach(w=>{const on=w.piece.C.visible;w.sp.visible=w.mk.visible=on;});
  renderContUI(G,d,rs,rd,ra);}
 // ---------- UI ----------
 const C$=id=>document.getElementById(id);
@@ -820,7 +835,7 @@ function gateChip(label,state){const col={pending:['#ECEFEC','#4F5D57'],progress
  const st={pending:L('Pendiente','Pending'),progress:L('En curso','In progress'),hold:L('HOLD','HOLD'),sim:L('Simulado ✓','Simulated ✓'),na:'—'}[state];
  return '<span class="gchip" style="background:'+col[0]+';color:'+col[1]+'"><b>'+label+'</b> '+st+'</span>';}
 function gateState(W,k,d){const a=W.acts.find(x=>x.k===k);if(!a)return 'na';if(d<a.s)return 'pending';if(d<a.e)return 'progress';return 'sim';}
-function prvState(W,d){const p=W.acts.find(x=>x.k==='prv'),r=W.acts.find(x=>x.k==='retest');if(d<p.s)return 'pending';if(d<p.e)return 'progress';if(W.fail&&d<r.e)return d<r.s?'hold':'progress';return 'sim';}
+function prvState(W,d){const p=W.acts.find(x=>x.k==='prv'),lb=W.acts.find(x=>x.k==='lab'),r=W.acts.find(x=>x.k==='retest'),l2=W.acts.find(x=>x.k==='lab2');if(d<p.s)return 'pending';if(d<lb.e)return 'progress';if(W.fail&&r){if(d<r.s)return 'hold';if(d<(l2?l2.e:r.e))return 'progress';}return 'sim';}
 function renderContUI(G,d,rs,rd,ra){const sch=CONT.sch;const key=[G.gi,Math.floor(d*20),CONT.level,CONT.wing,LANG,JSON.stringify(CONT.fail)].join('|');if(key===lastUI)return;lastUI=key;
  const before=d<G.start,after=d>=G.end;const lv=G.levels.map(lvlName).join(', ');
  const A=G.wings.A,Bw=G.wings.B;const cA=before||after?null:actAt(A.acts,d),cB=before||after?null:actAt(Bw.acts,d);
@@ -844,13 +859,14 @@ function contSetLevel(l,keepDay){CONT.level=l;lastFocus=-1;lastChips='';const k=
 function contRebuild(){const keep=CONT.day;CONT.sch=computeSchedule();if(typeof bRefresh==='function'&&typeof floors!=='undefined')try{bRefresh();}catch(e){}C$('cScrub').max=String(Math.round(CONT.sch.total*100));
  const wk=C$('cWeek');const nW=Math.ceil(CONT.sch.total/5);wk.innerHTML='';for(let i=1;i<=nW;i++){const o=document.createElement('option');o.value=String(i);o.textContent=L('Semana ','Week ')+i;wk.appendChild(o);}
  C$('cT1').textContent=L('Semana ','Week ')+nW;CONT.day=Math.min(keep,CONT.sch.total);lastUI='';}
-function contBoundaries(){const G=CONT.sch.groups[groupOfLevel(CONT.level)];const b=new Set([G.start,G.end]);(masterT(CONT.level)||[]).forEach(w=>{b.add(w[0]);b.add(w[1]);});['A','B'].forEach(w=>G.wings[w].acts.forEach(a=>{b.add(a.s);b.add(a.e);}));return [...b].sort((x,y)=>x-y);}
+function contBoundaries(){const G=CONT.sch.groups[groupOfLevel(CONT.level)];const b=new Set([G.start,G.end]);(masterT(CONT.level)||[]).forEach(w=>{if(w){b.add(w[0]);b.add(w[1]);}});['A','B'].forEach(w=>G.wings[w].acts.forEach(a=>{b.add(a.s);b.add(a.e);}));return [...b].sort((x,y)=>x-y);}
 function contPlay(v){CONT.playing=v;C$('cPlayIcon').innerHTML=v?'<path d="M5 3.5h3.5v13H5zM11.5 3.5H15v13h-3.5z"/>':'<path d="M5 3.5v13l11-6.5z"/>';C$('cPlay').setAttribute('aria-label',v?L('Pausar plan','Pause plan'):L('Reproducir plan','Play plan'));if(v)CONT.last=performance.now();}
 function contTick(now){if(mode==='building'||!CONT.sch||CONT.level==null)return;if(CONT.playing){const dt=Math.min(.2,(now-CONT.last)/1000);CONT.last=now;CONT.day+=dt/0.8*CONT.speed*((typeof TOUR!=='undefined'&&TOUR.on&&TOUR.ff)?6:1);if(CONT.day>=CONT.sch.total){CONT.day=CONT.sch.total;contPlay(false);}
   const G=groupAtDay(CONT.day);if(CONT.follow&&!G.levels.includes(CONT.level))contSetLevel(G.levels[0],true);}
- APPLY_MASK=CONT.on?[0,3,5,6]:null;apply(0);if(CONT.on)applyCont(now);else tradeUI(now);sharedUI();}
+ APPLY_MASK=[0,3,5,6];apply(0);applyCont(now);if(!CONT.on)tradeUI(now);
+ if(!TOUR.on){const br=CONT.day>0.01?concurrentBrief():'';tourCard(br?'<b>'+L('Piso ','Floor ')+lvlName(CONT.level)+'</b><span>'+activeTradesTxt(CONT.level)+'</span>'+br:null);}sharedUI();}
 function contMode(on){CONT.on=on;C$('contPanel').hidden=!on;C$('tradePanel').hidden=on;lastFocus=-1;lastChips='';lastUI='';document.querySelectorAll('[data-imode]').forEach(b=>b.setAttribute('aria-pressed',String((b.dataset.imode==='cont')===on)));
- if(CONT.built)CONT.built.grp.visible=on;pause();if(CONT.level==null)contSetLevel(LEVELS[0]);if(on){lastUI='';camAnim={fp:cam.position.clone(),ft:controls.target.clone(),tp:new THREE.Vector3(0,118,46),tt:new THREE.Vector3(0,0,2),s:performance.now()};}}
+ if(CONT.built)CONT.built.grp.visible=true;pause();if(CONT.level==null)contSetLevel(LEVELS[0]);if(on){lastUI='';camAnim={fp:cam.position.clone(),ft:controls.target.clone(),tp:new THREE.Vector3(0,118,46),tt:new THREE.Vector3(0,0,2),s:performance.now()};}}
 function initContUI(){
  const fl=C$('cFloor');LEVELS.forEach(l=>{const o=document.createElement('option');o.value=String(l);o.textContent=L('Piso ','Floor ')+lvlName(l);fl.appendChild(o);});
  const ph=C$('cPhase');PHASES.forEach(k=>{const o=document.createElement('option');o.value=k;o.textContent=tr2(ACT_T[k]);ph.appendChild(o);});
@@ -882,9 +898,10 @@ function tradeWeeks(level,i){const m=TRADE_MAP[i];if(!m||!CONT.sch)return TRADE_
  ['A','B'].forEach(k=>G.wings[k].acts.forEach(a=>{if(a.k===m[0])s=Math.min(s,a.s);if(a.k===m[1]||a.k===m[0])e=Math.max(e,a.e);}));if(s>1e8)return TRADE_NOTE[i]||'';
  const w0=Math.floor(s/5)+1,w1=Math.floor((e-1e-6)/5)+1;return (w0===w1?L('sem. ','wk ')+w0:L('sem. ','wk ')+w0+'–'+w1)+(TRADE_NOTE[i]?' · '+TRADE_NOTE[i]:'');}
 let tradeUserCam=false;
-function renderTradeNext(si){const ol=document.getElementById('tNext');if(!ol)return;const lv=CONT.level==null?LEVELS.find(x=>lvlKey(x)===floorKey):CONT.level;const T=masterT(lv);
- ol.innerHTML=STAGES.map((s,i)=>{const p=T?mPSL(lv,i):0;const st=p>=1?'done':(p>0?'cur':'');const w=T?T[i]:null;const w0=w?Math.floor(w[0]/5)+1:0,w1=w?Math.floor((w[1]-1e-6)/5)+1:0;const wk=w?(w0===w1?L('sem. ','wk ')+w0:L('sem. ','wk ')+w0+'–'+w1):'';
-  return '<li class="'+st+'"><i>'+(p>=1?'✓':(p>0?'▶':String(i+1)))+'</i><span>'+t(s.t)+'</span><span class="w">'+wk+(TRADE_COND[i]?' · '+L('sujeto a permiso aparte','subject to separate permit'):'')+'</span></li>';}).join('');}
+function renderTradeNext(si){const ol=document.getElementById('tNext');if(!ol)return;const lv=CONT.level==null?LEVELS.find(x=>lvlKey(x)===floorKey):CONT.level;const T=masterT(lv);const ORD=[0,1,2,3,5,6,4,7,8];
+ ol.innerHTML=ORD.map((i,n)=>{const s=STAGES[i];const w=T?T[i]:null;const p=w?mPSL(lv,i):0;const st=p>=1?'done':(p>0?'cur':'');const w0=w?Math.floor(w[0]/5)+1:0,w1=w?Math.floor((w[1]-1e-6)/5)+1:0;
+  const wk=w?(w0===w1?L('sem. ','wk ')+w0:L('sem. ','wk ')+w0+'–'+w1):L('dependencia aparte · sin fecha en esta simulación','separate dependency · not scheduled here');
+  return '<li class="'+st+'"><i>'+(p>=1?'✓':(p>0?'▶':String(n+1)))+'</i><span>'+t(s.t)+'</span><span class="w">'+wk+(w&&TRADE_COND[i]===1?' · '+L('sujeto a permiso aparte','subject to separate permit'):'')+'</span></li>';}).join('');}
 function tradeStageChanged(si){renderTradeNext(si);const cb=document.getElementById('tCam');if(CONT.playing&&cb&&cb.checked&&!tradeUserCam&&mode!=='building'&&!CONT.on)goView(TRADE_CAM[si]||'corridor');}
 let lastFocus=-1,lastChips='';
 function tradeUI(now){const f=focusStage();if(f!==lastFocus){lastFocus=f;time=START[f]+1;updateText();tradeStageChanged(f);}
@@ -892,7 +909,7 @@ function tradeUI(now){const f=focusStage();if(f!==lastFocus){lastFocus=f;time=ST
 function sharedUI(){const lv=CONT.level;const T=masterT(lv);const el=C$('cShared');if(!el||!T)return;const d=CONT.day;
  const act=[];for(let i=0;i<9;i++){const p=mPS(i);if(p>0&&p<1)act.push(t(STAGES[i].t));}
  const others=[];CONT.sch.groups.forEach(G=>G.levels.forEach(l=>{if(l===lv)return;for(let i=8;i>=0;i--){const p=mPSL(l,i);if(p>0&&p<1){others.push(lvlName(l)+': '+t(STAGES[i].t));break;}}}));
- const html='<b>'+L('Piso ','Floor ')+lvlName(lv)+':</b> '+(act.length?act.join(' · '):(mPS(8)>=1?L('todos los trades terminados (escenario)','all trades complete (scenario)'):L('sin trades activos ahora','no active trade right now')))+(others.length?' — '+L('otros pisos activos: ','other active floors: ')+others.slice(0,6).join(' · ')+(others.length>6?' …':''):'');
+ const html=''+'<b>'+L('Piso ','Floor ')+lvlName(lv)+':</b> '+(act.length?act.join(' · '):(floorDone(CONT.level)?L('todos los trades terminados (escenario)','all trades complete (scenario)'):L('sin trades activos ahora','no active trade right now')))+(others.length?' — '+L('otros pisos activos: ','other active floors: ')+others.slice(0,6).join(' · ')+(others.length>6?' …':''):'')+tradeStateTxt(lv);
  if(el.dataset.h!==html){el.dataset.h=html;el.innerHTML=html;}
  C$('cClock').textContent=fmtDay(d);if(document.activeElement!==C$('cScrub'))C$('cScrub').value=Math.round(d*100);if(document.activeElement!==C$('cWeek'))C$('cWeek').value=String(dayToWeek(d));if(document.activeElement!==C$('cFloor'))C$('cFloor').value=String(lv);
  const fl=C$('tFloorLbl');if(fl)fl.textContent=L('Piso ','Floor ')+lvlName(lv);}
@@ -905,7 +922,7 @@ const levelToF=l=>l==='PH'?21:(l<=12?l:l-1);
 const fToLevel=f=>f===21?'PH':(f<=12?f:f+1);
 function tourCard(html){const c=document.getElementById('tourCard');if(!c)return;if(!html){c.hidden=true;return;}c.hidden=false;if(c.dataset.h!==html){c.dataset.h=html;c.innerHTML=html;}}
 function activeTradesTxt(l){const T=masterT(l);if(!T)return '';const a=[];for(let i=0;i<9;i++){const p=mPSL(l,i);if(p>0&&p<1)a.push(t(STAGES[i].t));}
- if(a.length)return a.join(' · ');if(mPSL(l,8)>=1)return L('todos los trades terminados','all trades complete');if(mPSL(l,0)<=0)return L('pendiente: aún no empieza','pending: not started yet');return L('esperando el siguiente trade','waiting for the next trade');}
+ if(a.length)return a.join(' · ');if(floorDone(l))return L('todos los trades terminados','all trades complete');if(mPSL(l,0)<=0)return L('pendiente: aún no empieza','pending: not started yet');return L('esperando el siguiente trade','waiting for the next trade');}
 function floorIdle(l){return ![...Array(9).keys()].some(i=>{const p=mPSL(l,i);return p>0&&p<1;})&&mPSL(l,8)<1;}
 function tourDest(cur){const d=CONT.day;const i0=LEVELS.indexOf(cur);let dest=null;
  const act=CONT.sch.groups.find(G=>G.levels.some(l=>mPSL(l,0)>0&&mPSL(l,0)<1));const nxt=CONT.sch.groups.find(G=>d<G.start);const g=act||nxt;if(g)dest=g.levels[0];
@@ -920,7 +937,7 @@ function ensureMarker(){if(tourMarker)return;tourMarker=new THREE.Group();const 
 function markerAt(y,now){tourMarker.position.set(bMaxX-CX+26,y,40);tourMarker.userData.shaft.position.set(bMaxX-CX+26,100,40);tourMarker.userData.ring.rotation.z=now*.003;}
 function railShow(on){const r=document.getElementById('fRail');if(r)r.hidden=!on;}
 function railUpdate(cur){const r=document.getElementById('fRail');if(!r||r.hidden)return;if(!r.childElementCount){LEVELS.slice().reverse().forEach(l=>{const sp=document.createElement('span');sp.dataset.l=String(l);sp.textContent=lvlName(l);r.appendChild(sp);});}
- [...r.children].forEach(sp=>{const l=sp.dataset.l==='PH'?'PH':+sp.dataset.l;sp.className=(String(l)===String(cur)?'on ':'')+(mPSL(l,8)>=1?'done':(floorIdle(l)||mPSL(l,0)<=0?'':'act'));});}
+ [...r.children].forEach(sp=>{const l=sp.dataset.l==='PH'?'PH':+sp.dataset.l;sp.className=(String(l)===String(cur)?'on ':'')+(floorDone(l)?'done':(floorIdle(l)||mPSL(l,0)<=0?'':'act'));});}
 function bldPrep(){if(mode!=='building')setMode('building');bIntro=null;introRoof=1;floors.forEach(F=>{F.g.scale.set(1,1,1);F.g.position.y=F.g.userData.base;F.g.visible=true;});controls.autoRotate=false;}
 function syncBld(){bWeek=Math.max(1,CONT.day/5+1);$('bWeek').value=bWeek;}
 function tourStart(kind){tourStop();TOUR.on=true;TOUR.kind=kind;TOUR.state='floor';TOUR.level=2;TOUR.trip=null;TOUR.userCam=false;TOUR.camKey='';TOUR.last=performance.now();CONT.day=0;CONT.level=2;
@@ -941,8 +958,8 @@ function tourTick(now){if(!TOUR.on||!CONT.sch)return;const dt=Math.min(.2,(now-T
   if(TOUR.state==='floor'){const l=TOUR.level;TOUR.ff=floorIdle(l);CONT.day=Math.min(CONT.sch.total,CONT.day+dt/0.8*CONT.speed*(TOUR.ff?6:1));syncBld();
    if(now-TOUR.uiT>300){TOUR.uiT=now;bText();}
    const y=(levelToF(l)-1)*FH+FH/2;markerAt(y,now);if(!TOUR.userCam){const kk=1-Math.pow(.05,dt);cam.position.lerp(new THREE.Vector3(150,y+30,215),kk);controls.target.lerp(new THREE.Vector3(40,y,25),kk);camAnim=null;}
-   tourCard('<b>'+L('Guía exterior · Piso ','Exterior guide · Floor ')+lvlName(l)+' · '+fmtDay(CONT.day)+'</b><span>'+activeTradesTxt(l)+(TOUR.ff?' · ⏩ '+L('avance rápido hasta el siguiente trade','fast-forward to the next trade'):'')+'</span>');
-   if(mPSL(l,8)>=1){const dest=tourDest(l);if(!dest){tourStop('<b>'+L('Guía completa','Guide complete')+'</b><span>'+L('Todos los pisos terminaron sus trades (escenario).','Every floor finished its trades (scenario).')+'</span>');return;}
+   tourCard('<b>'+L('Guía exterior · Piso ','Exterior guide · Floor ')+lvlName(l)+' · '+fmtDay(CONT.day)+'</b><span>'+activeTradesTxt(l)+(TOUR.ff?' · ⏩ '+L('avance rápido hasta el siguiente trade','fast-forward to the next trade'):'')+'</span>'+concurrentBrief());
+   if(floorDone(l)){const dest=tourDest(l);if(!dest){tourStop('<b>'+L('Guía completa','Guide complete')+'</b><span>'+L('Todos los pisos terminaron sus trades (escenario).','Every floor finished its trades (scenario).')+'</span>');return;}
     TOUR.trip={stops:tripStops(l,dest),t0:now,from:l,dest};TOUR.state='trip';TOUR.userCam=false;}
    return;}
   if(TOUR.state==='trip'){const T=TOUR.trip;const el=(now-T.t0)/1000;const INTRO=1.6,STEP=1.6,MOVE=.65,FINAL=2.4;const n=T.stops.length-1;let fA,fB,k,phase;
@@ -951,7 +968,7 @@ function tourTick(now){if(!TOUR.on||!CONT.sch)return;const dt=Math.min(.2,(now-T
    const y=(fA-1)*FH+FH/2+((fB-fA)*FH)*k;const fCur=k>=.5?fB:fA;markerAt(y,now);const kk=1-Math.pow(.03,dt);cam.position.lerp(new THREE.Vector3(150,y+30,215),kk);controls.target.lerp(new THREE.Vector3(40,y,25),kk);camAnim=null;
    if(bSel!==fCur){bSel=fCur;bRefresh();}const lv=fToLevel(fCur);
    if(phase==='intro')tourCard('<b>'+L('Piso ','Floor ')+lvlName(T.from)+' '+L('terminado','complete')+' ✓</b><span class="tdone">'+L('Todos los trades terminados (escenario). Subiendo al frente de trabajo…','All trades complete (scenario). Moving up to the workfront…')+'</span>');
-   else if(phase==='stop')tourCard('<b>'+L('Piso ','Floor ')+lvlName(lv)+'</b><span>'+activeTradesTxt(lv)+'</span>');
+   else if(phase==='stop')tourCard('<b>'+L('Piso ','Floor ')+lvlName(lv)+'</b><span>'+activeTradesTxt(lv)+'</span>'+concurrentBrief());
    else if(phase==='final')tourCard('<b>'+L('Frente de trabajo · Piso ','Workfront · Floor ')+lvlName(T.dest)+'</b><span>'+workfrontTxt(T.dest)+'</span>');
    else{TOUR.state='floor';TOUR.level=T.dest;CONT.level=T.dest;TOUR.trip=null;bSel=levelToF(T.dest);bRefresh();}}
   return;}
@@ -959,8 +976,8 @@ function tourTick(now){if(!TOUR.on||!CONT.sch)return;const dt=Math.min(.2,(now-T
  if(mode==='building'){tourStop();return;}
  if(TOUR.state==='floor'){const l=TOUR.level;if(CONT.level!==l)contSetLevel(l,true);if(!CONT.on)contMode(true);TOUR.ff=floorIdle(l);
   if(!CONT.playing&&CONT.day<CONT.sch.total)contPlay(true);intCamera();if(now-TOUR.uiT>400){TOUR.uiT=now;railUpdate(l);}
-  tourCard('<b>'+L('Guía interior · Piso ','Interior guide · Floor ')+lvlName(l)+'</b><span>'+activeTradesTxt(l)+(TOUR.ff?' · ⏩ '+L('avance rápido hasta el siguiente trade','fast-forward to the next trade'):'')+'</span>');
-  if(mPSL(l,8)>=1){const dest=tourDest(l);if(!dest){tourStop('<b>'+L('Guía completa','Guide complete')+'</b><span>'+L('Todos los pisos terminaron sus trades (escenario).','Every floor finished its trades (scenario).')+'</span>');return;}
+  tourCard('<b>'+L('Guía interior · Piso ','Interior guide · Floor ')+lvlName(l)+'</b><span>'+activeTradesTxt(l)+(TOUR.ff?' · ⏩ '+L('avance rápido hasta el siguiente trade','fast-forward to the next trade'):'')+'</span>'+concurrentBrief());
+  if(floorDone(l)){const dest=tourDest(l);if(!dest){tourStop('<b>'+L('Guía completa','Guide complete')+'</b><span>'+L('Todos los pisos terminaron sus trades (escenario).','Every floor finished its trades (scenario).')+'</span>');return;}
    contPlay(false);TOUR.trip={stops:tripStops(l,dest),t0:now,from:l,dest,switched:false};TOUR.state='itrip';}
   return;}
  if(TOUR.state==='itrip'){const T=TOUR.trip;const el=(now-T.t0)/1000;const OUT=.7,STEP=.9,FINAL=1.6,IN=.7;const n=T.stops.length-1;const tStops=OUT+n*STEP;
@@ -970,6 +987,54 @@ function tourTick(now){if(!TOUR.on||!CONT.sch)return;const dt=Math.min(.2,(now-T
    tourCard('<b>'+L('Frente de trabajo · Piso ','Workfront · Floor ')+lvlName(T.dest)+'</b><span>'+workfrontTxt(T.dest)+'</span>');}
   else if(el<tStops+IN+FINAL){if(floorGroup)floorGroup.position.y=0;intCamera();}
   else{TOUR.state='floor';TOUR.level=T.dest;TOUR.trip=null;contPlay(true);}}}
+
+function scenWeeks(k){const keep=CONT.scen;CONT.scen=k;const sc=computeSchedule();CONT.scen=keep;return Math.round(sc.total/5);}
+function fillScen(){const lab={par:L('Rociadores y alarma en paralelo','Sprinklers and alarm in parallel'),lag:L('Alarma 1 semana detrás de rociadores','Alarm one week behind sprinklers'),plan:L('Asignación de planificación','Planning allowance')};
+ ['cScen','bScen'].forEach(id=>{const el=document.getElementById(id);if(!el)return;el.innerHTML='';['par','lag','plan'].forEach(k=>{const o=document.createElement('option');o.value=k;o.textContent=lab[k]+' · ~'+scenWeeks(k)+L(' sem',' wk');el.appendChild(o);});el.value=CONT.scen;
+  el.onchange=()=>{CONT.scen=el.value;['cScen','bScen'].forEach(x=>{const e2=document.getElementById(x);if(e2)e2.value=CONT.scen;});contRebuild();if(typeof bRefresh==='function')bRefresh();lastUI='';};});}
+function tradeStateTxt(l){const T=masterT(l);if(!T)return '';const st=(i)=>{const p=mPSL(l,i);return p>=1?L('instalación terminada (simulada) · inspección y aceptación no asumidas','installation complete (simulated) · inspection and acceptance not assumed'):(p>0?L('instalando','installing'):L('pendiente','pending'));};
+ const both=mPSL(l,4)>0&&mPSL(l,4)<1&&mPSL(l,7)>0&&mPSL(l,7)<1;
+ return '<br><span class="dep">'+L('Rociadores: permiso FP0826-7612 no emitido · ','Sprinklers: permit FP0826-7612 not issued · ')+st(4)+'</span><br><span class="dep">'+L('Alarma: permiso no emitido · ','Fire alarm: permit not issued · ')+st(7)+'</span>'
+  +(both?'<br><span class="warnc">⚠ '+L('Rociadores y alarma en el mismo piso: requiere coordinación en campo y autorización del Fire Marshal.','Sprinklers and alarm on the same floor: requires field coordination and Fire Marshal authorization.')+'</span>':'')
+  +'<br><span class="dep">'+L('Seguimiento aparte, no programado aquí: puertas de cerramiento de humo, presurización de escaleras, comisionamiento y aceptación final del ELSS.','Tracked separately, not scheduled here: smoke enclosure doors, stair pressurization, commissioning and final ELSS acceptance.')+'</span>'
+  +(CONT.sch.scen==='plan'&&CONT.day>=CONT.sch.workEnd?'<br><span class="dep">'+L('Semanas de asignación de planificación (sin trabajo programado): coordinación, inspecciones, condiciones de obra, permisos y aprobación Fire/AHJ.','Planning-allowance weeks (no scheduled work): coordination, inspections, site conditions, permits and Fire/AHJ approval.')+'</span>':'');}
+
+// ---------- Building: always show where each crew is working ----------
+const WF={tags:{},userCam:false};
+function wfActive(){const out={servpro:[],drywall:[],spr:[],fa:[]};if(typeof CONT==='undefined'||!CONT.sch)return out;
+ LEVELS.forEach(l=>{const p=i=>mPSL(l,i);const on=i=>{const v=p(i);return v>0&&v<1;};
+  if(on(0)||on(1)||on(2)||on(3))out.servpro.push(l);if(on(5)||on(6))out.drywall.push(l);if(on(4))out.spr.push(l);if(on(7))out.fa.push(l);});return out;}
+function wfRange(arr){if(!arr.length)return '—';if(arr.length===1)return lvlName(arr[0]);return lvlName(arr[0])+'–'+lvlName(arr[arr.length-1]);}
+function wfSummary(){const a=wfActive();const it=(c,lab,arr)=>'<span class="wfi"><i style="background:'+c+'"></i>'+lab+' <b>'+wfRange(arr)+'</b></span>';
+ return '<span class="wf">'+it('#EB7B41','Servpro',a.servpro)+it('#3E7CB1',L('Drywall','Drywall'),a.drywall)+it('#B3312C',L('Rociadores','Sprinklers'),a.spr)+it('#7B1E1E',L('Alarma','Alarm'),a.fa)+'</span>';}
+function wfTagTex(txt,col){const c=document.createElement('canvas');c.width=320;c.height=64;const g=c.getContext('2d');g.fillStyle=col;g.beginPath();if(g.roundRect)g.roundRect(2,6,316,52,26);else g.rect(2,6,316,52);g.fill();
+ g.fillStyle='#fff';g.font='700 30px "Instrument Sans",system-ui,sans-serif';g.textAlign='center';g.textBaseline='middle';g.fillText(txt,160,33);const tx=new THREE.CanvasTexture(c);tx.encoding=THREE.sRGBEncoding;return tx;}
+function wfTick(now){if(mode!=='building'||typeof CONT==='undefined'||!CONT.sch)return;const a=wfActive();const lab={};
+ a.servpro.forEach(l=>lab[l]=['Servpro','#EB7B41']);a.drywall.forEach(l=>{if(!lab[l])lab[l]=[L('Drywall','Drywall'),'#3E7CB1'];});
+ a.spr.forEach(l=>{lab[l]=lab[l]?[lab[l][0]+' · '+L('Rociad.','Sprink.'),'#B3312C']:[L('Rociadores','Sprinklers'),'#B3312C'];});a.fa.forEach(l=>{lab[l]=lab[l]?[lab[l][0]+' · '+L('Alarma','Alarm'),'#7B1E1E']:[L('Alarma','Alarm'),'#7B1E1E'];});
+ const show=bWeek>=1&&!(bL.facade);
+ LEVELS.forEach(l=>{const f=levelToF(l);let tg=WF.tags[f];const v=show&&lab[l];
+  if(!tg){if(!v)return;tg=new THREE.Sprite(new THREE.SpriteMaterial({depthTest:false,transparent:true}));tg.renderOrder=13;tg.scale.set(17,3.4,1);tg.position.set(bMaxX-CX+22,(f-1)*FH+FH/2,40);bG.add(tg);WF.tags[f]=tg;}
+  tg.visible=!!v;if(v){const key=lab[l].join('|');if(tg.userData.key!==key){tg.userData.key=key;if(tg.material.map)tg.material.map.dispose();tg.material.map=wfTagTex(lab[l][0],lab[l][1]);tg.material.needsUpdate=true;}}});
+ // while the timeline plays, keep the newest workfront in view (until the user moves the camera)
+ if(bPlaying&&!WF.userCam&&!(TOUR.on&&TOUR.kind==='ext')){const fl=(a.servpro.length?a.servpro:(a.drywall.length?a.drywall:a.spr.concat(a.fa)));if(fl.length){const ys=fl.map(l=>(levelToF(l)-1)*FH+FH/2);const ty=(Math.min(...ys)+Math.max(...ys))/2;
+  const dy=(ty-controls.target.y)*0.04;controls.target.y+=dy;cam.position.y+=dy;}}}
+
+// ---------- brief of everything happening at the same time (all views) ----------
+const SHORT_ACT={contain:['contenciones','containments'],demo:['demolición','demolition'],clean:['limpieza HEPA','HEPA cleaning'],swap:['traslado de contenciones','moving containments'],demo2:['demolición','demolition'],clean2:['limpieza HEPA','HEPA cleaning'],
+ prv:['visita AirMD','AirMD visit'],lab:['laboratorio AirMD','AirMD lab'],hold:['HOLD · retrabajo','HOLD · rework'],reclean:['re-limpieza','re-cleaning'],retest:['re-prueba AirMD','AirMD re-test'],lab2:['laboratorio AirMD','AirMD lab'],
+ fire:['verificación Fire/AHJ','Fire/AHJ verification'],rebuild:['reconstrucción','reconstruction'],insp:['inspección','inspection'],finish:['pintura','paint'],fclean:['limpieza final','final cleaning'],remove:['retiro de contenciones','containment removal'],release:['liberación','release']};
+function concurrentBrief(){if(typeof CONT==='undefined'||!CONT.sch)return '';const d=CONT.day;const rows=[];
+ CONT.sch.groups.forEach(G=>{if(d<G.start||d>=G.end)return;const parts=[];['A','B'].forEach(w=>{const a=actAt(G.wings[w].acts,d);if(!a)return;const crew=CREW[a.k];const who=crew==='servpro'?'Servpro':(crew==='drywall'?L('Drywall','Drywall'):(crew==='airmd'||a.k==='lab'||a.k==='lab2'?'AirMD':L('Inspección','Inspection')));
+   parts.push('<b>'+who+'</b> '+L('ala ','wing ')+w+' · '+L(SHORT_ACT[a.k][0],SHORT_ACT[a.k][1]));});
+  if(d>=G.release.s&&d<G.release.e)parts.push(L('liberación del grupo (simulada)','group release (simulated)'));
+  if(parts.length)rows.push(['#EB7B41',L('Pisos ','Floors ')+G.levels.map(lvlName).join(', ')+': '+parts.join(' · ')]);});
+ const on=(l,i)=>{const v=mPSL(l,i);return v>0&&v<1;};const spr=LEVELS.filter(l=>on(l,4)),fa=LEVELS.filter(l=>on(l,7));
+ if(spr.length)rows.push(['#B3312C','<b>'+L('Rociadores','Sprinklers')+'</b> '+L('piso ','floor ')+spr.map(lvlName).join(', ')]);
+ if(fa.length)rows.push(['#7B1E1E','<b>'+L('Alarma','Fire alarm')+'</b> '+L('piso ','floor ')+fa.map(lvlName).join(', ')]);
+ const both=spr.filter(l=>fa.includes(l));if(both.length)rows.push(['#9B5A00','⚠ '+L('Rociadores y alarma en el mismo piso (','Sprinklers and alarm on the same floor (')+both.map(lvlName).join(', ')+L('): coordinación en campo y autorización del Fire Marshal',': field coordination and Fire Marshal authorization')]);
+ if(!rows.length)return '';
+ return '<div class="cc"><div class="cch">'+L('Al mismo tiempo · ','At the same time · ')+fmtDay(d)+'</div>'+rows.map(r=>'<div class="ccr"><i style="background:'+r[0]+'"></i><span>'+r[1]+'</span></div>').join('')+'</div>';}
 
 let floorGroup=null, items=null;
 function buildFloor(key){
@@ -1048,7 +1113,8 @@ function buildFloor(key){
      const add=(type,sAt,sg,y)=>{const off=sg===0?0:sg*wo(sg);const pos=a.clone().addScaledVector(dir,sAt).addScaledVector(side,off);pos.y=y;
        const old=faDevice(type,true),nw=faDevice(type,false);old.position.copy(pos);nw.position.copy(pos);
        if(sg!==0){const nx=-side.x*sg,nz=-side.z*sg;old.rotation.y=nw.rotation.y=Math.atan2(nx,nz);}
-       g.add(old,nw);it.faDev.push({type,old,nw,t:Math.min(0.78,sAt/L*0.78),ph:Math.random()});};
+       g.add(old,nw);it.faDev.push({type,old,nw,t:0.38+Math.min(0.42,sAt/L*0.42),ph:Math.random()});};
+     {const wg=new THREE.BoxGeometry(1,.07,.07);wg.translate(.5,0,0);const wm=new THREE.Mesh(wg,new THREE.MeshBasicMaterial({color:0xD32F2F}));wm.position.copy(a).addScaledVector(side,-.6).setY(H-.1);wm.rotation.y=-Math.atan2(dir.z,dir.x);wm.userData.L=L;wm.visible=false;g.add(wm);(it.faWire=it.faWire||[]).push(wm);}
      add('smoke',12,0,H);add('smoke',Math.max(13,L-8),0,H);
      add('spk',8,-1,7.4);add('spk',Math.max(9,L-10),1,7.4);
      add('pull',Math.max(10,L-2.5),1,4.0);
@@ -1122,6 +1188,7 @@ function apply(time){
   it.pipes.forEach(pp=>{const e=ease(p6);pp.visible=e>0.001;pp.scale.set(1,1,Math.max(0.001,e*pp.userData.L));});
   it.heads.forEach(({m,t})=>{const e=local(p6,t,0.12);m.visible=e>0;m.scale.setScalar(Math.max(0.001,e));});
   faUpdate(performance.now(),ps(7)>=1?8:(ps(7)>0?7:0),ps(7));
+  if(it.faWire)it.faWire.forEach(w=>{const k=clamp(ps(7)/0.35);w.visible=k>0;w.scale.x=Math.max(.001,k*w.userData.L);});
   {const pp=[ps(0),ps(1),0,ps(3),ps(4),0,0,ps(7),0];
   it.crew.forEach(c=>{const p=pp[c.st];c.w.visible=act(c.st)&&p>0&&p<1;if(!c.w.visible)return;
     if(c.fixed){walk(c.w,null,time*0.012,true);c.w.userData.a1.rotation.x=-1.1;c.w.userData.a2.rotation.x=-1.1;return;}
@@ -1230,7 +1297,7 @@ function bMaxW(){return (typeof CONT!=='undefined'&&CONT.sch)?CONT.sch.total/5+1
 const grpOf=f=>Math.min(6,Math.floor((f-2)/3));
 const stageOf=(f,w)=>{if(f<2)return -1;if(typeof CONT==='undefined'||!CONT.sch)return 0;if(w<1)return 0;const lv=levelOfF(f);const T=masterT(lv);if(!T)return 0;const d=(w-1)*5;
   const G=CONT.sch.groups[groupOfLevel(lv)];if(d>=G.start&&d<G.end&&['A','B'].some(k=>{const a=actAt(G.wings[k].acts,d);return a&&a.k==='hold';}))return BHOLD;
-  let hi=-1;for(let i=0;i<9;i++){if(d>=T[i][0]&&d<T[i][1])hi=i;}if(hi>=0)return hi+1;if(d<T[0][0])return 0;if(d>=T[8][1])return BDONE;return BWAIT;};
+  let hi=-1,ord=[0,1,2,3,5,6,4,7,8];ord.forEach(i=>{if(T[i]&&d>=T[i][0]&&d<T[i][1])hi=i;});if(hi>=0)return hi+1;if(d<T[0][0])return 0;if(d>=lastEnd(T))return BDONE;return BWAIT;};
 function wingTxtB(f,w){const G=CONT.sch.groups[groupOfLevel(levelOfF(f))];const d=(w-1)*5;if(!G||d<G.start||d>=G.end)return '';return ['A','B'].map(k=>{const a=actAt(G.wings[k].acts,d);return L('Ala ','Wing ')+k+': '+(a?tr2(ACT_T[a.k]):L('en espera','waiting'));}).join(' · ');}
 const GC={};
 function bGeo(k){if(GC[k])return GC[k];const o=BLD[k].outline;
@@ -1404,13 +1471,13 @@ function bText(){const w=bWeek;const wk=Math.floor(w);
   if(bSel){const f=bSel,st=stageOf(f,w),k=keyFor(f),g=grpOf(f);
     const plan=f===1?L('planta baja (sin plano)','ground floor (no drawing)'):L('planta ','plan ')+({'2-15':L('típica 2–16','typical 2–16'),'16-20':L('típica 17–21','typical 17–21'),'21':'PH'})[k]+L(' · hoja ',' · sheet ')+SHEETK[k];
     h='<div class="co"><span>'+(f===21?'Penthouse':flo(f))+' · '+plan+'</span></div><h2>'+flo(f)+'</h2>'
-     +(f>=2?'<p>'+L('Grupo ','Group ')+(g+1)+L(' de 7 (pisos ',' of 7 (floors ')+t(GNAME[g])+L('). Semanas ','). Weeks ')+(CONT.sch.groups[groupOfLevel(levelOfF(f))].start/5+1)+'–'+Math.ceil((CONT.sch.groups[groupOfLevel(levelOfF(f))].end-1e-6)/5)+L(' de contención; ',' of containment; ')+L('todos los trades del piso: semanas ','all floor trades: weeks ')+(Math.floor(masterT(levelOfF(f))[0][0]/5)+1)+'–'+(Math.floor((masterT(levelOfF(f))[8][1]-1e-6)/5)+1)+L(' (mismo cronograma que Interior).',' (same schedule as Interior).')+'</p>'+(wingTxtB(f,w)?'<p class="fine">'+wingTxtB(f,w)+'</p>':'')+'<ul class="stagelist">'+(masterT(levelOfF(f))||[]).map((wn,i)=>{const d=(w-1)*5;const on=d>=wn[0]&&d<wn[1],dn=d>=wn[1];return '<li style="'+(on?'font-weight:600':(dn?'opacity:.6':''))+'">'+sw(BST[i+1].c)+'<span>'+(dn?'✓ ':(on?'▶ ':''))+t(BST[i+1].n)+'</span><span class="ct">'+L('sem. ','wk ')+(Math.floor(wn[0]/5)+1)+'–'+(Math.floor((wn[1]-1e-6)/5)+1)+'</span></li>';}).join('')+'</ul><button class="linkbtn" id="openFloor">'+L('Ver el pasillo de este piso','View this floor’s corridor')+'</button>'
+     +(f>=2?'<p>'+L('Grupo ','Group ')+(g+1)+L(' de 7 (pisos ',' of 7 (floors ')+t(GNAME[g])+L('). Semanas ','). Weeks ')+(CONT.sch.groups[groupOfLevel(levelOfF(f))].start/5+1)+'–'+Math.ceil((CONT.sch.groups[groupOfLevel(levelOfF(f))].end-1e-6)/5)+L(' de contención; ',' of containment; ')+L('todos los trades del piso: semanas ','all floor trades: weeks ')+(Math.floor(masterT(levelOfF(f))[0][0]/5)+1)+'–'+(Math.floor((lastEnd(masterT(levelOfF(f)))-1e-6)/5)+1)+L(' (mismo cronograma que Interior).',' (same schedule as Interior).')+'</p>'+(wingTxtB(f,w)?'<p class="fine">'+wingTxtB(f,w)+'</p>':'')+'<ul class="stagelist">'+(masterT(levelOfF(f))||[]).map((wn,i)=>{if(!wn)return '<li style="opacity:.6">'+sw(BST[i+1].c)+'<span>'+t(BST[i+1].n)+'</span><span class="ct">'+L('dependencia aparte','separate dependency')+'</span></li>';const d=(w-1)*5;const on=d>=wn[0]&&d<wn[1],dn=d>=wn[1];return '<li style="'+(on?'font-weight:600':(dn?'opacity:.6':''))+'">'+sw(BST[i+1].c)+'<span>'+(dn?'✓ ':(on?'▶ ':''))+t(BST[i+1].n)+'</span><span class="ct">'+L('sem. ','wk ')+(Math.floor(wn[0]/5)+1)+'–'+(Math.floor((wn[1]-1e-6)/5)+1)+'</span></li>';}).join('')+'</ul><button class="linkbtn" id="openFloor">'+L('Ver el pasillo de este piso','View this floor’s corridor')+'</button>'
        :'<p>'+L('No hay plano de planta baja en el set de Relats. Se muestra con la huella típica como referencia.','The Relats set has no ground-floor plan. The typical footprint is shown for reference.')+'</p>');
   }else{
-    h='<h2>'+(w<1?L('Antes de empezar','Before start'):L('Semana ','Week ')+wk)+'</h2><p>'+(w<1?L('Los 20 pisos con pasillos esperan la emisión del permiso BC2628687.','All 20 corridor floors are waiting for permit BC2628687 to be issued.'):L('Un solo cronograma: Servpro avanza por grupos de 3 pisos (2 alas, unas 3 semanas por grupo) y detrás siguen los demás trades en los pisos ya liberados, todos a la vez. Toca un piso para ver su detalle.','One schedule: Servpro moves through groups of 3 floors (2 wings, about 3 weeks per group) while the other trades continue on released floors at the same time. Tap a floor for details.'))+'</p><ul class="stagelist">'
+    h='<h2>'+(w<1?L('Antes de empezar','Before start'):L('Semana ','Week ')+wk)+'</h2><p>'+(w<1?L('Los 20 pisos con pasillos esperan la emisión del permiso BC2628687.','All 20 corridor floors are waiting for permit BC2628687 to be issued.'):L('Un solo cronograma: Servpro avanza por grupos de 3 pisos (ala A en la semana 1, ala B en la 2, liberación en la 3) y en los pisos ya liberados avanzan rociadores y alarma, un piso por semana cada uno. Puertas de humo, presurización, comisionamiento y aceptación del ELSS se siguen aparte. Toca un piso para ver su detalle.','One schedule: Servpro moves through groups of 3 floors (wing A in week 1, wing B in week 2, release in week 3) while sprinklers and alarm advance on released floors, one floor per week each. Smoke doors, pressurization, commissioning and ELSS acceptance are tracked separately. Tap a floor for details.'))+'</p><ul class="stagelist">'
      +BST.map((s,i)=>counts[i]?'<li>'+sw(s.c)+'<span>'+t(s.n)+'</span><span class="ct">'+counts[i]+(counts[i]===1?L(' piso',' floor'):L(' pisos',' floors'))+'</span></li>':'').join('')+'</ul>';}
   const bi=$('bInfo');if(bi.dataset.h!==h){if(bi.dataset.k!==h.slice(0,60)){bi.dataset.k=h.slice(0,60);bi.classList.remove('swap');void bi.offsetWidth;bi.classList.add('swap');}bi.dataset.h=h;bi.innerHTML=h;}const ob=$('openFloor');if(ob)ob.onclick=()=>setMode('interior',keyFor(bSel));
-  {const ch=$('bChip');const html=bSel?'<b>'+flo(bSel)+'</b>'+(bSel>=2?t(BST[stageOf(bSel,w)].n):L('Planta baja','Ground floor')):'<b>'+(w<1?L('Antes de empezar','Before start'):L('Semana ','Week ')+wk)+'</b>'+(counts[BDONE]||0)+L(' de 20 pisos con todos los trades terminados',' of 20 floors with every trade complete');const pct=Math.round((counts[BDONE]||0)/20*100);
+  {const ch=$('bChip');const html=(bSel&&!bPlaying)?'<b>'+flo(bSel)+'</b>'+(bSel>=2?t(BST[stageOf(bSel,w)].n):L('Planta baja','Ground floor')):'<b>'+(w<1?L('Antes de empezar','Before start'):L('Semana ','Week ')+wk)+'</b>'+(counts[BDONE]||0)+L(' de 20 pisos con todos los trades terminados',' of 20 floors with every trade complete')+(w>=1?concurrentBrief():'');const pct=Math.round((counts[BDONE]||0)/20*100);
    if(ch.dataset.h!==html){ch.dataset.h=html;let bar=ch.querySelector('.pbar');ch.innerHTML=html;ch.appendChild(bar||Object.assign(document.createElement('span'),{className:'pbar',innerHTML:'<i style="width:0%"></i>'}));}
    const bi2=ch.querySelector('.pbar i');if(bi2&&bi2.style.width!==pct+'%')bi2.style.width=pct+'%';}}
 function bFactsHTML(){const fac=bL.facade;
@@ -1431,7 +1498,7 @@ function bSpeedK(){return 1;}
 function bSyncMax(){const m=bMaxW();const el=$('bWeek');if(el&&+el.max!==m){el.max=String(m);}const t1=$('bWMax');if(t1)t1.textContent=L('Sem. ','Wk ')+Math.round(m-1);}
 function bRefresh(){bSyncMax();bApply(performance.now());bText();$('bFacts').innerHTML=bFactsHTML();}
 const bIcon=$('bPlayIcon');
-function bPlayF(){if(bWeek>=bMaxW()-0.001){bWeek=0;$('bWeek').value=0;bText();}bPlaying=true;bLast=performance.now();bIcon.innerHTML='<path d="M5 3.5h3.5v13H5zM11.5 3.5H15v13h-3.5z"/>';}
+function bPlayF(){WF.userCam=false;if(bWeek>=bMaxW()-0.001){bWeek=0;$('bWeek').value=0;bText();}bPlaying=true;bLast=performance.now();bIcon.innerHTML='<path d="M5 3.5h3.5v13H5zM11.5 3.5H15v13h-3.5z"/>';}
 function bPause(){bPlaying=false;bIcon.innerHTML='<path d="M5 3.5v13l11-6.5z"/>';}
 $('bPlay').onclick=()=>bPlaying?bPause():bPlayF();
 $('bWeek').addEventListener('input',()=>{bPause();bWeek=+$('bWeek').value;if(typeof CONT!=='undefined')CONT.day=Math.max(0,(bWeek-1)*5);bText();});
@@ -1451,7 +1518,7 @@ controls.addEventListener('start',()=>{if(mode==='building'&&spin){spin=false;co
 let mode='building';
 function setMode(m,fk){mode=m;const B=m==='building';if(!B&&typeof setFinal==='function')setFinal(false);
   if(bpOn)setBP(false);pause();bPause();
-  bG.visible=B;if(floorGroup)floorGroup.visible=!B;{const fb=document.getElementById('faSim'),fn=document.getElementById('faBanner');if(B){if(fb)fb.hidden=true;if(fn)fn.hidden=true;}}
+  bG.visible=B;if(floorGroup)floorGroup.visible=!B;if(B&&!(typeof TOUR!=='undefined'&&TOUR.on)){const tc=document.getElementById('tourCard');if(tc)tc.hidden=true;}{const fb=document.getElementById('faSim'),fn=document.getElementById('faBanner');if(B){if(fb)fb.hidden=true;if(fn)fn.hidden=true;}}
   $('bldPanel').hidden=!B;$('intPanel').hidden=B;$('bTools').hidden=!B;$('iTools').hidden=B;$('bChip').hidden=!B;$('stamp').hidden=B;$('floorSeg').hidden=B;
   document.querySelectorAll('[data-mode]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.mode===m));
   $('hTitle').textContent=B?'5660 Collins Avenue':t('Reconstrucción de pasillos');
@@ -1465,7 +1532,7 @@ document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>setMode(b.data
 bTick=function(now){if(mode!=='building')return;introTick(now);
   if(bPlaying&&bIntro!==null){bLast=now;}
   if(bPlaying&&bIntro===null&&!(typeof TOUR!=='undefined'&&TOUR.on&&TOUR.kind==='ext')){bWeek+=(now-bLast)/1000*0.9*bSpeedK();if(typeof CONT!=='undefined')CONT.day=Math.max(0,(bWeek-1)*5);bLast=now;if(bWeek>=bMaxW()){bWeek=bMaxW();bPause();}$('bWeek').value=bWeek;bText();}
-  bApply(now);};
+  bApply(now);wfTick(now);};
 const m=(location.hash||'').match(/piso-(2-15|16-20|21)/);
 if(m){floorKey=m[1];document.querySelectorAll('[data-floor]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.floor===floorKey));$('stamp').textContent=t(SHEET[floorKey]);}
 themeGround();resize();buildFloor(floorKey);setTime(0);
@@ -1485,14 +1552,14 @@ function applyLang(l){LANG=l==='en'?'en':'es';document.documentElement.lang=LANG
   $('hSub').textContent=mode==='building'?t('El edificio completo, piso por piso · escenario de planificación'):t('Escenario de planificación sobre los planos de Relats del 30 de octubre');
   if(bpOn)bpSync();}
 translateStatic();applyLang(LANG);
-initContUI();contLang();initTradeUI();
+initContUI();contLang();initTradeUI();fillScen();
 [['guideBtn','int'],['guideBtnB','ext']].forEach(([id,k])=>{const b=document.getElementById(id);if(b)b.onclick=()=>{if(TOUR.on&&TOUR.kind===k)tourStop();else tourStart(k);};});guideUI();
-controls.addEventListener('start',()=>{if(TOUR.on)TOUR.userCam=true;});
+controls.addEventListener('start',()=>{if(TOUR.on)TOUR.userCam=true;if(typeof bPlaying!=='undefined'&&bPlaying)WF.userCam=true;});
 $('bPlay').addEventListener('click',()=>{if(TOUR.on&&TOUR.kind==='ext')tourStop();},true);$('bWeek').addEventListener('input',()=>{if(TOUR.on&&TOUR.kind==='ext')tourStop();});
 document.querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click',()=>{if(TOUR.on)tourStop();}));
 document.querySelectorAll('[data-floor]').forEach(b=>b.addEventListener('click',()=>{if(TOUR.on)tourStop();}));if(mode!=='building')contMode(CONT.on);
 window.addEventListener('message',e=>{if(e.source!==parent||e.origin!==location.origin)return;
- if(e.data?.type==='collins-language'){applyLang(e.data.lang);contLang();initTradeUI();guideUI();if(typeof bRefresh==='function')bRefresh();}
+ if(e.data?.type==='collins-language'){applyLang(e.data.lang);contLang();initTradeUI();guideUI();fillScen();if(typeof bRefresh==='function')bRefresh();}
  if(e.data?.type==='collins-myfloor')setMyFloor(e.data.label);
  if(e.data?.type==='collins-visibility'){visible=!!e.data.visible;if(!visible){pause();bPause();}else resize();}
  if(e.data?.type==='collins-floor'&&['2-15','16-20','21'].includes(e.data.key))setMode('interior',e.data.key);

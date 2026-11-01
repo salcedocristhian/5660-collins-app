@@ -116,3 +116,28 @@
 
 ## v16-s24b · Contenciones más visibles
 - Polietileno con opacidad 0.86 (antes 0.55), tono blanco lechoso y contorno gris en las caras frontal y superior, para que la contención se lea en todas las vistas sin ocultar del todo a las cuadrillas.
+
+## v17-sq1 · Procedimiento por alas y secuencia progresiva de rociadores y alarma
+- Remediación por alas, sin traslado de muro a muro: semana 1 contenciones del ala A (ambos muros afectados, profundidad ajustada para dejar 3 ft libres donde el ancho lo permite; avisos donde no), demolición, limpieza y visita AirMD; laboratorio con el resultado al inicio de la semana 2. Semana 2: PRV aprobado y reconstrucción del ala A mientras Servpro hace el ala B. Semana 3: PRV del ala B, reconstrucción y liberación. Semana 4: Servpro empieza el siguiente grupo.
+- Rociadores y alarma con cuadrillas y estados propios, un piso por semana cada uno, desde la semana siguiente a la liberación del grupo. Escenarios: en paralelo (~23 semanas), alarma una semana detrás (~24, predeterminado) y asignación de planificación (28). El último grupo solo tiene 2 pisos (21 y PH), por eso cada escenario termina una semana antes que una cuenta con grupos de 3.
+- En paralelo se avisa que dos trades en el mismo piso requieren coordinación en campo y autorización del Fire Marshal. Instalación terminada ≠ inspección, prueba integrada ni aceptación.
+- Puertas de cerramiento de humo, presurización de escaleras, comisionamiento y aceptación final del ELSS quedan como dependencias aparte (sin programar).
+- Alarma: primero verificación y terminación del cableado existente (cable rojo progresivo), luego los dispositivos.
+- Pestaña Schedule alineada: rociadores semanas 7–26 del calendario, alarma 8–27, puertas como dependencia aparte.
+
+## v17-sq2 · Contenciones también en la Secuencia por oficio
+- La pestaña Secuencia por oficio muestra el mismo procedimiento de contención que el Plan por semanas: contenciones por ala, cremalleras y cinta, demolición dentro de la contención, limpieza HEPA, visita AirMD/laboratorio, HOLD si falla la PRV, reconstrucción, retiro de la contención, ruta libre de 3 ft y cuadrillas. Encima siguen los demás trades (rociadores, alarma) con sus propias animaciones.
+- El texto de la etapa "Remediación de moho" describe el procedimiento por alas.
+
+## v17-sq3 · Contenciones en tramos alternos (nunca una frente a otra)
+- Cada pasillo se divide en tramos de ~11 ft. Paso 1: se contienen los tramos impares de un muro y los pares del muro opuesto; paso 2: se trasladan a los tramos libres. En ninguna sección hay dos contenciones enfrentadas.
+- Profundidad de contención 2 ft; la ruta verde de 3 ft se desplaza por tramo al lado libre del pasillo. Avisos naranjas solo si el ancho libre del tramo contenido es < 3 ft.
+- La semana del ala se mantiene: paso 1 (instalación, demolición, limpieza), traslado, paso 2, visita AirMD y laboratorio; PRV al inicio de la semana siguiente.
+
+## v17-sq4 · Building: dónde va cada cuadrilla
+- La tarjeta del visor muestra, mientras corre la línea de tiempo, la semana y los pisos de cada cuadrilla: Servpro, drywall, rociadores y alarma (con su color).
+- Etiquetas de color junto a los números de piso en la torre indican el trade activo en cada piso.
+- Al reproducir, la cámara sube sola siguiendo el frente de trabajo; si el usuario mueve la cámara, deja de seguirlo hasta el siguiente Play.
+
+## v17-sq5 · Resumen "Al mismo tiempo"
+- En Interior (con o sin guía), en la guía exterior y en la tarjeta de Building al reproducir aparece un resumen de todo lo que ocurre a la vez en el edificio: grupo en remediación con la actividad de cada ala (Servpro, drywall, AirMD, inspección), piso de rociadores, piso de alarma y aviso si coinciden en el mismo piso.

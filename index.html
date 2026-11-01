@@ -8,7 +8,7 @@
 <link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./icons/icon-192.png">
 <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
 <link rel="stylesheet" href="./assets/resident-ios.css?v=20261029-android-reference17">
-<script src="./assets/resident-ios.js?v=20261031-s24" defer></script>
+<script src="./assets/resident-ios.js?v=20261031-sq1" defer></script>
 <title>5660 Collins · Resident Progress</title>
 <style>
 #tab-schedule #scheduleSegment,#tab-schedule #timelinePanel,#tab-schedule #milestonePanel,#tab-schedule>.quiet-foot{display:none!important}
@@ -201,9 +201,9 @@ select.addEventListener('change',refresh);refresh();
 <script>
 (function(){
 const projects=[
-{name:"Fire Sprinkler · ELSS",weeks:44,start:1,status:"Permitting",rate:"10-month contract forecast · corridor rough-in inside each hallway group's window (hallway weeks 1–21)",permit:"FP0826-7612 · Oct 30 issuance target"},
-{name:"Fire Alarm · ELSS",weeks:20,start:7,status:"Planning",rate:"Corridor devices 1 floor/week after each hallway group is released (~20 weeks) · pace pending Sciens confirmation",permit:"Permit target Nov 30"},
-{name:"Smoke Enclosure Doors",weeks:20,start:8,status:"Permitting",rate:"2 floors/week crew capacity · follows the fire alarm floor by floor (1 floor/week pace)",permit:"Nov 27 issuance estimate"},
+{name:"Fire Sprinkler · ELSS",weeks:20,start:7,status:"Permitting",rate:"Corridors 1 floor/week after each hallway group is released (hallway weeks 4–23) · separate crew · inspection, hydrostatic test and acceptance tracked separately",permit:"FP0826-7612 · Oct 30 issuance target"},
+{name:"Fire Alarm · ELSS",weeks:20,start:8,status:"Planning",rate:"Corridors 1 floor/week, one week behind sprinklers (hallway weeks 5–24; ~24 weeks total, ~28 with planning allowance) · integrated test and final acceptance not assumed",permit:"Permit target Nov 30"},
+{name:"Smoke Enclosure Doors",weeks:12,start:5,status:"Permitting",rate:"2 floors/week · ~11 installation weeks · separate dependency, not part of the hallway/sprinkler/alarm sequence",permit:"Nov 27 issuance estimate"},
 {name:"Hallway Remediation / Drywall",weeks:21,start:4,status:"Permitting",rate:"~21 weeks · 3-week rolling sequence per 3-floor group (7 groups), longer if an AirMD PRV fails · same schedule as the 3D model",permit:"BC2628687 · City pending"},
 {name:"Stair Pressurization / Dampers",weeks:22,start:18,status:"Planning",rate:"17–26 weeks · equipment, controls, commissioning",permit:"Jan–Feb 2027 issuance forecast"},
 {name:"Garage Dewatering / Stormwater",weeks:18,start:null,status:"Permitting",rate:"13–22 weeks · start TBD pending revised scope",permit:"BC2526722 · not issued"},
@@ -686,7 +686,7 @@ root.querySelectorAll("[data-msview]").forEach(b=>b.addEventListener("click",()=
 <script>
 (function(){function init(){
  const tab=document.getElementById('tab-progress'),picture=document.getElementById('modelPicture');
- const frame=document.createElement('iframe');frame.id='reconstructionFrame';frame.title='Reconstrucción interactiva de pasillos · planos Relats';frame.loading='lazy';frame.src='./reconstruction.html?v=20261031-s24b';picture.appendChild(frame);
+ const frame=document.createElement('iframe');frame.id='reconstructionFrame';frame.title='Reconstrucción interactiva de pasillos · planos Relats';frame.loading='lazy';frame.src='./reconstruction.html?v=20261031-sq5';picture.appendChild(frame);
  function currentFloor(){const select=document.getElementById('myFloorNumber');return select?select.value:'19';}
  function floorKey(f){return f==='PH'?'21':Number(f)<=16?'2-15':Number(f)<=21?'16-20':'21';}
  function sync(){const active=document.querySelector('#progressSegment [data-view].active')?.dataset.view==='interior';tab.classList.toggle('has-reconstruction',active);const visible=!tab.hidden;
