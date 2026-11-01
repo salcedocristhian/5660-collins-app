@@ -723,6 +723,28 @@ root.querySelectorAll("[data-msview]").forEach(b=>b.addEventListener("click",()=
    if(candidates.length>=2){const a=candidates[0],b=candidates[1];const parent=a.parentElement;if(parent&&parent===b.parentElement)parent.style.display='none';}
   }catch(e){console.warn('Viewer styling deferred',e);}
  }
+ function installMobileImmersive(){
+ try {
+  const d=frame.contentDocument;if(!d||!d.head)return;
+  if(!d.getElementById('collins-mobile-immersive-style')){
+   const st=d.createElement('style');st.id='collins-mobile-immersive-style';
+   st.textContent=`@media(max-width:600px){
+    html,body{max-width:100%;overflow-x:hidden!important}
+    .viewer,canvas,svg{max-width:100%}
+    .guide-card,.guide-overlay,.tour-guide,.guide-panel,.floating-guide,.guide-bubble,[class*="guide-card"],[class*="guide-overlay"]{max-width:min(86vw,340px)!important;max-height:30vh!important;overflow:auto!important}
+    body.collins-immersive .guide-card,body.collins-immersive .guide-overlay,body.collins-immersive .tour-guide,body.collins-immersive .guide-panel,body.collins-immersive .floating-guide,body.collins-immersive .guide-bubble,body.collins-immersive [class*="guide-card"],body.collins-immersive [class*="guide-overlay"]{display:none!important}
+   }`;
+   d.head.appendChild(st);
+  }
+  if(!d.getElementById('collins-mobile-immersive-toggle')){
+   const button=d.createElement('button');button.id='collins-mobile-immersive-toggle';button.type='button';button.textContent='◱';button.setAttribute('aria-label','Toggle unobstructed 3D view');button.title='Show or hide guide text';
+   Object.assign(button.style,{position:'fixed',right:'12px',bottom:'calc(18px + env(safe-area-inset-bottom, 0px))',zIndex:'2147483640',border:'1px solid #dce4df',borderRadius:'14px',background:'rgba(255,255,255,.94)',color:'#20564e',width:'44px',height:'44px',fontSize:'24px',boxShadow:'0 3px 14px #0002',cursor:'pointer'});
+   button.onclick=()=>{d.body.classList.toggle('collins-immersive');button.setAttribute('aria-pressed',String(d.body.classList.contains('collins-immersive')));};
+   d.body.appendChild(button);
+   if(matchMedia('(max-width:600px)').matches){d.body.classList.add('collins-immersive');button.setAttribute('aria-pressed','true');}
+  }
+ }catch(e){console.warn('Mobile immersive mode unavailable',e);}
+}
  function cleanPlanList(){
   try{
    const doc=frame.contentDocument;if(!doc)return;
@@ -731,8 +753,8 @@ root.querySelectorAll("[data-msview]").forEach(b=>b.addEventListener("click",()=
   }catch(e){console.warn('Plan list cleanup unavailable',e);}
  }
  frame.addEventListener('load',()=>{
-  cleanPlanList();harmonizeViewer();
-  try{const doc=frame.contentDocument;if(doc?.body)new MutationObserver(()=>{cleanPlanList();harmonizeViewer();}).observe(doc.body,{childList:true,subtree:true});}catch(e){}
+  cleanPlanList();harmonizeViewer();installMobileImmersive();
+  try{const doc=frame.contentDocument;if(doc?.body)new MutationObserver(()=>{cleanPlanList();harmonizeViewer();installMobileImmersive();}).observe(doc.body,{childList:true,subtree:true});}catch(e){}
   frame.contentWindow.postMessage({type:'collins-floor',key:floorKey(currentFloor())},location.origin);frame.contentWindow.postMessage({type:'collins-myfloor',label:currentFloor()},location.origin);frame.contentWindow.postMessage({type:'collins-language',lang:document.documentElement.lang==='es'?'es':'en'},location.origin);sync();});
  document.getElementById('myFloorNumber')?.addEventListener('change',()=>{frame.contentWindow.postMessage({type:'collins-myfloor',label:currentFloor()},location.origin);frame.contentWindow.postMessage({type:'collins-floor',key:floorKey(currentFloor())},location.origin);});
  window.addEventListener('message',e=>{if(e.source!==frame.contentWindow||e.origin!==location.origin)return;if(e.data?.type==='collins-height'&&Number.isFinite(e.data.height))frame.style.height=Math.min(4500,Math.max(650,e.data.height))+'px';});
