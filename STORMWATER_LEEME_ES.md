@@ -78,3 +78,41 @@
 - La ficha del piso en Building indica las semanas del grupo y la actividad de cada ala.
 - Plan por semanas: por defecto se queda en el piso elegido; la opción "Seguir los grupos al reproducir" vuelve a saltar de grupo.
 - Secuencia por oficio: selector de piso que se mantiene al reproducir, lista "qué sigue" con la semana de cada trade según el plan (rociadores, alarma y puertas: permisos aparte, sin fecha) y cámara que sigue cada trade (se desactiva si el usuario mueve la cámara).
+
+## v16-ms1 · Un solo cronograma maestro (Building, Plan por semanas y Secuencia por oficio)
+- Respaldos: /backups/reconstruction_ct2.html, index_ct2.html (fuera del ZIP).
+- Cronograma maestro por piso con los 9 trades en el mismo reloj:
+  - 1–4 y 6–7 (moho, alfombra, Ram Board, AirMD, drywall, pintura): ventanas del plan por semanas (contención por alas, grupos de 3 pisos).
+  - 5 Rociadores (tramo de pasillo): entre el PRV aprobado y el drywall, sujeto a permiso FP0826-7612.
+  - 8 Alarma: un piso a la vez (propuesta de Sciens), 44 semanas ÷ 20 pisos ≈ 11 días hábiles por piso (tarifa de la pestaña Schedule), después de la liberación del grupo; sujeto a permiso.
+  - 9 Puertas: 2 pisos por semana (pestaña Schedule), después de la alarma del piso; sujeto a permiso.
+- Mientras Servpro sube por los grupos, los pisos ya liberados siguen con rociadores, alarma y puertas al mismo tiempo; Building muestra todos los pisos activos a la vez.
+- Interior: un reproductor compartido (semana, piso) para ambas vistas; el piso elegido se mantiene al reproducir. La secuencia por oficio muestra varios trades activos a la vez y la lista con semanas de cada uno.
+- La pantalla de drywall en la secuencia por oficio usa los mismos paneles afectados que la contención.
+- Pestaña Schedule: Hallway Remediation / Drywall pasa de 10 a ~21 semanas para coincidir con el modelo.
+- Duración total del escenario: ~48 semanas (dominada por la alarma, un piso a la vez).
+
+## v16-ms2 · Corrección: cada ala se termina completa (ambos muros)
+- Causa: la contención y el drywall solo cubrían el muro del lado de la contención; el muro opuesto de cada pasillo quedaba con el drywall viejo y la secuencia por oficio también lo excluía.
+- Ahora cada ala tiene dos pasos de contención: muro 1 (instalación, demolición, limpieza), traslado de la contención al muro 2 (demolición, limpieza) y luego PRV. La reconstrucción cubre ambos muros; el muro 2 se reconstruye dentro de su contención y el muro 1 ya liberado por PRV.
+- La ruta libre de 3 ft cambia de lado según el muro contenido; los avisos de estrechez se muestran solo para la contención instalada.
+- Se incluyen también los paneles cercanos al cruce. Las duraciones de demolición y limpieza se repartieron entre los dos muros: el ritmo de 3 semanas por grupo no cambia.
+
+## v16-gd1 · Guía: recorrido por el edificio (opción A)
+- Botón "▶ Guía" en Interior y en Building. Empieza en el piso 2, semana 1, en la secuencia por oficio con la cámara siguiendo cada trade.
+- Cuando el piso termina TODOS sus trades (incluye alarma y puertas), la guía pasa a la vista Building: el piso terminado destella, un marcador tipo ascensor sube por la fachada y se detiene brevemente en cada piso intermedio mostrando lo que ocurre ahí en esa semana; termina en el frente de trabajo nuevo (el grupo donde trabaja Servpro, o el próximo grupo por empezar) y entra a ese pasillo.
+- Mientras el piso de la guía no tiene ningún trade activo (por ejemplo, esperando la alarma, que va un piso a la vez), el reloj avanza 6× hasta el siguiente trade.
+- Cualquier acción del usuario (pausa, cambiar piso o vista) detiene la guía.
+
+## v16-gd2 · Guía exterior y guía interior
+- Building: "▶ Guía exterior". Se queda en la vista del edificio; el marcador acompaña el piso de la guía (empieza en el piso 2) y, cuando termina todos sus trades, sube por la fachada deteniéndose en cada piso intermedio hasta el frente de trabajo nuevo.
+- Interior: "▶ Guía interior". Usa el Plan por semanas (contención muro por muro, cuadrillas simultáneas, ruta de 3 ft, compuertas PRV/Fire simuladas); la cámara va sola al ala y muro con actividad; al liberar el grupo siguen alarma y puertas en el mismo piso. Entre pisos, transición corta sin salir de Interior: la planta baja, una barra de pisos a la derecha recorre los pisos intermedios con su estado y entra la planta del frente de trabajo.
+- Avance rápido 6× cuando el piso de la guía no tiene trades activos. Mover la cámara la deja libre; pausar o cambiar de piso/vista detiene la guía.
+
+## v16-s24 · Cronograma de 24 semanas
+- Alarma en pasillos: 1 piso por semana (5 días hábiles), detrás de cada grupo liberado; antes 11 días por piso. Ritmo sujeto a confirmación de Sciens.
+- Resultado: remediación y drywall ~21 semanas, alarma semanas 4–23, puertas semanas 5–24; total ~24 semanas desde la emisión de BC2628687 (reemplaza las ~48 semanas anteriores). Un HOLD de PRV alarga el total.
+- Pestaña Schedule: Fire Alarm · ELSS pasa a ~20 semanas (inicio semana 7 del calendario, 3 semanas después del inicio del pasillo); Smoke Enclosure Doors a ~20 semanas (inicio semana 8), al paso de la alarma; Fire Sprinkler mantiene el contrato de 10 meses con el tramo de pasillo dentro de cada grupo.
+
+## v16-s24b · Contenciones más visibles
+- Polietileno con opacidad 0.86 (antes 0.55), tono blanco lechoso y contorno gris en las caras frontal y superior, para que la contención se lea en todas las vistas sin ocultar del todo a las cuadrillas.
