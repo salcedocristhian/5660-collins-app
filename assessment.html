@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f2f3f1"><title>Financial Overview · 5660 Collins</title><meta name="app-version" content="2026-10-29-owner-v3">
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f2f3f1"><title>Financial Overview · 5660 Collins</title><meta name="app-version" content="2026-10-31-budget-reconciled-v1">
 <style>
 *{box-sizing:border-box}body{margin:0;background:#f2f3f1;color:#17201d;font:16px -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}.wrap{max-width:820px;margin:auto;padding:30px 18px 90px}a{color:inherit}.back{display:inline-flex;gap:8px;text-decoration:none;color:#426157;font-size:14px;margin-bottom:25px}.eyebrow{font-size:12px;font-weight:750;letter-spacing:.11em;color:#537368;text-transform:uppercase}h1{font-size:clamp(32px,7vw,46px);letter-spacing:-.045em;margin:8px 0 6px}h2{font-size:21px;letter-spacing:-.025em;margin:0 0 14px}p{color:#64726d;line-height:1.5}.sub{margin-top:0}.pill{display:inline-block;border:1px solid #c8d7d1;border-radius:99px;padding:7px 12px;color:#426157;font-size:12px;font-weight:650;margin:8px 0 20px}.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.stat,.panel{background:#fff;border:1px solid #e2e7e3;border-radius:20px;padding:20px}.stat small{color:#697872;display:block;font-size:12px}.stat strong{display:block;font-size:clamp(24px,5vw,34px);letter-spacing:-.04em;margin:8px 0}.stat span{font-size:11px;color:#7b8983}.panel{margin-top:14px;padding:22px}.barrow{display:grid;grid-template-columns:1fr auto;gap:6px 12px;margin:17px 0}.barrow .name{font-size:13px;font-weight:600}.barrow .value{font-size:13px;font-variant-numeric:tabular-nums}.track{grid-column:1/-1;background:#edf1ee;border-radius:9px;height:12px;overflow:hidden}.fill{height:100%;background:#568a76;border-radius:9px}.legend{display:flex;gap:18px;font-size:12px;color:#677670}.dot{width:9px;height:9px;border-radius:3px;display:inline-block;margin-right:5px}.budgetgrid{display:grid;grid-template-columns:1fr auto;gap:7px;font-size:13px;margin-top:13px}.budgetgrid>div{padding:9px 0;border-bottom:1px solid #edf0ed}.muted{color:#6c7973}.notice{border-left:3px solid #c28e50;background:#fffaf1;border-radius:8px;padding:13px 16px;color:#775b32;font-size:13px;line-height:1.5;margin:20px 0}.foot{font-size:12px;line-height:1.6;margin-top:20px}button{font:inherit;border:0;background:#e3eae6;border-radius:30px;padding:10px 15px;color:#36584b;cursor:pointer}.header{display:flex;justify-content:space-between;align-items:center;gap:10px}@media(min-width:640px){.stats{grid-template-columns:repeat(4,minmax(0,1fr))}}@media(max-width:420px){.stat{padding:14px}.panel{padding:17px}}
 
@@ -33,68 +33,633 @@ document.addEventListener('DOMContentLoaded',()=>{if(matchMedia('(prefers-reduce
   const step=now=>{const k=Math.min(1,(now-t0)/900),e=1-Math.pow(1-k,3);el.textContent='$'+Math.round(v*e).toLocaleString('en-US');if(k<1)requestAnimationFrame(step);};requestAnimationFrame(step);});});
 </script></head><body><div class="wrap"><div class="header"><a class="back" href="./index.html#updates">← Back to resident app</a><button onclick="window.print()">Print</button></div><div class="eyebrow">5660 Collins Avenue · Project Financial Overview</div><h1>Budget</h1><p class="sub">Clear overview of project budgets, invoices, payments and remaining balances.</p><div class="pill">Project financial overview</div>
 <div class="stats"><div class="stat"><small>Total Assessment</small><strong>$7,500,000</strong><span>Approved budget, all projects</span></div><div class="stat"><small>Project Budgets</small><strong>$6,367,961</strong><span>10 approved projects</span></div><div class="stat"><small>Contingency Reserve</small><strong>$1,132,039</strong><span>Funds for unplanned work</span></div><div class="stat"><small>Cash Paid</small><strong>Pending</strong><span>To be tied to HOA books</span></div></div>
-<div class="panel" id="budget-basis"><h2>About these figures</h2><p>Budgets are the approved amounts by project and do not change when estimates move. They add up to exactly $7,500,000.00. Reported costs are invoices and confirmed payments recorded so far; they are not cash paid. Cash paid will be reconciled to the Association’s HOA books in the next review.</p></div>
+<div class="panel" id="budget-basis"><h2>About these figures</h2><p>The approved master budget remains $7,500,000. Reported charges include vendor bills and worksheet expenses with different approval statuses. They do not prove cash paid or physical completion. Unstarted remediation, separate owner change-order prices and double-counted equipment rentals have been excluded from reconciled charges. Cash Paid remains pending HOA ledger reconciliation.</p></div>
 <div class="panel" id="contingency-panel"></div>
-<div class="panel"><h2>Project Budget Allocation</h2><p>Tap any chart segment or project name to explore the financial details.</p><div class="donut-layout"><div class="donut-shell"><svg id="budget-donut" viewBox="0 0 240 240" aria-label="Interactive budget chart"></svg><div class="donut-center" id="donut-center"></div></div><div class="donut-legend" id="budget-legend"></div></div></div><div class="panel"><h2>Budget vs. Reported Costs</h2><p>Project budgets compared with reported costs and trade invoices.</p><div class="legend"><span><i class="dot" style="background:#9db3c8"></i>Project Budget</span><span><i class="dot" style="background:#568a76"></i>Reported Costs</span></div><div id="comparison"></div></div><div class="panel"><h2>Project Budget Used (%)</h2><p>Share of each project budget represented by reported costs.</p><div id="utilization"></div></div><div class="panel"><h2>Project Financial Overview</h2><p>Projects ranked by budget. Select one to reveal financial metrics and trade details.</p><div id="project-cards"></div></div><div class="panel"><h2>Project Cost Breakdown</h2><p>Explore individual project costs and balances.</p><div id="trade-breakdown"></div></div></div>
+<div class="panel"><h2>Project Budget Allocation</h2><p>Tap any chart segment or project name to explore the financial details.</p><div class="donut-layout"><div class="donut-shell"><svg id="budget-donut" viewBox="0 0 240 240" aria-label="Interactive budget chart"></svg><div class="donut-center" id="donut-center"></div></div><div class="donut-legend" id="budget-legend"></div></div></div><div class="panel"><h2>Budget vs. Reported Charges</h2><p>Budget allocations compared with recorded vendor bills and worksheet entries; payments are a separate metric.</p><div class="legend"><span><i class="dot" style="background:#9db3c8"></i>Project Budget</span><span><i class="dot" style="background:#568a76"></i>Reported Costs</span></div><div id="comparison"></div></div><div class="panel"><h2>Reported Charges / Budget (%)</h2><p>For comparison only; not an amount paid or work-completion percentage.</p><div id="utilization"></div></div><div class="panel"><h2>Project Financial Overview</h2><p>Projects ranked by budget. Select one to reveal financial metrics and trade details.</p><div id="project-cards"></div></div><div class="panel"><h2>Project Cost Breakdown</h2><p>Explore individual project costs and balances.</p><div id="trade-breakdown"></div></div></div>
 <script>
 const fmt=n=>n===null?"Not consolidated":"$"+n.toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});
 const projects=[
-{id:"elss",name:"ELSS",budget:2562500,spent:563470,partial:true,note:"Engineering costs and trade invoices are shown separately; payment confirmation varies by trade."},
-{id:"hvac",name:"Central HVAC",budget:1647000,spent:1311014.66,partial:false,note:"Recorded HVAC expenses, paid through the Association SPA account."},
-{id:"contingency",name:"Contingency Reserve",budget:1132039,spent:418234.92,partial:true,note:"Work paid out of contingency funds. Mold Remediation is assigned here."},
-{id:"exterior2028",name:"2028 Exterior Restoration",budget:1057563,spent:0,partial:false,note:"Work planned for 2028. No costs recorded."},
-{id:"dewater",name:"Dewatering",budget:372000,spent:70452.50,partial:true,note:"Recorded soft costs only."},
-{id:"elevator",name:"Elevator Shoring and Structural Repairs",budget:230600,spent:193327.97,partial:false,note:"Otis, FPL vault, inspection engineering, complete structural, planters, roof concrete louvers, overhead beam repairs, South Lot."},
-{id:"garage",name:"Concrete Restoration Garage (2nd Level N & S)",budget:150630,spent:0,partial:false,note:"Concrete repair at various locations."},
-{id:"driveway",name:"Driveway",budget:145000,spent:0,partial:false,note:"Pavers and handicap lift."},
-{id:"joints",name:"Expansion Joints Exterior Walls",budget:102500,spent:0,partial:false,note:"Replacement of main expansion joints in the building."},
-{id:"coating",name:"Concrete Coating Acrylic Resurface (2nd Level)",budget:74543,spent:0,partial:false,note:"Repair pavers (South lot), repaint lower garage, epoxy injection at joint slab."},
-{id:"planters",name:"Waterproofing Membrane Planters",budget:25625,spent:0,partial:false,note:"Waterproof planters in deck."}];
-const trades={
-contingency:[
-{name:"Mold Remediation – Phase 2",budget:359000,amount:359919.17,items:[["Encapsulation · Floors 2–11",99528.25],["Encapsulation · Floors 12–PH",91615.60],["Mold remediation · Floors 12–PH (work not started: City permit BC2628687 pending)",72614.23],["Mold remediation · Floors 2–11 (work not started: City permit BC2628687 pending)",79304.46],["After-hours remediation and encapsulation (CO-066)",16856.63]]},
-{name:"Mold Remediation – Phase 1",budget:55194,amount:19203.75,items:[["Remediation deposit (Rousseau; a −$15,000 scope deduction was billed later)",19203.75]]},
-{name:"Temporary Dehumidification",budget:68355.95,amount:17500,items:[["Servpro invoice #4960639 (authorization under review)",17500]]},
-{name:"Desiccant Electrical Service",budget:null,amount:4500,items:[["Temporary electrical service",4500]]},
-{name:"Fire Watch",budget:30000,amount:11074.50,items:[["Fire Watch",11074.50]]},
-{name:"Carpet Cleaning",budget:24000,amount:6037.50,items:[["Carpet cleaning deposit",6037.50]]}],
-hvac:[{name:"Cooling Equipment",amount:1083910.50,items:[]},{name:"Integrated Cooling",amount:86065.50,items:[]},{name:"Rental",amount:42276.16,items:[]},{name:"Pump Installation",amount:98762.50,items:[]}],
-elss:[
-{name:"Fire Alarm",budget:616000,amount:184800,items:[["Project Startup & Administration",61600],["Engineering & Design",123200]]},
-{name:"Fire Sprinklers",budget:400000,amount:120000,items:[["Project Startup & Administration",40000],["Engineering & Design",80000]]},
-{name:"Drywall",budget:350000,amount:0,items:[]},
-{name:"Construction Administration",budget:286868,amount:0,items:[]},
-{name:"Smoke Enclosure Doors",budget:232000,amount:113410,items:[["Payment to door contractor (Billing Period 1)",113410]]},
-{name:"Electrical",budget:150000,amount:0,items:[]},
-{name:"Miscellaneous",budget:150000,amount:0,items:[]},
-{name:"Engineering",budget:145260,amount:145260,items:[["Engineering expense · entry 1",17500],["Engineering expense · entry 2",6480],["Engineering expense · entry 3",4500],["Engineering expense · entry 4",20000],["Engineering expense · entry 5",2990],["Engineering expense · entry 6",2990],["Engineering expense · entry 7",11500],["Engineering expense · entry 8",42000],["Engineering expense · entry 9",32000],["Engineering expense · entry 10",5300]]},
-{name:"Performance Bond",budget:102500,amount:0,items:[]},
-{name:"General Conditions",budget:44134,amount:0,items:[]},
-{name:"ELSS budget not yet assigned to a contract",budget:43738,amount:0,items:[]},
-{name:"Fire Dampers",budget:42000,amount:0,items:[]},
-{name:"Pressurization",budget:null,amount:0,items:[]}],
-dewater:[{name:"Engineering",amount:43872.50,items:[]},{name:"Jet Washing / Camera (source document to confirm)",amount:26580,items:[]}],
-elevator:[{name:"Elevator Shoring",amount:105427.97,items:[]},{name:"Structural Repairs",amount:42400,items:[]},{name:"Planter Waterproofing",amount:45500,items:[]}],
-exterior2028:[
-{name:"Balconies, waterproofing, resurface, common",budget:197881,amount:0,items:[["Balconies waterproof",0]]},
-{name:"Concrete Restoration, Balconies",budget:249025,amount:0,items:[["Concrete restoration",0]]},
-{name:"Painting, Waterproofing & Stucco Repairs Common Areas",budget:258464,amount:0,items:[["Exterior paint and waterproof",0]]},
-{name:"Restoration Exterior Walls Common Areas",budget:87487,amount:0,items:[["Common area restoration",0]]},
-{name:"Railing, Metal Picket, Common",budget:258300,amount:0,items:[["Railings replacement balconies",0]]},
-{name:"Access Control, Slide Gate Common",budget:6406,amount:0,items:[["Railings common areas",0]]}],
-garage:[{name:"Concrete repair various locations",budget:150630,amount:0,items:[]}],
-driveway:[{name:"Pavers and handicap lift",budget:145000,amount:0,items:[]}],
-joints:[{name:"Replacement of main expansion joints in the building",budget:102500,amount:0,items:[]}],
-coating:[{name:"Repair pavers (South lot), repaint lower garage, epoxy injection at joint slab",budget:74543,amount:0,items:[]}],
-planters:[{name:"Waterproof planters in deck",budget:25625,amount:0,items:[]}]};
-const subcontractorRegister=[
-{name:"Superior Door Contractors",trade:"Smoke Enclosure Doors",budget:232000,paidConfirmed:113410,source:"Project representative confirmation; MTD G703 Billing Period 1",entries:[{app:1,amount:113410,kind:"confirmed",description:"Confirmed payment to Superior Doors"}]},
-{name:"Sciens Building Solutions",trade:"Fire Alarm",budget:616000,entries:[{app:2,amount:61600,description:"Project Startup & Administration"},{app:2,amount:123200,description:"Engineering & Design"}]},
-{name:"Southern Fire Control",trade:"Fire Sprinklers",budget:400000,entries:[{app:2,amount:40000,description:"Project Startup & Administration"},{app:3,amount:80000,description:"Engineering & Design"}]},
-{name:"Rousseau Contractors",trade:"Remediation / Railings",budget:176844,entries:[{app:1,amount:50250,description:"Stairwell Guardrails"},{app:1,amount:13798.50,description:"Wallpaper Remediation"},{app:1,amount:6037.50,description:"Carpet Remediation"},{app:1,amount:19203.75,description:"Mold Remediation"},{app:3,amount:13798.50,description:"Wallpaper · 10th Floor Milestone"},{app:3,amount:27597,description:"Wallpaper · Remaining Balance"},{app:3,amount:15000,description:"Additional Wallpaper Labor"},{app:3,amount:-15000,description:"Mold Remediation Scope Deduction"}]},
-{name:"SERVPRO Team Hrbek-Iglesias",trade:"Hallway Remediation / Stabilization",budget:365562.54,entries:[{app:4,amount:99528.25,description:"Encapsulation · Floors 2–11"},{app:4,amount:91615.60,description:"Encapsulation · Floors 12–PH"},{app:4,amount:17500,description:"Temporary Desiccant Dehumidification"},{app:4,amount:5000,description:"Asbestos Survey / Testing"}]}
+  {
+    "id": "elss",
+    "name": "ELSS",
+    "budget": 2562500,
+    "spent": 563470,
+    "partial": true,
+    "note": "Engineering costs and trade invoices are shown separately; payment confirmation varies by trade."
+  },
+  {
+    "id": "hvac",
+    "name": "Central HVAC",
+    "budget": 1647000,
+    "spent": 1311014.66,
+    "partial": false,
+    "note": "Recorded HVAC expenses, paid through the Association SPA account."
+  },
+  {
+    "id": "contingency",
+    "name": "Contingency Reserve",
+    "budget": 1132039,
+    "spent": 276459.6,
+    "partial": true,
+    "note": "Reported charges from vendor bills and assessment worksheet, NOT verified cash paid. The original hallway Construction Administration allocation is Work Outside Assessment / Hallways; final funding assignment awaits accounting review."
+  },
+  {
+    "id": "exterior2028",
+    "name": "2028 Exterior Restoration",
+    "budget": 1057563,
+    "spent": 0,
+    "partial": false,
+    "note": "Work planned for 2028. No costs recorded."
+  },
+  {
+    "id": "dewater",
+    "name": "Dewatering",
+    "budget": 372000,
+    "spent": 74452.5,
+    "partial": true,
+    "note": "Recorded soft costs only."
+  },
+  {
+    "id": "elevator",
+    "name": "Elevator Shoring and Structural Repairs",
+    "budget": 230600,
+    "spent": 193327.97,
+    "partial": false,
+    "note": "Otis, FPL vault, inspection engineering, complete structural, planters, roof concrete louvers, overhead beam repairs, South Lot."
+  },
+  {
+    "id": "garage",
+    "name": "Concrete Restoration Garage (2nd Level N & S)",
+    "budget": 150630,
+    "spent": 0,
+    "partial": false,
+    "note": "Concrete repair at various locations."
+  },
+  {
+    "id": "driveway",
+    "name": "Driveway",
+    "budget": 145000,
+    "spent": 0,
+    "partial": false,
+    "note": "Pavers and handicap lift."
+  },
+  {
+    "id": "joints",
+    "name": "Expansion Joints Exterior Walls",
+    "budget": 102500,
+    "spent": 0,
+    "partial": false,
+    "note": "Replacement of main expansion joints in the building."
+  },
+  {
+    "id": "coating",
+    "name": "Concrete Coating Acrylic Resurface (2nd Level)",
+    "budget": 74543,
+    "spent": 0,
+    "partial": false,
+    "note": "Repair pavers (South lot), repaint lower garage, epoxy injection at joint slab."
+  },
+  {
+    "id": "planters",
+    "name": "Waterproofing Membrane Planters",
+    "budget": 25625,
+    "spent": 0,
+    "partial": false,
+    "note": "Waterproof planters in deck."
+  }
 ];
-function renderSubLedger(){if(!document.getElementById("sub-ledger"))return;document.getElementById("sub-ledger").innerHTML=subcontractorRegister.map(s=>{const billed=s.entries.reduce((a,e)=>a+e.amount,0),confirmed=s.paidConfirmed||0;const byApp=[1,2,3,4].map(n=>({n,items:s.entries.filter(e=>e.app===n)})).filter(x=>x.items.length);return '<details class="ledger-trade"><summary><span><strong>'+s.name+'</strong><small>'+s.trade+'</small></span><span class="ledger-amount">'+fmt(confirmed||billed)+'<small>'+(confirmed?'Payment confirmed':'Total invoiced')+'</small></span></summary><div class="ledger-body"><div class="ledger-grid"><div><small>Contract allocation</small><b>'+fmt(s.budget)+'</b></div><div><small>Total invoiced · gross</small><b>'+fmt(billed)+'</b></div><div><small>Confirmed payments</small><b>'+(confirmed?fmt(confirmed):'Not verified')+'</b></div><div><small>Remaining vs. invoiced</small><b>'+fmt(s.budget-billed)+'</b></div></div>'+byApp.map(a=>'<div class="ledger-app"><h4>Billing Period '+a.n+' · Current charges <span>'+fmt(a.items.reduce((v,e)=>v+e.amount,0))+'</span></h4>'+a.items.map(e=>'<div class="ledger-line"><span>'+e.description+'</span><b>'+fmt(e.amount)+'</b></div>').join('')+'</div>').join('')+'<p class="metric-note">'+(confirmed?'Payment confirmed.':'Trade invoices submitted; payment status not confirmed.')+'</p></div></details>'}).join('')}
+const trades={
+  "contingency": [
+    {
+      "name": "SERVPRO — Phase 2 / Stabilization (Vendor Bill #79)",
+      "budget": 359000,
+      "amount": 213643.85,
+      "items": [
+        [
+          "Stabilization · Floors 2–11 (vendor bill #79)",
+          99528.25
+        ],
+        [
+          "Stabilization · Floors 12–PH (vendor bill #79)",
+          91615.6
+        ],
+        [
+          "Desiccant dehumidification · 30 days INCLUDED in bill #79",
+          17500
+        ],
+        [
+          "Asbestos survey / testing INCLUDED in bill #79",
+          5000
+        ]
+      ],
+      "note": "$359,000 is the approved budget allocation, not invoiced-to-date. Vendor bill #79 is $213,643.85. Future demolition scope $79,304.46 (Floors 2–11) and $72,614.23 (12–PH) has not been invoiced on bill #79. Separate customer CO-066 price $16,856.63 and vendor CO $15,050.56 are NOT included as billed charges."
+    },
+    {
+      "name": "Wallpaper Removal / Drywall Prep — Phase 1",
+      "budget": 55194,
+      "amount": 0,
+      "items": [],
+      "note": "Budget $55,194 from the original assessment category. Reconcile wallpaper invoices before recording them against this allocation."
+    },
+    {
+      "name": "Rousseau prior remediation charge — reconciliation",
+      "budget": null,
+      "amount": 19203.75,
+      "items": [
+        [
+          "Historical $19,203.75 remediation charge; subsequent scope deduction requires reconciliation",
+          19203.75
+        ]
+      ],
+      "note": "Kept separate from $55,194 wallpaper budget while pending pay-application review."
+    },
+    {
+      "name": "Construction Administration — Hallways",
+      "budget": 68355.95,
+      "amount": 22000,
+      "items": [
+        [
+          "Construction Administration — $22,000 worksheet-reported expense, invoice/payment reconciliation pending",
+          22000
+        ]
+      ],
+      "note": "The $68,355.95 allocation is for Construction Administration under Work Outside Assessment / Hallways, NOT a dehumidification contract."
+    },
+    {
+      "name": "Desiccant Electrical Service",
+      "budget": null,
+      "amount": 4500,
+      "items": [
+        [
+          "Temporary electrical service",
+          4500
+        ]
+      ]
+    },
+    {
+      "name": "Fire Watch",
+      "budget": 30000,
+      "amount": 11074.5,
+      "items": [
+        [
+          "Fire Watch",
+          11074.5
+        ]
+      ]
+    },
+    {
+      "name": "Carpet Cleaning",
+      "budget": 24000,
+      "amount": 6037.5,
+      "items": [
+        [
+          "Carpet cleaning deposit",
+          6037.5
+        ]
+      ]
+    }
+  ],
+  "hvac": [
+    {
+      "name": "Cooling Equipment",
+      "amount": 1083910.5,
+      "items": []
+    },
+    {
+      "name": "Integrated Cooling",
+      "amount": 86065.5,
+      "items": []
+    },
+    {
+      "name": "Rental",
+      "amount": 42276.16,
+      "items": []
+    },
+    {
+      "name": "Pump Installation",
+      "amount": 98762.5,
+      "items": []
+    }
+  ],
+  "elss": [
+    {
+      "name": "Fire Alarm",
+      "budget": 616000,
+      "amount": 184800,
+      "items": [
+        [
+          "Project Startup & Administration",
+          61600
+        ],
+        [
+          "Engineering & Design",
+          123200
+        ]
+      ]
+    },
+    {
+      "name": "Fire Sprinklers",
+      "budget": 400000,
+      "amount": 120000,
+      "items": [
+        [
+          "Project Startup & Administration",
+          40000
+        ],
+        [
+          "Engineering & Design",
+          80000
+        ]
+      ]
+    },
+    {
+      "name": "Drywall",
+      "budget": 350000,
+      "amount": 0,
+      "items": []
+    },
+    {
+      "name": "Construction Administration",
+      "budget": 286868,
+      "amount": 0,
+      "items": []
+    },
+    {
+      "name": "Smoke Enclosure Doors",
+      "budget": 232000,
+      "amount": 113410,
+      "items": [
+        [
+          "Net paid by MTD to Superior Doors",
+          102069
+        ],
+        [
+          "10% vendor retainage held by MTD",
+          11341
+        ]
+      ],
+      "note": "Approved project budget $232,000; executed subcontract $206,200. MTD received gross $113,410 from the owner, paid $102,069 to Superior and retained $11,341. Do not describe gross bill as vendor cash paid."
+    },
+    {
+      "name": "Electrical",
+      "budget": 150000,
+      "amount": 0,
+      "items": []
+    },
+    {
+      "name": "Miscellaneous",
+      "budget": 150000,
+      "amount": 0,
+      "items": []
+    },
+    {
+      "name": "Engineering",
+      "budget": 145260,
+      "amount": 145260,
+      "items": [
+        [
+          "Engineering worksheet entry 1 — source/vendor invoice pending reconciliation",
+          17500
+        ],
+        [
+          "Engineering worksheet entry 2 — source/vendor invoice pending reconciliation",
+          6480
+        ],
+        [
+          "Engineering worksheet entry 3 — source/vendor invoice pending reconciliation",
+          4500
+        ],
+        [
+          "Engineering worksheet entry 4 — source/vendor invoice pending reconciliation",
+          20000
+        ],
+        [
+          "Engineering worksheet entry 5 — source/vendor invoice pending reconciliation",
+          2990
+        ],
+        [
+          "Engineering worksheet entry 6 — source/vendor invoice pending reconciliation",
+          2990
+        ],
+        [
+          "Engineering worksheet entry 7 — source/vendor invoice pending reconciliation",
+          11500
+        ],
+        [
+          "Engineering worksheet entry 8 — source/vendor invoice pending reconciliation",
+          42000
+        ],
+        [
+          "Engineering worksheet entry 9 — source/vendor invoice pending reconciliation",
+          32000
+        ],
+        [
+          "Engineering worksheet entry 10 — source/vendor invoice pending reconciliation",
+          5300
+        ]
+      ]
+    },
+    {
+      "name": "Performance Bond",
+      "budget": 102500,
+      "amount": 0,
+      "items": []
+    },
+    {
+      "name": "General Conditions",
+      "budget": 44134,
+      "amount": 0,
+      "items": []
+    },
+    {
+      "name": "ELSS budget not yet assigned to a contract",
+      "budget": 43738,
+      "amount": 0,
+      "items": []
+    },
+    {
+      "name": "Fire Dampers",
+      "budget": 42000,
+      "amount": 0,
+      "items": []
+    },
+    {
+      "name": "Pressurization",
+      "budget": null,
+      "amount": 0,
+      "items": []
+    }
+  ],
+  "dewater": [
+    {
+      "name": "Miranda Engineering",
+      "amount": 47872.5,
+      "items": [],
+      "note": "MTD-confirmed worksheet reported cost $47,872.50; cash status not established."
+    },
+    {
+      "name": "Jet Washing / Camera Under Slab",
+      "amount": 26580,
+      "items": [],
+      "note": "Source worksheet reported $26,580, supporting invoice and payment to reconcile."
+    }
+  ],
+  "elevator": [
+    {
+      "name": "Elevator Shoring",
+      "amount": 105427.97,
+      "items": []
+    },
+    {
+      "name": "Structural Repairs",
+      "amount": 42400,
+      "items": []
+    },
+    {
+      "name": "Planter Waterproofing",
+      "amount": 45500,
+      "items": []
+    }
+  ],
+  "exterior2028": [
+    {
+      "name": "Balconies, waterproofing, resurface, common",
+      "budget": 197881,
+      "amount": 0,
+      "items": [
+        [
+          "Balconies waterproof",
+          0
+        ]
+      ]
+    },
+    {
+      "name": "Concrete Restoration, Balconies",
+      "budget": 249025,
+      "amount": 0,
+      "items": [
+        [
+          "Concrete restoration",
+          0
+        ]
+      ]
+    },
+    {
+      "name": "Painting, Waterproofing & Stucco Repairs Common Areas",
+      "budget": 258464,
+      "amount": 0,
+      "items": [
+        [
+          "Exterior paint and waterproof",
+          0
+        ]
+      ]
+    },
+    {
+      "name": "Restoration Exterior Walls Common Areas",
+      "budget": 87487,
+      "amount": 0,
+      "items": [
+        [
+          "Common area restoration",
+          0
+        ]
+      ]
+    },
+    {
+      "name": "Railing, Metal Picket, Common",
+      "budget": 258300,
+      "amount": 0,
+      "items": [
+        [
+          "Railings replacement balconies",
+          0
+        ]
+      ]
+    },
+    {
+      "name": "Access Control, Slide Gate Common",
+      "budget": 6406,
+      "amount": 0,
+      "items": [
+        [
+          "Railings common areas",
+          0
+        ]
+      ]
+    }
+  ],
+  "garage": [
+    {
+      "name": "Concrete repair various locations",
+      "budget": 150630,
+      "amount": 0,
+      "items": []
+    }
+  ],
+  "driveway": [
+    {
+      "name": "Pavers and handicap lift",
+      "budget": 145000,
+      "amount": 0,
+      "items": []
+    }
+  ],
+  "joints": [
+    {
+      "name": "Replacement of main expansion joints in the building",
+      "budget": 102500,
+      "amount": 0,
+      "items": []
+    }
+  ],
+  "coating": [
+    {
+      "name": "Repair pavers (South lot), repaint lower garage, epoxy injection at joint slab",
+      "budget": 74543,
+      "amount": 0,
+      "items": []
+    }
+  ],
+  "planters": [
+    {
+      "name": "Waterproof planters in deck",
+      "budget": 25625,
+      "amount": 0,
+      "items": []
+    }
+  ]
+};
+const subcontractorRegister=[
+  {
+    "name": "Superior Door Contractors",
+    "trade": "Smoke Enclosure Doors",
+    "budget": 206200,
+    "paidConfirmed": 102069,
+    "source": "MTD confirmation and JobTread vendor bill #31",
+    "entries": [
+      {
+        "app": 1,
+        "amount": 113410,
+        "kind": "vendorBill",
+        "description": "Gross vendor bill $113,410; $102,069 net paid; $11,341 retainage"
+      }
+    ],
+    "projectBudget": 232000,
+    "ownerReceived": 113410,
+    "retainageHeld": 11341
+  },
+  {
+    "name": "Sciens Building Solutions",
+    "trade": "Fire Alarm",
+    "budget": 616000,
+    "entries": [
+      {
+        "app": 2,
+        "amount": 61600,
+        "description": "Project Startup & Administration"
+      },
+      {
+        "app": 2,
+        "amount": 123200,
+        "description": "Engineering & Design"
+      }
+    ]
+  },
+  {
+    "name": "Southern Fire Control",
+    "trade": "Fire Sprinklers",
+    "budget": 400000,
+    "entries": [
+      {
+        "app": 2,
+        "amount": 40000,
+        "description": "Project Startup & Administration"
+      },
+      {
+        "app": 3,
+        "amount": 80000,
+        "description": "Engineering & Design"
+      }
+    ]
+  },
+  {
+    "name": "Rousseau Contractors",
+    "trade": "Remediation / Railings",
+    "budget": 161844,
+    "entries": [
+      {
+        "app": 1,
+        "amount": 50250,
+        "description": "Stairwell Guardrails"
+      },
+      {
+        "app": 1,
+        "amount": 13798.5,
+        "description": "Wallpaper Remediation"
+      },
+      {
+        "app": 1,
+        "amount": 6037.5,
+        "description": "Carpet Remediation"
+      },
+      {
+        "app": 1,
+        "amount": 19203.75,
+        "description": "Mold Remediation"
+      },
+      {
+        "app": 3,
+        "amount": 13798.5,
+        "description": "Wallpaper · 10th Floor Milestone"
+      },
+      {
+        "app": 3,
+        "amount": 27597,
+        "description": "Wallpaper · Remaining Balance"
+      },
+      {
+        "app": 3,
+        "amount": 15000,
+        "description": "Additional Wallpaper Labor — CO #56 pending; not in approved contract",
+        "status": "pending"
+      },
+      {
+        "app": 3,
+        "amount": -15000,
+        "description": "Mold Remediation pay-application deduction (separate from approved vendor CO #57 for -$76,815)"
+      }
+    ]
+  },
+  {
+    "name": "SERVPRO Team Hrbek-Iglesias",
+    "trade": "Hallway Remediation / Stabilization",
+    "budget": 365562.54,
+    "entries": [
+      {
+        "app": 4,
+        "amount": 99528.25,
+        "description": "Encapsulation · Floors 2–11"
+      },
+      {
+        "app": 4,
+        "amount": 91615.6,
+        "description": "Encapsulation · Floors 12–PH"
+      },
+      {
+        "app": 4,
+        "amount": 17500,
+        "description": "Desiccant — INCLUDED in SERVPRO vendor bill #79"
+      },
+      {
+        "app": 4,
+        "amount": 5000,
+        "description": "Asbestos — INCLUDED in SERVPRO vendor bill #79"
+      }
+    ]
+  }
+];
+function renderSubLedger(){if(!document.getElementById("sub-ledger"))return;document.getElementById("sub-ledger").innerHTML=subcontractorRegister.map(s=>{const billed=s.entries.filter(e=>e.status!=='pending').reduce((a,e)=>a+e.amount,0),confirmed=s.paidConfirmed||0;const byApp=[1,2,3,4].map(n=>({n,items:s.entries.filter(e=>e.app===n)})).filter(x=>x.items.length);return '<details class="ledger-trade"><summary><span><strong>'+s.name+'</strong><small>'+s.trade+'</small></span><span class="ledger-amount">'+fmt(confirmed||billed)+'<small>'+(confirmed?'Payment confirmed':'Total invoiced')+'</small></span></summary><div class="ledger-body"><div class="ledger-grid"><div><small>Contract allocation</small><b>'+fmt(s.budget)+'</b></div><div><small>Total invoiced · gross</small><b>'+fmt(billed)+'</b></div><div><small>Confirmed payments</small><b>'+(confirmed?fmt(confirmed):'Not verified')+'</b></div><div><small>Remaining vs. invoiced</small><b>'+fmt(s.budget-billed)+'</b></div></div>'+byApp.map(a=>'<div class="ledger-app"><h4>Billing Period '+a.n+' · Current charges <span>'+fmt(a.items.reduce((v,e)=>v+e.amount,0))+'</span></h4>'+a.items.map(e=>'<div class="ledger-line"><span>'+e.description+'</span><b>'+fmt(e.amount)+'</b></div>').join('')+'</div>').join('')+'<p class="metric-note">'+(confirmed?'Payment confirmed.':'Trade invoices submitted; payment status not confirmed.')+'</p></div></details>'}).join('')}
 const colors={elss:"#8196BC",hvac:"#559982",contingency:"#C2703D",exterior2028:"#A58AB3",dewater:"#C7A36B",elevator:"#97AA77",garage:"#6F8FA6",driveway:"#B9968A",joints:"#7FA7A0",coating:"#A3A27A",planters:"#8DA36F"};
 const ordered=()=>[...projects].sort((a,b)=>b.budget-a.budget);
 function renderCharts(){
@@ -111,11 +676,11 @@ document.querySelectorAll(".slice,.legend-button,.comparison-item,.util-item").f
 let selected="contingency";
 let tradeSort="used";
 function sortTrades(id){return [...(trades[id]||[])].filter(t=>t.budget!==null||t.amount>0).sort((a,b)=>tradeSort==="budget"?(b.budget??0)-(a.budget??0):tradeSort==="cost"?b.amount-a.amount:((b.budget>0?b.amount/b.budget:-1)-(a.budget>0?a.amount/a.budget:-1)))}
-function tradeDetail(t){const hasBudget=typeof t.budget==="number"&&t.budget>0,pct=hasBudget?100*t.amount/t.budget:null,remaining=hasBudget?t.budget-t.amount:null;const value='<div class="financial-trade-value"><b>'+fmt(t.amount)+'</b><small>'+(pct===null?'Reported cost':pct.toFixed(1)+'% used')+'</small></div>';const top='<span class="financial-trade-name"><strong>'+t.name+'</strong><small>'+(hasBudget?'Contract '+fmt(t.budget):'Reported cost · Shared project allocation')+'</small></span>';const bar=hasBudget?'<div class="financial-trade-track"><span style="width:'+Math.min(100,Math.max(0,pct))+'%"></span></div>':'';if(!hasBudget&&!t.items.length)return '<div class="financial-trade-static"><div class="financial-trade-heading">'+top+value+'</div></div>';return '<details class="financial-trade"><summary><div class="financial-trade-heading">'+top+value+'<span class="financial-trade-chevron">⌄</span></div>'+bar+'</summary><div class="financial-trade-expanded"><div class="financial-trade-pair"><span>Reported costs <b>'+fmt(t.amount)+'</b></span><span>Remaining budget <b>'+(remaining===null?'Shared allocation':fmt(remaining))+'</b></span></div>'+(t.items.length?'<div class="financial-trade-lines">'+t.items.map(i=>'<div><span>'+i[0]+'</span><b>'+fmt(i[1])+'</b></div>').join('')+'</div>':'')+'</div></details>'}
-function tradeSection(id){const list=sortTrades(id);return '<div class="financial-section-head"><div><h3>Contract Financial Progress</h3><p>Compare reported costs against contract allocations.</p></div></div><div class="financial-sort" role="group" aria-label="Sort contract breakdown"><button data-sort="used" class="'+(tradeSort==="used"?"active":"")+'" onclick="changeTradeSort(\'used\')">% Used</button><button data-sort="cost" class="'+(tradeSort==="cost"?"active":"")+'" onclick="changeTradeSort(\'cost\')">Cost</button><button data-sort="budget" class="'+(tradeSort==="budget"?"active":"")+'" onclick="changeTradeSort(\'budget\')">Budget</button></div>'+(list.length?list.map(tradeDetail).join(''):'<p>Detailed costs are not yet available.</p>')}
+function tradeDetail(t){const hasBudget=typeof t.budget==="number"&&t.budget>0,pct=hasBudget?100*t.amount/t.budget:null,remaining=hasBudget?t.budget-t.amount:null;const value='<div class="financial-trade-value"><b>'+fmt(t.amount)+'</b><small>'+(pct===null?'Reported charge':pct.toFixed(1)+'% reported')+'</small></div>';const top='<span class="financial-trade-name"><strong>'+t.name+'</strong><small>'+(hasBudget?'Budget allocation '+fmt(t.budget):'Reported charge · Allocation to reconcile')+'</small></span>';const bar=hasBudget?'<div class="financial-trade-track"><span style="width:'+Math.min(100,Math.max(0,pct))+'%"></span></div>':'';if(!hasBudget&&!t.items.length)return '<div class="financial-trade-static"><div class="financial-trade-heading">'+top+value+'</div></div>';return '<details class="financial-trade"><summary><div class="financial-trade-heading">'+top+value+'<span class="financial-trade-chevron">⌄</span></div>'+bar+'</summary><div class="financial-trade-expanded"><div class="financial-trade-pair"><span>Reported costs <b>'+fmt(t.amount)+'</b></span><span>Remaining budget <b>'+(remaining===null?'Shared allocation':fmt(remaining))+'</b></span></div>'+(t.note?'<p class="metric-note">'+t.note+'</p>':'')+(t.items.length?'<div class="financial-trade-lines">'+t.items.map(i=>'<div><span>'+i[0]+'</span><b>'+fmt(i[1])+'</b></div>').join('')+'</div>':'')+'</div></details>'}
+function tradeSection(id){const list=sortTrades(id);return '<div class="financial-section-head"><div><h3>Budget Allocation & Reported Charges</h3><p>Compare recorded vendor bills and original assessment worksheet charges against approved allocations. These are not all cash paid.</p></div></div><div class="financial-sort" role="group" aria-label="Sort contract breakdown"><button data-sort="used" class="'+(tradeSort==="used"?"active":"")+'" onclick="changeTradeSort(\'used\')">% Used</button><button data-sort="cost" class="'+(tradeSort==="cost"?"active":"")+'" onclick="changeTradeSort(\'cost\')">Cost</button><button data-sort="budget" class="'+(tradeSort==="budget"?"active":"")+'" onclick="changeTradeSort(\'budget\')">Budget</button></div>'+(list.length?list.map(tradeDetail).join(''):'<p>Detailed costs are not yet available.</p>')}
 function changeTradeSort(mode){tradeSort=mode;render();const overlay=document.getElementById("detail-overlay");if(overlay.classList.contains("show")){const id=overlay.dataset.project;const area=document.getElementById("detail-trades");if(area)area.innerHTML=tradeSection(id)}}
 function render(){
-document.getElementById("project-cards").innerHTML=ordered().map(p=>{const percent=p.spent===null?null:100*p.spent/p.budget;const remaining=p.spent===null?null:p.budget-p.spent;return '<button class="project-card '+(selected===p.id?'selected':'')+'" onclick="selectProject(\''+p.id+'\')" style="display:block;width:100%;text-align:left;background:#f8faf8;border:1px solid '+(selected===p.id?'#568a76':'#e3eae5')+';border-radius:16px;padding:16px;margin:10px 0;color:#21392e"><div style="display:flex;justify-content:space-between;gap:10px"><strong>'+p.name+'</strong><span>'+(selected===p.id?'▴':'▾')+'</span></div><div class="metric-grid"><div><small>Project Budget</small><b>'+fmt(p.budget)+'</b></div><div><small>Reported Costs</small><b>'+fmt(p.spent)+'</b></div><div><small>Budget Used</small><b>'+(percent===null?'—':percent.toFixed(1)+'%')+'</b></div><div><small>Remaining Budget</small><b>'+fmt(remaining)+'</b></div></div><div class="track"><div class="fill" style="width:'+(percent===null?0:Math.min(100,percent))+'%"></div></div></button>'}).join("");
+document.getElementById("project-cards").innerHTML=ordered().map(p=>{const percent=p.spent===null?null:100*p.spent/p.budget;const remaining=p.spent===null?null:p.budget-p.spent;return '<button class="project-card '+(selected===p.id?'selected':'')+'" onclick="selectProject(\''+p.id+'\')" style="display:block;width:100%;text-align:left;background:#f8faf8;border:1px solid '+(selected===p.id?'#568a76':'#e3eae5')+';border-radius:16px;padding:16px;margin:10px 0;color:#21392e"><div style="display:flex;justify-content:space-between;gap:10px"><strong>'+p.name+'</strong><span>'+(selected===p.id?'▴':'▾')+'</span></div><div class="metric-grid"><div><small>Project Budget</small><b>'+fmt(p.budget)+'</b></div><div><small>Reported Costs</small><b>'+fmt(p.spent)+'</b></div><div><small>Reported / Budget</small><b>'+(percent===null?'—':percent.toFixed(1)+'%')+'</b></div><div><small>Remaining Budget</small><b>'+fmt(remaining)+'</b></div></div><div class="track"><div class="fill" style="width:'+(percent===null?0:Math.min(100,percent))+'%"></div></div></button>'}).join("");
 const p=projects.find(x=>x.id===selected);document.getElementById("trade-breakdown").innerHTML='<h3 style="margin:0 0 5px">'+p.name+' · Contract Breakdown</h3>'+tradeSection(selected);
 }
 function selectProject(id){selected=id;render();renderCharts()}
@@ -124,10 +689,10 @@ function closeProject(){document.getElementById("detail-overlay").classList.remo
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closeProject()});
 function renderContingency(){const el=document.getElementById("contingency-panel");if(!el)return;const p=projects.find(x=>x.id==="contingency");const t=trades.contingency;
 const committed=t.reduce((a,x)=>a+(x.budget||0),0);const available=p.budget-committed;const left=p.budget-p.spent;
-el.innerHTML='<h2>Contingency Reserve</h2><p>Projects paid out of contingency funds, and what remains to work with. Mold Remediation is assigned here; the other items moved here from the former “Other Projects” group and their funding source should be confirmed.</p>'
-+'<div class="metric-grid"><div><small>Contingency budget</small><b>'+fmt(p.budget)+'</b></div><div><small>Assigned to projects</small><b>'+fmt(committed)+'</b></div><div><small>Available, not yet assigned</small><b>'+fmt(available)+'</b></div><div><small>Reported costs to date</small><b>'+fmt(p.spent)+'</b></div></div>'
+el.innerHTML='<h2>Contingency Reserve</h2><p>Hallway-related budget allocations and selected reported charges, not a bank cash balance. Final source of funds for the original Work Outside Assessment / Hallways category is pending accounting confirmation.</p>'
++'<div class="metric-grid"><div><small>Contingency budget</small><b>'+fmt(p.budget)+'</b></div><div><small>Assigned to projects</small><b>'+fmt(committed)+'</b></div><div><small>Unassigned planning allocation*</small><b>'+fmt(available)+'</b></div><div><small>Reported costs to date</small><b>'+fmt(p.spent)+'</b></div></div>'
 +'<div class="track"><div class="fill" style="width:'+Math.min(100,committed/p.budget*100)+'%;background:'+colors.contingency+'"></div></div>'
-+'<p class="metric-note">Budget minus reported costs: '+fmt(left)+'. Reported costs include invoices still under review and are not cash paid.</p>'
++'<p class="metric-note">Budget less reported charges (not bank cash): '+fmt(left)+'. Reported costs include invoices still under review and are not cash paid.</p>'
 +'<button class="project-card" onclick="openProject(\'contingency\')" style="display:block;width:100%;text-align:left;background:#f8faf8;border:1px solid #e3eae5;border-radius:16px;padding:14px 16px;margin-top:10px;color:#21392e"><strong>See contingency projects</strong></button>';}
 render();renderCharts();renderSubLedger();renderContingency();
 </script><div id="detail-overlay" class="detail-overlay" role="dialog" aria-modal="true"><div class="detail-shade" onclick="closeProject()"></div><div id="detail-sheet" class="detail-sheet"><div class="detail-handle"></div><div class="detail-top"><span>5660 COLLINS · BUDGET</span><button onclick="closeProject()" aria-label="Close">✕</button></div><div id="detail-body"></div><button class="detail-back" onclick="closeProject()">Back to overview</button></div></div><style id="shared-navigation-theme">
