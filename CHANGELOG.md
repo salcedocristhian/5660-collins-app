@@ -1,11 +1,3 @@
-## Budget corrections (2026-10-31)
-- Correct the $68,355.95 hallway Construction Administration allocation, formerly mislabeled as Temporary Dehumidification; show $22,000 worksheet-reported expense as pending reconciliation.
-- SERVPRO invoice #79: $213,643.85 gross (including $17,500 desiccant and $5,000 asbestos); exclude unstarted remediation and customer CO prices from reported charges.
-- Dewatering engineering: $47,872.50, selected total: $74,452.50.
-- Smoke Enclosure Doors: $232,000 project allocation, $206,200 executed subcontract, $113,410 gross received by MTD, $102,069 net paid to Superior and $11,341 retained.
-- Preserve $7.5M budget; replace misleading 'Budget Used' label with 'Reported Charges / Budget' pending cash-ledger reconciliation.
-- Original Rousseau and hallway funding allocations remain flagged for further accounting review.
-
 # Changelog
 
 ## v12-progress (2026-10-27)

@@ -141,3 +141,9 @@
 
 ## v17-sq5 · Resumen "Al mismo tiempo"
 - En Interior (con o sin guía), en la guía exterior y en la tarjeta de Building al reproducir aparece un resumen de todo lo que ocurre a la vez en el edificio: grupo en remediación con la actividad de cada ala (Servpro, drywall, AirMD, inspección), piso de rociadores, piso de alarma y aviso si coinciden en el mismo piso.
+
+## v17-pl1 · Pestaña "Planos" en Storm drains
+- Nuevo selector "Recorrido 3D | Planos" arriba del visor pluvial.
+- 15 hojas: Edificio RJM 2502-009 (COVER, CP-100, BID-100) y Plomería RJM 25-009 (P-000, P-001.1, P-001D, P-001, P-100D, P-100, P-100.1, P-101, P-102, P-200, P-300, P-400), con título, firma y fecha; zoom −/+/ajustar.
+- Cada paso del recorrido que cita una hoja muestra "Ver plano …" y abre esa hoja directamente.
+- Imágenes en assets/sheets/*.jpg (1900 px). En el archivo único se incrustan una sola vez.

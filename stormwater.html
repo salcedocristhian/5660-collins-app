@@ -50,9 +50,24 @@ details ul{margin:6px 0 0;padding-left:18px;color:var(--muted);font-size:.76rem;
  .seg{flex-basis:100%;order:3}
  .cap{margin-top:16px}
 }
+.vtabs{display:flex;gap:2px;background:var(--track);border-radius:12px;padding:3px;margin:0 0 10px;width:max-content;max-width:100%}
+.vtabs button{border:0;background:transparent;color:var(--ink);font:500 .88rem/1 inherit;font-family:inherit;padding:9px 16px;border-radius:9px;cursor:pointer;min-height:40px}
+.vtabs button[aria-pressed="true"]{background:var(--panel);font-weight:600;box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.plans{display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+.plist{display:flex;flex-direction:column;gap:8px}.pgroup b{display:block;font-size:.74rem;color:var(--muted);font-weight:600;margin:0 0 4px;text-transform:uppercase;letter-spacing:.03em}
+.pchips{display:flex;flex-wrap:wrap;gap:6px}.pchips button{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:999px;padding:6px 11px;font:500 .78rem/1.2 inherit;font-family:inherit;cursor:pointer;min-height:34px}
+.pchips button[aria-pressed="true"]{background:var(--petrol);border-color:var(--petrol);color:#fff}
+.pframe{position:relative;border:1px solid var(--line);border-radius:18px;overflow:auto;background:#fff;height:min(68vh,620px)}
+.pframe img{display:block;width:100%;height:auto;transform-origin:0 0}
+.ptools{display:flex;gap:6px;align-items:center;flex-wrap:wrap}.ptools button{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--panel);color:var(--ink);font-size:1rem;cursor:pointer}
+.ptools .pcap{font-size:.82rem;color:var(--ink);margin-left:6px}.ptools .pcap small{display:block;color:var(--muted);font-size:.72rem}
+.reflink{border:0;background:none;color:var(--petrol);font:inherit;font-size:.76rem;text-decoration:underline;cursor:pointer;padding:0;margin-left:4px}
+@media (min-width:980px){.plans{grid-template-columns:260px minmax(0,1fr)}.plans .pmain{grid-column:2}.plans .plist{grid-row:1 / span 2}}
 </style></head>
 <body>
 <div class="wrap">
+ <div class="vtabs" role="group" aria-label="Storm drains"><button type="button" data-vt="tour" aria-pressed="true" id="vtTour">Recorrido 3D</button><button type="button" data-vt="plans" aria-pressed="false" id="vtPlans">Planos</button></div>
+ <section class="plans" id="plans" hidden><div class="plist" id="plist"></div><div class="pmain"><div class="ptools"><button type="button" id="pzOut" aria-label="Alejar">−</button><button type="button" id="pzIn" aria-label="Acercar">+</button><button type="button" id="pzFit" aria-label="Ajustar">⤢</button><div class="pcap" id="pcap"></div></div><div class="pframe" id="pframe"><img id="pimg" alt=""></div></div></section>
  <div class="viewer" id="viewer">
   <div class="load" id="load">Loading…</div>
   <div class="pins" id="pins"></div>
@@ -590,13 +605,30 @@ const $=id=>document.getElementById(id);
 $('seg').innerHTML=STEPS.map((s,i)=>'<button data-i="'+i+'" aria-label=""><i><b></b></i></button>').join('');
 const segBtns=[...$('seg').querySelectorAll('button')];segBtns.forEach(b=>b.addEventListener('click',()=>go(+b.dataset.i)));
 function go(i){si=clamp(i,0,NS-1);st=0;userCam=false;camFrom={p:cam.position.clone(),t:controls.target.clone()};text();buildPins();}
+
+// ---------- Plans tab (engineering sheets) ----------
+const SHEETS=[{g:L('Building · RJM 2502-009 (structure and phasing)','Edificio · RJM 2502-009 (estructura y fases)'),items:[['COVER',L('Scope, codes and repair notes','Alcance, códigos y notas')],['CP-100',L('Construction phasing plan I–III','Plan de fases de construcción I–III')],['BID-100',L('Bid notes and budget table','Notas de oferta y tabla de presupuesto')]]},
+ {g:L('Storm plumbing · RJM 25-009','Plomería pluvial · RJM 25-009'),items:[['P-000',L('General notes and scope','Notas generales y alcance')],['P-001.1',L('CIPP lining specification','Especificación CIPP')],['P-001D',L('Underground: demolition and relining','Subterráneo: demolición y relining')],['P-001',L('Underground: proposed plan','Subterráneo: planta propuesta')],['P-100D',L('Above ground: demolition','Aérea: demolición')],['P-100',L('Above ground: new piping','Aérea: tubería nueva')],['P-100.1',L('Drains and hangers','Drenajes y colgadores')],['P-101',L('Lobby level and pool deck','Nivel lobby y pool deck')],['P-102',L('Pump station detail','Estación de bombeo: detalle')],['P-200',L('Pump specifications','Especificaciones de bombas')],['P-300',L('Existing condition photos','Fotos de condición existente')],['P-400',L('Isometric cast iron → PVC','Isométrico hierro fundido → PVC')]]}];
+const SHEET_IDS=SHEETS.flatMap(g=>g.items.map(x=>x[0]));let curSheet='CP-100',pz=1;
+function sheetSrc(id){try{if(parent&&parent!==window&&parent.__SHEETS&&parent.__SHEETS[id])return parent.__SHEETS[id];}catch(e){}if(window.__SHEETS&&window.__SHEETS[id])return window.__SHEETS[id];return './assets/sheets/'+id+'.jpg';}
+function plansRender(){const pl=$('plist');pl.innerHTML=SHEETS.map(g=>'<div class="pgroup"><b>'+tr(g.g)+'</b><div class="pchips">'+g.items.map(([id,t])=>'<button type="button" data-sheet="'+id+'" aria-pressed="'+(id===curSheet)+'">'+id+'</button>').join('')+'</div></div>').join('');
+ pl.querySelectorAll('[data-sheet]').forEach(b=>b.onclick=()=>openSheet(b.dataset.sheet));const it=SHEETS.flatMap(g=>g.items).find(x=>x[0]===curSheet);
+ $('pcap').innerHTML='<b>'+curSheet+'</b> · '+tr(it[1])+'<small>'+(curSheet.startsWith('P-')?'RJM Consultants · 25-009 · R. J. Miranda P.E. 35579 · '+tr(L('signed 12/2/2025','firmado 2/12/2025')):'RJM Consultants · 2502-009 · '+'rev. 9/24/2025')+'</small>';
+ const img=$('pimg');const src=sheetSrc(curSheet);if(img.getAttribute('src')!==src){img.src=src;img.alt=curSheet;}img.style.width=(pz*100)+'%';}
+function openSheet(id){curSheet=id;pz=1;setTab('plans');plansRender();$('pframe').scrollTo(0,0);}
+function setTab(t){const pl=t==='plans';$('plans').hidden=!pl;$('viewer').hidden=pl;document.querySelector('.bar').hidden=pl;document.querySelector('.cap').hidden=pl;
+ document.querySelectorAll('[data-vt]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.vt===t)));if(pl){setPlaying(false);plansRender();}else{resize();}postH();}
+document.querySelectorAll('[data-vt]').forEach(b=>b.onclick=()=>setTab(b.dataset.vt));
+$('pzIn').onclick=()=>{pz=Math.min(4,pz*1.5);plansRender();};$('pzOut').onclick=()=>{pz=Math.max(1,pz/1.5);plansRender();};$('pzFit').onclick=()=>{pz=1;plansRender();};
+function refSheet(ref){const ids=(ref||'').match(/(CP-100|BID-100|P-\d{3}(?:\.\d|D)?)/g)||[];return ids.find(x=>SHEET_IDS.includes(x))||null;}
 function text(){const s=STEPS[si];$('sNum').textContent=tr(UI.step)+' '+(si+1)+' '+tr(UI.of)+' '+NS;$('sTitle').textContent=tr(s.t);$('sText').textContent=tr(s.x);
  $('sRef').innerHTML=tr(UI.sheets)+': '+s.ref+(s.run&&s.run!=='temp'?' · <b>'+tr(UI.gate)+'</b>':'')+(s.gate==='classv'?' · <b>'+(LANG==='es'?'Requiere permiso Class V de DERM: no solicitado; aprobación de la Junta pendiente.':'Requires a DERM Class V permit: not applied for; Board approval pending.')+'</b>':'');
+ {const rs=refSheet(s.ref);if(rs){const bt=document.createElement('button');bt.type='button';bt.className='reflink';bt.textContent=tr(L('See sheet ','Ver plano '))+rs;bt.onclick=()=>openSheet(rs);$('sRef').appendChild(bt);}}
  segBtns.forEach((b,k)=>b.setAttribute('aria-label',tr(UI.step)+' '+(k+1)+': '+tr(STEPS[k].t)));}
 function setPlaying(v){playing=v;$('bPlay').textContent=v?'❚❚':'▶';$('bPlay').setAttribute('aria-label',tr(v?UI.pause:UI.play));}
 $('bPlay').addEventListener('click',()=>{if(!playing&&si===NS-1&&st>=STEPS[si].d)go(0);setPlaying(!playing);if(playing)userCam=false;});
 $('bNext').addEventListener('click',()=>go(si+1));$('bBack').addEventListener('click',()=>go(st>1.5?si:si-1));
-function applyLang(){document.documentElement.lang=LANG;$('permit').textContent=tr(UI.permit);$('foot').textContent=tr(UI.foot);$('srcT').textContent=tr(UI.src);$('srcList').innerHTML=SRC[LANG].map(s=>'<li>'+s+'</li>').join('');text();buildPins();setPlaying(playing);}
+function applyLang(){document.documentElement.lang=LANG;$('vtTour').textContent=tr(L('3D tour','Recorrido 3D'));$('vtPlans').textContent=tr(L('Plans','Planos'));if(!$('plans').hidden)plansRender();$('permit').textContent=tr(UI.permit);$('foot').textContent=tr(UI.foot);$('srcT').textContent=tr(UI.src);$('srcList').innerHTML=SRC[LANG].map(s=>'<li>'+s+'</li>').join('');text();buildPins();setPlaying(playing);}
 let visible=true;
 window.addEventListener('message',e=>{const d=e.data||{};if(d.type==='collins-language'&&(d.lang==='es'||d.lang==='en')&&d.lang!==LANG){LANG=d.lang;applyLang();}if(d.type==='collins-visibility'){visible=!!d.visible;if(!visible)setPlaying(false);}});
 function resize(){const w=host.clientWidth,h=host.clientHeight;renderer.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix();}

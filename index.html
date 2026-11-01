@@ -180,7 +180,7 @@ button:active,nav a:active{transform:scale(.96)}
 <button class="nav-item" data-go="progress" type="button"><svg><use href="#ic-layers"/></svg><span data-t="progress">Progress</span></button>
 <button class="nav-item" data-go="permits" type="button"><svg><use href="#ic-permits"/></svg><span data-t="permits">Permits</span></button>
 <button class="nav-item" data-go="schedule" type="button"><svg><use href="#ic-cal"/></svg><span data-t="schedule">Schedule</span></button>
-<a class="nav-item" href="./assessment.html?v=20261031-budget-reconciled-v1" aria-label="Budget financial dashboard" style="text-decoration:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M17 6.5c-1.3-1.2-3-1.8-5-1.8-3.1 0-5.2 1.5-5.2 4.1 0 5.9 10.4 2.7 10.4 8.3 0 2.6-2.3 4.2-5.5 4.2-2.3 0-4.2-.7-5.8-2.2"/></svg><span>Budget</span></a> <button class="nav-item" data-go="contact" type="button"><svg><use href="#ic-chat"/></svg><span data-t="contact">Contact</span></button>
+<a class="nav-item" href="./assessment.html?v=20261029-owners2" aria-label="Budget financial dashboard" style="text-decoration:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M17 6.5c-1.3-1.2-3-1.8-5-1.8-3.1 0-5.2 1.5-5.2 4.1 0 5.9 10.4 2.7 10.4 8.3 0 2.6-2.3 4.2-5.5 4.2-2.3 0-4.2-.7-5.8-2.2"/></svg><span>Budget</span></a> <button class="nav-item" data-go="contact" type="button"><svg><use href="#ic-chat"/></svg><span data-t="contact">Contact</span></button>
 </nav>
 </div>
 <div class="sheet-backdrop" id="detailBackdrop" hidden></div>
@@ -746,7 +746,7 @@ root.querySelectorAll("[data-msview]").forEach(b=>b.addEventListener("click",()=
  if(!tab||!picture||!seg)return;const btn=seg.querySelector('[data-view="storm"]');if(!btn)return;
  const f=document.createElement('iframe');f.id='stormFrame';f.title='Garage stormwater 3D construction simulation';
  let loaded=false;const lang=()=>document.documentElement.lang==='es'?'es':'en';
- function load(){if(loaded)return;loaded=true;if(window.__setStormSrc)window.__setStormSrc(f);else f.src='./stormwater.html?v=20261031-ph1&lang='+lang();picture.appendChild(f);}
+ function load(){if(loaded)return;loaded=true;if(window.__setStormSrc)window.__setStormSrc(f);else f.src='./stormwater.html?v=20261101-pl1&lang='+lang();picture.appendChild(f);}
  function post(m){try{f.contentWindow&&f.contentWindow.postMessage(m,'*');}catch(e){}}
  function sync(){const on=btn.classList.contains('active');tab.classList.toggle('has-storm',on);if(on)load();post({type:'collins-visibility',visible:on&&!tab.hidden});post({type:'collins-language',lang:lang()});}
  window.addEventListener('message',e=>{if(e.source===f.contentWindow&&e.data&&e.data.type==='collins-storm-height'&&Number.isFinite(e.data.height))f.style.height=Math.max(900,Math.min(2800,e.data.height))+'px';});
