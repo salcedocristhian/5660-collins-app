@@ -147,3 +147,19 @@
 - 15 hojas: Edificio RJM 2502-009 (COVER, CP-100, BID-100) y Plomería RJM 25-009 (P-000, P-001.1, P-001D, P-001, P-100D, P-100, P-100.1, P-101, P-102, P-200, P-300, P-400), con título, firma y fecha; zoom −/+/ajustar.
 - Cada paso del recorrido que cita una hoja muestra "Ver plano …" y abre esa hoja directamente.
 - Imágenes en assets/sheets/*.jpg (1900 px). En el archivo único se incrustan una sola vez.
+
+## v17-ux1 · El modelo 3D es el protagonista
+- Se retiraron las tarjetas grandes sobre el visor (guías, resumen y tarjeta de piso en Building). En su lugar, una línea discreta abajo: "Piso 2 · Instalación de drywall ala A · Semana 4" (en Building al reproducir: "Semana 17 · Servpro 18–20 · Rociadores 16 · Alarma 15").
+- Tocar o deslizar hacia arriba la línea abre el detalle completo (trades del piso, "Al mismo tiempo", estados de permisos y dependencias, plano de origen); deslizar hacia abajo o Esc lo cierra.
+- Storm drains: la pestaña Planos ya no aparece vacía bajo el Recorrido 3D (corrección del atributo hidden).
+- Geometría, pisos, planos y secuencias sin cambios.
+
+## v17-ux2 · Transiciones de cámara del recorrido pluvial
+- Las transiciones entre pasos ya no van en línea recta (cruzando el modelo o volteándose sobre la vista superior): la cámara gira en un arco alrededor del objetivo, con aceleración suave, y en los saltos grandes se aleja un poco a mitad del recorrido y vuelve a acercarse.
+- La duración se ajusta a la distancia y al giro (1.6–3.6 s); las etiquetas se ocultan durante el vuelo y aparecen al llegar.
+- Todas las vistas superiores comparten la misma orientación, así el plano no gira de un paso a otro. Pasos, geometría y secuencia sin cambios.
+
+## v17-ux3 · Ritmo más pausado
+- Interior y guías: un día hábil dura 2.4 s a 1× (una semana ≈ 12 s); velocidad inicial 1×. El avance rápido en días sin trabajo baja de 6× a 3×.
+- Viaje entre pisos de la guía interior y recorrido de la guía exterior más lentos (≈1.5–2 s por piso, 2.6–3 s en el frente de trabajo).
+- Building al reproducir: una semana cada ≈6 s.

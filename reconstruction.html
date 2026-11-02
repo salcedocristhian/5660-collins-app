@@ -194,7 +194,15 @@ body.plans-active .viewer{height:min(80vh,780px)!important}
 </style><style id="render-sky">
 .viewer.sky{background:linear-gradient(180deg,#A9CBE6 0%,#D6E6F1 55%,#EEF2F1 100%)!important;transition:background .6s}
 @media (prefers-color-scheme:dark){.viewer.sky{background:linear-gradient(180deg,#1E3A52 0%,#2B4457 55%,#3A4A50 100%)!important}}
-</style><style id="contStyles">#bChip .cc b,#bChip .ccr b{display:inline!important;font-size:inherit!important;margin:0!important}#bChip .ccr span{display:inline!important;font-size:.74rem!important}#bChip .cch{display:block}
+</style><style id="contStyles">.tourcard{display:none!important}#bChip{display:none!important}body.hascap .stamp{display:none}
+.cappill{position:absolute;left:50%;transform:translateX(-50%);bottom:12px;z-index:5;max-width:calc(100% - 24px);display:flex;align-items:center;gap:8px;border:0;border-radius:999px;padding:8px 14px;background:rgba(23,37,31,.78);color:#fff;font:600 .8rem/1.2 inherit;font-family:inherit;cursor:pointer;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:0 2px 10px rgba(0,0,0,.15)}
+.cappill span{overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;text-align:left}.cappill i{font-style:normal;opacity:.8;font-size:.8rem}.cappill:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.capsheet{position:absolute;left:0;right:0;bottom:0;z-index:6;max-height:62%;overflow:auto;background:rgba(255,255,255,.97);color:#17251F;border-radius:18px 18px 0 0;padding:6px 16px 14px;box-shadow:0 -4px 18px rgba(0,0,0,.14);animation:capup .22s ease-out}
+.capsheet .grab{display:block;width:44px;height:18px;margin:0 auto 4px;border:0;background:transparent;cursor:pointer;position:relative}.capsheet .grab::before{content:"";position:absolute;left:6px;right:6px;top:7px;height:4px;border-radius:2px;background:#C9D1CD}
+#capBody{display:flex;flex-direction:column;gap:4px;font-size:.84rem;line-height:1.45}#capBody>b{font-size:.95rem}#capBody .dep{color:#5E6E66}#capBody .meta{color:#5E6E66;font-size:.74rem;margin-top:6px}
+@keyframes capup{from{transform:translateY(30px);opacity:.4}to{transform:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){.capsheet{animation:none}}
+#bChip .cc b,#bChip .ccr b{display:inline!important;font-size:inherit!important;margin:0!important}#bChip .ccr span{display:inline!important;font-size:.74rem!important}#bChip .cch{display:block}
 .cc{margin-top:6px;padding-top:6px;border-top:1px solid rgba(23,37,31,.12);display:flex;flex-direction:column;gap:3px}.cch{font-size:.7rem;font-weight:600;color:#5E6E66;text-transform:uppercase;letter-spacing:.03em}.ccr{display:flex;gap:6px;align-items:flex-start;font-size:.74rem;line-height:1.35;color:#26332D}.ccr i{width:8px;height:8px;border-radius:50%;flex:none;margin-top:4px}.ccr b{font-weight:600}.tourcard{max-width:min(70%,440px)}@media (max-width:560px){.tourcard{max-width:calc(100% - 64px)}.ccr{font-size:.68rem}}
 .wf{display:flex;flex-direction:column;gap:2px;margin-top:5px}.wfi{display:flex;align-items:center;gap:6px;font-size:.74rem}.wfi i{width:9px;height:9px;border-radius:50%;flex:none}.wfi b{font-weight:600}
 .bscen{display:inline-flex;gap:6px;align-items:center;font-size:.78rem;color:var(--muted);margin:0 0 10px 10px}.bscen select{font:inherit;font-size:.82rem;padding:5px 8px;border-radius:9px;border:1px solid var(--line);background:var(--surface);color:var(--ink)}#cShared .warnc{color:#9B5A00}#cShared .dep{color:var(--muted)}
@@ -270,6 +278,8 @@ body.plans-active .viewer{height:min(80vh,780px)!important}
     <div class="bchip" id="bChip" hidden></div>
     <div class="stamp" id="stamp"></div>
     <div class="tourcard" id="tourCard" role="status" aria-live="polite" hidden></div>
+    <button type="button" class="cappill" id="capPill" aria-expanded="false" aria-controls="capSheet" hidden><span id="capTxt"></span><i aria-hidden="true">︿</i></button>
+    <div class="capsheet" id="capSheet" role="region" aria-label="Detalle de la actividad" hidden><button type="button" class="grab" id="capClose" aria-label="Cerrar detalle"></button><div id="capBody"></div></div>
     <div class="frail" id="fRail" aria-hidden="true" hidden></div>
     <button type="button" class="fa-sim" id="faSim" aria-pressed="false" hidden>Simular alarma</button>
     <div class="fa-banner" id="faBanner" role="status" hidden></div>
@@ -308,7 +318,7 @@ body.plans-active .viewer{height:min(80vh,780px)!important}
       <button class="play" id="cPlay" aria-label="Reproducir plan"><svg id="cPlayIcon" viewBox="0 0 20 20" fill="currentColor"><path d="M5 3.5v13l11-6.5z"/></svg></button>
       <button class="cnav" id="cPrev" aria-label="Anterior">‹</button><button class="cnav" id="cNext" aria-label="Siguiente">›</button>
       <div class="scrub"><input type="range" id="cScrub" min="0" max="10500" value="0" step="1" aria-label="Semana del plan"><div class="ticks"><span data-i18n="Semana 1|Week 1">Semana 1</span><span id="cClock"></span><span id="cT1"></span></div></div>
-      <div class="speed"><div class="seg" role="group" aria-label="Velocidad"><button data-cspeed="1" aria-pressed="false">1×</button><button data-cspeed="1.5" aria-pressed="true">1.5×</button><button data-cspeed="2" aria-pressed="false">2×</button></div></div>
+      <div class="speed"><div class="seg" role="group" aria-label="Velocidad"><button data-cspeed="1" aria-pressed="true">1×</button><button data-cspeed="1.5" aria-pressed="false">1.5×</button><button data-cspeed="2" aria-pressed="false">2×</button></div></div>
     </div>
     <div class="csel">
       <label><span data-i18n="Piso|Floor">Piso</span><select id="cFloor"></select></label>
@@ -671,7 +681,8 @@ function faUpdate(now,si,p){const it=items;if(!it||!it.faDev)return;
 
 // ================= ROLLING CONTAINMENT PLAN (3 floors × 2 wings × 3 weeks) =================
 // Planning simulation only. Gates shown as SIMULATED never change real project or permit status.
-const CONT={scen:'lag',on:true,day:0,playing:false,speed:1.5,last:0,level:null,wing:'A',fail:{},sch:null,built:null,follow:false};
+/* one working day lasts 2.4 s at 1× (a week ≈ 12 s) */const DAY_SEC=2.4;
+const CONT={scen:'lag',on:true,day:0,playing:false,speed:1,last:0,level:null,wing:'A',fail:{},sch:null,built:null,follow:false};
 const LEVELS=[2,3,4,5,6,7,8,9,10,11,12,14,15,16,17,18,19,20,21,'PH'];
 const lvlKey=l=>l==='PH'?'21':(l<=16?'2-15':'16-20');
 const lvlName=l=>l==='PH'?'PH':String(l);
@@ -861,10 +872,9 @@ function contRebuild(){const keep=CONT.day;CONT.sch=computeSchedule();if(typeof 
  C$('cT1').textContent=L('Semana ','Week ')+nW;CONT.day=Math.min(keep,CONT.sch.total);lastUI='';}
 function contBoundaries(){const G=CONT.sch.groups[groupOfLevel(CONT.level)];const b=new Set([G.start,G.end]);(masterT(CONT.level)||[]).forEach(w=>{if(w){b.add(w[0]);b.add(w[1]);}});['A','B'].forEach(w=>G.wings[w].acts.forEach(a=>{b.add(a.s);b.add(a.e);}));return [...b].sort((x,y)=>x-y);}
 function contPlay(v){CONT.playing=v;C$('cPlayIcon').innerHTML=v?'<path d="M5 3.5h3.5v13H5zM11.5 3.5H15v13h-3.5z"/>':'<path d="M5 3.5v13l11-6.5z"/>';C$('cPlay').setAttribute('aria-label',v?L('Pausar plan','Pause plan'):L('Reproducir plan','Play plan'));if(v)CONT.last=performance.now();}
-function contTick(now){if(mode==='building'||!CONT.sch||CONT.level==null)return;if(CONT.playing){const dt=Math.min(.2,(now-CONT.last)/1000);CONT.last=now;CONT.day+=dt/0.8*CONT.speed*((typeof TOUR!=='undefined'&&TOUR.on&&TOUR.ff)?6:1);if(CONT.day>=CONT.sch.total){CONT.day=CONT.sch.total;contPlay(false);}
+function contTick(now){if(mode==='building'||!CONT.sch||CONT.level==null)return;if(CONT.playing){const dt=Math.min(.2,(now-CONT.last)/1000);CONT.last=now;CONT.day+=dt/DAY_SEC*CONT.speed*((typeof TOUR!=='undefined'&&TOUR.on&&TOUR.ff)?3:1);if(CONT.day>=CONT.sch.total){CONT.day=CONT.sch.total;contPlay(false);}
   const G=groupAtDay(CONT.day);if(CONT.follow&&!G.levels.includes(CONT.level))contSetLevel(G.levels[0],true);}
- APPLY_MASK=[0,3,5,6];apply(0);applyCont(now);if(!CONT.on)tradeUI(now);
- if(!TOUR.on){const br=CONT.day>0.01?concurrentBrief():'';tourCard(br?'<b>'+L('Piso ','Floor ')+lvlName(CONT.level)+'</b><span>'+activeTradesTxt(CONT.level)+'</span>'+br:null);}sharedUI();}
+ APPLY_MASK=[0,3,5,6];apply(0);applyCont(now);if(!CONT.on)tradeUI(now);sharedUI();}
 function contMode(on){CONT.on=on;C$('contPanel').hidden=!on;C$('tradePanel').hidden=on;lastFocus=-1;lastChips='';lastUI='';document.querySelectorAll('[data-imode]').forEach(b=>b.setAttribute('aria-pressed',String((b.dataset.imode==='cont')===on)));
  if(CONT.built)CONT.built.grp.visible=true;pause();if(CONT.level==null)contSetLevel(LEVELS[0]);if(on){lastUI='';camAnim={fp:cam.position.clone(),ft:controls.target.clone(),tp:new THREE.Vector3(0,118,46),tt:new THREE.Vector3(0,0,2),s:performance.now()};}}
 function initContUI(){
@@ -920,7 +930,6 @@ function initTradeUI(){if(!window.__tradeInit){window.__tradeInit=1;controls.add
 const TOUR={on:false,kind:null,state:'off',level:2,trip:null,ff:false,camKey:'',userCam:false,last:0,uiT:0};let tourMarker=null;
 const levelToF=l=>l==='PH'?21:(l<=12?l:l-1);
 const fToLevel=f=>f===21?'PH':(f<=12?f:f+1);
-function tourCard(html){const c=document.getElementById('tourCard');if(!c)return;if(!html){c.hidden=true;return;}c.hidden=false;if(c.dataset.h!==html){c.dataset.h=html;c.innerHTML=html;}}
 function activeTradesTxt(l){const T=masterT(l);if(!T)return '';const a=[];for(let i=0;i<9;i++){const p=mPSL(l,i);if(p>0&&p<1)a.push(t(STAGES[i].t));}
  if(a.length)return a.join(' · ');if(floorDone(l))return L('todos los trades terminados','all trades complete');if(mPSL(l,0)<=0)return L('pendiente: aún no empieza','pending: not started yet');return L('esperando el siguiente trade','waiting for the next trade');}
 function floorIdle(l){return ![...Array(9).keys()].some(i=>{const p=mPSL(l,i);return p>0&&p<1;})&&mPSL(l,8)<1;}
@@ -955,14 +964,14 @@ function intCamera(){if(TOUR.userCam)return;const B=CONT.built;if(!B)return;cons
 function tourTick(now){if(!TOUR.on||!CONT.sch)return;const dt=Math.min(.2,(now-TOUR.last)/1000);TOUR.last=now;
  // ----- exterior guide (Building view only) -----
  if(TOUR.kind==='ext'){if(mode!=='building'){tourStop();return;}
-  if(TOUR.state==='floor'){const l=TOUR.level;TOUR.ff=floorIdle(l);CONT.day=Math.min(CONT.sch.total,CONT.day+dt/0.8*CONT.speed*(TOUR.ff?6:1));syncBld();
+  if(TOUR.state==='floor'){const l=TOUR.level;TOUR.ff=floorIdle(l);CONT.day=Math.min(CONT.sch.total,CONT.day+dt/DAY_SEC*CONT.speed*(TOUR.ff?3:1));syncBld();
    if(now-TOUR.uiT>300){TOUR.uiT=now;bText();}
    const y=(levelToF(l)-1)*FH+FH/2;markerAt(y,now);if(!TOUR.userCam){const kk=1-Math.pow(.05,dt);cam.position.lerp(new THREE.Vector3(150,y+30,215),kk);controls.target.lerp(new THREE.Vector3(40,y,25),kk);camAnim=null;}
-   tourCard('<b>'+L('Guía exterior · Piso ','Exterior guide · Floor ')+lvlName(l)+' · '+fmtDay(CONT.day)+'</b><span>'+activeTradesTxt(l)+(TOUR.ff?' · ⏩ '+L('avance rápido hasta el siguiente trade','fast-forward to the next trade'):'')+'</span>'+concurrentBrief());
+   tourCard('<b>'+L('Guía exterior · Piso ','Exterior guide · Floor ')+lvlName(l)+' · '+fmtDay(CONT.day)+'</b><span>'+activeTradesTxt(l)+(TOUR.ff?' · ⏩ '+L('avance rápido (3×) hasta el siguiente trade','fast-forward (3×) to the next trade'):'')+'</span>'+concurrentBrief());
    if(floorDone(l)){const dest=tourDest(l);if(!dest){tourStop('<b>'+L('Guía completa','Guide complete')+'</b><span>'+L('Todos los pisos terminaron sus trades (escenario).','Every floor finished its trades (scenario).')+'</span>');return;}
     TOUR.trip={stops:tripStops(l,dest),t0:now,from:l,dest};TOUR.state='trip';TOUR.userCam=false;}
    return;}
-  if(TOUR.state==='trip'){const T=TOUR.trip;const el=(now-T.t0)/1000;const INTRO=1.6,STEP=1.6,MOVE=.65,FINAL=2.4;const n=T.stops.length-1;let fA,fB,k,phase;
+  if(TOUR.state==='trip'){const T=TOUR.trip;const el=(now-T.t0)/1000;const INTRO=2.2,STEP=2.0,MOVE=.9,FINAL=3.0;const n=T.stops.length-1;let fA,fB,k,phase;
    if(el<INTRO){fA=fB=levelToF(T.stops[0]);k=0;phase='intro';}else{const e2=el-INTRO;const j=Math.min(n,Math.floor(e2/STEP)+1);const inS=e2-(j-1)*STEP;
     if(e2<n*STEP){fA=levelToF(T.stops[j-1]);fB=levelToF(T.stops[j]);k=ease(clamp(inS/MOVE));phase=j===n?'final':'stop';}else{fA=fB=levelToF(T.stops[n]);k=1;phase=e2<n*STEP+FINAL?'final':'done';}}
    const y=(fA-1)*FH+FH/2+((fB-fA)*FH)*k;const fCur=k>=.5?fB:fA;markerAt(y,now);const kk=1-Math.pow(.03,dt);cam.position.lerp(new THREE.Vector3(150,y+30,215),kk);controls.target.lerp(new THREE.Vector3(40,y,25),kk);camAnim=null;
@@ -976,11 +985,11 @@ function tourTick(now){if(!TOUR.on||!CONT.sch)return;const dt=Math.min(.2,(now-T
  if(mode==='building'){tourStop();return;}
  if(TOUR.state==='floor'){const l=TOUR.level;if(CONT.level!==l)contSetLevel(l,true);if(!CONT.on)contMode(true);TOUR.ff=floorIdle(l);
   if(!CONT.playing&&CONT.day<CONT.sch.total)contPlay(true);intCamera();if(now-TOUR.uiT>400){TOUR.uiT=now;railUpdate(l);}
-  tourCard('<b>'+L('Guía interior · Piso ','Interior guide · Floor ')+lvlName(l)+'</b><span>'+activeTradesTxt(l)+(TOUR.ff?' · ⏩ '+L('avance rápido hasta el siguiente trade','fast-forward to the next trade'):'')+'</span>'+concurrentBrief());
+  tourCard('<b>'+L('Guía interior · Piso ','Interior guide · Floor ')+lvlName(l)+'</b><span>'+activeTradesTxt(l)+(TOUR.ff?' · ⏩ '+L('avance rápido (3×) hasta el siguiente trade','fast-forward (3×) to the next trade'):'')+'</span>'+concurrentBrief());
   if(floorDone(l)){const dest=tourDest(l);if(!dest){tourStop('<b>'+L('Guía completa','Guide complete')+'</b><span>'+L('Todos los pisos terminaron sus trades (escenario).','Every floor finished its trades (scenario).')+'</span>');return;}
    contPlay(false);TOUR.trip={stops:tripStops(l,dest),t0:now,from:l,dest,switched:false};TOUR.state='itrip';}
   return;}
- if(TOUR.state==='itrip'){const T=TOUR.trip;const el=(now-T.t0)/1000;const OUT=.7,STEP=.9,FINAL=1.6,IN=.7;const n=T.stops.length-1;const tStops=OUT+n*STEP;
+ if(TOUR.state==='itrip'){const T=TOUR.trip;const el=(now-T.t0)/1000;const OUT=1.1,STEP=1.5,FINAL=2.6,IN=1.1;const n=T.stops.length-1;const tStops=OUT+n*STEP;
   if(el<OUT){if(floorGroup)floorGroup.position.y=-ease(el/OUT)*28;tourCard('<b>'+L('Piso ','Floor ')+lvlName(T.from)+' '+L('terminado','complete')+' ✓</b><span class="tdone">'+L('Subiendo al frente de trabajo…','Moving up to the workfront…')+'</span>');railUpdate(T.from);}
   else if(el<tStops){const j=Math.min(n,Math.floor((el-OUT)/STEP)+1);const lv=T.stops[j];railUpdate(lv);tourCard('<b>'+L('Piso ','Floor ')+lvlName(lv)+'</b><span>'+activeTradesTxt(lv)+'</span>');}
   else if(el<tStops+IN){if(!T.switched){T.switched=true;contSetLevel(T.dest,true);TOUR.camKey='';TOUR.userCam=false;}const k=ease((el-tStops)/IN);if(floorGroup)floorGroup.position.y=(1-k)*28;railUpdate(T.dest);
@@ -1035,6 +1044,35 @@ function concurrentBrief(){if(typeof CONT==='undefined'||!CONT.sch)return '';con
  const both=spr.filter(l=>fa.includes(l));if(both.length)rows.push(['#9B5A00','⚠ '+L('Rociadores y alarma en el mismo piso (','Sprinklers and alarm on the same floor (')+both.map(lvlName).join(', ')+L('): coordinación en campo y autorización del Fire Marshal',': field coordination and Fire Marshal authorization')]);
  if(!rows.length)return '';
  return '<div class="cc"><div class="cch">'+L('Al mismo tiempo · ','At the same time · ')+fmtDay(d)+'</div>'+rows.map(r=>'<div class="ccr"><i style="background:'+r[0]+'"></i><span>'+r[1]+'</span></div>').join('')+'</div>';}
+
+// ---------- 3D first: a one-line caption; details on swipe-up ----------
+const CAP={line:'',detail:'',open:false,guide:''};
+function tourCard(html){CAP.guide=html||'';}
+function capOpen(v){CAP.open=v;const sh=document.getElementById('capSheet'),pl=document.getElementById('capPill');if(!sh)return;sh.hidden=!v;pl.setAttribute('aria-expanded',String(v));pl.hidden=v||!CAP.line;if(v)document.getElementById('capBody').innerHTML=CAP.detail;}
+function capSet(line,detail){const pl=document.getElementById('capPill');if(!pl)return;CAP.detail=detail;document.body.classList.toggle('hascap',!!line);
+ if(line!==CAP.line){CAP.line=line;document.getElementById('capTxt').textContent=line;}pl.hidden=!line||CAP.open;
+ if(CAP.open){const b=document.getElementById('capBody');if(b.dataset.h!==detail){b.dataset.h=detail;b.innerHTML=detail;}}
+ const fs=document.getElementById('faSim');pl.style.maxWidth=(fs&&!fs.hidden)?'calc(100% - 190px)':'';pl.style.left=(fs&&!fs.hidden)?'12px':'';pl.style.transform=(fs&&!fs.hidden)?'none':'';}
+(function(){const pl=document.getElementById('capPill'),sh=document.getElementById('capSheet');if(!pl)return;let y0=null;
+ pl.addEventListener('click',()=>capOpen(true));pl.addEventListener('touchstart',e=>{y0=e.touches[0].clientY;},{passive:true});pl.addEventListener('touchend',e=>{if(y0!=null&&e.changedTouches[0].clientY-y0<-20)capOpen(true);y0=null;});
+ document.getElementById('capClose').addEventListener('click',()=>capOpen(false));
+ sh.addEventListener('touchstart',e=>{y0=sh.scrollTop<=0?e.touches[0].clientY:null;},{passive:true});sh.addEventListener('touchend',e=>{if(y0!=null&&e.changedTouches[0].clientY-y0>40)capOpen(false);y0=null;});
+ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&CAP.open)capOpen(false);});})();
+const ACT_LINE={contain:['Contenciones','Containments'],demo:['Demolición selectiva','Selective demolition'],clean:['Limpieza HEPA','HEPA cleaning'],swap:['Traslado de contenciones','Moving containments'],demo2:['Demolición selectiva','Selective demolition'],clean2:['Limpieza HEPA','HEPA cleaning'],
+ prv:['Visita AirMD PRV','AirMD PRV visit'],lab:['Resultado PRV pendiente','PRV result pending'],hold:['HOLD · retrabajo','HOLD · rework'],reclean:['Re-limpieza','Re-cleaning'],retest:['Re-prueba AirMD','AirMD re-test'],lab2:['Resultado re-prueba pendiente','Re-test result pending'],
+ fire:['Verificación Fire/AHJ','Fire/AHJ verification'],rebuild:['Instalación de drywall','Drywall installation'],insp:['Inspección','Inspection'],finish:['Pintura','Painting'],fclean:['Limpieza final','Final cleaning'],remove:['Retiro de contenciones','Containment removal'],release:['Liberación del grupo','Group release']};
+function floorActLine(l){const d=CONT.day;const G=CONT.sch.groups[groupOfLevel(l)];if(G&&d>=G.start&&d<G.end){const ps=[];['A','B'].forEach(w=>{const a=actAt(G.wings[w].acts,d);if(a)ps.push(L(ACT_LINE[a.k][0],ACT_LINE[a.k][1])+' '+L('ala ','wing ')+w);});if(ps.length)return ps[0]+(ps.length>1?' +'+(ps.length-1):'');}
+ const a=[];[0,1,2,3,5,6,4,7].forEach(i=>{const p=mPSL(l,i);if(p>0&&p<1)a.push(t(STAGES[i].t));});if(a.length)return a[a.length-1]+(a.length>1?' +'+(a.length-1):'');if(floorDone(l))return L('Todos los trades terminados','All trades complete');if(mPSL(l,0)<=0)return L('Pendiente','Pending');return L('Esperando el siguiente trade','Waiting for the next trade');}
+function capTick(){if(typeof CONT==='undefined'||!CONT.sch)return;const wk=L('Semana ','Week ')+dayToWeek(CONT.day);let line='',det='';
+ if(mode==='building'){if(TOUR.on&&TOUR.kind==='ext'){const l=TOUR.state==='trip'&&TOUR.trip?fToLevel(bSel):TOUR.level;line=L('Piso ','Floor ')+lvlName(l)+' · '+floorActLine(l)+' · '+wk;}
+  else if(bWeek<1){line=L('Antes de empezar · toca Play','Before start · press Play');}
+  else if(bSel&&bSel>=2&&!bPlaying){const l=fToLevel(bSel);line=L('Piso ','Floor ')+lvlName(l)+' · '+floorActLine(l)+' · '+wk;}
+  else{const a=wfActive();const it=(lab,arr)=>arr.length?lab+' '+wfRange(arr):null;line=[wk,it('Servpro',a.servpro),it(L('Rociadores','Sprinklers'),a.spr),it(L('Alarma','Alarm'),a.fa)].filter(Boolean).join(' · ');}
+  det=(CAP.guide&&TOUR.on?CAP.guide:'<b>'+line+'</b>')+(CAP.guide&&TOUR.on?'':concurrentBrief());}
+ else{const l=CONT.level;if(l==null)return;if(TOUR.on&&TOUR.state==='itrip'&&TOUR.trip){line=L('Piso ','Floor ')+lvlName(TOUR.trip.from)+' ✓ → '+L('frente de trabajo · piso ','workfront · floor ')+lvlName(TOUR.trip.dest);}
+  else line=L('Piso ','Floor ')+lvlName(l)+' · '+floorActLine(l)+' · '+wk;
+  det=(TOUR.on&&CAP.guide?CAP.guide:'<b>'+L('Piso ','Floor ')+lvlName(l)+' · '+fmtDay(CONT.day)+'</b><span>'+activeTradesTxt(l)+'</span>'+concurrentBrief())+(typeof tradeStateTxt==='function'?'<div>'+tradeStateTxt(l)+'</div>':'')+'<div class="meta">'+(($('stamp')||{}).textContent||'')+'</div>';}
+ capSet(line,det);}
 
 let floorGroup=null, items=null;
 function buildFloor(key){
@@ -1277,6 +1315,7 @@ function loop(now){requestAnimationFrame(loop);if(!visible)return;
   else if(items&&floorGroup&&floorGroup.visible){const p7=(typeof mPS==='function'&&CONT.level!=null)?mPS(7):0;faUpdate(now,p7>=1?8:(p7>0?7:0),p7);}
   if(camAnim){const k=clamp((now-camAnim.s)/900);const e=ease(k);cam.position.lerpVectors(camAnim.fp,camAnim.tp,e);controls.target.lerpVectors(camAnim.ft,camAnim.tt,e);if(k>=1)camAnim=null;}
   if(typeof tourTick==='function')tourTick(now);
+  if(typeof capTick==='function'&&visible!==false)capTick();
   if(typeof contTick==='function')contTick(now);
   controls.update();renderer.render(scene,cam);}
 
@@ -1531,7 +1570,7 @@ function setMode(m,fk){mode=m;const B=m==='building';if(!B&&typeof setFinal==='f
 document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>setMode(b.dataset.mode));
 bTick=function(now){if(mode!=='building')return;introTick(now);
   if(bPlaying&&bIntro!==null){bLast=now;}
-  if(bPlaying&&bIntro===null&&!(typeof TOUR!=='undefined'&&TOUR.on&&TOUR.kind==='ext')){bWeek+=(now-bLast)/1000*0.9*bSpeedK();if(typeof CONT!=='undefined')CONT.day=Math.max(0,(bWeek-1)*5);bLast=now;if(bWeek>=bMaxW()){bWeek=bMaxW();bPause();}$('bWeek').value=bWeek;bText();}
+  if(bPlaying&&bIntro===null&&!(typeof TOUR!=='undefined'&&TOUR.on&&TOUR.kind==='ext')){bWeek+=(now-bLast)/1000/(DAY_SEC*5)*2*bSpeedK();if(typeof CONT!=='undefined')CONT.day=Math.max(0,(bWeek-1)*5);bLast=now;if(bWeek>=bMaxW()){bWeek=bMaxW();bPause();}$('bWeek').value=bWeek;bText();}
   bApply(now);wfTick(now);};
 const m=(location.hash||'').match(/piso-(2-15|16-20|21)/);
 if(m){floorKey=m[1];document.querySelectorAll('[data-floor]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.floor===floorKey));$('stamp').textContent=t(SHEET[floorKey]);}

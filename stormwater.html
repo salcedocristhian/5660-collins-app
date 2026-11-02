@@ -53,6 +53,7 @@ details ul{margin:6px 0 0;padding-left:18px;color:var(--muted);font-size:.76rem;
 .vtabs{display:flex;gap:2px;background:var(--track);border-radius:12px;padding:3px;margin:0 0 10px;width:max-content;max-width:100%}
 .vtabs button{border:0;background:transparent;color:var(--ink);font:500 .88rem/1 inherit;font-family:inherit;padding:9px 16px;border-radius:9px;cursor:pointer;min-height:40px}
 .vtabs button[aria-pressed="true"]{background:var(--panel);font-weight:600;box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.plans[hidden],.vtabs [hidden]{display:none!important}
 .plans{display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
 .plist{display:flex;flex-direction:column;gap:8px}.pgroup b{display:block;font-size:.74rem;color:var(--muted);font-weight:600;margin:0 0 4px;text-transform:uppercase;letter-spacing:.03em}
 .pchips{display:flex;flex-wrap:wrap;gap:6px}.pchips button{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:999px;padding:6px 11px;font:500 .78rem/1.2 inherit;font-family:inherit;cursor:pointer;min-height:34px}
@@ -488,9 +489,9 @@ function phaseSteps(pi){const n=PHN[pi],P=PH[pi],c=PC[pi],cm=CAMS[pi];const T=(e
 function J0(pi){const p=phaseVis[pi].jOld;const a=-p.rotation.y,L=p.scale.x;return [p.position.x+Math.cos(a)*L*.5,p.position.z+Math.sin(a)*L*.5];}
 const STEPS=[
  {id:'site',d:7,t:L('Site plan from above','Planta del sitio desde arriba'),x:L('The tour starts over the podium: tower, pool deck and lobby-level parking sit on top of the lower garage. Collins Avenue is to the south and Indian Creek, where the storm outfall discharges, to the north.','El recorrido inicia sobre el podio: la torre, el pool deck y el parqueo del nivel lobby están sobre el garaje inferior. Collins Avenue queda al sur e Indian Creek, donde descarga el desagüe pluvial, al norte.'),ref:'P-101 · Relats A-1.1–A-1.3',
-  cam:[[0,150,-400],[0,45,-10],[0,520,-45],[0,0,-12]],v:{tower:1,deck:1,floor:1},pins:[[[poolC[0],2,poolC[1]],L('Pool deck','Pool deck')],[[105,2,10],L('Lobby-level parking','Parqueo nivel lobby')],[[0,205,-10],L('Tower · 21 levels','Torre · 21 niveles')]]},
+  cam:[[0,150,380],[0,45,-10],[0,520,30],[0,0,-12]],v:{tower:1,deck:1,floor:1},pins:[[[poolC[0],2,poolC[1]],L('Pool deck','Pool deck')],[[105,2,10],L('Lobby-level parking','Parqueo nivel lobby')],[[0,205,-10],L('Tower · 21 levels','Torre · 21 niveles')]]},
  {id:'scope',d:9,phases:true,t:L('Scope and construction phasing','Alcance y fases de construcción'),x:L('With the deck cut away: overhead cast iron, underground lines, drains and four pump stations, plus cracks, joints and waterproofing. The engineer\'s phasing plan splits the garage in three: Phase I east wing (red), Phase II north centre (orange), Phase III west wing (blue).','Con el deck en corte: hierro fundido aéreo, líneas subterráneas, drenajes y cuatro estaciones de bombeo, además de grietas, juntas e impermeabilización. El plan de fases del ingeniero divide el garaje en tres: Fase I ala este (rojo), Fase II franja norte central (naranja), Fase III ala oeste (azul).'),ref:'P-000 · CP-100 · BID-100',
-  cam:[[0,520,-45],[0,0,-12],[0,430,40],[0,0,-12]],v:{tower:.06,deck:0,floor:.6},pins:PC.map((c,i)=>[[c.cx,YB+1,c.cz],L('Phase '+PHN[i],'Fase '+PHN[i])])},
+  cam:[[0,520,30],[0,0,-12],[0,430,40],[0,0,-12]],v:{tower:.06,deck:0,floor:.6},pins:PC.map((c,i)=>[[c.cx,YB+1,c.cz],L('Phase '+PHN[i],'Fase '+PHN[i])])},
  {id:'exist',d:7,t:L('Existing conditions: tidal flooding','Condición existente: inundación por marea'),x:L('High tides back up through the corroded cast iron and the original ejector stations; the lower garage floods. Temporary pumping to tidal water was removed after the DERM notice of Oct 20, 2026.','Las mareas altas se devuelven por el hierro fundido corroído y las estaciones eyectoras originales; el garaje inferior se inunda. El bombeo temporal al agua se retiró tras el aviso de DERM del 20/10/2026.'),ref:'P-300 · DERM 10/20',
   cam:[[-170,30,90],[-80,-5,-20],[-150,22,60],[-80,-6,-25]],v:{tower:.06,deck:0,floor:1},pins:[[[SD.gAD[1][0],YB+1,SD.gAD[1][1]],L('Backflow at floor drains','Reflujo en drenajes de piso')]]},
  {id:'temp',d:9,run:'temp',gate:'classv',t:L('Interim dewatering (proposed)','Desagüe interino (propuesto)'),x:L('Stone’s interim plan: rental submersible pumps on float control with a standby unit, discharging through filter bags with water-quality sampling to the storm outfall. Each rental pump stays until its station is replaced in its phase.','Plan interino de Stone: bombas sumergibles de alquiler con flotador y una de reserva, descargando por bolsas filtrantes con muestreo de calidad de agua al desagüe pluvial. Cada bomba de alquiler se queda hasta que su estación se reemplaza en su fase.'),ref:'DERM Class V · Stone 10/29',
@@ -568,11 +569,21 @@ function apply(now,dt){
 phaseVis.forEach(pv=>{pv.jOld.userData.L0=pv.jOld.scale.x;});
 // ---------- camera ----------
 const V=(a)=>new THREE.Vector3(...a);
+// Spherical camera moves around a moving target: no straight-line swoops through the model, no flip over the top.
+const easeIO=k=>k<.5?4*k*k*k:1-Math.pow(-2*k+2,3)/2;
+function SPH(p,t,norm){const o=p.clone().sub(t);const r=Math.max(1,o.length());let phi=Math.acos(clamp(o.y/r,-1,1));let th=Math.atan2(o.x,o.z);if(norm&&phi<.35)th=0;phi=Math.max(norm?.2:.05,Math.min(phi,1.52));return {r,phi,th};}
+function sphPos(t,q){const sp=Math.sin(q.phi);return new THREE.Vector3(t.x+q.r*sp*Math.sin(q.th),t.y+q.r*Math.cos(q.phi),t.z+q.r*sp*Math.cos(q.th));}
+function angD(a,b){let d=b-a;while(d>Math.PI)d-=2*Math.PI;while(d<-Math.PI)d+=2*Math.PI;return d;}
+function sLerp(a,b,k){return {r:Math.exp(Math.log(a.r)+(Math.log(b.r)-Math.log(a.r))*k),phi:a.phi+(b.phi-a.phi)*k,th:a.th+angD(a.th,b.th)*k};}
+let flyDur=2,camFromS=null;
 function camDrive(){if(userCam)return;const s=STEPS[si],c=s.cam;const asp=host.clientWidth/Math.max(1,host.clientHeight);const kk=asp<1.1?Math.pow(1.1/asp,s.id==='pump'?1.25:.85):1;
  const fit=(p,t)=>V(p).sub(V(t)).multiplyScalar(kk).add(V(t));
- const p0=fit(c[0],c[1]),t0=V(c[1]),p1=fit(c[2],c[3]),t1=V(c[3]);const fly=Math.min(2.2,s.d*.22);
- if(st<fly&&camFrom){const k=ease(st/fly);cam.position.lerpVectors(camFrom.p,p0,k);controls.target.lerpVectors(camFrom.t,t0,k);}
- else{const k=ease(clamp((st-(camFrom?fly:0))/(s.d-(camFrom?fly:0))));cam.position.lerpVectors(p0,p1,k);controls.target.lerpVectors(t0,t1,k);}}
+ const t0=V(c[1]),t1=V(c[3]);const s0=SPH(fit(c[0],c[1]),t0,true),s1=SPH(fit(c[2],c[3]),t1,true);
+ if(camFrom&&!camFromS){camFromS=SPH(camFrom.p,camFrom.t,false);const dT=camFrom.t.distanceTo(t0),dA=Math.abs(angD(camFromS.th,s0.th))+Math.abs(s0.phi-camFromS.phi),dR=Math.abs(Math.log(s0.r/camFromS.r));
+  flyDur=Math.min(s.d*.45,Math.max(1.6,1.2+dT/160+dA*.7+dR*.6));camFrom.big=dT>60||dA>1.2;}
+ if(st<flyDur&&camFrom){const k=easeIO(clamp(st/flyDur));const tt=camFrom.t.clone().lerp(t0,k);const q=sLerp(camFromS,s0,k);if(camFrom.big)q.r*=1+.28*Math.sin(Math.PI*k);
+  cam.position.copy(sphPos(tt,q));controls.target.copy(tt);pinsEl.style.opacity=String(clamp((k-.75)/.25));}
+ else{const k0=camFrom?flyDur:0;const k=easeIO(clamp((st-k0)/Math.max(.1,s.d-k0)));const tt=t0.clone().lerp(t1,k);const q=sLerp(s0,s1,k);cam.position.copy(sphPos(tt,q));controls.target.copy(tt);pinsEl.style.opacity='1';}}
 controls.addEventListener('start',()=>{userCam=true;});
 // ---------- pins ----------
 const pinsEl=document.getElementById('pins');let pinEls=[],svg=null;const NS_SVG='http://www.w3.org/2000/svg';
@@ -604,7 +615,7 @@ let pinDt=.016;function placePins(dt){pinDt=dt||.016;if(!pinEls.length)return;co
 const $=id=>document.getElementById(id);
 $('seg').innerHTML=STEPS.map((s,i)=>'<button data-i="'+i+'" aria-label=""><i><b></b></i></button>').join('');
 const segBtns=[...$('seg').querySelectorAll('button')];segBtns.forEach(b=>b.addEventListener('click',()=>go(+b.dataset.i)));
-function go(i){si=clamp(i,0,NS-1);st=0;userCam=false;camFrom={p:cam.position.clone(),t:controls.target.clone()};text();buildPins();}
+function go(i){si=clamp(i,0,NS-1);st=0;userCam=false;camFrom={p:cam.position.clone(),t:controls.target.clone()};camFromS=null;text();buildPins();}
 
 // ---------- Plans tab (engineering sheets) ----------
 const SHEETS=[{g:L('Building · RJM 2502-009 (structure and phasing)','Edificio · RJM 2502-009 (estructura y fases)'),items:[['COVER',L('Scope, codes and repair notes','Alcance, códigos y notas')],['CP-100',L('Construction phasing plan I–III','Plan de fases de construcción I–III')],['BID-100',L('Bid notes and budget table','Notas de oferta y tabla de presupuesto')]]},

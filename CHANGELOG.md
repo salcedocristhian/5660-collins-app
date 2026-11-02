@@ -23,3 +23,9 @@
 - Plans view removed; Progress now has Building and Interior.
 - Interior 3D: opaque matte-white walls, solid floor slab with the drawing as a faint reference, two-light setup, sharper rendering on high-density screens, no fog, closer default Overview camera; engineering label removed from the model.
 - New app icon (MTD over the building) for home screen, PWA and favicon.
+
+## v17-bd1 · Budget reconciliado con la hoja de la Junta (F. Diez-Rivas)
+- Amount Budgeted for Projects $6,460,481.00 + Contingency $1,039,519.00 = $7,500,000.00.
+- Contingencia: $1,132,039 → $1,039,519 (−$92,520). Proyectos: $6,367,961 → $6,460,481 (+$92,520).
+- Los 10 proyectos detallados suman $6,367,961.00; la diferencia de $92,520.00 aparece como "Project Budget · Breakdown Pending" hasta que la Junta entregue el desglose por proyecto en noviembre. No se asignó a ningún proyecto.
+- Costos reportados sin cambios. Truist Closing Fees ($2,450) y Truist Commitment Letter ($5,000) no se incorporaron: falta confirmar si son costos del proyecto o del financiamiento.
