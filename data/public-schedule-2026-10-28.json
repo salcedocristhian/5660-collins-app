@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "asOf": "2026-11-02",
-  "source": "5660 KB Active Projects LIVE latest Oct 27 addenda; Master Permit Record Oct 27; corridor portal screenshots shared Oct 31 (other milestones unchanged); Nov 2 verbal gym schedule with SERVPRO (Nov 3 inspection target; Nov 4 encapsulation; Nov 6 custom box only, machine not scheduled)",
+  "asOf": "2026-11-03",
+  "source": "5660 KB Active Projects LIVE latest Oct 27 addenda; Master Permit Record Oct 27; corridor portal screenshots shared Oct 31 (other milestones unchanged); Nov 2 verbal gym schedule with SERVPRO (Nov 3 inspection target; Nov 4 encapsulation; Nov 6 custom box only, machine not scheduled); Nov 3 Sciens coordinator provided ELSS fire-alarm reference FP1126-7824, official City stage/issuance unverified",
   "isVerifiedCalendar": false,
   "timeline": [
     {
@@ -31,8 +31,8 @@
       },
       "start": 0,
       "length": 1,
-      "group": "notfiled",
-      "note": "Oct 30 engineering-readiness target; no filing verified"
+      "group": "review",
+      "note": "Sciens supplied FP1126-7824 Nov 3; City review status, master association and issuance unverified."
     },
     {
       "name": {
@@ -264,6 +264,18 @@
       "detail": {
         "en": "Reported BC2526722 preservation date, not construction completion",
         "es": "Fecha reportada para mantener BC2526722 activo; no es fin de obra"
+      }
+    },
+    {
+      "month": "NOV",
+      "day": "03",
+      "title": {
+        "en": "ELSS fire alarm application reference",
+        "es": "Referencia de solicitud de alarma ELSS"
+      },
+      "detail": {
+        "en": "FP1126-7824 supplied by Sciens; City review and issuance unverified",
+        "es": "Sciens informó FP1126-7824; revisión y emisión municipal sin verificar"
       }
     }
   ],

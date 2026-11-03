@@ -17,7 +17,7 @@ const fallbackPermits=[
 {id:'county',scope:'Hallway County approval',number:'2027004562',group:'issued',status:'Approved Oct 22, 2026',next:'—'},
 {id:'asbestos',scope:'Hallway County asbestos',number:'M2027000526',group:'issued',status:'Approved Oct 21',next:'—'},
 {id:'coc',scope:'Garage contractor change',number:'PAU2623002',group:'issued',status:'Completed / closed',next:'—'},
-{id:'alarm',scope:'Fire alarm (ELSS)',number:'Not assigned',group:'notfiled',status:'In preparation',next:'Nov 2026, est.'},
+{id:'alarm',scope:'Fire alarm (ELSS)',number:'FP1126-7824',group:'review',status:'Application reference from Sciens; City review / issuance unverified',next:'Confirm City status'},
 {id:'doors',scope:'Smoke enclosure doors',number:'Not assigned',group:'notfiled',status:'Design coordination',next:'Nov 2026, est.'},
 {id:'pressurization',scope:'Stair pressurization / dampers',number:'Not assigned',group:'notfiled',status:'Engineering in progress',next:'Jan–Feb 2027, est.'},
 {id:'gymalarm',scope:'Gym fire alarm / equipment',number:'Not confirmed',group:'notfiled',status:'Coordination',next:'Nov–Dec 2026, est.'},
@@ -26,7 +26,7 @@ const fallbackPermits=[
 {id:'chiller',scope:'Chiller - mechanical / electrical',number:'Unverified',group:'verify',status:'Verify trade permits',next:'Verify'},
 {id:'chillerpump',scope:'Chiller pump replacement',number:'Unverified',group:'verify',status:'Verify submission',next:'Verify'}];
 let publicKB=null,modelReady=false,modelRequested=false,modelFullscreen=false;
-let lang='en',tab='updates',permitFilter='review',permitData=fallbackPermits.slice(),permitDate='2026-10-27',noticeData=null,view='interior',floor='2',step=0,playing=false,interval=null,scheduleMode='timeline';
+let lang='en',tab='updates',permitFilter='review',permitData=fallbackPermits.slice(),permitDate='2026-11-03',noticeData=null,view='interior',floor='2',step=0,playing=false,interval=null,scheduleMode='timeline';
 const t=(k)=>translations[lang][k]||k;
 function localDate(value){try{const d=new Date(String(value).substring(0,10)+'T12:00:00');return new Intl.DateTimeFormat(lang==='es'?'es-US':'en-US',{month:'short',day:'numeric'}).format(d)}catch{return value||''}}
 function switchTab(next){if(!['updates','progress','permits','schedule','contact'].includes(next))return;stopPlay();tab=next;document.querySelectorAll('.screen').forEach(el=>{let on=el.dataset.tab===next;el.hidden=!on;el.classList.toggle('current',on)});document.querySelectorAll('.nav-item').forEach(el=>{let on=el.dataset.go===next;el.classList.toggle('active',on);if(on)el.setAttribute('aria-current','page');else el.removeAttribute('aria-current')});const legacyFloorPicker=$('floorPicker');if(legacyFloorPicker)legacyFloorPicker.hidden=next!=='progress';$('topAction').hidden=false;$('topAction').textContent=next==='schedule'?'↥':lang==='en'?'ES':'EN';$('topAction').setAttribute('aria-label',next==='schedule'?'Share schedule':'Switch language');if(next==='progress')load3D();window.scrollTo(0,0);history.replaceState(null,'','#'+next)}

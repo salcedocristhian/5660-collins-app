@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "version": "2026-11-02-gym-inspections-v1",
+  "version": "2026-11-03-sciens-fire-alarm-v1",
   "publishedAt": "2026-11-03T02:14:20.078Z",
   "approvalStatus": "draft",
   "approvalNote": "Project-manager draft prepared from dated project records. Confirm resident distribution with Building Management before publishing.",
@@ -10,6 +10,25 @@
     "managementEmail": "Manager@5660condo.com"
   },
   "notices": [
+    {
+      "id": "elss-fire-alarm-reference-2026-11-03",
+      "date": "2026-11-03",
+      "category": "permits",
+      "priority": "normal",
+      "projectId": "alarm",
+      "title": {
+        "en": "ELSS fire alarm application number received",
+        "es": "Recibido el número de solicitud de alarma ELSS"
+      },
+      "message": {
+        "en": "Sciens provided fire alarm application reference FP1126-7824. The team is confirming its official City review status, required steps and permit issuance. This does not indicate that the permit is issued.",
+        "es": "Sciens proporcionó la referencia FP1126-7824 de la solicitud de alarma. El equipo verifica el estado de revisión municipal, los próximos pasos y su emisión. Esto no significa que el permiso esté emitido."
+      },
+      "residentAction": {
+        "en": "No resident action needed. Official permit-status confirmation is pending.",
+        "es": "No se requiere acción de residentes. Sigue pendiente confirmar el estado municipal."
+      }
+    },
     {
       "id": "gym-inspections-2026-11-02",
       "date": "2026-11-02",
@@ -204,15 +223,15 @@
     {
       "id": "alarm",
       "category": "life-safety",
-      "permit": "",
-      "status": "design",
+      "permit": "FP1126-7824",
+      "status": "application-reference",
       "title": {
         "en": "Fire alarm modernization",
         "es": "Modernización de alarma de incendios"
       },
       "summary": {
-        "en": "Engineering and permit preparation continue; final submission and issuance have not been confirmed.",
-        "es": "Continúa la preparación de ingeniería y permisos; no están confirmadas la presentación ni la emisión finales."
+        "en": "Sciens provided fire alarm application reference FP1126-7824 on November 3. The City review stage, master relationship and permit issuance are not yet confirmed.",
+        "es": "Sciens proporcionó la referencia de solicitud de alarma FP1126-7824 el 3 de noviembre. No se han confirmado la fase de revisión, vinculación al master ni emisión."
       }
     },
     {

@@ -51,3 +51,9 @@
 - Added prominently displayed **Next Payment Upcoming – Trane $120,434.50**, the anticipated final 10% milestone of the $1,204,345 chiller replacement contract.
 - Trane confirmed Oct 29 that the final invoice had not been issued. The feature states invoice and due date pending; it is **not** a confirmed payable, booked expense, or cash payment.
 - Mirrored this status within the Central HVAC contract breakdown, and refreshed budget navigation and service-worker cache. **No project budgets, recorded costs, or expense calculations changed.** CO #1 permit fees were not added again pending accounting/contract verification.
+
+## November 3, 2026 — Sciens ELSS Fire Alarm Application Reference
+- Confirmed Sciens coordinator Jany Martinez communicated **FP1126-7824**, replacing the stale 'Not assigned' entry for building-wide ELSS fire alarm.
+- Updated Permits register, JS fallback, bilingual resident KB and FAQ, project news status, schedule reference, offline KB backup, cache versions and main navigation. Added a concise in-app informational notice; **no push notification sent**.
+- City receipt, plan-review stage, master permit relationship, issuance and work authorization remain unverified. Do not confuse with sprinkler FP0826-7612 or gym/Genset fire alarm.
+- No budgets or costs modified.

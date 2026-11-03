@@ -8,7 +8,7 @@
 <link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./icons/icon-192.png">
 <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
 <link rel="stylesheet" href="./assets/resident-ios.css?v=20261029-android-reference17">
-<script src="./assets/resident-ios.js?v=20261102-latest-feed-v2" defer></script>
+<script src="./assets/resident-ios.js?v=20261103-sciens-alarm-v1" defer></script>
 <title>5660 Collins · Resident Progress</title>
 <style>
 #tab-schedule #scheduleSegment,#tab-schedule #timelinePanel,#tab-schedule #milestonePanel,#tab-schedule>.quiet-foot{display:none!important}
@@ -125,10 +125,10 @@ button:active,nav a:active{transform:scale(.96)}
 <section id="tab-permits" class="screen" data-tab="permits" aria-labelledby="heading-permits" hidden>
 <h1 id="heading-permits" data-t="permits">Permits</h1>
 <label class="search-field"><svg><use href="#ic-search"/></svg><input type="search" id="permitSearch" placeholder="Search permit or scope" autocomplete="off" aria-label="Search permit or scope"></label>
-<div class="permit-summary"><div class="summary-line"><strong id="issuedNum">4</strong><span id="permitSumText">of 19 permits issued or approved</span></div><div class="status-track"><span class="track-issued" style="flex:4"></span><span class="track-review" style="flex:7"></span><span class="track-not" style="flex:6"></span><span class="track-verify" style="flex:2"></span></div><div class="status-labels"><span id="issuedLabel">4 issued</span><span id="reviewLabel">7 in review</span><span id="notLabel">6 not filed</span><span id="verifyLabel">2 to verify</span></div></div>
+<div class="permit-summary"><div class="summary-line"><strong id="issuedNum">4</strong><span id="permitSumText">of 19 permits issued or approved</span></div><div class="status-track"><span class="track-issued" style="flex:4"></span><span class="track-review" style="flex:7"></span><span class="track-not" style="flex:6"></span><span class="track-verify" style="flex:2"></span></div><div class="status-labels"><span id="issuedLabel">4 issued</span><span id="reviewLabel">8 in review</span><span id="notLabel">5 not filed</span><span id="verifyLabel">2 to verify</span></div></div>
 <div class="segmented permit-filters" role="tablist" aria-label="Permit status"><button data-filter="review" class="active" type="button" role="tab" aria-selected="true" data-t="review">Review</button><button data-filter="issued" type="button" role="tab" aria-selected="false" data-t="issued">Issued</button><button data-filter="notfiled" type="button" role="tab" aria-selected="false" data-t="notfiled">Not filed</button><button data-filter="all" type="button" role="tab" aria-selected="false" data-t="all">All</button></div>
 <div class="group-list permit-list" id="permitList" aria-live="polite"><div class="empty">Loading permit register…</div></div>
-<p class="quiet-foot" id="permitFoot">Updated Oct 27 · Dates are estimates; application numbers do not mean permit issuance.</p>
+<p class="quiet-foot" id="permitFoot">Updated Nov 3 · Dates are estimates; application numbers do not mean permit issuance.</p>
 </section>
 <section id="tab-schedule" class="screen" data-tab="schedule" aria-labelledby="heading-schedule" hidden>
 <h1 id="heading-schedule" data-t="schedule">Schedule</h1>
@@ -202,7 +202,7 @@ select.addEventListener('change',refresh);refresh();
 (function(){
 const projects=[
 {name:"Fire Sprinkler · ELSS",weeks:20,start:7,status:"Permitting",rate:"Corridors 1 floor/week after each hallway group is released (hallway weeks 4–23) · separate crew · inspection, hydrostatic test and acceptance tracked separately",permit:"FP0826-7612 · Oct 30 issuance target"},
-{name:"Fire Alarm · ELSS",weeks:20,start:8,status:"Planning",rate:"Corridors 1 floor/week, one week behind sprinklers (hallway weeks 5–24; ~24 weeks total, ~28 with planning allowance) · integrated test and final acceptance not assumed",permit:"Permit target Nov 30"},
+{name:"Fire Alarm · ELSS",weeks:20,start:8,status:"Planning",rate:"Corridors 1 floor/week, one week behind sprinklers (hallway weeks 5–24; ~24 weeks total, ~28 with planning allowance) · integrated test and final acceptance not assumed",permit:"FP1126-7824 · City status unverified"},
 {name:"Smoke Enclosure Doors",weeks:12,start:5,status:"Permitting",rate:"2 floors/week · ~11 installation weeks · separate dependency, not part of the hallway/sprinkler/alarm sequence",permit:"Nov 27 issuance estimate"},
 {name:"Hallway Remediation / Drywall",weeks:21,start:4,status:"Permitting",rate:"~21 weeks · 3-week rolling sequence per 3-floor group (7 groups), longer if an AirMD PRV fails · same schedule as the 3D model",permit:"BC2628687 · City pending"},
 {name:"Stair Pressurization / Dampers",weeks:22,start:18,status:"Planning",rate:"17–26 weeks · equipment, controls, commissioning",permit:"Jan–Feb 2027 issuance forecast"},
@@ -227,9 +227,9 @@ root.querySelectorAll("[data-msview]").forEach(b=>b.addEventListener("click",()=
 })();
 </script><script type="application/json" id="residentKBBackup">{
   "schemaVersion": 1,
-  "version": "2026-11-02-gym-inspections-v1",
-  "source": "5660 KB - Active Projects LIVE / Core Rules LIVE / FAQ Bilingual LIVE, modified Oct 27, 2026; Stone Coastal Resources Corrective Action Plan dated Oct 21, 2026; BC2628687 City portal screenshots supplied by PM October 31, 2026 (reviews Oct 29–30); Nov 2 telephone coordination with Ismel/SERVPRO: Nov 3 gym trade-inspection targets, Nov 4 tentative encapsulation, Nov 6 custom desiccant box target; no inspection results or machine install confirmed",
-  "asOf": "2026-11-02",
+  "version": "2026-11-03-sciens-fire-alarm-v1",
+  "source": "5660 KB - Active Projects LIVE / Core Rules LIVE / FAQ Bilingual LIVE, modified Oct 27, 2026; Stone Coastal Resources Corrective Action Plan dated Oct 21, 2026; BC2628687 City portal screenshots supplied by PM October 31, 2026 (reviews Oct 29–30); Nov 2 telephone coordination with Ismel/SERVPRO: Nov 3 gym trade-inspection targets, Nov 4 tentative encapsulation, Nov 6 custom desiccant box target; no inspection results or machine install confirmed; Sciens Jany Martinez email Nov 3 providing fire-alarm application reference FP1126-7824 (City review/issuance not independently verified)",
+  "asOf": "2026-11-03",
   "isLiveSync": false,
   "notice": "This is a resident-safe published snapshot, not a live connection to the private Google Drive Knowledge Base. Corridor updated October 31; other projects retain their previous documented dates.",
   "projects": [
@@ -341,18 +341,18 @@ root.querySelectorAll("[data-msview]").forEach(b=>b.addEventListener("click",()=
         "es": "Alarma de incendio general (ELSS)"
       },
       "status": {
-        "en": "Engineering package in preparation",
-        "es": "Ingeniería en preparación"
+        "en": "Application reference received · City status unverified",
+        "es": "Número de solicitud recibido · estado municipal por verificar"
       },
       "summary": {
-        "en": "The Sciens fire alarm modernization package was being finalized. An engineering package readiness target was October 30, but municipal submission, assigned permit number and issued permit were not confirmed. Existing-system corrective work is separate from the new system.",
-        "es": "Sciens finalizaba el paquete de modernización. La ingeniería tenía objetivo de preparación para el 30 de octubre; ni radicación, ni número oficial, ni emisión estaban confirmados. La reparación del sistema existente es un trabajo separado."
+        "en": "Sciens supplied the building-wide ELSS fire alarm application reference FP1126-7824 on November 3. The City filing receipt, review outcomes, master permit association and permit issuance have not been verified. The building-wide system is separate from the gym/Genset scope and sprinkler permit FP0826-7612.",
+        "es": "Sciens proporcionó la referencia de solicitud FP1126-7824 para la alarma ELSS del edificio el 3 de noviembre. Aún no se han verificado el comprobante municipal, los resultados de revisión, la vinculación al master permit ni la emisión. Este alcance es distinto al gimnasio/Genset y al permiso de rociadores FP0826-7612."
       },
       "next": {
-        "en": "Confirm written engineering release, filing dependencies and actual City permit record.",
-        "es": "Confirmar entrega de ingeniería, dependencias de radicación y número oficial."
+        "en": "Obtain City application receipt, review status, corrections and master-trade association from Sciens.",
+        "es": "Solicitar a Sciens el comprobante municipal, estado de revisión, correcciones y vinculación al master permit."
       },
-      "permit": ""
+      "permit": "FP1126-7824"
     },
     {
       "id": "pressurization",
@@ -674,6 +674,16 @@ root.querySelectorAll("[data-msview]").forEach(b=>b.addEventListener("click",()=
       "answer": {
         "en": "They are planned for Tuesday, November 3, 2026. The City bookings, inspection outcomes and any corrections still need verification. Wednesday, November 4 encapsulation remains tentative and depends on applicable approvals.",
         "es": "Están previstas para el martes 3 de noviembre de 2026. Falta verificar las citas, los resultados oficiales y posibles correcciones. La encapsulación del miércoles 4 sigue siendo tentativa y depende de las autorizaciones correspondientes."
+      }
+    },
+    {
+      "question": {
+        "en": "What is the fire alarm ELSS permit number?",
+        "es": "¿Cuál es el número del permiso de alarma ELSS?"
+      },
+      "answer": {
+        "en": "Sciens provided application reference FP1126-7824 on November 3. City review and issuance are still being verified. A reference number alone is not an issued permit.",
+        "es": "Sciens facilitó la referencia FP1126-7824 el 3 de noviembre. El estado de revisión y la emisión municipal siguen pendientes de verificación. Tener un número no significa que el permiso esté emitido."
       }
     }
   ]

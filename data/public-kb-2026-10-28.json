@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "version": "2026-11-02-gym-inspections-v1",
-  "source": "5660 KB - Active Projects LIVE / Core Rules LIVE / FAQ Bilingual LIVE, modified Oct 27, 2026; Stone Coastal Resources Corrective Action Plan dated Oct 21, 2026; BC2628687 City portal screenshots supplied by PM October 31, 2026 (reviews Oct 29–30); Nov 2 telephone coordination with Ismel/SERVPRO: Nov 3 gym trade-inspection targets, Nov 4 tentative encapsulation, Nov 6 custom desiccant box target; no inspection results or machine install confirmed",
-  "asOf": "2026-11-02",
+  "version": "2026-11-03-sciens-fire-alarm-v1",
+  "source": "5660 KB - Active Projects LIVE / Core Rules LIVE / FAQ Bilingual LIVE, modified Oct 27, 2026; Stone Coastal Resources Corrective Action Plan dated Oct 21, 2026; BC2628687 City portal screenshots supplied by PM October 31, 2026 (reviews Oct 29–30); Nov 2 telephone coordination with Ismel/SERVPRO: Nov 3 gym trade-inspection targets, Nov 4 tentative encapsulation, Nov 6 custom desiccant box target; no inspection results or machine install confirmed; Sciens Jany Martinez email Nov 3 providing fire-alarm application reference FP1126-7824 (City review/issuance not independently verified)",
+  "asOf": "2026-11-03",
   "isLiveSync": false,
   "notice": "This is a resident-safe published snapshot, not a live connection to the private Google Drive Knowledge Base. Corridor updated October 31; other projects retain their previous documented dates.",
   "projects": [
@@ -114,18 +114,18 @@
         "es": "Alarma de incendio general (ELSS)"
       },
       "status": {
-        "en": "Engineering package in preparation",
-        "es": "Ingeniería en preparación"
+        "en": "Application reference received · City status unverified",
+        "es": "Número de solicitud recibido · estado municipal por verificar"
       },
       "summary": {
-        "en": "The Sciens fire alarm modernization package was being finalized. An engineering package readiness target was October 30, but municipal submission, assigned permit number and issued permit were not confirmed. Existing-system corrective work is separate from the new system.",
-        "es": "Sciens finalizaba el paquete de modernización. La ingeniería tenía objetivo de preparación para el 30 de octubre; ni radicación, ni número oficial, ni emisión estaban confirmados. La reparación del sistema existente es un trabajo separado."
+        "en": "Sciens supplied the building-wide ELSS fire alarm application reference FP1126-7824 on November 3. The City filing receipt, review outcomes, master permit association and permit issuance have not been verified. The building-wide system is separate from the gym/Genset scope and sprinkler permit FP0826-7612.",
+        "es": "Sciens proporcionó la referencia de solicitud FP1126-7824 para la alarma ELSS del edificio el 3 de noviembre. Aún no se han verificado el comprobante municipal, los resultados de revisión, la vinculación al master permit ni la emisión. Este alcance es distinto al gimnasio/Genset y al permiso de rociadores FP0826-7612."
       },
       "next": {
-        "en": "Confirm written engineering release, filing dependencies and actual City permit record.",
-        "es": "Confirmar entrega de ingeniería, dependencias de radicación y número oficial."
+        "en": "Obtain City application receipt, review status, corrections and master-trade association from Sciens.",
+        "es": "Solicitar a Sciens el comprobante municipal, estado de revisión, correcciones y vinculación al master permit."
       },
-      "permit": ""
+      "permit": "FP1126-7824"
     },
     {
       "id": "pressurization",
@@ -447,6 +447,16 @@
       "answer": {
         "en": "They are planned for Tuesday, November 3, 2026. The City bookings, inspection outcomes and any corrections still need verification. Wednesday, November 4 encapsulation remains tentative and depends on applicable approvals.",
         "es": "Están previstas para el martes 3 de noviembre de 2026. Falta verificar las citas, los resultados oficiales y posibles correcciones. La encapsulación del miércoles 4 sigue siendo tentativa y depende de las autorizaciones correspondientes."
+      }
+    },
+    {
+      "question": {
+        "en": "What is the fire alarm ELSS permit number?",
+        "es": "¿Cuál es el número del permiso de alarma ELSS?"
+      },
+      "answer": {
+        "en": "Sciens provided application reference FP1126-7824 on November 3. City review and issuance are still being verified. A reference number alone is not an issued permit.",
+        "es": "Sciens facilitó la referencia FP1126-7824 el 3 de noviembre. El estado de revisión y la emisión municipal siguen pendientes de verificación. Tener un número no significa que el permiso esté emitido."
       }
     }
   ]
