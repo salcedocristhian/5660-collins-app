@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "version": "2026-10-31-corridor-review-v2",
-  "source": "5660 KB - Active Projects LIVE / Core Rules LIVE / FAQ Bilingual LIVE, modified Oct 27, 2026; Stone Coastal Resources Corrective Action Plan dated Oct 21, 2026; BC2628687 City portal screenshots supplied by PM October 31, 2026 (reviews Oct 29–30)",
-  "asOf": "2026-10-31",
+  "version": "2026-11-02-gym-inspections-v1",
+  "source": "5660 KB - Active Projects LIVE / Core Rules LIVE / FAQ Bilingual LIVE, modified Oct 27, 2026; Stone Coastal Resources Corrective Action Plan dated Oct 21, 2026; BC2628687 City portal screenshots supplied by PM October 31, 2026 (reviews Oct 29–30); Nov 2 telephone coordination with Ismel/SERVPRO: Nov 3 gym trade-inspection targets, Nov 4 tentative encapsulation, Nov 6 custom desiccant box target; no inspection results or machine install confirmed",
+  "asOf": "2026-11-02",
   "isLiveSync": false,
   "notice": "This is a resident-safe published snapshot, not a live connection to the private Google Drive Knowledge Base. Corridor updated October 31; other projects retain their previous documented dates.",
   "projects": [
@@ -174,16 +174,16 @@
         "es": "Restauración del gimnasio y sauna"
       },
       "status": {
-        "en": "Building permit issued; reopening pending",
-        "es": "Permiso emitido; reapertura pendiente"
+        "en": "Permit issued · Trade inspections planned Nov 3",
+        "es": "Permiso emitido · Inspecciones previstas 3 nov."
       },
       "summary": {
-        "en": "Building permit BC2627814 was issued October 1. Follow-on restoration, required inspections, fire-equipment interfaces and closeout work remain. Supplemental concrete/wall treatment was under review as of October 27; no reopening date was confirmed.",
-        "es": "El permiso BC2627814 se emitió el 1 de octubre. Faltan restauración, inspecciones, coordinación de equipos contra incendio y cierre. El tratamiento suplementario de paredes/concreto seguía en revisión al 27 de octubre; no hay fecha de reapertura."
+        "en": "Building permit BC2627814 was issued October 1. Electrical, Mechanical and Plumbing inspections are being coordinated for Tuesday, November 3, 2026; City bookings and passes have not been verified. Gym encapsulation is tentatively planned for Wednesday, November 4, subject to inspection results, approvals and readiness. A custom box for the desiccant is a tentative Friday, November 6 goal; the desiccant machine itself is NOT scheduled. No reopening date is confirmed.",
+        "es": "El permiso BC2627814 fue emitido el 1 de octubre. Se coordinan inspecciones de Electrical, Mechanical y Plumbing para el martes 3 de noviembre de 2026; no se han verificado las citas ni los resultados oficiales de la Ciudad. La encapsulación del gimnasio es tentativa para el miércoles 4, sujeta a inspecciones, autorizaciones y condiciones de obra. El box a medida para el desiccant es un objetivo tentativo para el viernes 6; la instalación de la máquina NO está programada. No hay fecha confirmada de reapertura."
       },
       "next": {
-        "en": "Confirm field approvals, inspection results and restoration milestones before announcing reopening.",
-        "es": "Confirmar autorizaciones, inspecciones y avance antes de anunciar reapertura."
+        "en": "Verify each Nov 3 City inspection booking and result separately; confirm eligibility and authorization before Nov 4 encapsulation. Do not schedule the desiccant machine or promise reopening.",
+        "es": "Verificar por separado la programación y el resultado municipal de cada inspección del 3 de noviembre; confirmar autorizaciones antes de encapsular el 4. No programar el desiccant ni prometer reapertura."
       },
       "permit": "BC2627814"
     },
@@ -385,8 +385,8 @@
         "es": "¿Cuándo reabrirá el gimnasio?"
       },
       "answer": {
-        "en": "No reopening date has been confirmed. Permit BC2627814 is issued, but inspections, restoration and closeout remain.",
-        "es": "No hay fecha confirmada. BC2627814 está emitido, pero faltan inspecciones, restauración y cierre."
+        "en": "No reopening date is confirmed. Three trade inspections (Electrical, Mechanical and Plumbing) are being coordinated for November 3, 2026, with results pending. Encapsulation is a tentative next step on November 4, subject to approvals. Desiccant equipment installation is not yet scheduled.",
+        "es": "No hay fecha confirmada de reapertura. Se coordinan tres inspecciones (Electrical, Mechanical y Plumbing) para el 3 de noviembre de 2026, sin resultados confirmados. La encapsulación es tentativa para el 4 y depende de autorizaciones. La instalación del desiccant todavía no está programada."
       }
     },
     {
@@ -437,6 +437,16 @@
       "answer": {
         "en": "Building Management will communicate floor-specific dates, access restrictions and safety instructions when that workfront is approved.",
         "es": "Administración comunicará fechas, restricciones e instrucciones por piso cuando ese sector sea autorizado."
+      }
+    },
+    {
+      "question": {
+        "en": "When are the gym's Electrical, Mechanical and Plumbing inspections?",
+        "es": "¿Cuándo son las inspecciones de Electrical, Mechanical y Plumbing del gimnasio?"
+      },
+      "answer": {
+        "en": "They are planned for Tuesday, November 3, 2026. The City bookings, inspection outcomes and any corrections still need verification. Wednesday, November 4 encapsulation remains tentative and depends on applicable approvals.",
+        "es": "Están previstas para el martes 3 de noviembre de 2026. Falta verificar las citas, los resultados oficiales y posibles correcciones. La encapsulación del miércoles 4 sigue siendo tentativa y depende de las autorizaciones correspondientes."
       }
     }
   ]

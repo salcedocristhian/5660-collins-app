@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "version": "2026-10-31-corridor-review-v2",
-  "publishedAt": "2026-10-31T14:40:51.407Z",
+  "version": "2026-11-02-gym-inspections-v1",
+  "publishedAt": "2026-11-03T02:14:20.078Z",
   "approvalStatus": "draft",
   "approvalNote": "Project-manager draft prepared from dated project records. Confirm resident distribution with Building Management before publishing.",
   "property": {
@@ -10,6 +10,25 @@
     "managementEmail": "Manager@5660condo.com"
   },
   "notices": [
+    {
+      "id": "gym-inspections-2026-11-02",
+      "date": "2026-11-02",
+      "category": "amenities",
+      "priority": "normal",
+      "projectId": "gym",
+      "title": {
+        "en": "Gym: trade inspections planned November 3",
+        "es": "Gimnasio: inspecciones previstas para el 3 de noviembre"
+      },
+      "message": {
+        "en": "Electrical, Mechanical and Plumbing inspections are planned for Tuesday, November 3; City bookings and results remain unverified. Gym encapsulation is tentatively targeted for Wednesday, November 4 pending inspection outcomes and authorization. There is no confirmed reopening date.",
+        "es": "Las inspecciones de Electrical, Mechanical y Plumbing están previstas para el martes 3 de noviembre; aún no se verifican citas ni resultados municipales. La encapsulación del gimnasio es tentativa para el miércoles 4, según resultados y autorizaciones. No hay fecha confirmada de reapertura."
+      },
+      "residentAction": {
+        "en": "No resident action required; dates are tentative and subject to City results and Management confirmation.",
+        "es": "No se requiere acción de los residentes; las fechas son tentativas y dependen de los resultados de la Ciudad y de Administración."
+      }
+    },
     {
       "id": "hallway-permit-2026-10-31",
       "date": "2026-10-31",
@@ -220,8 +239,8 @@
         "es": "Restauración del gimnasio y sauna"
       },
       "summary": {
-        "en": "Building permit issued October 1. Required inspections and remaining construction continue; reopening date pending.",
-        "es": "Permiso emitido el 1 de octubre. Siguen pendientes inspecciones y obras; no hay fecha de reapertura."
+        "en": "Permit BC2627814 issued Oct 1. Electrical, Mechanical and Plumbing inspections targeted Nov 3; City outcomes pending. Nov 4 encapsulation tentative; reopening not confirmed.",
+        "es": "Permiso BC2627814 emitido el 1 de octubre. Inspecciones eléctricas, mecánicas y de plomería previstas para el 3 de noviembre, sin resultados municipales confirmados. Encapsulación tentativa el 4; reapertura sin confirmar."
       }
     },
     {
@@ -311,8 +330,8 @@
         "es": "¿Reabrirá pronto el gimnasio?"
       },
       "answer": {
-        "en": "No reopening date is confirmed. The building permit was issued October 1, but final inspections, fire equipment and other work must be completed.",
-        "es": "No hay fecha confirmada de reapertura. El permiso se emitió el 1 de octubre, pero siguen pendientes inspecciones, equipos de incendios y otros trabajos."
+        "en": "No reopening date confirmed. Electrical, Mechanical and Plumbing inspections are planned Nov 3, 2026 and results are pending. Encapsulation is a tentative Nov 4 follow-up, not a completed milestone.",
+        "es": "No hay fecha confirmada de reapertura. Las inspecciones de Electrical, Mechanical y Plumbing están previstas para el 3 de noviembre de 2026 y sus resultados siguen pendientes. La encapsulación del 4 es tentativa, no un hito completado."
       }
     },
     {

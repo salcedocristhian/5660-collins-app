@@ -29,3 +29,8 @@
 - Contingencia: $1,132,039 → $1,039,519 (−$92,520). Proyectos: $6,367,961 → $6,460,481 (+$92,520).
 - Los 10 proyectos detallados suman $6,367,961.00; la diferencia de $92,520.00 aparece como "Project Budget · Breakdown Pending" hasta que la Junta entregue el desglose por proyecto en noviembre. No se asignó a ningún proyecto.
 - Costos reportados sin cambios. Truist Closing Fees ($2,450) y Truist Commitment Letter ($5,000) no se incorporaron: falta confirmar si son costos del proyecto o del financiamiento.
+
+## November 2, 2026 — Gym inspections & conditional encapsulation
+- Resident-safe Gym project snapshot updated to the Nov 2 coordination call: Electrical, Mechanical and Plumbing inspections planned for Tuesday Nov 3; City bookings and inspection passes are **not verified**.
+- Schedule and the new Gym upcoming-events card track each trade inspection separately, then tentative Nov 4 encapsulation and Nov 6 custom desiccant box target. The desiccant machine itself remains **unscheduled**; no gym reopening date is confirmed.
+- Updated bilingual Gym project detail, FAQ, resident feed, quick updates, embedded offline snapshot and PWA cache. Did not change 3D models, budgets, permit status, or publish a push notification.

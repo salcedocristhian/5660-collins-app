@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "asOf": "2026-10-31",
-  "source": "5660 KB Active Projects LIVE latest Oct 27 addenda; Master Permit Record Oct 27; corridor portal screenshots shared Oct 31 (other milestones unchanged)",
+  "asOf": "2026-11-02",
+  "source": "5660 KB Active Projects LIVE latest Oct 27 addenda; Master Permit Record Oct 27; corridor portal screenshots shared Oct 31 (other milestones unchanged); Nov 2 verbal gym schedule with SERVPRO (Nov 3 inspection target; Nov 4 encapsulation; Nov 6 custom box only, machine not scheduled)",
   "isVerifiedCalendar": false,
   "timeline": [
     {
@@ -148,6 +148,66 @@
     },
     {
       "month": "NOV",
+      "day": "03",
+      "title": {
+        "en": "Gym electrical inspection",
+        "es": "Inspección eléctrica del gimnasio"
+      },
+      "detail": {
+        "en": "Planned by coordination for Nov 3; City booking and pass not yet verified",
+        "es": "Prevista por coordinación para el 3; cita y resultado municipal no verificados"
+      }
+    },
+    {
+      "month": "NOV",
+      "day": "03",
+      "title": {
+        "en": "Gym mechanical inspection",
+        "es": "Inspección mecánica del gimnasio"
+      },
+      "detail": {
+        "en": "Planned by coordination for Nov 3; City booking and pass not yet verified",
+        "es": "Prevista por coordinación para el 3; cita y resultado municipal no verificados"
+      }
+    },
+    {
+      "month": "NOV",
+      "day": "03",
+      "title": {
+        "en": "Gym plumbing inspection",
+        "es": "Inspección de plomería del gimnasio"
+      },
+      "detail": {
+        "en": "Planned by coordination for Nov 3; City booking and pass not yet verified",
+        "es": "Prevista por coordinación para el 3; cita y resultado municipal no verificados"
+      }
+    },
+    {
+      "month": "NOV",
+      "day": "04",
+      "title": {
+        "en": "Gym encapsulation · tentative",
+        "es": "Encapsulación del gimnasio · tentativa"
+      },
+      "detail": {
+        "en": "SERVPRO verbal schedule target; contingent on inspection outcomes, approvals and site readiness",
+        "es": "Meta verbal de SERVPRO; depende de inspecciones, autorizaciones y condiciones de obra"
+      }
+    },
+    {
+      "month": "NOV",
+      "day": "06",
+      "title": {
+        "en": "Custom desiccant box · tentative",
+        "es": "Box a medida para desiccant · tentativo"
+      },
+      "detail": {
+        "en": "Fabrication / installation target only. The DESICCANT MACHINE has no scheduled installation date.",
+        "es": "Solo objetivo de fabricación/instalación del box. La MÁQUINA DESICCANT no tiene fecha de instalación programada."
+      }
+    },
+    {
+      "month": "NOV",
       "day": "10",
       "title": {
         "en": "Stair coordinated engineering set",
@@ -156,30 +216,6 @@
       "detail": {
         "en": "Target week of Nov 10, tentative and subject to design closure",
         "es": "Semana del 10 de noviembre, tentativo y sujeto a coordinación"
-      }
-    },
-    {
-      "month": "NOV",
-      "day": "17",
-      "title": {
-        "en": "Parking lighting violation hearing",
-        "es": "Audiencia por iluminación del parqueadero"
-      },
-      "detail": {
-        "en": "9:00 AM in latest KB; time/appearance must be confirmed",
-        "es": "9:00 AM según KB más reciente; confirmar hora y comparecencia"
-      }
-    },
-    {
-      "month": "NOV",
-      "day": "26",
-      "title": {
-        "en": "Garage permit administrative milestone",
-        "es": "Hito administrativo del permiso del garaje"
-      },
-      "detail": {
-        "en": "Reported BC2526722 preservation date, not construction completion",
-        "es": "Fecha reportada para mantener BC2526722 activo; no es fin de obra"
       }
     },
     {
@@ -205,6 +241,92 @@
         "en": "Portal review due dates; issuance and work authorization still pending.",
         "es": "Vencimientos de revisión del portal; emisión y autorización de trabajo pendientes."
       }
+    },
+    {
+      "month": "NOV",
+      "day": "17",
+      "title": {
+        "en": "Parking lighting violation hearing",
+        "es": "Audiencia por iluminación del parqueadero"
+      },
+      "detail": {
+        "en": "9:00 AM in latest KB; time/appearance must be confirmed",
+        "es": "9:00 AM según KB más reciente; confirmar hora y comparecencia"
+      }
+    },
+    {
+      "month": "NOV",
+      "day": "26",
+      "title": {
+        "en": "Garage permit administrative milestone",
+        "es": "Hito administrativo del permiso del garaje"
+      },
+      "detail": {
+        "en": "Reported BC2526722 preservation date, not construction completion",
+        "es": "Fecha reportada para mantener BC2526722 activo; no es fin de obra"
+      }
+    }
+  ],
+  "gymUpcoming": [
+    {
+      "date": "2026-11-03",
+      "title": {
+        "en": "Gym electrical inspection",
+        "es": "Inspección eléctrica del gimnasio"
+      },
+      "detail": {
+        "en": "Planned by coordination for Nov 3; City booking and pass not yet verified",
+        "es": "Prevista por coordinación para el 3; cita y resultado municipal no verificados"
+      },
+      "status": "planned"
+    },
+    {
+      "date": "2026-11-03",
+      "title": {
+        "en": "Gym mechanical inspection",
+        "es": "Inspección mecánica del gimnasio"
+      },
+      "detail": {
+        "en": "Planned by coordination for Nov 3; City booking and pass not yet verified",
+        "es": "Prevista por coordinación para el 3; cita y resultado municipal no verificados"
+      },
+      "status": "planned"
+    },
+    {
+      "date": "2026-11-03",
+      "title": {
+        "en": "Gym plumbing inspection",
+        "es": "Inspección de plomería del gimnasio"
+      },
+      "detail": {
+        "en": "Planned by coordination for Nov 3; City booking and pass not yet verified",
+        "es": "Prevista por coordinación para el 3; cita y resultado municipal no verificados"
+      },
+      "status": "planned"
+    },
+    {
+      "date": "2026-11-04",
+      "title": {
+        "en": "Gym encapsulation · tentative",
+        "es": "Encapsulación del gimnasio · tentativa"
+      },
+      "detail": {
+        "en": "SERVPRO verbal schedule target; contingent on inspection outcomes, approvals and site readiness",
+        "es": "Meta verbal de SERVPRO; depende de inspecciones, autorizaciones y condiciones de obra"
+      },
+      "status": "tentative"
+    },
+    {
+      "date": "2026-11-06",
+      "title": {
+        "en": "Custom desiccant box · tentative",
+        "es": "Box a medida para desiccant · tentativo"
+      },
+      "detail": {
+        "en": "Fabrication / installation target only. The DESICCANT MACHINE has no scheduled installation date.",
+        "es": "Solo objetivo de fabricación/instalación del box. La MÁQUINA DESICCANT no tiene fecha de instalación programada."
+      },
+      "status": "tentative"
     }
   ]
 }

@@ -8,7 +8,7 @@
 <link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./icons/icon-192.png">
 <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
 <link rel="stylesheet" href="./assets/resident-ios.css?v=20261029-android-reference17">
-<script src="./assets/resident-ios.js?v=20261031-sq1" defer></script>
+<script src="./assets/resident-ios.js?v=20261102-gym-inspections1" defer></script>
 <title>5660 Collins · Resident Progress</title>
 <style>
 #tab-schedule #scheduleSegment,#tab-schedule #timelinePanel,#tab-schedule #milestonePanel,#tab-schedule>.quiet-foot{display:none!important}
@@ -95,7 +95,7 @@ button:active,nav a:active{transform:scale(.96)}
 <div class="list-row"><span class="tile teal"><svg><use href="#ic-elevator"/></svg></span><div class="row-copy"><strong>Service elevator running again</strong><small>Emergency repair done. Permanent repairs need a City permit.</small></div><time class="row-date">Oct 26</time></div>
 <div class="list-row"><span class="tile blue"><svg><use href="#ic-lamp"/></svg></span><div class="row-copy"><strong>Parking lot lighting</strong><small>Application registered with the City. Not an issued permit yet.</small></div><time class="row-date">Oct 27</time></div>
 <div class="list-row"><span class="tile plum"><svg><use href="#ic-door"/></svg></span><div class="row-copy"><strong>Smoke enclosure doors</strong><small>Drawings in coordination before permit submission.</small></div><time class="row-date">Oct 27</time></div>
-<div class="list-row"><span class="tile amber"><svg><use href="#ic-gym"/></svg></span><div class="row-copy"><strong>Gym and sauna restoration</strong><small>Permit issued Oct 1. Inspections come before reopening.</small></div><time class="row-date">Oct 27</time></div>
+<div class="list-row"><span class="tile amber"><svg><use href="#ic-gym"/></svg></span><div class="row-copy"><strong>Gym trade inspections</strong><small>Electrical, Mechanical and Plumbing planned Nov 3; results pending.</small></div><time class="row-date">Nov 2</time></div>
 </div>
 
 <h2 class="section-heading" data-t="allprojects">All project updates</h2>
@@ -147,6 +147,7 @@ button:active,nav a:active{transform:scale(.96)}
 </div>
 <div style="margin-top:16px;border-left:3px solid #b48c4c;padding:4px 0 4px 12px;color:#596960;font-size:14px"><strong>Resident notice:</strong> No confirmed floor-specific start notice has been issued here. Dates will be posted only after project-team verification. Tentative dates will be clearly identified.</div>
 </div>
+<div class="master-schedule" id="gymInspectionCard" aria-live="polite" hidden></div>
 <h2 class="section-heading">Building schedule</h2>
 <div class="master-schedule" id="masterSchedule">
  <div class="ms-top"><div><strong>Master Construction Schedule</strong><small>Weekly planning · preliminary forecasts</small></div><span class="ms-pill">Draft</span></div>
@@ -227,9 +228,9 @@ root.querySelectorAll("[data-msview]").forEach(b=>b.addEventListener("click",()=
 })();
 </script><script type="application/json" id="residentKBBackup">{
   "schemaVersion": 1,
-  "version": "2026-10-31-corridor-review-v2",
-  "source": "5660 KB - Active Projects LIVE / Core Rules LIVE / FAQ Bilingual LIVE, modified Oct 27, 2026; Stone Coastal Resources Corrective Action Plan dated Oct 21, 2026; BC2628687 City portal screenshots supplied by PM October 31, 2026 (reviews Oct 29–30)",
-  "asOf": "2026-10-31",
+  "version": "2026-11-02-gym-inspections-v1",
+  "source": "5660 KB - Active Projects LIVE / Core Rules LIVE / FAQ Bilingual LIVE, modified Oct 27, 2026; Stone Coastal Resources Corrective Action Plan dated Oct 21, 2026; BC2628687 City portal screenshots supplied by PM October 31, 2026 (reviews Oct 29–30); Nov 2 telephone coordination with Ismel/SERVPRO: Nov 3 gym trade-inspection targets, Nov 4 tentative encapsulation, Nov 6 custom desiccant box target; no inspection results or machine install confirmed",
+  "asOf": "2026-11-02",
   "isLiveSync": false,
   "notice": "This is a resident-safe published snapshot, not a live connection to the private Google Drive Knowledge Base. Corridor updated October 31; other projects retain their previous documented dates.",
   "projects": [
@@ -401,16 +402,16 @@ root.querySelectorAll("[data-msview]").forEach(b=>b.addEventListener("click",()=
         "es": "Restauración del gimnasio y sauna"
       },
       "status": {
-        "en": "Building permit issued; reopening pending",
-        "es": "Permiso emitido; reapertura pendiente"
+        "en": "Permit issued · Trade inspections planned Nov 3",
+        "es": "Permiso emitido · Inspecciones previstas 3 nov."
       },
       "summary": {
-        "en": "Building permit BC2627814 was issued October 1. Follow-on restoration, required inspections, fire-equipment interfaces and closeout work remain. Supplemental concrete/wall treatment was under review as of October 27; no reopening date was confirmed.",
-        "es": "El permiso BC2627814 se emitió el 1 de octubre. Faltan restauración, inspecciones, coordinación de equipos contra incendio y cierre. El tratamiento suplementario de paredes/concreto seguía en revisión al 27 de octubre; no hay fecha de reapertura."
+        "en": "Building permit BC2627814 was issued October 1. Electrical, Mechanical and Plumbing inspections are being coordinated for Tuesday, November 3, 2026; City bookings and passes have not been verified. Gym encapsulation is tentatively planned for Wednesday, November 4, subject to inspection results, approvals and readiness. A custom box for the desiccant is a tentative Friday, November 6 goal; the desiccant machine itself is NOT scheduled. No reopening date is confirmed.",
+        "es": "El permiso BC2627814 fue emitido el 1 de octubre. Se coordinan inspecciones de Electrical, Mechanical y Plumbing para el martes 3 de noviembre de 2026; no se han verificado las citas ni los resultados oficiales de la Ciudad. La encapsulación del gimnasio es tentativa para el miércoles 4, sujeta a inspecciones, autorizaciones y condiciones de obra. El box a medida para el desiccant es un objetivo tentativo para el viernes 6; la instalación de la máquina NO está programada. No hay fecha confirmada de reapertura."
       },
       "next": {
-        "en": "Confirm field approvals, inspection results and restoration milestones before announcing reopening.",
-        "es": "Confirmar autorizaciones, inspecciones y avance antes de anunciar reapertura."
+        "en": "Verify each Nov 3 City inspection booking and result separately; confirm eligibility and authorization before Nov 4 encapsulation. Do not schedule the desiccant machine or promise reopening.",
+        "es": "Verificar por separado la programación y el resultado municipal de cada inspección del 3 de noviembre; confirmar autorizaciones antes de encapsular el 4. No programar el desiccant ni prometer reapertura."
       },
       "permit": "BC2627814"
     },
@@ -612,8 +613,8 @@ root.querySelectorAll("[data-msview]").forEach(b=>b.addEventListener("click",()=
         "es": "¿Cuándo reabrirá el gimnasio?"
       },
       "answer": {
-        "en": "No reopening date has been confirmed. Permit BC2627814 is issued, but inspections, restoration and closeout remain.",
-        "es": "No hay fecha confirmada. BC2627814 está emitido, pero faltan inspecciones, restauración y cierre."
+        "en": "No reopening date is confirmed. Three trade inspections (Electrical, Mechanical and Plumbing) are being coordinated for November 3, 2026, with results pending. Encapsulation is a tentative next step on November 4, subject to approvals. Desiccant equipment installation is not yet scheduled.",
+        "es": "No hay fecha confirmada de reapertura. Se coordinan tres inspecciones (Electrical, Mechanical y Plumbing) para el 3 de noviembre de 2026, sin resultados confirmados. La encapsulación es tentativa para el 4 y depende de autorizaciones. La instalación del desiccant todavía no está programada."
       }
     },
     {
@@ -664,6 +665,16 @@ root.querySelectorAll("[data-msview]").forEach(b=>b.addEventListener("click",()=
       "answer": {
         "en": "Building Management will communicate floor-specific dates, access restrictions and safety instructions when that workfront is approved.",
         "es": "Administración comunicará fechas, restricciones e instrucciones por piso cuando ese sector sea autorizado."
+      }
+    },
+    {
+      "question": {
+        "en": "When are the gym's Electrical, Mechanical and Plumbing inspections?",
+        "es": "¿Cuándo son las inspecciones de Electrical, Mechanical y Plumbing del gimnasio?"
+      },
+      "answer": {
+        "en": "They are planned for Tuesday, November 3, 2026. The City bookings, inspection outcomes and any corrections still need verification. Wednesday, November 4 encapsulation remains tentative and depends on applicable approvals.",
+        "es": "Están previstas para el martes 3 de noviembre de 2026. Falta verificar las citas, los resultados oficiales y posibles correcciones. La encapsulación del miércoles 4 sigue siendo tentativa y depende de las autorizaciones correspondientes."
       }
     }
   ]
