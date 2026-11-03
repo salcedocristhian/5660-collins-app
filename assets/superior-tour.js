@@ -1,42 +1,70 @@
-/* Superior Doors — illustrative 3D installation sequence only.
-   Planning visualization, NOT an issued door permit or confirmed construction schedule.
-   Stage index 8 drives the actual door geometry and Superior crew in apply(). */
+/* 5660 Collins / Superior Doors — guided-tour runtime fix.
+   Illustrative schedule only; does not imply approved shop drawings or installation. */
 (function () {
   if (window.__superiorTourInstalled) return;
-  if (typeof computeSchedule !== 'function' || typeof contRebuild !== 'function' ||
-      typeof CONT === 'undefined') {
-    console.warn('Superior Doors: tour engine not ready');
+  if (typeof CONT === 'undefined' || typeof computeSchedule !== 'function' ||
+      typeof contRebuild !== 'function' || typeof apply !== 'function') {
+    console.error('[Superior Doors] reconstruction tour engine unavailable');
     return;
   }
   window.__superiorTourInstalled = true;
-  const baseSchedule = computeSchedule;
+  // The original reconstruction already defines stage 8, its door meshes and
+  // Superior workers. Never append a second stage or replace the floor geometry.
+  const originalSchedule = computeSchedule;
   computeSchedule = function () {
-    const schedule = baseSchedule();
-    let last = schedule.total;
+    const schedule = originalSchedule();
     for (const group of schedule.groups) {
       for (const level of group.levels) {
-        const stages = group.trades && group.trades[level];
-        if (!stages || !stages[5] || !stages[6]) continue;
-        // Floor 2: Week 6, days 1–5. Other floors follow their simulated
-        // finish stage and are staggered to avoid showing doors before walls.
-        const finish = stages[6][1];
-        const start = Number(level) === 2 ? 25 :
-          Math.ceil(finish / 5) * 5;
-        stages[8] = [start, start + 5];
-        last = Math.max(last, start + 5);
+        const trades = group.trades && group.trades[level];
+        if (!trades || !trades[8]) continue;
+        if (Number(level) === 2) trades[8] = [25, 30];
       }
     }
-    schedule.total = last;
-    schedule.workEnd = Math.max(schedule.workEnd || 0, last);
     return schedule;
   };
+  const originalApply = apply;
+  function showDoors() {
+    if (typeof items === 'undefined' || !items || !items.doors || !items.doorCrew) return;
+    if (CONT.level == null || typeof masterT !== 'function') return;
+    const T = masterT(CONT.level), span = T && T[8];
+    if (!span) return;
+    const p = Math.max(0, Math.min(1, (CONT.day - span[0]) / (span[1] - span[0])));
+    const active = p > 0 && p < 1;
+    items.doors.forEach((door, i) => {
+      const start = door.t || i * .45;
+      const e = Math.max(0, Math.min(1, (p - start) / .5));
+      door.g.visible = e > .001;
+      const rise = Math.max(.001, Math.min(1, e / .45));
+      door.parts.forEach(part => { part.scale.y = rise; });
+      const closeT = Math.max(0, Math.min(1, (e - .45) / .55));
+      const smooth = closeT * closeT * (3 - 2 * closeT);
+      door.a.visible = door.b.visible = e > .4;
+      door.a.rotation.y = -(1 - smooth) * 1.35;
+      door.b.rotation.y = (1 - smooth) * 1.35;
+    });
+    items.doorCrew.forEach((crew, i) => {
+      const start = crew.t || i * .45;
+      const e = Math.max(0, Math.min(1, (p - start) / .5));
+      crew.w.visible = active && e < 1 && p >= start;
+      if (crew.w.visible && crew.w.userData.a1 && crew.w.userData.a2) {
+        const wave = Math.sin(performance.now() * .01 + i);
+        crew.w.userData.a1.rotation.x = -1.2 + wave * .3;
+        crew.w.userData.a2.rotation.x = -.9 - wave * .3;
+      }
+    });
+  }
+  // Called on every existing render/update. This also fixes manual week
+  // selection and scrub; previous patch only rebuilt the schedule once.
+  apply = function (time) { originalApply(time); showDoors(); };
   contRebuild();
-  if (typeof contSetLevel === 'function' && CONT.level != null) contSetLevel(CONT.level, true);
-  if (typeof apply === 'function') apply(performance.now());
-  // Re-apply when scrubbing or changing floor/week: the scene reads stage 8.
+  if (CONT.level != null && typeof contSetLevel === 'function') contSetLevel(CONT.level, true);
+  apply(0);
   window.__superiorDoorsQA = function () {
-    const T = typeof masterT === 'function' ? masterT(2) : null;
-    return {floor2DoorWindow:T && T[8],floor2Week6Progress:T && Math.max(0,Math.min(1,(27-T[8][0])/(T[8][1]-T[8][0]))),currentFloor:CONT.level,currentDay:CONT.day};
+    const T = masterT(2);
+    return {stage8:T && T[8],day:CONT.day,level:CONT.level,
+      meshes:typeof items !== 'undefined' && items ? items.doors.length : 0,
+      visible:typeof items !== 'undefined' && items ? items.doors.filter(x=>x.g.visible).length : 0,
+      workers:typeof items !== 'undefined' && items ? items.doorCrew.filter(x=>x.w.visible).length : 0};
   };
-  console.info('Superior Doors: stage 8 scheduled and door meshes enabled in 3D tour');
+  console.info('[Superior Doors] Stage 8 animation bound to tour render loop',window.__superiorDoorsQA());
 })();
