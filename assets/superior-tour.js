@@ -20,7 +20,7 @@
         // Floor 2: Week 6, days 1–5. Other floors follow their simulated
         // finish stage and are staggered to avoid showing doors before walls.
         const finish = stages[6][1];
-        const start = Number(level) === 2 ? Math.max(25,finish) :
+        const start = Number(level) === 2 ? 25 :
           Math.ceil(finish / 5) * 5;
         stages[8] = [start, start + 5];
         last = Math.max(last, start + 5);
@@ -33,5 +33,10 @@
   contRebuild();
   if (typeof contSetLevel === 'function' && CONT.level != null) contSetLevel(CONT.level, true);
   if (typeof apply === 'function') apply(performance.now());
+  // Re-apply when scrubbing or changing floor/week: the scene reads stage 8.
+  window.__superiorDoorsQA = function () {
+    const T = typeof masterT === 'function' ? masterT(2) : null;
+    return {floor2DoorWindow:T && T[8],floor2Week6Progress:T && Math.max(0,Math.min(1,(27-T[8][0])/(T[8][1]-T[8][0]))),currentFloor:CONT.level,currentDay:CONT.day};
+  };
   console.info('Superior Doors: stage 8 scheduled and door meshes enabled in 3D tour');
 })();
