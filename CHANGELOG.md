@@ -39,3 +39,10 @@
 - Fixed resident Updates hero incorrectly pinned to the first corridor notice, ignoring newer gym notices.
 - Latest now selects the newest dated resident-safe notice; Recent shows the four next latest distinct projects sorted by date, excluding the featured project.
 - Updated static fallback markup for offline/slow-load, both ES/EN dynamic content, cache-busting script URL, and service-worker cache. Project data, verified permit states and user-facing notices unchanged.
+
+## Fix: animación de puertas de Superior Door (etapa 9)
+- Causa 1: `assets/superior-tour.js` se inyectaba desde index.html, pero el motor de reconstruction.html está dentro de un IIFE, así que el addon no veía `CONT`, `computeSchedule` ni `apply` y salía sin hacer nada.
+- Causa 2: `computeSchedule()` dejaba la etapa 9 en `null`, así que `mPS(8)` valía siempre 0 y el bloque de animación de `apply()` nunca corría.
+- Ahora las puertas se programan dentro de `computeSchedule()`: una semana ilustrativa por piso, después de la pintura, una por semana (opción A). El total no cambia (120 / 115 / 140 días).
+- La guía interior vuela a la vista del vestíbulo cuando las puertas están activas y marca la etapa como "(ilustrativo)"; la lista de trades dice "· ilustrativa".
+- Se eliminó el addon (index.html y assets/superior-tour.js). Textos aclaran que el permiso de puertas no está radicado.

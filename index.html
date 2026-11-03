@@ -696,7 +696,7 @@ root.querySelectorAll("[data-msview]").forEach(b=>b.addEventListener("click",()=
 <script>
 (function(){function init(){
  const tab=document.getElementById('tab-progress'),picture=document.getElementById('modelPicture');
- const frame=document.createElement('iframe');frame.id='reconstructionFrame';frame.title='Reconstrucción interactiva de pasillos · planos Relats';frame.loading='lazy';frame.src='./reconstruction.html?v=20261102-sd-mesh-v4';picture.appendChild(frame);
+ const frame=document.createElement('iframe');frame.id='reconstructionFrame';frame.title='Reconstrucción interactiva de pasillos · planos Relats';frame.loading='lazy';frame.src='./reconstruction.html?v=20261102-doors-all-floors';picture.appendChild(frame);
  function currentFloor(){const select=document.getElementById('myFloorNumber');return select?select.value:'19';}
  function floorKey(f){return f==='PH'?'21':Number(f)<=16?'2-15':Number(f)<=21?'16-20':'21';}
  function sync(){const active=document.querySelector('#progressSegment [data-view].active')?.dataset.view==='interior';tab.classList.toggle('has-reconstruction',active);const visible=!tab.hidden;
@@ -730,17 +730,7 @@ root.querySelectorAll("[data-msview]").forEach(b=>b.addEventListener("click",()=
   }catch(e){console.warn('Plan list cleanup unavailable',e);}
  }
  frame.addEventListener('load',()=>{
-  try{
-    const d=frame.contentDocument;
-    if(d&&!d.getElementById('superior-tour-addon')){
-      const addon=d.createElement('script');
-      addon.id='superior-tour-addon';
-      addon.src='./assets/superior-tour.js?v=20261102-mesh-render-v4';
-      d.head.appendChild(addon);
-    }
-  }catch(e){console.warn('Superior Doors tour addon could not load',e);}
-
-  cleanPlanList();harmonizeViewer();
+cleanPlanList();harmonizeViewer();
   try{const doc=frame.contentDocument;if(doc?.body)new MutationObserver(()=>{cleanPlanList();harmonizeViewer();}).observe(doc.body,{childList:true,subtree:true});}catch(e){}
   frame.contentWindow.postMessage({type:'collins-floor',key:floorKey(currentFloor())},location.origin);frame.contentWindow.postMessage({type:'collins-myfloor',label:currentFloor()},location.origin);frame.contentWindow.postMessage({type:'collins-language',lang:document.documentElement.lang==='es'?'es':'en'},location.origin);sync();});
  document.getElementById('myFloorNumber')?.addEventListener('change',()=>{frame.contentWindow.postMessage({type:'collins-myfloor',label:currentFloor()},location.origin);frame.contentWindow.postMessage({type:'collins-floor',key:floorKey(currentFloor())},location.origin);});

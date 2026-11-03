@@ -121,9 +121,9 @@
 - Remediación por alas, sin traslado de muro a muro: semana 1 contenciones del ala A (ambos muros afectados, profundidad ajustada para dejar 3 ft libres donde el ancho lo permite; avisos donde no), demolición, limpieza y visita AirMD; laboratorio con el resultado al inicio de la semana 2. Semana 2: PRV aprobado y reconstrucción del ala A mientras Servpro hace el ala B. Semana 3: PRV del ala B, reconstrucción y liberación. Semana 4: Servpro empieza el siguiente grupo.
 - Rociadores y alarma con cuadrillas y estados propios, un piso por semana cada uno, desde la semana siguiente a la liberación del grupo. Escenarios: en paralelo (~23 semanas), alarma una semana detrás (~24, predeterminado) y asignación de planificación (28). El último grupo solo tiene 2 pisos (21 y PH), por eso cada escenario termina una semana antes que una cuenta con grupos de 3.
 - En paralelo se avisa que dos trades en el mismo piso requieren coordinación en campo y autorización del Fire Marshal. Instalación terminada ≠ inspección, prueba integrada ni aceptación.
-- Puertas de cerramiento de humo, presurización de escaleras, comisionamiento y aceptación final del ELSS quedan como dependencias aparte (sin programar).
+- Presurización de escaleras, comisionamiento y aceptación final del ELSS quedan como dependencias aparte (sin programar). Las puertas de cerramiento de humo aparecen solo como una semana ilustrativa por piso (ver abajo).
 - Alarma: primero verificación y terminación del cableado existente (cable rojo progresivo), luego los dispositivos.
-- Pestaña Schedule alineada: rociadores semanas 7–26 del calendario, alarma 8–27, puertas como dependencia aparte.
+- Pestaña Schedule alineada: rociadores semanas 7–26 del calendario, alarma 8–27. Puertas: el permiso no está radicado; en el modelo 3D se muestran como una semana ilustrativa por piso (una por semana, después de la pintura), sin fecha real.
 
 ## v17-sq2 · Contenciones también en la Secuencia por oficio
 - La pestaña Secuencia por oficio muestra el mismo procedimiento de contención que el Plan por semanas: contenciones por ala, cremalleras y cinta, demolición dentro de la contención, limpieza HEPA, visita AirMD/laboratorio, HOLD si falla la PRV, reconstrucción, retiro de la contención, ruta libre de 3 ft y cuadrillas. Encima siguen los demás trades (rociadores, alarma) con sus propias animaciones.
