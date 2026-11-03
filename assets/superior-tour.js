@@ -1,26 +1,37 @@
-/* Superior Doors: visualization-only stage for Interior guided tour.
-   Does not represent an approved permit, procurement, or construction date. */
-(function(){
- if(window.__superiorTourInstalled)return;
- if(typeof computeSchedule!=='function'||typeof contRebuild!=='function'||typeof CONT==='undefined')return;
- window.__superiorTourInstalled=true;
- const original=computeSchedule;
- computeSchedule=function(){
-   const sch=original();
-   let last=sch.total;
-   for(const group of sch.groups){
-     for(const level of group.levels){
-       const stages=group.trades[level];
-       if(!stages||!stages[6]||!stages[7])continue;
-       const start=Math.max(stages[6][1],stages[7][1],stages[4]?stages[4][1]:0);
-       stages[8]=[start,start+5];
-       last=Math.max(last,start+5);
-     }
-   }
-   sch.total=last;
-   return sch;
- };
- contRebuild();
- if(typeof contSetLevel==='function'&&CONT.level!=null)contSetLevel(CONT.level,true);
- console.info('Superior Doors 3D installation stage enabled in guided tour (illustrative only).');
+/* Superior Doors — illustrative 3D installation sequence only.
+   Planning visualization, NOT an issued door permit or confirmed construction schedule.
+   Stage index 8 drives the actual door geometry and Superior crew in apply(). */
+(function () {
+  if (window.__superiorTourInstalled) return;
+  if (typeof computeSchedule !== 'function' || typeof contRebuild !== 'function' ||
+      typeof CONT === 'undefined') {
+    console.warn('Superior Doors: tour engine not ready');
+    return;
+  }
+  window.__superiorTourInstalled = true;
+  const baseSchedule = computeSchedule;
+  computeSchedule = function () {
+    const schedule = baseSchedule();
+    let last = schedule.total;
+    for (const group of schedule.groups) {
+      for (const level of group.levels) {
+        const stages = group.trades && group.trades[level];
+        if (!stages || !stages[5] || !stages[6]) continue;
+        // Floor 2: Week 6, days 1–5. Other floors follow their simulated
+        // finish stage and are staggered to avoid showing doors before walls.
+        const finish = stages[6][1];
+        const start = Number(level) === 2 ? Math.max(25,finish) :
+          Math.ceil(finish / 5) * 5;
+        stages[8] = [start, start + 5];
+        last = Math.max(last, start + 5);
+      }
+    }
+    schedule.total = last;
+    schedule.workEnd = Math.max(schedule.workEnd || 0, last);
+    return schedule;
+  };
+  contRebuild();
+  if (typeof contSetLevel === 'function' && CONT.level != null) contSetLevel(CONT.level, true);
+  if (typeof apply === 'function') apply(performance.now());
+  console.info('Superior Doors: stage 8 scheduled and door meshes enabled in 3D tour');
 })();
