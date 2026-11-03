@@ -32,12 +32,31 @@ function localDate(value){try{const d=new Date(String(value).substring(0,10)+'T1
 function switchTab(next){if(!['updates','progress','permits','schedule','contact'].includes(next))return;stopPlay();tab=next;document.querySelectorAll('.screen').forEach(el=>{let on=el.dataset.tab===next;el.hidden=!on;el.classList.toggle('current',on)});document.querySelectorAll('.nav-item').forEach(el=>{let on=el.dataset.go===next;el.classList.toggle('active',on);if(on)el.setAttribute('aria-current','page');else el.removeAttribute('aria-current')});const legacyFloorPicker=$('floorPicker');if(legacyFloorPicker)legacyFloorPicker.hidden=next!=='progress';$('topAction').hidden=false;$('topAction').textContent=next==='schedule'?'↥':lang==='en'?'ES':'EN';$('topAction').setAttribute('aria-label',next==='schedule'?'Share schedule':'Switch language');if(next==='progress')load3D();window.scrollTo(0,0);history.replaceState(null,'','#'+next)}
 function setLang(next){lang=next;document.documentElement.lang=lang;document.querySelectorAll('[data-t]').forEach(el=>el.textContent=t(el.dataset.t));$('permitSearch').placeholder=t('search');$('modelExpand').setAttribute('aria-label',t('openviewer'));if(tab!=='schedule')$('topAction').textContent=lang==='en'?'ES':'EN';renderUpdates();renderKB();renderPermits();renderStages();renderSchedule();document.getElementById('reconstructionFrame')?.contentWindow?.postMessage({type:'collins-language',lang},location.origin)}
 function renderUpdates(){
-const ids=[['elevator','ic-elevator','teal','2026-10-26'],['parking','ic-lamp','blue','2026-10-27'],['doors','ic-door','plum','2026-10-27'],['gym','ic-gym','amber','2026-11-02']];
 const n=noticeData&&Array.isArray(noticeData.notices)?noticeData.notices:[];
-const preferred=n.find(x=>x.projectId==='corridor');
-if(preferred){$('featureDate').textContent=localDate(preferred.date);$('featureTitle').textContent=localized(preferred.title);$('featureBody').textContent=localized(preferred.message)}
-$('recentList').innerHTML=ids.map(([id,ic,color,date])=>{const x=translations[lang].recentText[id];const notice=id==='gym'?n.find(v=>v.projectId==='gym'&&v.id==='gym-inspections-2026-11-02'):null;return '<div class="list-row"><span class="tile '+color+'"><svg><use href="#'+ic+'"/></svg></span><div class="row-copy"><strong>'+esc(x[0])+'</strong><small>'+esc(x[1])+'</small></div><time class="row-date">'+esc(localDate(notice?notice.date:date))+'</time></div>'}).join('');
-$('updateFoot').textContent=(lang==='es'?'Información del proyecto · Actualizado ':'Project information · Updated ')+localDate((noticeData&&noticeData.publishedAt)||'2026-10-27');
+const chronological=n.filter(x=>x&&typeof x.date==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(x.date)&&x.title&&x.message).sort((a,b)=>b.date.localeCompare(a.date));
+const latest=chronological[0];
+if(latest){
+$('featureDate').textContent=localDate(latest.date);
+$('featureTitle').textContent=localized(latest.title);
+$('featureBody').textContent=localized(latest.message);
+}
+if(chronological.length){
+const seen=new Set(latest&&latest.projectId?[latest.projectId]:[]);
+const recent=[];
+for(const item of chronological.slice(1)){
+const project=item.projectId||item.id;
+if(seen.has(project))continue;
+seen.add(project);recent.push(item);
+if(recent.length>=4)break;
+}
+const styles={corridor:['ic-permits','blue'],gym:['ic-gym','amber'],parking:['ic-lamp','blue'],doors:['ic-door','plum'],elevator:['ic-elevator','teal'],sprinkler:['ic-permits','teal'],alarm:['ic-bell','blue']};
+const preview=v=>{const s=String(v||'');return s.length>155?s.slice(0,155).replace(/\s+\S*$/,'')+'…':s};
+$('recentList').innerHTML=recent.map(item=>{
+const [icon,color]=styles[item.projectId]||['ic-bell','teal'];
+return '<div class="list-row"><span class="tile '+color+'"><svg><use href="#'+icon+'"/></svg></span><div class="row-copy"><strong>'+esc(localized(item.title))+'</strong><small>'+esc(preview(localized(item.message)))+'</small></div><time class="row-date">'+esc(localDate(item.date))+'</time></div>'
+}).join('');
+}
+$('updateFoot').textContent=(lang==='es'?'Información del proyecto · Actualizado ':'Project information · Updated ')+localDate((noticeData&&noticeData.publishedAt)||'2026-11-02');
 }
 function localized(v){return typeof v==='string'?v:String((v&&v[lang])||(v&&v.en)||'')}
 function renderKB(){

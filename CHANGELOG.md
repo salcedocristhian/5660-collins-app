@@ -34,3 +34,8 @@
 - Resident-safe Gym project snapshot updated to the Nov 2 coordination call: Electrical, Mechanical and Plumbing inspections planned for Tuesday Nov 3; City bookings and inspection passes are **not verified**.
 - Schedule and the new Gym upcoming-events card track each trade inspection separately, then tentative Nov 4 encapsulation and Nov 6 custom desiccant box target. The desiccant machine itself remains **unscheduled**; no gym reopening date is confirmed.
 - Updated bilingual Gym project detail, FAQ, resident feed, quick updates, embedded offline snapshot and PWA cache. Did not change 3D models, budgets, permit status, or publish a push notification.
+
+## November 2, 2026 — Latest / Recent chronological feed fix
+- Fixed resident Updates hero incorrectly pinned to the first corridor notice, ignoring newer gym notices.
+- Latest now selects the newest dated resident-safe notice; Recent shows the four next latest distinct projects sorted by date, excluding the featured project.
+- Updated static fallback markup for offline/slow-load, both ES/EN dynamic content, cache-busting script URL, and service-worker cache. Project data, verified permit states and user-facing notices unchanged.
