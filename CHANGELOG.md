@@ -46,3 +46,8 @@
 - Ahora las puertas se programan dentro de `computeSchedule()`: una semana ilustrativa por piso, después de la pintura, una por semana (opción A). El total no cambia (120 / 115 / 140 días).
 - La guía interior vuela a la vista del vestíbulo cuando las puertas están activas y marca la etapa como "(ilustrativo)"; la lista de trades dice "· ilustrativa".
 - Se eliminó el addon (index.html y assets/superior-tour.js). Textos aclaran que el permiso de puertas no está radicado.
+
+## November 3, 2026 — HVAC Trane Next Payment Upcoming
+- Added prominently displayed **Next Payment Upcoming – Trane $120,434.50**, the anticipated final 10% milestone of the $1,204,345 chiller replacement contract.
+- Trane confirmed Oct 29 that the final invoice had not been issued. The feature states invoice and due date pending; it is **not** a confirmed payable, booked expense, or cash payment.
+- Mirrored this status within the Central HVAC contract breakdown, and refreshed budget navigation and service-worker cache. **No project budgets, recorded costs, or expense calculations changed.** CO #1 permit fees were not added again pending accounting/contract verification.
