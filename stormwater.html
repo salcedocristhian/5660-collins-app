@@ -64,11 +64,91 @@ details ul{margin:6px 0 0;padding-left:18px;color:var(--muted);font-size:.76rem;
 .ptools .pcap{font-size:.82rem;color:var(--ink);margin-left:6px}.ptools .pcap small{display:block;color:var(--muted);font-size:.72rem}
 .reflink{border:0;background:none;color:var(--petrol);font:inherit;font-size:.76rem;text-decoration:underline;cursor:pointer;padding:0;margin-left:4px}
 @media (min-width:980px){.plans{grid-template-columns:260px minmax(0,1fr)}.plans .pmain{grid-column:2}.plans .plist{grid-row:1 / span 2}}
+.treat[hidden],.bar[hidden],.cap[hidden],.viewer[hidden]{display:none!important}
+.treat{grid-column:1 / -1;display:grid;gap:10px;grid-template-columns:minmax(0,1fr)!important;align-items:start}
+@media (min-width:980px){.treat{grid-template-columns:repeat(3,minmax(0,1fr))!important}.treat>*{grid-column:1 / -1}}
+.tv{position:relative;height:min(76svh,740px);min-height:420px;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#0F1A1E;touch-action:none}
+.tv canvas{display:block;width:100%;height:100%}
+.ttop{position:absolute;left:8px;right:8px;top:8px;display:flex;flex-wrap:wrap;gap:6px;justify-content:space-between;pointer-events:none}
+.tseg{display:inline-flex;background:rgba(15,26,30,.72);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:2px;pointer-events:auto}
+.tseg button{border:0;background:transparent;color:#E8EEEA;font:inherit;font-size:.74rem;font-weight:600;height:30px;padding:0 11px;border-radius:999px;cursor:pointer;white-space:nowrap}
+.tseg button[aria-pressed="true"]{background:var(--petrol);color:#fff}
+.tsrc{background:var(--bg);border-color:var(--line)}.tsrc button{color:var(--ink)}.tsrc button[aria-pressed="true"]{color:#fff}
+.tban{position:absolute;left:10px;top:48px;font-size:.66rem;font-weight:700;padding:3px 9px;border-radius:999px;background:#8A3B17;color:#fff;pointer-events:none;letter-spacing:.02em}
+.tban.ok{background:var(--petrol)}
+.tgstart{position:absolute;right:10px;bottom:10px;background:var(--petrol);color:#fff;border:0;border-radius:999px;height:40px;padding:0 16px;font:inherit;font-size:.84rem;font-weight:700;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.35)}
+.tgstart[hidden],.tcard[hidden],.thint[hidden]{display:none!important}
+.tbars{position:absolute;left:8px;top:74px;width:150px;background:rgba(15,26,30,.78);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.16);border-radius:12px;padding:6px 8px;color:#E8EEEA;font-size:.64rem;pointer-events:none}.tbars[hidden]{display:none!important}.tbars b{display:block;font-size:.66rem;margin-bottom:3px;color:#C9D3CE;font-weight:600}.tbr{display:grid;grid-template-columns:18px 1fr 34px;gap:4px;align-items:center;margin:2px 0}.tbr i{display:block;height:7px;border-radius:4px;background:#7A5C36}.tbr span{text-align:right;font-variant-numeric:tabular-nums}.tbars u{display:block;margin-top:3px;text-decoration:none;color:#C9D3CE}
+.tsch{position:absolute;inset:0;padding:68px 4px 4px;background:linear-gradient(#EAF1F0,#DCE7E5);overflow:hidden}.tsch[hidden]{display:none!important}.tsch svg{width:100%;height:100%;display:block}.tsw{position:absolute;right:8px;top:48px;border:1px solid rgba(255,255,255,.2);background:rgba(15,26,30,.72);color:#E8EEEA;border-radius:999px;height:26px;padding:0 10px;font:inherit;font-size:.68rem;font-weight:600;cursor:pointer}.tsw[hidden]{display:none!important}
+.tsch text{font-family:system-ui,sans-serif}.tflow{stroke-dasharray:7 9;animation:tfl 1s linear infinite}@keyframes tfl{to{stroke-dashoffset:-16}}.tst{cursor:pointer}.tgh{fill:#C99B62;opacity:0}.tst:hover .tgh{opacity:.3}.tsel .tgh{opacity:.5}.toff{opacity:.4}.tdim{opacity:.22}.tdimc{opacity:.35}
+.tsinfo{position:absolute;left:8px;right:8px;bottom:8px;background:rgba(255,255,255,.96);color:#17231F;border-radius:12px;padding:8px 11px;font-size:.78rem;line-height:1.4;box-shadow:0 4px 16px rgba(0,0,0,.25)}.tsinfo[hidden]{display:none!important}.tsinfo b{display:block;font-size:.84rem}
+.thint{position:absolute;left:10px;bottom:10px;font-size:.7rem;color:#C9D3CE;background:rgba(15,26,30,.6);padding:4px 9px;border-radius:999px;pointer-events:none}
+.tcard{position:absolute;left:8px;right:8px;bottom:8px;max-height:46%;overflow:auto;background:rgba(255,255,255,.96);color:#17231F;border-radius:14px;padding:9px 11px 8px;box-shadow:0 6px 22px rgba(0,0,0,.4)}
+@media (min-width:760px){.tcard{right:auto;width:380px}}
+.tch{display:flex;justify-content:space-between;align-items:center}
+.tcard small{font-size:.68rem;color:#5E6E66;font-variant-numeric:tabular-nums}
+.tcard b{display:block;font-size:.92rem;font-weight:600;line-height:1.25}
+.tcard p{margin:5px 0 7px;font-size:.8rem;line-height:1.45}
+.tmin{border:0;background:transparent;font-size:1rem;width:30px;height:24px;cursor:pointer;color:#17231F}
+.tcnav{display:flex;align-items:center;gap:6px}
+.tcnav>button{flex:none;width:34px;height:34px;border-radius:50%;border:1px solid #D9DDD8;background:#fff;color:#17231F;cursor:pointer;font-size:.95rem}
+.tcnav>.tcp{background:var(--petrol);border-color:var(--petrol);color:#fff}
+.tgseg{flex:1;display:flex;gap:2px;min-width:0}
+.tgd{flex:1;height:24px;border:0;padding:0;background:transparent;cursor:pointer;display:flex;align-items:center}
+.tgd i{display:block;width:100%;height:5px;border-radius:3px;background:#DDE2DE;overflow:hidden;position:relative}
+.tgd i b{position:absolute;inset:0;width:0;background:var(--petrol);margin:0;display:block}
+.tdet{background:var(--panel);border:1px solid var(--line);border-radius:14px}
+.tdet summary{cursor:pointer;padding:11px 14px;font-size:.82rem;font-weight:600;color:var(--ink);list-style:none;display:flex;justify-content:space-between}
+.tdet summary::-webkit-details-marker{display:none}.tdet summary::after{content:"▾";color:var(--muted)}.tdet[open] summary::after{content:"▴"}
+.tdb{padding:0 14px 14px;display:grid;gap:10px}
+.tlbl{font-size:.76rem;color:var(--muted)}
+.tctl{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.tctl label{display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--muted)}.tctl label b{color:var(--ink);font-weight:600}
+.tctl input[type=range]{width:100%;accent-color:var(--petrol)}
+.tctl select{font:inherit;padding:8px;border-radius:9px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+.tchk{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:.8rem}.tchk label{display:flex;gap:6px;align-items:center}
+.trow{display:flex;flex-wrap:wrap;gap:8px}
+.tbtn{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:999px;padding:8px 14px;font:inherit;font-size:.8rem;font-weight:600;cursor:pointer}
+.tbtn[aria-pressed="true"]{background:var(--petrol);border-color:var(--petrol);color:#fff}
+.tkpi{display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(120px,1fr))}
+.tkpi div{background:var(--bg);border-radius:12px;padding:8px 10px}.tkpi small{display:block;font-size:.68rem;color:var(--muted)}
+.tlist{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.tlist li{display:flex;gap:8px;align-items:flex-start;font-size:.78rem;line-height:1.4}
+.chip{flex:none;font-size:.64rem;font-weight:700;padding:3px 8px;border-radius:999px;color:#fff}
+.chip.r{background:#8A3B17}.chip.a{background:#8E6A3E}.chip.g{background:var(--petrol)}
+.tnote{font-size:.74rem;color:var(--muted);line-height:1.5;margin:0}
+@media (max-width:560px){.tv{height:min(72svh,640px);min-height:400px;border-radius:14px}.tseg button{padding:0 9px;font-size:.7rem;height:28px}}
 </style></head>
 <body>
 <div class="wrap">
- <div class="vtabs" role="group" aria-label="Storm drains"><button type="button" data-vt="tour" aria-pressed="true" id="vtTour">Recorrido 3D</button><button type="button" data-vt="plans" aria-pressed="false" id="vtPlans">Planos</button></div>
+ <div class="vtabs" role="group" aria-label="Storm drains"><button type="button" data-vt="tour" aria-pressed="true" id="vtTour">Recorrido 3D</button><button type="button" data-vt="plans" aria-pressed="false" id="vtPlans">Planos</button><button type="button" data-vt="treat" aria-pressed="false" id="vtTreat">Tratamiento / DERM</button></div>
  <section class="plans" id="plans" hidden><div class="plist" id="plist"></div><div class="pmain"><div class="ptools"><button type="button" id="pzOut" aria-label="Alejar">−</button><button type="button" id="pzIn" aria-label="Acercar">+</button><button type="button" id="pzFit" aria-label="Ajustar">⤢</button><div class="pcap" id="pcap"></div></div><div class="pframe" id="pframe"><img id="pimg" alt=""></div></div></section>
+ <section class="treat" id="treat" hidden>
+  <div class="tv" id="tv">
+   <canvas id="tGL" aria-label="3D model"></canvas><div class="tsch" id="tSch" hidden></div><button type="button" class="tsw" id="tSw" hidden></button>
+   <div class="ttop"><div class="tseg" id="tScn"></div><div class="tseg" id="tVw"></div></div>
+   <div class="tban" id="tBan"></div>
+   <button type="button" class="tgstart" id="tgStart" data-g="start"></button>
+   <div class="tcard" id="tCard" hidden></div>
+   <div class="tbars" id="tBars" hidden></div>
+   <div class="thint" id="tHint"></div>
+  </div>
+  <details class="tdet"><summary id="tSumSet"></summary><div class="tdb">
+   <div class="tlbl" id="tLblSrc"></div><div class="tseg tsrc" id="tSrc"></div>
+   <div class="tctl">
+    <label><span id="tLblRain"></span><input type="range" id="tRain" min="0" max="100" step="5" value="60"><b id="tRainv"></b></label>
+    <label><span id="tLblQ"></span><input type="range" id="tQ" min="35" max="50" step="1" value="35"><b id="tQv"></b></label>
+    <label><span id="tLblN"></span><input type="range" id="tN" min="1" max="8" step="1" value="4"><b id="tNv"></b></label>
+    <label><span id="tLblNtu"></span><input type="range" id="tNtu" min="5" max="400" step="5" value="120"><b id="tNtuv"></b></label>
+    <label><span id="tLblRef"></span><input type="range" id="tRef" min="5" max="60" step="1" value="29"><b id="tRefv"></b></label>
+    <label><span id="tLblR"></span><select id="tR"><option value="15">15 min</option><option value="30" selected>30 min</option><option value="60">60 min</option></select></label>
+   </div>
+   <div class="tchk"><label><input type="checkbox" id="tC0" checked> <span id="tN0"></span></label><label><input type="checkbox" id="tC1" checked> <span id="tN1"></span></label><label><input type="checkbox" id="tC2" checked> <span id="tN2"></span></label><label><input type="checkbox" id="tC3" checked> <span id="tN3"></span></label></div>
+   <div class="trow"><button type="button" class="tbtn" id="tAuth" aria-pressed="false"></button><button type="button" class="tbtn" id="tPlay" aria-pressed="false"></button></div>
+  </div></details>
+  <details class="tdet"><summary id="tSumHyd"></summary><div class="tdb"><div class="tkpi" id="tKpi"></div><p class="tnote" id="tNote"></p></div></details>
+  <details class="tdet"><summary id="tSumChk"></summary><div class="tdb"><ul class="tlist" id="tList"></ul><ul class="tlist" id="tList2" style="margin-top:10px"></ul><p class="tnote" id="tFoot" style="margin-top:10px"></p></div></details>
+ </section>
  <div class="viewer" id="viewer">
   <div class="load" id="load">Loading…</div>
   <div class="pins" id="pins"></div>
@@ -627,8 +707,8 @@ function plansRender(){const pl=$('plist');pl.innerHTML=SHEETS.map(g=>'<div clas
  $('pcap').innerHTML='<b>'+curSheet+'</b> · '+tr(it[1])+'<small>'+(curSheet.startsWith('P-')?'RJM Consultants · 25-009 · R. J. Miranda P.E. 35579 · '+tr(L('signed 12/2/2025','firmado 2/12/2025')):'RJM Consultants · 2502-009 · '+'rev. 9/24/2025')+'</small>';
  const img=$('pimg');const src=sheetSrc(curSheet);if(img.getAttribute('src')!==src){img.src=src;img.alt=curSheet;}img.style.width=(pz*100)+'%';}
 function openSheet(id){curSheet=id;pz=1;setTab('plans');plansRender();$('pframe').scrollTo(0,0);}
-function setTab(t){const pl=t==='plans';$('plans').hidden=!pl;$('viewer').hidden=pl;document.querySelector('.bar').hidden=pl;document.querySelector('.cap').hidden=pl;
- document.querySelectorAll('[data-vt]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.vt===t)));if(pl){setPlaying(false);plansRender();}else{resize();}postH();}
+function setTab(t){const pl=t==='plans',tz=t==='treat',hd=pl||tz;$('plans').hidden=!pl;$('treat').hidden=!tz;$('viewer').hidden=hd;document.querySelector('.bar').hidden=hd;document.querySelector('.cap').hidden=hd;if(window.__treat){if(tz)window.__treat.start();else window.__treat.stop();}
+ document.querySelectorAll('[data-vt]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.vt===t)));if(hd)setPlaying(false);if(pl){plansRender();}else if(!tz){resize();}postH();}
 document.querySelectorAll('[data-vt]').forEach(b=>b.onclick=()=>setTab(b.dataset.vt));
 $('pzIn').onclick=()=>{pz=Math.min(4,pz*1.5);plansRender();};$('pzOut').onclick=()=>{pz=Math.max(1,pz/1.5);plansRender();};$('pzFit').onclick=()=>{pz=1;plansRender();};
 function refSheet(ref){const ids=(ref||'').match(/(CP-100|BID-100|P-\d{3}(?:\.\d|D)?)/g)||[];return ids.find(x=>SHEET_IDS.includes(x))||null;}
@@ -639,7 +719,7 @@ function text(){const s=STEPS[si];$('sNum').textContent=tr(UI.step)+' '+(si+1)+'
 function setPlaying(v){playing=v;$('bPlay').textContent=v?'❚❚':'▶';$('bPlay').setAttribute('aria-label',tr(v?UI.pause:UI.play));}
 $('bPlay').addEventListener('click',()=>{if(!playing&&si===NS-1&&st>=STEPS[si].d)go(0);setPlaying(!playing);if(playing)userCam=false;});
 $('bNext').addEventListener('click',()=>go(si+1));$('bBack').addEventListener('click',()=>go(st>1.5?si:si-1));
-function applyLang(){document.documentElement.lang=LANG;$('vtTour').textContent=tr(L('3D tour','Recorrido 3D'));$('vtPlans').textContent=tr(L('Plans','Planos'));if(!$('plans').hidden)plansRender();$('permit').textContent=tr(UI.permit);$('foot').textContent=tr(UI.foot);$('srcT').textContent=tr(UI.src);$('srcList').innerHTML=SRC[LANG].map(s=>'<li>'+s+'</li>').join('');text();buildPins();setPlaying(playing);}
+function applyLang(){document.documentElement.lang=LANG;$('vtTour').textContent=tr(L('3D tour','Recorrido 3D'));$('vtPlans').textContent=tr(L('Plans','Planos'));$('vtTreat').textContent=tr(L('Treatment / DERM','Tratamiento / DERM'));if(window.__treat)window.__treat.lang(LANG);if(!$('plans').hidden)plansRender();$('permit').textContent=tr(UI.permit);$('foot').textContent=tr(UI.foot);$('srcT').textContent=tr(UI.src);$('srcList').innerHTML=SRC[LANG].map(s=>'<li>'+s+'</li>').join('');text();buildPins();setPlaying(playing);}
 let visible=true;
 window.addEventListener('message',e=>{const d=e.data||{};if(d.type==='collins-language'&&(d.lang==='es'||d.lang==='en')&&d.lang!==LANG){LANG=d.lang;applyLang();}if(d.type==='collins-visibility'){visible=!!d.visible;if(!visible)setPlaying(false);}});
 function resize(){const w=host.clientWidth,h=host.clientHeight;renderer.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix();}
@@ -657,4 +737,427 @@ new ResizeObserver(postH).observe(document.querySelector('.wrap'));postH();
 requestAnimationFrame(loop);
 })();
 </script>
+<script>
+/* 5660 Collins · Tratamiento / DERM — escena 3D (Three.js r128) con la geometría real de RJM 25-009 (STORM_DATA):
+   contorno, columnas, drenajes, 4 estaciones dúplex Liberty D3648LSG203 (P-102 / P-200), paneles, tubería subterránea/aérea,
+   más un tren de tratamiento esquemático (diorama aparte, sin escala respecto al garaje). Ilustrativo.
+   Hechos de campo (4/11/2026, reportado por MTD): ~4 estaciones, 5 bombas en discusión, 2 operando — cuáles: POR VERIFICAR.
+   Sin permiso de descarga: Class V no solicitado, Indian Creek no confirmado, BC2526722 sin confirmar. Nada es diseño aprobado. */
+(function(){
+const D=window.STORM_DATA,TH=window.THREE;if(!D||!TH||!TH.OrbitControls){return;}
+let LANG=(new URLSearchParams(location.search).get('lang')||'en').startsWith('es')?'es':'en';
+const T=(en,es)=>LANG==='es'?es:en;const $=id=>document.getElementById(id);const li=()=>LANG==='es'?1:0;
+const S={scn:'now',src:'rain',rain:60,q:35,n:4,ret:30,strn:true,sed:true,bag:true,cart:false,auth:false,play:true,view:'gar'};
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const V3=(x,y,z)=>new TH.Vector3(x,y,z);
+const TX=330,TZ=-40;                       // train diorama offset
+const nOp=()=>S.scn==='now'?2:S.n;const capQ=()=>nOp()*S.q;const planned=()=>S.scn==='now'?5:8;
+let scene,cam,ren,controls,root,gar,trn,inited=false,running=false,raf=0,last=0,ph=0,drive=true,vOff=0,vOffT=0;
+const labels=[];let ST=[],DR=[],ptsA=[],ptsB=[],held=0,pondM=[],stationG=[],valveG=[],panelG=[],pipeMats=[],ohLines,skidG=[],drainRoute,ringSpr,ringSprT;
+const M=(c,p={})=>new TH.MeshStandardMaterial(Object.assign({color:c,roughness:.8,metalness:0},p));
+function pipe(a,b,r,mat,seg){const va=V3(...a),vb=V3(...b),len=va.distanceTo(vb);const m=new TH.Mesh(new TH.CylinderGeometry(r,r,len,seg||10),mat);m.position.copy(va).add(vb).multiplyScalar(.5);m.quaternion.setFromUnitVectors(V3(0,1,0),vb.clone().sub(va).normalize());return m;}
+function path(pts){const L=[0];for(let i=1;i<pts.length;i++)L.push(L[i-1]+Math.hypot(pts[i][0]-pts[i-1][0],pts[i][1]-pts[i-1][1]));return {pts,L,len:L[L.length-1]};}
+function at(p,s){s=Math.max(0,Math.min(p.len,s));let i=1;while(i<p.L.length-1&&p.L[i]<s)i++;const t=(s-p.L[i-1])/((p.L[i]-p.L[i-1])||1);return [p.pts[i-1][0]+(p.pts[i][0]-p.pts[i-1][0])*t,p.pts[i-1][1]+(p.pts[i][1]-p.pts[i-1][1])*t];}
+const nz=x=>{const o=D.outline;let best=-100;for(let i=0;i<5;i++){const [x1,z1]=o[i],[x2,z2]=o[i+1];if(x>=Math.min(x1,x2)&&x<=Math.max(x1,x2)&&x1!==x2)best=z1+(z2-z1)*(x-x1)/(x2-x1);}return best;};
+const stOf=x=>x>80?3:x>20?2:x>-60?1:0;
+function roundRect(c,x,y,w,h,r){c.beginPath();c.moveTo(x+r,y);c.arcTo(x+w,y,x+w,y+h,r);c.arcTo(x+w,y+h,x,y+h,r);c.arcTo(x,y+h,x,y,r);c.arcTo(x,y,x+w,y,r);c.closePath();}
+const SSC=3.2; /* estaciones ampliadas 2.4x para legibilidad (no a escala) */
+/* labels (constant screen size) */
+function label(fn,o){o=o||{};const cvs=document.createElement('canvas');cvs.width=512;cvs.height=96;const tex=new TH.CanvasTexture(cvs);
+ const sp=new TH.Sprite(new TH.SpriteMaterial({map:tex,transparent:true,depthTest:false,sizeAttenuation:false}));sp.renderOrder=20;sp.userData={fn,o,cvs,tex,view:o.view||'gar'};drawLabel(sp);
+ const sc=(o.sc||1)*.15;sp.scale.set(sc,sc*96/512,1);labels.push(sp);return sp;}
+function drawLabel(sp){const {fn,o,cvs,tex}=sp.userData;const c=cvs.getContext('2d');c.clearRect(0,0,512,96);const t=fn();c.font='600 40px sans-serif';const w=Math.min(504,c.measureText(t).width+40);
+ c.fillStyle=(o.bgf?o.bgf():o.bg)||'rgba(23,37,31,.88)';roundRect(c,(512-w)/2,12,w,72,28);c.fill();c.fillStyle=o.fg||'#fff';c.textAlign='center';c.textBaseline='middle';c.fillText(t,256,49);tex.needsUpdate=true;}
+function relabel(){labels.forEach(drawLabel);}
+function ringTex(){const c=document.createElement('canvas');c.width=c.height=128;const g=c.getContext('2d');g.strokeStyle='#C99B62';g.lineWidth=10;g.beginPath();g.arc(64,64,54,0,7);g.stroke();g.fillStyle='rgba(201,155,98,.16)';g.fill();return new TH.CanvasTexture(c);}
+function dotTex(){const c=document.createElement('canvas');c.width=c.height=64;const g=c.getContext('2d');g.fillStyle='#fff';g.beginPath();g.arc(32,32,28,0,7);g.fill();return new TH.CanvasTexture(c);}
+/* ---------- build ---------- */
+function build(){
+ const host=$('tv');
+ ren=new TH.WebGLRenderer({canvas:$('tGL'),antialias:true,alpha:false});ren.setPixelRatio(Math.min(2,window.devicePixelRatio||1));
+ scene=new TH.Scene();cam=new TH.PerspectiveCamera(40,1,.5,3000);
+ scene.add(new TH.HemisphereLight(0xffffff,0x8a97a0,.95));const dl=new TH.DirectionalLight(0xffffff,.75);dl.position.set(80,220,120);scene.add(dl);
+ controls=new TH.OrbitControls(cam,ren.domElement);controls.enableDamping=true;controls.dampingFactor=.08;controls.maxPolarAngle=Math.PI*.485;controls.minDistance=10;controls.maxDistance=700;controls.screenSpacePanning=true;
+ controls.addEventListener('start',()=>{drive=false;$('tHint').hidden=true;});
+ root=new TH.Group();scene.add(root);gar=new TH.Group();root.add(gar);trn=new TH.Group();trn.position.set(TX,0,TZ);root.add(trn);
+ ST=D.pumps.map((p,i)=>({x:p[0],z:p[1],n:D.pumpNames[i],panel:D.panels[i]}));ST.forEach(s=>{s.zt=nz(s.x)+2;});
+ DR=D.gAD.map(p=>({x:p[0],z:p[1],st:stOf(p[0]),pond:0}));
+ DR.forEach(d=>{const s=ST[d.st];d.path=path([[d.x,d.z],[d.x,s.z],[s.x,s.z]]);});
+ ST.forEach(s=>{s.out=path([[s.x,s.z],[s.x,s.zt]]);});
+ buildGarage();buildTrain();
+ ringSpr=new TH.Sprite(new TH.SpriteMaterial({map:ringTex(),transparent:true,depthTest:false}));ringSpr.renderOrder=15;ringSpr.visible=false;scene.add(ringSpr);
+ ringSprT=[];for(let i=0;i<10;i++){const r=new TH.Sprite(new TH.SpriteMaterial({map:ringSpr.material.map,transparent:true,depthTest:false}));r.renderOrder=15;r.visible=false;scene.add(r);ringSprT.push(r);}
+ new ResizeObserver(resize).observe(host);resize();inited=true;
+}
+function buildGarage(){
+ const ground=new TH.Mesh(new TH.PlaneGeometry(1600,1200),M(0xD3D8D4,{roughness:1}));ground.rotation.x=-Math.PI/2;ground.position.set(150,-1.2,-60);root.add(ground);
+ const creek=new TH.Mesh(new TH.PlaneGeometry(900,170),M(0x2F6F8F,{roughness:.2,metalness:.1,transparent:true,opacity:.9}));creek.rotation.x=-Math.PI/2;creek.position.set(0,-.5,-100.4-85);gar.add(creek);
+ const cl=label(()=>'Indian Creek · '+T('NOT confirmed','NO confirmado'),{bg:'rgba(47,111,143,.92)',sc:1.25});cl.position.set(-60,6,-135);gar.add(cl);
+ // floor with pump pits cut out
+ const shp=new TH.Shape(D.outline.map(([x,z])=>new TH.Vector2(x,-z)));ST.forEach(s=>{const h=new TH.Path();h.absarc(s.x,-s.z,3.3*SSC,0,Math.PI*2,true);shp.holes.push(h);});
+ const fg=new TH.ExtrudeGeometry(shp,{depth:.6,bevelEnabled:false,curveSegments:24});fg.rotateX(-Math.PI/2);fg.translate(0,-.6,0);
+ gar.add(new TH.Mesh(fg,M(0xC9CCC6,{roughness:.95})));
+ // perimeter low wall
+ const wm=M(0x8F9893,{roughness:.9});for(let i=0;i<D.outline.length;i++){const a=D.outline[i],b=D.outline[(i+1)%D.outline.length];const w=pipe([a[0],1.6,a[1]],[b[0],1.6,b[1]],.45,wm,6);w.scale.set(1,1,1);gar.add(w);}
+ // floor lines
+ {const v=D.floorLines,p=[];for(let i=0;i<v.length;i+=4)p.push(v[i],.04,v[i+1],v[i+2],.04,v[i+3]);const g=new TH.BufferGeometry();g.setAttribute('position',new TH.Float32BufferAttribute(p,3));gar.add(new TH.LineSegments(g,new TH.LineBasicMaterial({color:0x6E7873,transparent:true,opacity:.4})));}
+ // columns
+ const cm=M(0xB4B7B1,{roughness:.9});D.columns.forEach(([x,z])=>{const c=new TH.Mesh(new TH.BoxGeometry(1.7,7.5,1.7),cm);c.position.set(x,3.7,z);gar.add(c);});
+ D.trench.forEach(t=>{const b=new TH.Mesh(new TH.BoxGeometry(t.len,.3,t.w),M(0x4A4F4C,{roughness:.5,metalness:.5}));b.position.set(t.c[0],.1,t.c[1]);b.rotation.y=-t.ang*Math.PI/180;gar.add(b);});
+ // underground pipes (x-ray view)
+ D.ugPipes.forEach(([a,b,c,d],i)=>{const m=M(0x8A7F6A,{roughness:.6,emissive:0x000000});pipeMats.push(m);const p=pipe([a,.6,b],[c,.6,d],.5,m,8);gar.add(p);});
+ // overhead pipes
+ {const p=[];D.ohPipes.forEach(([a,b,c,d])=>p.push(a,6.6,b,c,6.6,d));const g=new TH.BufferGeometry();g.setAttribute('position',new TH.Float32BufferAttribute(p,3));ohLines=new TH.LineSegments(g,new TH.LineBasicMaterial({color:0x7A847F,transparent:true,opacity:.5}));gar.add(ohLines);}
+ // drains + ponding
+ DR.forEach(d=>{const rim=new TH.Mesh(new TH.CylinderGeometry(1.5,1.5,.25,24),M(0x3A3F3C,{metalness:.6,roughness:.4}));rim.position.set(d.x,.12,d.z);gar.add(rim);
+  const gr=new TH.Mesh(new TH.CylinderGeometry(1.15,1.15,.3,16),M(0x1F2321));gr.position.set(d.x,.13,d.z);gar.add(gr);
+  const pm=new TH.Mesh(new TH.CylinderGeometry(1,1,.12,32),new TH.MeshBasicMaterial({color:0x2F8FB8,transparent:true,opacity:.5,depthWrite:false}));pm.position.set(d.x,.2,d.z);pm.scale.set(.01,1,.01);gar.add(pm);pondM.push(pm);
+  const rp=new TH.Mesh(new TH.RingGeometry(1.6,2.1,32),new TH.MeshBasicMaterial({color:0x2F8FB8,transparent:true,opacity:.0,side:2,depthWrite:false}));rp.rotation.x=-Math.PI/2;rp.position.set(d.x,.3,d.z);gar.add(rp);d.rip=rp;});
+ // drain routes (schematic)
+ {const p=[];DR.forEach(d=>{for(let i=1;i<d.path.pts.length;i++)p.push(d.path.pts[i-1][0],.35,d.path.pts[i-1][1],d.path.pts[i][0],.35,d.path.pts[i][1]);});const g=new TH.BufferGeometry();g.setAttribute('position',new TH.Float32BufferAttribute(p,3));drainRoute=new TH.LineSegments(g,new TH.LineDashedMaterial({color:0x4C5A54,dashSize:2.2,gapSize:1.6}));drainRoute.computeLineDistances();gar.add(drainRoute);}
+ // stations, panels, stubs, valves, skids
+ ST.forEach((s,i)=>{const o=buildStation(s,i);stationG.push(o);gar.add(o.g);
+  const stub=pipe([s.x,.7,s.z-2.4],[s.x,.7,s.zt],.32,M(0x8E969A,{roughness:.4}),10);gar.add(stub);
+  const lb=label(()=>'#'+s.n.replace('#',''),{sc:.6});lb.position.set(s.x+9,16,s.z+4);gar.add(lb);o.lb=lb;
+  const q=label(()=>'?',{bg:'rgba(142,106,62,.95)',sc:.42});q.position.set(s.x,24,s.z);gar.add(q);o.q=q;
+  // valve
+  const vg=new TH.Group();vg.position.set(s.x,.9,s.zt);const body=new TH.Mesh(new TH.SphereGeometry(.85,16,12),M(0x9AA3A8,{metalness:.8,roughness:.3}));vg.add(body);
+  const h=new TH.Mesh(new TH.BoxGeometry(2.6,.25,.3),M(0xB0302A));h.position.y=1.0;vg.add(h);vg.userData.h=h;
+  const ring=new TH.Mesh(new TH.TorusGeometry(1.35,.2,8,24),new TH.MeshBasicMaterial({color:0xC0392B}));ring.rotation.x=Math.PI/2;ring.position.y=.3;vg.add(ring);vg.userData.ring=ring;
+  const vl=label(()=>S.auth?T('open (sim.)','abierta (sim.)'):T('closed · DERM','cerrada · DERM'),{sc:.62,bg:'rgba(138,59,23,.92)'});vl.position.set(s.x+5,5,s.zt);gar.add(vl);vg.userData.lb=vl;
+  gar.add(vg);valveG.push(vg);
+  // skid placeholder
+  const sk=new TH.Group();sk.position.set(s.x+5,2,(s.z+s.zt)/2);const eg=new TH.LineSegments(new TH.EdgesGeometry(new TH.BoxGeometry(5,4,Math.max(6,Math.abs(s.zt-s.z)*.45))),new TH.LineBasicMaterial({color:0xC99B62}));sk.add(eg);
+  const sl=label(()=>T('TREAT?','TRAT.?'),{sc:.5,bg:'rgba(142,106,62,.92)'});sl.position.y=4;sk.add(sl);gar.add(sk);skidG.push(sk);
+  // panel
+  const pn=new TH.Group();pn.position.set(s.panel[0],3.2,s.panel[1]);const pb=new TH.Mesh(new TH.BoxGeometry(2.2,3,.9),M(0xB9BEBC,{roughness:.5,metalness:.3}));pn.add(pb);
+  const led=new TH.Mesh(new TH.SphereGeometry(.3,10,8),new TH.MeshBasicMaterial({color:0x8E6A3E}));led.position.set(.6,1.0,.5);pn.add(led);pn.userData={pb,led};
+  const pl=label(()=>'⚡',{sc:.36,bg:'rgba(23,37,31,.8)'});pl.position.set(0,3,0);pn.add(pl);gar.add(pn);panelG.push(pn);});
+}
+function buildStation(s,i){
+ const g=new TH.Group();g.position.set(s.x,0,s.z);g.scale.setScalar(SSC);const H=4,R=36.5/24;
+ const pitM=M(0xA7A9A3,{roughness:1,side:2});const pit=new TH.Mesh(new TH.CylinderGeometry(3.3,3.3,5.2,28,1,true),pitM);pit.position.y=-2.6;g.add(pit);
+ const pf=new TH.Mesh(new TH.CircleGeometry(3.3,28),M(0x8E908A,{roughness:1}));pf.rotation.x=-Math.PI/2;pf.position.y=-5.2;g.add(pf);
+ const rim=new TH.Mesh(new TH.TorusGeometry(3.3,.14,6,36),M(0x2E3B42));rim.rotation.x=Math.PI/2;rim.position.y=.02;g.add(rim);
+ // existing (today): old ejector basin + rusty pump
+ const oldG=new TH.Group();oldG.position.y=3.4;g.add(oldG);const rust=M(0x5D4433,{roughness:.7,metalness:.4});
+ const ot=new TH.Mesh(new TH.CylinderGeometry(1.9,1.9,4.4,24,1,true),M(0x5F5B55,{roughness:.9,side:2,transparent:true,opacity:.65,depthWrite:false}));ot.position.y=-2.2;oldG.add(ot);
+ const op=new TH.Mesh(new TH.CylinderGeometry(.55,.62,1.8,16),rust);op.position.set(.2,-3.2,0);oldG.add(op);const oc=new TH.Mesh(new TH.CylinderGeometry(.4,.4,.5,12),rust);oc.position.set(.2,-2.0,0);oldG.add(oc);
+ // new Liberty D3648 duplex (P-102 / P-200)
+ const newG=new TH.Group();newG.position.y=3.4;g.add(newG);
+ const glass=M(0x55655E,{roughness:.55,transparent:true,opacity:.42,side:2,depthWrite:false}),pumpBlack=M(0x25282A,{roughness:.45,metalness:.55}),steel=M(0xC9CED2,{roughness:.3,metalness:.85}),pvc=M(0x8E969A,{roughness:.4}),red=M(0xB0302A,{roughness:.5});
+ const tank=new TH.Mesh(new TH.CylinderGeometry(R,R,H,36,1,true),glass);tank.position.y=-H/2;newG.add(tank);
+ for(let k=1;k<4;k++){const rb=new TH.Mesh(new TH.TorusGeometry(R+.04,.05,6,36),M(0x46544E,{transparent:true,opacity:.8}));rb.rotation.x=Math.PI/2;rb.position.y=-k;newG.add(rb);}
+ const fl=new TH.Mesh(new TH.CylinderGeometry(1.75,1.75,.1,36),M(0x46544E));fl.position.y=-H;newG.add(fl);
+ const cover=new TH.Mesh(new TH.CylinderGeometry(1.77,1.77,.12,36),M(0x3C4A44,{roughness:.8}));cover.position.set(2.3,1.55,-1.9);cover.rotation.set(-1.2,0,.4);   // cover leaning open
+ const pumps=[];
+ [-.62,.62].forEach((dx,j)=>{const pg=new TH.Group();pg.position.set(dx,0,.35);
+  const base=new TH.Mesh(new TH.BoxGeometry(.75,.16,.6),pumpBlack);base.position.y=-H+.08;pg.add(base);
+  const vol=new TH.Mesh(new TH.CylinderGeometry(.43,.47,.32,24),pumpBlack);vol.position.y=-H+.36;pg.add(vol);
+  const cut=new TH.Mesh(new TH.CylinderGeometry(.16,.16,.1,16),steel);cut.position.y=-H+.17;pg.add(cut);
+  const mot=new TH.Mesh(new TH.CylinderGeometry(.33,.35,.95,24),pumpBlack);mot.position.y=-H+1.0;pg.add(mot);
+  for(let k=0;k<6;k++){const f=new TH.Mesh(new TH.BoxGeometry(.04,.8,.12),pumpBlack);const a=k/6*Math.PI*2;f.position.set(Math.cos(a)*.35,-H+1.0,Math.sin(a)*.35);f.rotation.y=-a;pg.add(f);}
+  const cap=new TH.Mesh(new TH.SphereGeometry(.33,20,10,0,Math.PI*2,0,Math.PI/2),pumpBlack);cap.position.y=-H+1.47;pg.add(cap);
+  const hd=new TH.Mesh(new TH.TorusGeometry(.2,.035,8,20,Math.PI),steel);hd.position.y=-H+1.72;pg.add(hd);
+  [-.18,.18].forEach(rz=>{const rl=new TH.Mesh(new TH.CylinderGeometry(.04,.04,H-.5,6),steel);rl.position.set(rz,-H/2-.1,-.47);pg.add(rl);});
+  pg.add(pipe([0,-H+.4,-.45],[0,-1.1,-.45],.1,pvc,8));
+  const cv=new TH.Mesh(new TH.BoxGeometry(.32,.38,.26),pvc);cv.position.set(0,-1.55,-.45);pg.add(cv);
+  const bv=new TH.Mesh(new TH.CylinderGeometry(.13,.13,.3,12),pvc);bv.position.set(0,-1.18,-.45);pg.add(bv);
+  const hn=new TH.Mesh(new TH.BoxGeometry(.4,.05,.06),red);hn.position.set(.15,-1.0,-.45);pg.add(hn);
+  pg.add(pipe([0,-1.05,-.45],[-dx,-1.05,-.45],.1,pvc,8));
+  newG.add(pg);pumps.push(pg);});
+ newG.add(pipe([0,-1.05,-.1],[0,-1.05,-R-.9],.11,pvc,8));
+ for(let k=-1;k<=1;k++){const fc=pipe([k*.5,-2.9,.9],[k*.5,-.3,.9],.015,M(0x111111),4);newG.add(fc);const fb=new TH.Mesh(new TH.SphereGeometry(.14,10,8),M(0xE8B84A));fb.position.set(k*.5,-2.9+k*.2+.4,.95);newG.add(fb);}
+ const wat=new TH.Mesh(new TH.CircleGeometry(R-.05,28),new TH.MeshBasicMaterial({color:0x3E8FAE,transparent:true,opacity:.55,depthWrite:false}));wat.rotation.x=-Math.PI/2;wat.position.y=-2.8;newG.add(wat);
+ const wr=new TH.Mesh(new TH.RingGeometry(.3,.45,24),new TH.MeshBasicMaterial({color:0xffffff,transparent:true,opacity:.0,side:2}));wr.rotation.x=-Math.PI/2;wr.position.y=-2.78;newG.add(wr);
+ return {g,oldG,newG,pumps,wat,wr};
+}
+/* ---------- treatment train diorama ---------- */
+const TY=2.4;const STGX={strn:-50,sed:-14,bag:8,cart:30,mon:44};const trnU={};
+function buildTrain(){
+ const base=new TH.Mesh(new TH.BoxGeometry(150,.6,46),M(0xCDD2CE,{roughness:.95}));base.position.set(0,-.3,0);trn.add(base);
+ const crk=new TH.Mesh(new TH.PlaneGeometry(90,46),M(0x2F6F8F,{roughness:.2,transparent:true,opacity:.92}));crk.rotation.x=-Math.PI/2;crk.position.set(120,-.5,0);trn.add(crk);
+ const hw=new TH.Mesh(new TH.BoxGeometry(3,3.6,10),M(0x9AA09C,{roughness:.9}));hw.position.set(72,1.5,0);trn.add(hw);
+ const steel=M(0xB8BFC4,{roughness:.35,metalness:.75}),pvc=M(0x8E969A,{roughness:.4}),pet=M(0x1F5A5C,{roughness:.5}),red=M(0xB0302A);
+ const mainPipe=(x1,x2)=>trn.add(pipe([x1,TY,0],[x2,TY,0],.42,pvc,12));
+ mainPipe(-70,-48);mainPipe(-44,-27);mainPipe(-1,3);mainPipe(14,26);mainPipe(34,40);mainPipe(46,50);mainPipe(58,73);
+ const grp=(k)=>{const g=new TH.Group();trn.add(g);trnU[k]=g;return g;};
+ // NTU chips
+ [[-62,0],[-31,1],[-2,2],[20,3],[40,4]].forEach(([x,i])=>{const nm=['A','1','2','3','B'][i];const l=label(()=>nm+' · '+Math.round(ntuArr()[i])+' NTU',{view:'trn',sc:.62,bgf:ntBg(i),ntu:1});l.position.set(x,.2,6);trn.add(l);});
+ // A tap
+ {const g=grp('A');g.add(pipe([-62,TY,0],[-62,TY+4,0],.2,pvc,8));const v=new TH.Mesh(new TH.SphereGeometry(.5,10,8),red);v.position.set(-62,TY+2,0);g.add(v);g.add(pipe([-62,TY+4,0],[-60,TY+4.6,0],.18,pvc,8));
+  const l=label(()=>T('Raw water','Agua cruda'),{view:'trn',sc:.8,bg:'rgba(142,106,62,.95)'});l.position.set(-62,TY+7,0);g.add(l);mainPipe(-62,-62);}
+ // strainer
+ {const g=grp('strn');const b=new TH.Mesh(new TH.CylinderGeometry(1.1,1.1,2.8,20,1,true),new TH.MeshStandardMaterial({color:0x2E3B42,wireframe:true}));b.position.set(-46,TY+2.1,0);g.add(b);const t=new TH.Mesh(new TH.CylinderGeometry(1.2,1.2,.35,20),steel);t.position.set(-46,TY+3.6,0);g.add(t);
+  const bb=new TH.Mesh(new TH.CylinderGeometry(1.1,.9,1.2,20),steel);bb.position.set(-46,TY+.3,0);g.add(bb);
+  const l=label(()=>T('1 · Strainer','1 · Colador'),{view:'trn',sc:.7});l.position.set(-46,TY+7,0);g.add(l);}
+ // sedimentation baffled tank
+ {const g=grp('sed');const tk=new TH.Mesh(new TH.BoxGeometry(26,6,7),M(0x88A09A,{transparent:true,opacity:.3,depthWrite:false,roughness:.3}));tk.position.set(-14,3.2,0);g.add(tk);
+  g.add(new TH.LineSegments(new TH.EdgesGeometry(tk.geometry),new TH.LineBasicMaterial({color:0x1F5A5C})));g.children[1].position.copy(tk.position);
+  const w=new TH.Mesh(new TH.BoxGeometry(25.6,4.4,6.6),new TH.MeshBasicMaterial({color:0x7A5C36,transparent:true,opacity:.55,depthWrite:false}));w.position.set(-14,2.6,0);g.add(w);g.userData.w=w;
+  [-20,-14,-8].forEach((x,k)=>{const bf=new TH.Mesh(new TH.BoxGeometry(.3,k%2?4:4.4,6.7),M(0x1F5A5C));bf.position.set(x,k%2?4.2:2.8,0);g.add(bf);});
+  const l=label(()=>T('2 · Settling','2 · Sedimentación'),{view:'trn',sc:.85});l.position.set(-14,10,0);g.add(l);}
+ // bag filter vessels
+ {const g=grp('bag');[-3.2,3.2].forEach(dz=>{const v=new TH.Mesh(new TH.CylinderGeometry(1.25,1.25,5.4,24),steel);v.position.set(8,TY+2.2,dz);g.add(v);
+   const lid=new TH.Mesh(new TH.SphereGeometry(1.25,20,10,0,Math.PI*2,0,Math.PI/2),steel);lid.position.set(8,TY+4.9,dz);g.add(lid);
+   const cl=new TH.Mesh(new TH.TorusGeometry(1.3,.12,8,24),pet);cl.rotation.x=Math.PI/2;cl.position.set(8,TY+4.8,dz);g.add(cl);
+   const gg=new TH.Mesh(new TH.CylinderGeometry(.4,.4,.2,16),M(0xF2F2EE));gg.rotation.z=Math.PI/2;gg.position.set(9.4,TY+3.4,dz);g.add(gg);
+   [-.9,.9].forEach(lx=>{const lg=new TH.Mesh(new TH.BoxGeometry(.2,1.8,.2),steel);lg.position.set(8+lx,TY-1.7,dz+lx);g.add(lg);});});
+  g.add(pipe([3,TY,0],[3,TY,-3.2],.35,pvc,10));g.add(pipe([3,TY,0],[3,TY,3.2],.35,pvc,10));g.add(pipe([3,TY,-3.2],[8,TY,-3.2],.35,pvc,10));g.add(pipe([3,TY,3.2],[8,TY,3.2],.35,pvc,10));
+  g.add(pipe([13,TY,-3.2],[13,TY,3.2],.35,pvc,10));g.add(pipe([8,TY,-3.2],[13,TY,-3.2],.35,pvc,10));g.add(pipe([8,TY,3.2],[13,TY,3.2],.35,pvc,10));
+  const l=label(()=>T('3 · Bag filters','3 · Filtros de bolsa'),{view:'trn',sc:.85});l.position.set(8,TY+9,0);g.add(l);}
+ // cartridge / carbon
+ {const g=grp('cart');[-3,0,3].forEach(dz=>{const c=new TH.Mesh(new TH.CylinderGeometry(1,1,4.4,20),M(0x5B7FA6,{roughness:.4,metalness:.4}));c.position.set(30,TY+1.8,dz);g.add(c);const t=new TH.Mesh(new TH.CylinderGeometry(1.1,1.1,.3,20),steel);t.position.set(30,TY+4.1,dz);g.add(t);});
+  g.add(pipe([26,TY,0],[30,TY,0],.35,pvc,10));g.add(pipe([30,TY,-3],[30,TY,3],.3,pvc,10));
+  const l=label(()=>T('4 · Cartridge','4 · Cartucho'),{view:'trn',sc:.85});l.position.set(30,TY+8,0);g.add(l);}
+ // monitoring skid
+ {const g=grp('mon');const cab=new TH.Mesh(new TH.BoxGeometry(5.5,3.4,4),M(0xEDEFEA,{roughness:.5}));cab.position.set(44,1.7,-5);g.add(cab);
+  const mt=new TH.Mesh(new TH.CylinderGeometry(.75,.75,2.4,18),steel);mt.rotation.z=Math.PI/2;mt.position.set(42,TY,0);g.add(mt);const dp=new TH.Mesh(new TH.CylinderGeometry(.5,.5,.2,16),M(0x1F2321));dp.position.set(42,TY+.95,0);g.add(dp);
+  g.add(pipe([46,TY,0],[46,TY+3,0],.18,pvc,8));const bv=new TH.Mesh(new TH.SphereGeometry(.45,10,8),red);bv.position.set(46,TY+1.6,0);g.add(bv);
+  const pr=pipe([44,TY+.5,0],[44,TY+2.5,2.6],.1,M(0x1F2321),6);g.add(pr);
+  const lb=label(()=>T('Meter + sample B','Medidor + toma B'),{view:'trn',sc:.85,bg:'rgba(142,106,62,.95)'});lb.position.set(46,TY+7.5,0);g.add(lb);}
+ // DERM valve
+ {const g=grp('valve');const body=new TH.Mesh(new TH.SphereGeometry(1.15,18,14),M(0x9AA3A8,{metalness:.8,roughness:.3}));body.position.set(54,TY,0);g.add(body);
+  const h=new TH.Mesh(new TH.BoxGeometry(3.4,.3,.4),red);h.position.set(54,TY+1.3,0);g.add(h);g.userData.h=h;
+  const ring=new TH.Mesh(new TH.TorusGeometry(1.9,.28,10,28),new TH.MeshBasicMaterial({color:0xC0392B}));ring.position.set(54,TY,0);g.add(ring);g.userData.ring=ring;
+  const l=label(()=>S.auth?T('DERM valve · open (sim.)','Válvula DERM · abierta (sim.)'):T('DERM valve · CLOSED','Válvula DERM · CERRADA'),{view:'trn',sc:.9,bg:'rgba(138,59,23,.92)'});l.position.set(54,TY+6,0);g.add(l);g.userData.lb=l;}
+ // outfall + C
+ {const g=grp('out');const l=label(()=>'Outfall',{view:'trn',sc:.7});l.position.set(70,TY+5,0);g.add(l);
+  g.add(pipe([73,TY,0],[76,TY,0],.42,pvc,12));
+  const cT=new TH.Group();cT.add(pipe([76,TY-.4,8],[76,.6,8],.2,pvc,8));const cv=new TH.Mesh(new TH.SphereGeometry(.5,10,8),red);cv.position.set(76,1.6,8);cT.add(cv);
+  const cl=label(()=>T('C · Creek (to measure)','C · Creek (por medir)'),{view:'trn',sc:.8,bg:'rgba(142,106,62,.95)'});cl.position.set(78,6,8);cT.add(cl);g.add(cT);
+  const il=label(()=>'Indian Creek · '+T('NOT confirmed','NO confirmado'),{view:'trn',sc:.9,bg:'rgba(47,111,143,.92)'});il.position.set(112,4,-6);g.add(il);}
+}
+/* ---------- scenario / state application ---------- */
+function applyScn(){
+ const now=S.scn==='now',perm=S.scn==='perm';
+ pipeMats.forEach(m=>{m.color.set(now?0x8A7F6A:0x1F5A5C);m.emissive.set(0x000000);});
+ ohLines.material.color.set(perm?0x1F5A5C:0x7A847F);ohLines.material.opacity=perm?.95:.45;
+ const opN=nOp();
+ stationG.forEach((o,i)=>{o.oldG.visible=now;o.newG.visible=!now;const nHere=now?0:Math.floor(opN/4)+(i<opN%4?1:0);o.nHere=nHere;o.pumps[0].visible=true;o.pumps[1].visible=perm||nHere>=2;o.q.visible=now;o.lb.userData.view='gar';});
+ skidG.forEach(s=>s.visible=!now);
+ panelG.forEach(p=>{p.userData.pb.material.color.set(now?0x8E948F:0xE4E8E4);});
+ valveG.forEach(v=>{v.userData.ring.material.color.set(S.auth?0x1F8A5C:0xC0392B);v.userData.h.rotation.y=S.auth?0:Math.PI/2;});
+ const tv=trnU.valve;if(tv){tv.userData.ring.material.color.set(S.auth?0x1F8A5C:0xC0392B);tv.userData.h.rotation.y=S.auth?0:Math.PI/2;}
+ trnU.cart&&setStageOpacity();relabel();
+}
+function setStageOpacity(){const hl=G.on&&G.step&&G.step.stg;['strn','sed','bag','cart','mon'].forEach(k=>{const g=trnU[k];if(!g)return;let o=S[k]===false?.22:1;if(k==='mon')o=1;if(hl)o=hl.includes(k)?1:Math.min(o,.25);g.traverse(m=>{if(m.material&&!m.isSprite&&!m.isLine){if(m.userData.o0==null)m.userData.o0=m.material.transparent?m.material.opacity:1;m.material.transparent=true;m.material.opacity=m.userData.o0*o;m.material.depthWrite=o>=.99&&m.userData.o0>=.99;}});});}
+/* ---------- camera ---------- */
+const CFG={cur:null,view:'gar'};
+function aim(cfg,view,imm){CFG.cur=cfg;CFG.view=view;let [x,z,fw,az,el,off]=cfg;const ox=view==='trn'?TX:0,oz=view==='trn'?TZ:0;const asp=cam.aspect||1,vf=cam.fov*Math.PI/180;if(view==='gar'&&asp<1&&fw>170){az+=90;fw*=.5;}if(view==='trn'&&asp<1&&fw>110)fw=Math.max(110,fw*.78);
+ const d=Math.max(fw/2/(Math.tan(vf/2)*asp),(fw*.62)/2/Math.tan(vf/2))*1.05;const a=az*Math.PI/180,e=el*Math.PI/180;
+ const look=V3(x+ox,view==='trn'?1.5:0,z+oz);const pos=look.clone().add(V3(Math.sin(a)*Math.cos(e),Math.sin(e),Math.cos(a)*Math.cos(e)).multiplyScalar(d));
+ aim.pos=pos;aim.look=look;vOffT=(off&&asp<1.3&&G.on&&!G.min)?1:0;drive=true;if(imm){cam.position.copy(pos);controls.target.copy(look);}}
+const VIEWCFG={gar:[-1.5,-35,250,0,44,false],trn:[2,0,128,-12,36,false]};
+function setView(v,imm){S.view=v;aim(VIEWCFG[v],v,imm);ui();}
+function resize(){if(!ren)return;const h=$('tv');const w=h.clientWidth,hh=h.clientHeight;if(!w||!hh)return;ren.setSize(w,hh,false);cam.aspect=w/hh;cam.updateProjectionMatrix();if(CFG.cur&&drive)aim(CFG.cur,CFG.view,!inited);}
+/* ---------- UI ---------- */
+const SCN={now:[T('Today','Hoy')],int:[T('Interim','Interino')],perm:[T('Permanent','Permanente')]};
+ const NT={f:{strn:.9,sed:.45,bag:.5,cart:.5}};
+function ntuArr(){let v=+$('tNtu').value;const o=[v];['strn','sed','bag','cart'].forEach(k=>{if(S[k])v*=NT.f[k];o.push(v);});return o;}
+const ntBg=i=>()=>ntuArr()[i]<=+$('tRef').value?'rgba(36,110,76,.95)':'rgba(142,106,62,.95)';
+function ntuUI(){const v=ntuArr(),ref=+$('tRef').value;$('tNtuv').textContent=v[0]+' NTU';$('tRefv').textContent=ref+' NTU';
+ $('tLblNtu').textContent=T('Raw-water turbidity at A (illustrative)','Turbidez del agua cruda en A (ilustrativa)');$('tLblRef').textContent=T('Illustrative reference (NOT a DERM limit)','Referencia ilustrativa (NO es límite de DERM)');
+ const b=$('tBars');b.hidden=!(S.view==='trn'&&S.v3);if(b.hidden)return;const mx=Math.max(v[0],ref,1);const nm=['A','1','2','3','4'];
+ b.innerHTML='<b>'+T('Turbidity by stage','Turbidez por etapa')+'</b>'+v.map((x,i)=>`<div class="tbr"><span style="text-align:left">${nm[i]}</span><i style="width:${Math.max(4,x/mx*100)}%;background:${x<=ref?'#3C8F63':'#9C7B4F'}"></i><span>${Math.round(x)}</span></div>`).join('')+`<u>${T('Reduction','Reducción')} ${Math.round((1-v[4]/v[0])*100)}% · ref ${ref}</u>`;
+ labels.forEach(l=>{if(l.userData.o.ntu)drawLabel(l);});}
+/* ---- Esquema ilustrativo del tren (SVG) con NTU por etapa ---- */
+const SCH={sel:null};const SK={s:'strn',d:'sed',b:'bag',c:'cart'};
+const schCol=n=>{const t=Math.min(1,Math.log(1+n)/Math.log(401));const a=[196,226,232],b=[122,92,54];return 'rgb('+a.map((v,i)=>Math.round(v+(b[i]-v)*t)).join(',')+')';};
+function schStages(){return [
+ {k:'s',n:'1',t:T('Strainer','Colador'),d:T('Catches leaves, plastic and coarse solids so they do not damage the rest. It barely lowers NTU, but protects the equipment.','Retiene hojas, plástico y sólidos gruesos para que no dañen el resto. Casi no baja los NTU, pero protege los equipos.')},
+ {k:'d',n:'2',t:T('Settling','Sedimentación'),d:T('Baffled tank: water slows down and particles drop to the bottom during the retention time (e.g. 30 min). It lowers NTU the most.','Tanque con baffles: el agua frena y las partículas caen al fondo durante el tiempo de retención (p. ej. 30 min). Es la etapa que más baja los NTU.')},
+ {k:'b',n:'3',t:T('Bag / geotextile','Bolsas / geotextil'),d:T('Two parallel vessels with filter bags catch fine particles; bags are changed when differential pressure rises.','Dos vasos en paralelo con bolsa filtrante atrapan partículas finas; se cambian cuando sube la presión diferencial.')},
+ {k:'c',n:'4',t:T('Cartridge / carbon','Cartucho / carbón'),d:T('Final polish, only if the lab or DERM require it (e.g. color, hydrocarbons, metals).','Pulido final, solo si el laboratorio o DERM lo exigen (por ejemplo color, hidrocarburos o metales).')}];}
+function schLayout(P){return P?{vb:[420,720],A:[62,58],t2:[250,252],t4:[105,438],C:[350,440],red:[410,30],
+  st:{s:[105,160],d:[315,160],b:[315,340],c:[105,340]},
+  pipes:[[[10,160],[60,160]],[[150,160],[240,160]],[[390,160],[408,160],[408,340],[382,340]],[[251,340],[172,340]],[[41,340],[20,340],[20,540],[30,540]],[[180,540],[213,540]]],
+  valve:[235,540],vp:[[257,540],[290,540]],creek:[290,470,120,160],meter:[105,540],slab:'M6 70 L414 70 L414 650 L6 650 Z'}
+ :{vb:[760,600],A:[100,110],crop:'10 40 750 540',t2:[410,228],t4:[410,418],C:[670,410],red:[740,100],
+  st:{s:[300,150],d:[520,150],b:[520,330],c:[300,330]},
+  pipes:[[[70,150],[255,150]],[[345,150],[475,150]],[[565,150],[620,150],[620,330],[570,330]],[[470,330],[345,330]],[[255,330],[170,330],[170,480],[270,480]],[[420,480],[560,480]]],
+  valve:[580,480],vp:[[600,480],[600,480]],creek:[600,430,140,130],meter:[345,480],slab:'M40 80 L720 80 L740 560 L20 560 Z'};}
+function schDraw(){const host=$('tSch');if(!host||host.hidden)return;const P=host.clientHeight>host.clientWidth*1.05;const L=schLayout(P);
+ const v=ntuArr(),ref=+$('tRef').value,ST=schStages(),guide=G.on&&G.step&&G.step.stg;const hasSel=!!guide&&G.step.stg.length>0;const hl=k=>!hasSel||G.step.stg.includes(SK[k])||(k==='m'&&G.step.stg.includes('mon'));
+ const NSv='http://www.w3.org/2000/svg';let o='';const A=(a)=>Object.entries(a).map(([k,x])=>`${k}="${x}"`).join(' ');
+ const chip=(x,y,lab,val,w)=>{const ok=val<=ref;return `<g><rect ${A({x:x-w/2,y:y-20,width:w,height:40,rx:10,fill:'#17231F','fill-opacity':.93,stroke:ok?'#6FBF8E':'#E0A15A','stroke-width':2})}/><text ${A({x,y:y-5,'text-anchor':'middle',fill:'#C9D3CE','font-size':11})}>${lab}</text><text ${A({x,y:y+13,'text-anchor':'middle',fill:'#fff','font-size':15,'font-weight':700})}>${Math.round(val)} NTU</text></g>`;};
+ const pipe=(pts,c,an)=>{const p=pts.map(q=>q.join(',')).join(' ');return `<polyline points="${p}" fill="none" stroke="#8E969A" stroke-width="16" stroke-linejoin="round" stroke-linecap="round"/><polyline points="${p}" fill="none" stroke="${c}" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"/>`+(an?`<polyline class="tflow" points="${p}" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="3" stroke-linejoin="round"/>`:'');};
+ o+=`<path d="${L.slab}" fill="#F7F8F5" stroke="#C9CFC8" stroke-width="2" opacity=".92"/>`;
+ const cv=[v[0],v[1],v[2],v[3],v[4],v[4]];L.pipes.forEach((p,i)=>o+=pipe(p,schCol(cv[i]),1));
+ const [cx,cy,cw,ch]=L.creek;o+=`<rect x="${cx}" y="${cy}" width="${cw}" height="${ch}" rx="10" fill="#4F9FC9" opacity=".88"/><path d="M${cx+8} ${cy+40} q18 -9 36 0 t36 0 t36 0" stroke="#fff" stroke-opacity=".5" fill="none" stroke-width="2"/><text x="${cx+cw/2}" y="${cy+ch-20}" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">Indian Creek</text><text x="${cx+cw/2}" y="${cy+ch-8}" text-anchor="middle" fill="#fff" font-size="9">${T('(discharge NOT confirmed)','(descarga NO confirmada)')}</text>`;
+ if(S.auth)o+=pipe(L.vp,schCol(v[4]),1);
+ const idx={s:0,d:1,b:2,c:3};
+ ST.forEach(s=>{const [x,y]=L.st[s.k],on=S[SK[s.k]]!==false,vin=v[idx[s.k]],vout=v[idx[s.k]+1];let g='';
+  g+=`<rect class="tgh" x="${x-84}" y="${y-74}" width="168" height="150" rx="18"/>`;
+  if(s.k==='s'){g+=`<rect ${A({x:x-45,y:y-35,width:90,height:70,rx:10,fill:'#9AA3A8',stroke:'#2E3B42','stroke-width':2})}/>`;for(let i=-3;i<=3;i++)g+=`<line x1="${x+i*11}" y1="${y-30}" x2="${x+i*11}" y2="${y+30}" stroke="#2E3B42" stroke-width="2"/>`;g+=`<text x="${x}" y="${y+4}" text-anchor="middle" font-size="10" fill="#fff">${T('basket','cesta')}</text>`;}
+  if(s.k==='d'){g+=`<rect ${A({x:x-75,y:y-42,width:150,height:84,rx:8,fill:'#E6EEEC',stroke:'#2E3B42','stroke-width':2})}/><rect x="${x-73}" y="${y+40-(on?60:30)}" width="146" height="${on?60:30}" fill="${schCol(vin)}" opacity=".9"/>`;[-25,25].forEach(b=>g+=`<line x1="${x+b}" y1="${y-42}" x2="${x+b}" y2="${y+16}" stroke="#2E3B42" stroke-width="3"/>`);g+=`<rect x="${x-73}" y="${y+30}" width="146" height="10" fill="#7A5C36" opacity="${Math.min(.9,vin/200+.15)}"/><text x="${x}" y="${y-48}" text-anchor="middle" font-size="9" fill="#5E6E66">${T('sediment settles','sedimento al fondo')}</text>`;}
+  if(s.k==='b'){[-38,38].forEach(dx=>{g+=`<rect ${A({x:x+dx-26,y:y-46,width:52,height:90,rx:14,fill:'#2F6F8F',stroke:'#17231F','stroke-width':2})}/><rect x="${x+dx-18}" y="${y-30}" width="36" height="60" rx="10" fill="${schCol(vout)}" opacity=".9"/><rect x="${x+dx-9}" y="${y-52}" width="18" height="8" fill="#B8BFC4"/>`;});}
+  if(s.k==='c'){[-52,-18,18,52].forEach((dx,i)=>{g+=`<rect ${A({x:x+dx-12,y:y-42,width:24,height:84,rx:6,fill:i<2?'#C8D6D6':'#2E3B42','fill-opacity':i<2?.7:.95,stroke:'#17231F','stroke-width':2})}/>`;});}
+  g+=`<circle cx="${x-72}" cy="${y-52}" r="13" fill="#1F5A5C"/><text x="${x-72}" y="${y-47}" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">${s.n}</text><text x="${x}" y="${y+66}" text-anchor="middle" font-size="12" font-weight="600" fill="#17231F">${s.t}${on?'':' ('+T('off','apagado')+')'}</text>`;
+  o+=`<g class="tst${SCH.sel===s.k?' tsel':''}${on?'':' toff'}${hl(s.k)?'':' tdim'}" data-st="${s.k}">${g}</g>`;});
+ // meter + B
+ {const [mx,my]=L.meter;const ok=v[4]<=ref;o+=`<g class="${hl('m')?'':'tdim'}"><rect ${A({x:mx-75,y:my-30,width:150,height:60,rx:10,fill:'#E6EEEC',stroke:'#2E3B42','stroke-width':2})}/><circle cx="${mx-45}" cy="${my}" r="18" fill="#fff" stroke="#2E3B42" stroke-width="2"/><text x="${mx-45}" y="${my+4}" text-anchor="middle" font-size="10" fill="#17231F">GPM</text><text x="${mx+25}" y="${my-12}" text-anchor="middle" font-size="10" fill="#5E6E66">${T('meter + sample B','medidor + toma B')}</text><rect x="${mx-10}" y="${my-2}" width="70" height="22" rx="6" fill="#17231F"/><text x="${mx+25}" y="${my+13}" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">${Math.round(v[4])} NTU</text><circle cx="${mx+62}" cy="${my-14}" r="6" fill="${ok?'#6FBF8E':'#E0A15A'}"/></g>`;}
+ // DERM valve
+ {const [x,y]=L.valve,c=S.auth?'#3C8F63':'#B0302A';o+=`<g class="${G.on&&G.step&&G.step.tr&&!G.step.stg?'':(hasSel&&!G.step.stg.includes('mon')?'tdim':'')}"><circle cx="${x}" cy="${y}" r="22" fill="none" stroke="${c}" stroke-width="6"/><line x1="${x-14}" y1="${y}" x2="${x+14}" y2="${y}" stroke="${c}" stroke-width="6" ${S.auth?`transform="rotate(90 ${x} ${y})"`:''}/><text x="${x}" y="${y-32}" text-anchor="middle" font-size="11" font-weight="700" fill="${c}">${S.auth?T('OPEN (sim.)','ABIERTA (sim.)'):'🔒 '+T('CLOSED','CERRADA')}</text></g>`;}
+ // chips
+ const showAll=!hasSel;o+=`<g class="${showAll?'':'tdimc'}">`+chip(L.A[0],L.A[1],T('A · raw water','A · agua cruda'),v[0],112)+chip(L.t2[0],L.t2[1],T('after 2','tras 2'),v[2],88)+chip(L.t4[0],L.t4[1],T('after 4','tras 4'),v[4],88)+`<g><rect ${A({x:L.C[0]-66,y:L.C[1]-20,width:132,height:40,rx:10,fill:'#17231F','fill-opacity':.93,stroke:'#C9D3CE','stroke-width':2,'stroke-dasharray':'4 3'})}/><text x="${L.C[0]}" y="${L.C[1]-5}" text-anchor="middle" fill="#C9D3CE" font-size="11">${T('C · receiving water','C · agua receptora')}</text><text x="${L.C[0]}" y="${L.C[1]+13}" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">${T('to measure (DERM)','por medir (DERM)')}</text></g></g>`;
+ o+=`<text x="${L.red[0]}" y="${L.red[1]}" text-anchor="end" font-size="13" font-weight="700" fill="#1F5A5C">${T('Total reduction','Reducción total')}: ${Math.round((1-v[4]/v[0])*100)}%</text>`;
+ let vbs=L.crop||('0 0 '+L.vb[0]+' '+L.vb[1]),sty='';
+ if(P&&G.on){const keys=hasSel?G.step.stg:['strn','sed','bag','cart'];const pts=[];Object.keys(SK).forEach(k=>{if(keys.includes(SK[k]))pts.push(L.st[k]);});if(keys.includes('mon')){pts.push(L.meter,L.valve);}
+  if(pts.length){const xs=pts.map(p=>p[0]),ys=pts.map(p=>p[1]);const fx=(Math.min(...xs)+Math.max(...xs))/2,fy=(Math.min(...ys)+Math.max(...ys))/2,spread=Math.max(Math.max(...xs)-Math.min(...xs),Math.max(...ys)-Math.min(...ys));
+   const W=host.clientWidth,H=host.clientHeight,cardH=($('tCard').hidden?0:$('tCard').offsetHeight)+14;const vbW=Math.max(300,spread+330),sc=W/vbW,vbH=H/sc;const cyPx=(60+(H-cardH))/2;
+   vbs=(fx-vbW/2).toFixed(1)+' '+(fy-cyPx/sc).toFixed(1)+' '+vbW.toFixed(1)+' '+vbH.toFixed(1);sty='style="position:absolute;inset:0;padding:0"';}}
+ host.innerHTML=`<svg ${sty} viewBox="${vbs}" preserveAspectRatio="xMidYMin meet" role="img" aria-label="${T('Treatment train schematic','Esquema del tren de tratamiento')}">${o}</svg><div class="tsinfo" id="tSchInfo"></div>`;
+ const inf=$('tSchInfo'),s=ST.find(z=>z.k===SCH.sel);inf.hidden=G.on||!s;if(s&&!G.on)inf.innerHTML=`<b>${s.n} · ${s.t}: ${Math.round(v[idx[s.k]])} → ${Math.round(v[idx[s.k]+1])} NTU</b>${s.d}`;
+ host.querySelectorAll('[data-st]').forEach(g=>g.onclick=()=>{SCH.sel=SCH.sel===g.dataset.st?null:g.dataset.st;schDraw();});}
+function ui(){if(gar&&trn){gar.visible=S.view!=='trn';trn.visible=S.view==='trn';}ntuUI();{const on=S.view==='trn'&&!S.v3;$('tSch').hidden=!on;$('tGL').style.visibility=on?'hidden':'visible';const sw=$('tSw');sw.hidden=S.view!=='trn';sw.textContent=S.v3?T('◧ Schematic','◧ Esquema'):T('◨ 3D view','◨ Vista 3D');if(on)schDraw();}
+ $('tScn').innerHTML=[['now',T('Today','Hoy')],['int',T('Interim','Interino')],['perm',T('Permanent','Permanente')]].map(([k,t])=>`<button type="button" data-scn="${k}" aria-pressed="${S.scn===k}">${t}</button>`).join('');
+ $('tVw').innerHTML=[['gar',T('Garage','Garaje')],['trn',T('Filters','Filtros')]].map(([k,t])=>`<button type="button" data-vw="${k}" aria-pressed="${S.view===k}">${t}</button>`).join('');
+ $('tScn').querySelectorAll('[data-scn]').forEach(b=>b.onclick=()=>{guideExit();S.scn=b.dataset.scn;held=0;ptsA=[];ptsB=[];applyScn();ui();});
+ $('tVw').querySelectorAll('[data-vw]').forEach(b=>b.onclick=()=>{guideExit();setView(b.dataset.vw);});
+ $('tSrc').innerHTML=[['rain',T('Stormwater','Pluvial')],['gw',T('Groundwater','Subterránea')],['mix',T('Mixed','Mixta')]].map(([k,t])=>`<button type="button" class="tpill" data-src="${k}" aria-pressed="${S.src===k}">${t}</button>`).join('');
+ $('tSrc').querySelectorAll('[data-src]').forEach(b=>b.onclick=()=>{guideExit();S.src=b.dataset.src;ui();});
+ $('tSumSet').textContent=T('Settings & simulation','Ajustes y simulación');$('tSumHyd').textContent=T('Hydraulics (illustrative)','Hidráulica (ilustrativa)');$('tSumChk').textContent=T('DERM checklist & Nov 5 visits','Lista DERM y visitas del 5/11');
+ $('tLblSrc').textContent=T('Water source','Origen del agua');
+ $('tLblRain').textContent=T('Rain / inflow (relative; 100% = 8 pumps nominal)','Lluvia / entrada (relativa; 100% = 8 bombas nominal)');
+ $('tLblQ').textContent=T('Flow per pump (P-200: 35 GPM @70 ft · 50 GPM max @10 ft)','Caudal por bomba (P-200: 35 GPM @70 ft · 50 GPM máx @10 ft)');
+ $('tLblN').textContent=S.scn==='now'?T('Pumps operating (reported: fixed)','Bombas operando (reportado: fijo)'):T('Pumps operating (TBD by engineer)','Bombas operando (por definir por el ingeniero)');$('tN').disabled=S.scn==='now';
+ $('tLblR').textContent=T('Assumed retention time','Tiempo de retención supuesto');
+ $('tN0').textContent=T('Strainer','Colador');$('tN1').textContent=T('Settling','Sedimentación');$('tN2').textContent=T('Bag / geotextile','Bolsas / geotextil');$('tN3').textContent=T('Cartridge / carbon','Cartucho / carbón');
+ $('tAuth').textContent=S.auth?T('Simulating: DERM authorized','Simulando: DERM autorizado'):T('Simulate DERM authorization','Simular autorización de DERM');$('tAuth').setAttribute('aria-pressed',String(S.auth));
+ $('tPlay').textContent=S.play?T('Pause','Pausar'):T('Play','Reproducir');
+ const li2=[['r',T('Not filed','No solicitado'),T('Class V temporary dewatering permit — engineer report: method, discharge location, testing, approvals','Permiso Class V de desagüe temporal — reporte del ingeniero: método, ubicación de descarga, pruebas, aprobaciones')],
+  ['r',T('No authorization','Sin autorización'),T('Discharge to Indian Creek not confirmed; an existing pipe/outfall is not permission to use it','Descarga a Indian Creek no confirmada; una tubería/outfall existente no es permiso para usarla')],
+  ['a',T('To define','Por definir'),T('Stormwater vs groundwater vs mixed — changes the permitting path. Class V ≠ permanent discharge','Pluvial vs subterránea vs mixta — cambia la ruta de permisos. Class V ≠ descarga permanente')],
+  ['g',T('Proposed','Propuesto'),T('Pretreatment (strainer → sediment → filtration → sampling) before any authorized discharge; engineer validates','Pretratamiento (colador → sedimentos → filtración → muestreo) antes de toda descarga autorizada; lo valida el ingeniero')],
+  ['a',T('To define','Por definir'),T('Sampling A/B/C, parameters, frequency and limits — set by DERM, not by this model','Muestreo A/B/C, parámetros, frecuencia y límites — los fija DERM, no este modelo')],
+  ['a',T('Board','Junta'),T('Formal Board decision on the interim approach not verified; concept approval ≠ construction authorization','Decisión formal de la Junta sobre el interino no verificada; aprobar el concepto ≠ autorizar la obra')],
+  ['a',T('Not confirmed','Sin confirmar'),T('BC2526722 issuance; separate plumbing/electrical permits may apply to pumps','Emisión de BC2526722; pueden aplicar permisos de plomería/electricidad para las bombas')],
+  ['a',T('To verify','Por verificar'),T('Reported suspension of portable pumping; current state of hoses, turbidity barrier and PVC discharge lines','Suspensión reportada del bombeo portátil; estado actual de mangueras, barrera de turbidez y líneas PVC')]];
+ $('tList').innerHTML=li2.map(([c,s,t])=>`<li><span class="chip ${c}">${s}</span><span>${t}</span></li>`).join('');
+ const vis=[T('U.S.A Plumbing & Trenchless · 9:30–10:30 AM — CIPP feasibility (P-001.1, P-001D, P-001), CCTV, quantities','U.S.A Plumbing & Trenchless · 9:30–10:30 AM — factibilidad CIPP (P-001.1, P-001D, P-001), CCTV, cantidades'),T('Alex Cajigas · 10:30 AM (confirm time) — pump inventory, capacity, controls, discharge route, environmental scope','Alex Cajigas · 10:30 AM (confirmar hora) — inventario de bombas, capacidad, controles, ruta de descarga, alcance ambiental'),T('Electrical (Underground Hydronics): scope and timing to be confirmed','Eléctrico (Underground Hydronics): alcance y hora por confirmar')];
+ $('tList2').innerHTML=vis.map(t=>`<li><span class="chip a">${T('Scheduled','Programada')}</span><span>${t}</span></li>`).join('');
+ $('tFoot').textContent=T('Illustrative 3D model (cutaway: stations are raised and enlarged 3.2× to be readable; in reality they sit below the slab). Pumps modeled after the Liberty D3648LSG203 duplex (RJM P-102 / P-200); plan geometry from RJM 25-009. The treatment train is a concept for engineer/DERM review — not an approved design, permit, or authorization to pump or discharge.','Modelo 3D ilustrativo (vista de corte: las estaciones se elevan y amplían 3.2× para leerse; en realidad están bajo la losa). Bombas modeladas según el dúplex Liberty D3648LSG203 (RJM P-102 / P-200); geometría en planta de RJM 25-009. El tren de tratamiento es un concepto para revisión del ingeniero/DERM — no es diseño aprobado, permiso ni autorización para bombear o descargar.');
+ const b=$('tBan');b.className='tban'+(S.auth?' ok':'');b.textContent=S.auth?T('SIMULATION — not an approval','SIMULACIÓN — no es aprobación'):T('NO DISCHARGE AUTHORIZED','SIN AUTORIZACIÓN DE DESCARGA');
+ $('tHint').textContent=T('Drag to rotate · pinch to zoom · tap a pump station','Arrastra para girar · pellizca para acercar · toca una estación');
+ $('tgStart').textContent=T('▶ Guided tour','▶ Guía interactiva');$('tgStart').hidden=G.on;
+ $('tQv').textContent=S.q+' GPM';$('tNv').textContent=nOp()+' / '+planned();$('tRainv').textContent=S.rain+'%';kpis();if(inited){applyScn();}}
+function kpis(){const Q=capQ(),Vv=Q*S.ret;const br=Q<=50?T('0–50 GPM: compact bag/cartridge + containment','0–50 GPM: bolsa/cartucho compacto + contención'):Q<=150?T('50–150 GPM: sedimentation + geotextile/filtration','50–150 GPM: sedimentación + geotextil/filtración'):Q<=500?T('150–500 GPM: engineered sedimentation + filtration (± vortex)','150–500 GPM: sedimentación + filtración diseñadas (± vórtice)'):T('500+ GPM: modular parallel treatment','500+ GPM: tratamiento modular en paralelo');
+ const f=n=>n.toLocaleString(LANG==='es'?'es-US':'en-US');
+ $('tKpi').innerHTML=[[T('Flow at '+nOp()+' pumps','Caudal con '+nOp()+' bombas'),Q+' GPM'],[T('Settling volume V=Q·t','Volumen sedimentación V=Q·t'),f(Vv)+' gal'],[T('Held 1 h if locked','Retenido 1 h si bloqueado'),f(Q*60)+' gal'],[T('Pumps (reported/planned)','Bombas (reportado/plan)'),(S.scn==='now'?'2 / 5':nOp()+' / 8')]].map(([a,b])=>`<div><small>${a}</small><b>${b}</b></div>`).join('')+`<div style="grid-column:1/-1"><small>${T('Screening bracket (illustrative, not DERM criteria)','Rango de screening (ilustrativo, no criterio DERM)')}</small><b style="font-size:.86rem">${br}</b></div>`;
+ $('tNote').textContent=T('"2 operating" is the reported field condition; which pumps, standby capacity and real performance are unverified. 35 GPM @70 ft is a catalog line read from P-200 and 50 GPM is the catalog maximum at 10 ft — neither is a design duty point; no pump should be purchased from this flow estimate. Final sizing needs pump curves, TDH, solids loading and lab results from the engineer of record.','"2 operando" es la condición reportada en campo; cuáles bombas, capacidad de respaldo y desempeño real no están verificados. 35 GPM @70 ft es una línea de catálogo leída de P-200 y 50 GPM es el máximo de catálogo a 10 ft — ninguno es punto de operación de diseño; no se debe comprar ninguna bomba con este estimado de caudal. El dimensionamiento final requiere curvas de bomba, TDH, carga de sólidos y laboratorio del ingeniero de récord.');}
+/* ---------- guided tour ---------- */
+const STEPS=[
+{v:'gar',scn:'now',rain:50,cam:[-1.5,-13,290,0,56],t:['What you are looking at','Qué estás viendo'],x:['This is the lower garage of 5660 in 3D, built from the real RJM 25-009 plans (Miranda). North is up and the blue band is Indian Creek. This guide shows how water moves and what is still missing before anything can be discharged.','Es el garaje inferior de 5660 en 3D, construido con los planos reales de RJM 25-009 (Miranda). El norte está arriba y la franja azul es Indian Creek. Esta guía explica cómo se mueve el agua y qué falta antes de poder descargar nada.']},
+{v:'gar',scn:'now',rain:70,cam:[96,-30,95,18,52,true],rg:'drainsE',t:['Water enters through the floor drains','El agua entra por los drenajes'],x:['The dark discs are floor drains. When it rains, water enters through them (the blue ripples). The dots running along the pipe are water on its way to a pumping station.','Los discos oscuros son los drenajes de piso. Cuando llueve, el agua entra por ellos (las ondas azules). Los puntos que corren por la tubería son agua en camino hacia una estación de bombeo.']},
+{v:'gar',scn:'now',rain:70,cam:[97,-68,55,24,46,true],rg:[[96.6,-87.2,6]],t:['Each group of drains goes to a station','Cada grupo de drenajes va a una estación'],x:['Underground pipes bring each group of drains to a pumping station — here, station #1. Dashed lines are schematic routes; the real layout is on sheet P-001D.','La tubería subterránea lleva cada grupo de drenajes a una estación de bombeo; aquí, la #1. Las líneas punteadas son rutas esquemáticas: el trazado real está en la lámina P-001D.']},
+{v:'gar',scn:'now',rain:50,cam:[-5,-72,250,0,52,true],rg:'stations',t:['Pumping stations and control panels','Estaciones de bombeo y paneles'],x:['There are four stations (#1 to #4), each with pumps and a control panel (⚡). Per sheet P-102 the pumps push the water north through a 2-inch discharge pipe that ties into the existing outflow piping.','Hay cuatro estaciones (#1 a #4), cada una con bombas y un panel de control (⚡). Según la lámina P-102, las bombas empujan el agua hacia el norte por una descarga de 2 pulgadas que se conecta a la tubería de salida existente.']},
+{v:'gar',scn:'now',rain:100,cam:[-1.5,-13,290,0,56],t:['Today: 2 pumps operating','Hoy: 2 bombas operando'],x:['Two pumps are reported operating with a control system, out of about 5 under discussion. We do not know which ones or their real capacity, so the stations show “?”. In heavy rain the blue puddles illustrate water piling up when more comes in than two pumps can remove. Illustrative only.','Se reportan 2 bombas operando con control, de unas 5 en discusión. No sabemos cuáles ni su capacidad real, por eso las estaciones muestran «?». Con lluvia fuerte, los charcos azules ilustran agua acumulándose cuando entra más de lo que dos bombas pueden sacar. Es solo ilustrativo.']},
+{v:'gar',scn:'now',rain:50,cam:[-5,-92,250,0,42,true],rg:'valves',t:['Why we cannot simply discharge','Por qué no se puede simplemente descargar'],x:['At the north edge each outlet has a closed valve (red ring): today there is no authorization to discharge to Indian Creek. The DERM Class V permit has not been filed, and an existing pipe or outfall does not mean it can be used.','En el borde norte, cada salida tiene una válvula cerrada (anillo rojo): hoy no hay autorización para descargar a Indian Creek. El permiso Class V de DERM no está solicitado, y que exista un tubo o un outfall no significa que se pueda usar.']},
+{v:'trn',scn:'int',rain:50,cam:[30,0,150,-12,40,true],tr:[[54,TY,0,5]],t:['When the outlet is closed','Cuando la salida está cerrada'],x:['With the DERM valve closed, treated water arrives and stops: it would pile up behind the valve. That is why treatment and authorization go together — without both, nothing is discharged to the creek.','Con la válvula de DERM cerrada, el agua tratada llega y se detiene: se acumularía detrás de la válvula. Por eso el tratamiento y la autorización van juntos: sin ambos, no se descarga nada al creek.']},
+{v:'gar',scn:'int',rain:50,cam:[55,-30,150,14,56,true],t:['Interim phase: repair the pipe from the inside','Fase interina: reparar la tubería por dentro'],x:['CIPP relining inserts a resin liner inside the existing cast-iron pipe without opening the floor (the pipes turn green and shine). CIPP wash and curing water is captured and disposed of separately — never sent to the drains or the creek. U.S.A Plumbing still has to confirm quantities.','El relining CIPP inserta un forro de resina dentro de la tubería de hierro fundido existente sin abrir el piso (la tubería se vuelve verde y brilla). El agua de limpieza y curado del CIPP se captura y se dispone aparte: nunca va al drenaje ni al creek. U.S.A Plumbing aún debe confirmar cantidades.']},
+{v:'gar',scn:'int',rain:50,cam:[40,-86,24,32,48,true],rg:[[38.1,-87.5,6],[56,-95.8,3]],t:['Pumps and controls compatible with the permanent design','Bombas y controles compatibles con el permanente'],x:['Modeled after the Liberty D3648 duplex in P-102/P-200: fiberglass basin, grinder pumps on guide rails, check and ball valves. One investment, two phases: choose pumps and controls by the permanent design criteria so they stay later. No pump is bought from this estimate — Miranda confirms it.','Modelado según el dúplex Liberty D3648 de P-102/P-200: tanque de fibra, bombas trituradoras sobre rieles, válvulas de retención y de bola. Una inversión en dos fases: elegir bombas y controles con los criterios del diseño permanente para que luego se queden. Ninguna bomba se compra con este estimado: lo confirma Miranda.']},
+{v:'trn',scn:'int',rain:50,cam:[-40,0,72,-22,34,true],stg:['strn','sed'],tr:[[-62,TY+2,0,3]],t:['Treatment: sample A, strainer, settling','Tratamiento: toma A, colador y sedimentación'],x:['Before any authorized discharge the water is treated. A is the raw-water sample. The strainer protects the pumps and the baffled tank lets solids settle. Size comes from V = Q × time; the time is an assumption, not a DERM requirement.','Antes de cualquier descarga autorizada, el agua pasa por tratamiento. A es la toma de agua cruda. El colador protege las bombas y el tanque con baffles deja asentar los sólidos. El tamaño sale de V = Q × tiempo; el tiempo es un supuesto, no un requisito de DERM.']},
+{v:'trn',scn:'int',rain:50,cart:true,cam:[20,0,64,-14,34,true],stg:['bag','cart'],t:['Filtration and optional polishing','Filtración y pulido opcional'],x:['Heavy-duty bag or geotextile filters catch the fine material. The cartridge or carbon stage is optional — only if the lab finds oils, hydrocarbons or metals. A lone filter at the end of a hose is not enough without engineer validation.','Los filtros de bolsas o geotextil heavy-duty atrapan lo fino. El cartucho o carbón es opcional: solo si el laboratorio detecta aceites, hidrocarburos o metales. Un filtro suelto al final de una manguera no basta sin validación del ingeniero.']},
+{v:'trn',scn:'int',rain:50,cam:[52,0,48,-10,30,true],stg:['mon'],tr:[[46,TY+3,0,3],[54,TY,0,4]],t:['Sample B and the DERM valve','Toma B y válvula de DERM'],x:['B is the treated-water sample, next to the flow meter. Parameters, frequency and limits are set by DERM — not by this model. The valve stays closed until there is written authorization.','B es la toma del agua tratada, junto al medidor de caudal. Parámetros, frecuencia y límites los fija DERM, no este modelo. La válvula sigue cerrada hasta que haya autorización por escrito.']},
+{v:'trn',scn:'int',rain:50,cam:[8,0,92,-14,36,true],tr:[[-62,TY+2,0,3],[-2,TY,0,3],[40,TY,0,3]],t:['What we monitor: turbidity (NTU)','Qué se monitorea: turbidez (NTU)'],x:['Each tag shows turbidity in NTU at that point: A raw, after each stage, and B treated. Green means at or below the illustrative reference; amber means above. Move the turbidity slider in Settings or switch stages off to see the effect. Reductions per stage are assumptions; DERM sets the real parameters, points, frequency and limits.','Cada etiqueta muestra la turbidez en NTU en ese punto: A cruda, después de cada etapa y B tratada. Verde = igual o menor que la referencia ilustrativa; ámbar = por encima. Mueve el control de turbidez en Ajustes o apaga etapas para ver el efecto. Las reducciones por etapa son supuestos; DERM fija los parámetros, puntos, frecuencia y límites reales.']},
+{v:'trn',scn:'int',rain:50,cam:[78,0,60,-36,30,true],tr:[[76,1.6,8,4]],t:['Indian Creek: sample C','Indian Creek: toma C'],x:['C is the receiving water, used for comparison. We still have to confirm whether this outfall lies in the Biscayne Bay Aquatic Preserve / Outstanding Florida Water (from a research report, not verified), which could mean stricter conditions.','C es el agua del cuerpo receptor, para comparar. Aún debemos confirmar si este outfall está en el Biscayne Bay Aquatic Preserve / Outstanding Florida Water (dato de un reporte, no verificado), lo que podría exigir condiciones más estrictas.']},
+{v:'trn',scn:'int',rain:50,auth:true,cam:[40,0,130,-18,36,true],tr:[[54,TY,0,5]],t:['Simulation: if DERM were to authorize','Simulación: si DERM autorizara'],x:['For illustration only: with simulated authorization the valve opens (green ring) and treated water leaves through the outfall. This is not an approval or a permit — no pumping or discharge without authorization.','Solo para ilustrar: con autorización simulada, la válvula se abre (anillo verde) y el agua tratada sale por el outfall. No es una aprobación ni un permiso: no se bombea ni se descarga sin autorización.']},
+{v:'gar',scn:'perm',rain:60,cam:[-1.5,-13,290,0,56],t:['Permanent solution (RJM design)','Solución permanente (diseño RJM)'],x:['Miranda’s design replaces the stations with duplex units (two pumps each, with floats), relines the underground pipe and renews the above-ground piping (green lines overhead). Treatment and sampling points are defined with DERM and the engineer of record.','El diseño de Miranda reemplaza las estaciones por unidades dúplex (dos bombas cada una, con flotadores), relina la tubería subterránea y renueva la aérea (líneas verdes en el techo). El tratamiento y los puntos de muestreo se definen con DERM y el ingeniero de récord.']},
+{v:'gar',scn:'int',rain:50,cam:[-5,-92,250,0,42,true],rg:'valves',t:['What is missing before discharging','Qué falta antes de descargar'],x:['Missing: Class V permit (not filed), authorization to discharge to Indian Creek, a formal Board decision, confirmation of BC2526722, lab results and the Nov 5 site visits (scheduled, not done). Approving the concept is not authorizing construction.','Falta: permiso Class V (no solicitado), autorización de descarga a Indian Creek, decisión formal de la Junta, confirmar BC2526722, resultados de laboratorio y las visitas del 5/11 (programadas, no realizadas). Aprobar el concepto no es autorizar la obra.']}
+];
+const G={on:false,i:0,t:0,playing:false,snap:null,step:null,min:false};
+const durOf=st=>Math.max(9,st.x[li()].length/15+4);
+function cardHTML(){const st=G.step,n=STEPS.length;const bar=STEPS.map((_,k)=>`<button type="button" class="tgd" data-g="goto" data-i="${k}" aria-label="${k+1}"><i><b class="tgfill" style="width:${k<G.i?100:0}%"></b></i></button>`).join('');
+ return `<div class="tch"><small>${T('Step','Paso')} ${G.i+1} ${T('of','de')} ${n}</small><button type="button" class="tmin" data-g="min" aria-label="min">${G.min?'▴':'▾'}</button></div><b>${st.t[li()]}</b>${G.min?'':`<p>${st.x[li()]}</p>`}<div class="tcnav"><button type="button" data-g="prev" aria-label="${T('Previous','Anterior')}">‹</button><button type="button" data-g="play" class="tcp" aria-label="play">${G.playing?'❚❚':'▶'}</button><button type="button" data-g="next" aria-label="${T('Next','Siguiente')}">›</button><div class="tgseg">${bar}</div><button type="button" data-g="exit" aria-label="${T('Close guide','Cerrar guía')}">✕</button></div>`;}
+function renderCard(){const c=$('tCard');if(!G.on){c.hidden=true;schDraw();return;}c.hidden=false;c.innerHTML=cardHTML();schDraw();}
+function syncInputs(){$('tRain').value=S.rain;$('tQ').value=S.q;$('tN').value=S.n;[['tC0','strn'],['tC1','sed'],['tC2','bag'],['tC3','cart']].forEach(([id,k])=>$(id).checked=S[k]);}
+function goStep(i){i=Math.max(0,Math.min(STEPS.length-1,i));const st=STEPS[i],prev=G.step;G.i=i;G.t=0;G.step=st;
+ if(!prev||prev.scn!==st.scn||!!prev.auth!==!!st.auth){ptsA=[];ptsB=[];held=0;}
+ S.scn=st.scn;S.auth=!!st.auth;S.rain=st.rain;S.q=35;S.n=4;S.strn=true;S.sed=true;S.bag=true;S.cart=!!st.cart;S.src='rain';S.view=st.v;
+ syncInputs();ui();renderCard();aim(st.cam,st.v);setStageOpacity();
+ try{$('tv').scrollIntoView({behavior:'smooth',block:'nearest'});}catch(e){}}
+function guideStart(){if(G.on)return;G.snap=Object.assign({},S);G.on=true;G.playing=true;G.min=false;S.play=true;goStep(0);}
+function guideExit(){if(!G.on)return;Object.assign(S,G.snap);G.on=false;G.playing=false;G.step=null;ptsA=[];ptsB=[];held=0;syncInputs();renderCard();ui();aim(VIEWCFG[S.view],S.view);setStageOpacity();}
+/* ---------- animation ---------- */
+const NP=520;let pA,pB;
+function mkPoints(parent,size){const g=new TH.BufferGeometry();g.setAttribute('position',new TH.BufferAttribute(new Float32Array(NP*3),3));g.setAttribute('color',new TH.BufferAttribute(new Float32Array(NP*3),3));g.setDrawRange(0,0);
+ const p=new TH.Points(g,new TH.PointsMaterial({size,sizeAttenuation:true,vertexColors:true,map:dotTex(),transparent:true,alphaTest:.25,depthWrite:false}));p.frustumCulled=false;p.renderOrder=5;parent.add(p);return p;}
+const SRC={rain:new TH.Color(0x3B82A6),gw:new TH.Color(0x4AA387),mix:new TH.Color(0x6A8F7E)};
+const TONES=['#7a4e22','#9c7b4f','#bba784','#cfd8d2','#e2ece9'].map(c=>new TH.Color(c));
+function stgList(){return ['strn','sed','bag','cart'].filter(k=>S[k]);}
+function frame(now){raf=requestAnimationFrame(frame);const dt=Math.min(.05,(now-(last||now))/1000);last=now;
+ // guide timer
+ if(G.on&&G.playing){G.t+=dt;if(G.t>=durOf(G.step)){if(G.i<STEPS.length-1)goStep(G.i+1);else{G.playing=false;renderCard();}}}
+ if(G.on){const d=durOf(G.step);document.querySelectorAll('#tCard .tgfill').forEach((e,k)=>{e.style.width=(k<G.i?100:k>G.i?0:Math.min(100,G.t/d*100))+'%';});}
+ // camera drive
+ const f=1-Math.exp(-dt*3);if(drive&&aim.pos){cam.position.lerp(aim.pos,f);controls.target.lerp(aim.look,f);}
+ vOff+=(vOffT-vOff)*f;const w=ren.domElement.width/ren.getPixelRatio(),h=ren.domElement.height/ren.getPixelRatio();if(Math.abs(vOff)>.002){cam.setViewOffset(w,h,0,h*.17*vOff,w,h);}else if(cam.view&&cam.view.enabled)cam.clearViewOffset();
+ controls.update();
+ if(S.play){ph+=dt;simulate(dt);}
+ animate();
+ // labels visibility by view
+ const gv=(G.on&&G.step?G.step.v:S.view)==='gar';labels.forEach(l=>{l.visible=l.userData.view==='gar'?gv:!gv;});
+ // guide rings
+ ringSpr.visible=false;ringSprT.forEach(r=>r.visible=false);
+ if(G.on&&G.step){const pulse=1+.14*Math.sin(ph*5);let k=0;
+  const place=(x,y,z,r)=>{const sp=ringSprT[k++];if(!sp)return;sp.position.set(x,y,z);sp.scale.set(r*2.4*pulse,r*2.4*pulse,1);sp.visible=true;};
+  if(G.step.v==='gar'){for(const [x,z,r] of resolveRings(G.step))place(x,2,z,r);}
+  if(G.step.tr)for(const [x,y,z,r] of G.step.tr)place(x+TX,y,z+TZ,r);}
+ ren.render(scene,cam);}
+function resolveRings(st){const r=st.rg;if(!r)return [];if(r==='drainsE')return DR.filter(d=>d.x>90).map(d=>[d.x,d.z,6]);if(r==='stations')return ST.map(s=>[s.x,s.z,7]).concat(ST.map(s=>[s.panel[0],s.panel[1],4]));if(r==='valves')return ST.map(s=>[s.x,s.zt,6]);return r;}
+function simulate(dt){
+ const capn=capQ(),nominal=8*S.q,inflow=nominal*S.rain/100,over=S.scn==='now'?Math.max(0,inflow-capn)/nominal:0;
+ DR.forEach((d,i)=>{d.pond+=(over>0?over*dt*.25:-dt*.15);d.pond=Math.max(0,Math.min(1,d.pond));});
+ const rate=Math.min(40,inflow/9)*(S.src==='gw'?.6:1);let acc=(simulate.acc||0)+rate*dt;let n=Math.floor(acc);simulate.acc=acc-n;
+ while(n-->0){const d=DR[Math.floor(Math.random()*DR.length)];ptsA.push({path:d.path,s:0,stage:'in',st:d.st,src:SRC[S.src==='mix'?(Math.random()<.5?'rain':'gw'):S.src]});}
+ const sp=22+capn*.1;
+ for(const p of ptsA){p.s+=sp*dt;if(p.stage==='in'&&p.s>=p.path.len){p.stage='out';p.path=ST[p.st].out;p.s=0;}else if(p.stage==='out'){const lim=S.auth?p.path.len+9:p.path.len;if(p.s>=lim){if(S.auth)p.dead=true;else p.s=p.path.len;}}}
+ const bl=ptsA.filter(p=>p.stage==='out'&&p.s>=p.path.len);if(bl.length>40)bl.slice(0,bl.length-40).forEach(p=>p.dead=true);
+ held=S.auth?Math.max(0,held-capn/60*dt*40):held+Math.min(capn,inflow)/60*dt*40;
+ ptsA=ptsA.filter(p=>!p.dead);if(ptsA.length>NP-10)ptsA.splice(0,ptsA.length-(NP-10));
+ // train
+ const r2=Math.min(30,capn/10);let a2=(simulate.a2||0)+r2*dt;let m=Math.floor(a2);simulate.a2=a2-m;while(m-->0)ptsB.push({x:-68,y:TY+(Math.random()-.5)*.4,z:(Math.random()-.5)*.4,fall:false});
+ const sl=stgList(),lim2=S.auth?73:49;
+ for(const p of ptsB){p.x+=(24+capn*.12)*dt;if(p.x>lim2){if(S.auth){if(p.x>=73){p.fall=true;}if(p.fall){p.y-=(10)*dt;p.x=Math.min(p.x,75);if(p.y<.7)p.dead=true;}}else p.x=lim2;}}
+ const b2=ptsB.filter(p=>p.x>=lim2-.1&&!S.auth);if(b2.length>40)b2.slice(0,b2.length-40).forEach(p=>p.dead=true);ptsB=ptsB.filter(p=>!p.dead);if(ptsB.length>NP-10)ptsB.splice(0,ptsB.length-(NP-10));
+}
+function animate(){
+ const now0=S.scn==='now';
+ // particles garage
+ {const pos=pA.geometry.attributes.position.array,col=pA.geometry.attributes.color.array;let k=0;for(const p of ptsA){const [x,z]=at(p.path,p.s);pos[k*3]=x;pos[k*3+1]=1.6;pos[k*3+2]=z;const treated=p.stage==='out'&&!now0&&p.s>p.path.len*.55;const c=treated?TONES[Math.min(4,stgList().length)]:p.src;col[k*3]=c.r;col[k*3+1]=c.g;col[k*3+2]=c.b;k++;}pA.geometry.setDrawRange(0,k);pA.geometry.attributes.position.needsUpdate=true;pA.geometry.attributes.color.needsUpdate=true;}
+ {const pos=pB.geometry.attributes.position.array,col=pB.geometry.attributes.color.array;const sl=stgList();let k=0;for(const p of ptsB){pos[k*3]=p.x;pos[k*3+1]=p.y;pos[k*3+2]=p.z;let n=0;for(const s of sl)if(p.x>STGX[s]+8)n++;const c=TONES[Math.min(4,n)];col[k*3]=c.r;col[k*3+1]=c.g;col[k*3+2]=c.b;k++;}pB.geometry.setDrawRange(0,k);pB.geometry.attributes.position.needsUpdate=true;pB.geometry.attributes.color.needsUpdate=true;}
+ // ponding + ripples
+ DR.forEach((d,i)=>{const r=3+d.pond*15;pondM[i].scale.set(d.pond>0.02?r:.01,1,d.pond>0.02?r:.01);const rr=((ph*1.1+i*.3)%1);d.rip.material.opacity=S.rain>0&&S.src!=='gw'?(1-rr)*.7:0;d.rip.scale.setScalar(1+rr*2.2);});
+ // relining shine
+ if(S.scn!=='now'){pipeMats.forEach((m,i)=>{const w=.5+.5*Math.sin(ph*2.2-i*.35);m.emissive.setRGB(.05+w*.28,.2+w*.5,.18+w*.4);});}
+ // station water ripples + panel LEDs
+ stationG.forEach((o,i)=>{const on=S.scn==='now'?false:i<nOp();o.wr.material.opacity=on?.5*(1-((ph*1.4+i*.2)%1)):0;o.wr.scale.setScalar(.6+((ph*1.4+i*.2)%1)*2.6);
+  const led=panelG[i].userData.led;led.material.color.set(S.scn==='now'?0x8E6A3E:(on?(Math.sin(ph*6+i)>-.2?0x1FB57A:0x1F5A5C):0x8A8F8A));});
+ // valve rings pulse (locked)
+ valveG.forEach(v=>{v.userData.ring.scale.setScalar(S.auth?1:1+.08*Math.sin(ph*4));v.userData.lb.visible=v.userData.lb.visible;});
+ const tv=trnU.valve;if(tv)tv.userData.ring.scale.setScalar(S.auth?1:1+.08*Math.sin(ph*4));
+ if(trnU.sed)trnU.sed.userData.w.material.color.setHex(S.auth||ptsB.length>0?0x6B7F6C:0x7A5C36);
+}
+function bind(){
+ $('tSw').onclick=()=>{S.v3=!S.v3;ui();};window.addEventListener('resize',()=>{if(!$('tSch').hidden)schDraw();});$('tNtu').oninput=()=>ui();$('tRef').oninput=()=>ui();$('tRain').oninput=e=>{S.rain=+e.target.value;ui();};$('tQ').oninput=e=>{S.q=+e.target.value;ui();};$('tN').oninput=e=>{S.n=+e.target.value;ui();};$('tR').onchange=e=>{S.ret=+e.target.value;ui();};
+ [['tC0','strn'],['tC1','sed'],['tC2','bag'],['tC3','cart']].forEach(([id,k])=>$(id).onchange=e=>{S[k]=e.target.checked;setStageOpacity();});
+ $('tAuth').onclick=()=>{guideExit();S.auth=!S.auth;held=0;ui();};$('tPlay').onclick=()=>{S.play=!S.play;ui();};
+ {const cv=$('tGL');let d0=null;cv.addEventListener('pointerdown',e=>{d0={x:e.clientX,y:e.clientY,t:performance.now()};});
+  cv.addEventListener('pointerup',e=>{if(!d0||S.view!=='gar')return;const mv=Math.hypot(e.clientX-d0.x,e.clientY-d0.y),dt=performance.now()-d0.t;d0=null;if(mv>6||dt>450)return;
+   const r=cv.getBoundingClientRect(),nd=new TH.Vector2((e.clientX-r.left)/r.width*2-1,-((e.clientY-r.top)/r.height*2-1));const rc=new TH.Raycaster();rc.setFromCamera(nd,cam);
+   const pl=new TH.Plane(new TH.Vector3(0,1,0),-4),pt=new TH.Vector3();if(!rc.ray.intersectPlane(pl,pt))return;
+   let best=null,bd=22;ST.forEach(s=>{const dd=Math.hypot(pt.x-s.x,pt.z-s.z);if(dd<bd){bd=dd;best=s;}});
+   if(best){guideExit();aim([best.x,best.z,46,26,34,false],'gar');const h=$('tHint');if(h)h.hidden=true;}});}
+ $('treat').addEventListener('click',e=>{const b=e.target.closest('[data-g]');if(!b)return;const a=b.dataset.g;
+  if(a==='start')guideStart();else if(a==='exit')guideExit();
+  else if(a==='play'){if(!G.playing&&G.i===STEPS.length-1&&G.t>=durOf(G.step))goStep(0);G.playing=!G.playing;renderCard();}
+  else if(a==='min'){G.min=!G.min;renderCard();aim(G.step.cam,G.step.v);}
+  else if(a==='next')goStep(G.i+1);else if(a==='prev')goStep(G.t>2?G.i:G.i-1);else if(a==='goto')goStep(+b.dataset.i);});}
+function init(){if(inited)return;build();pA=mkPoints(gar,2.6);pB=mkPoints(trn,.8);bind();ui();aim(VIEWCFG.gar,'gar',true);applyScn();setStageOpacity();
+ setTimeout(()=>{const h=$('tHint');if(h)h.hidden=true;},7000);}
+window.__treat={start(){if(!inited)init();if(!running){running=true;last=0;resize();raf=requestAnimationFrame(frame);}},stop(){running=false;cancelAnimationFrame(raf);guideExit();},lang(l){LANG=l;if(inited){ui();relabel();renderCard();}}};
+})();
+</script>
+
 </body></html>

@@ -163,3 +163,44 @@
 - Interior y guías: un día hábil dura 2.4 s a 1× (una semana ≈ 12 s); velocidad inicial 1×. El avance rápido en días sin trabajo baja de 6× a 3×.
 - Viaje entre pisos de la guía interior y recorrido de la guía exterior más lentos (≈1.5–2 s por piso, 2.6–3 s en el frente de trabajo).
 - Building al reproducir: una semana cada ≈6 s.
+
+
+## v17-tr1 · Pestaña «Tratamiento / DERM» en Storm drains
+- Tercer selector junto a «Recorrido 3D» y «Planos»: esquema animado 2D (ES/EN) del bombeo y tratamiento antes de la descarga.
+- Datos de RJM 25-009: 4 estaciones dúplex (P-102), bombas Liberty D3648LSG203 de 2 HP, descarga de 2"; hoja P-200 (50 GPM máx. @10 ft; 35 GPM @70 ft TDH según la línea de condiciones leída del plano — **confirmar con R. J. Miranda, P.E.**).
+- Controles: GPM por bomba (35–50), estaciones (1–4), bombas por estación, tiempo de retención supuesto (V = Q·t), etapas (sedimentación, filtro de bolsas, cartucho opcional), modo interino (alquiler Stone) o permanente (bombas Miranda) y simulación de aprobación de DERM.
+- Estado real por defecto: **descarga bloqueada** (Class V no solicitado; compromiso de la carta de Stone del 21/10/2026; BC2526722 sin confirmar como emitido). La opción «DERM aprobado» es solo una simulación y está rotulada así.
+- Lista DERM/Class V (Política NRD-01): reporte del ingeniero, pretratamiento de sedimentos/limo/aceites, revisión de DERM, permiso de 90 días, monitoreo y registros de 3 años.
+- Por confirmar: si el outfall está en el Biscayne Bay Aquatic Preserve / OFW (dato de un reporte de investigación, no verificado). El tren de tratamiento es una propuesta conceptual, no un diseño aprobado.
+
+## v17-tr2 · «Tratamiento / DERM» sobre la geometría real del garaje
+- Vista en planta con los datos reales de RJM (contorno, columnas, drenajes de piso, 4 estaciones #1–#4, paneles, tubería subterránea y aérea). Rutas drenaje→estación esquemáticas.
+- Tres escenarios: **Hoy** (reportado 4/11: 2 bombas operando, cuáles por verificar; estaciones con «?»), **Interino** (propuesto: CIPP, bombas compatibles con el permanente, controles, tratamiento por definir) y **Permanente** (diseño RJM: 4 estaciones dúplex). Origen del agua: pluvial / subterránea / mixta.
+- Tren de tratamiento con puntos de muestreo A (agua cruda), B (efluente) y C (agua receptora), válvula sujeta a DERM y Indian Creek «por confirmar». Descarga bloqueada por defecto.
+- Lista DERM/Class V y visitas del 5/11 (programadas, no realizadas). Se eliminó el modo «alquiler Stone»: el bombeo portátil figura como suspendido.
+
+## v17-tr3 · Guía interactiva en «Tratamiento / DERM»
+- Botón «▶ Guía interactiva (paso a paso)»: 16 pasos narrados (ES/EN) con zoom animado de la cámara en el plano y en el tren de tratamiento, anillos que señalan lo explicado y tarjeta con anterior / reproducir-pausar / siguiente / cerrar y barra de pasos (se puede saltar a cualquier paso).
+- Recorrido: qué se ve → drenajes → estaciones → hoy (2 bombas, «?») → por qué no se puede descargar → agua retenida → relining CIPP → bombas/controles compatibles con el permanente → tratamiento (A, colador, sedimentación, bolsas, cartucho, B, válvula, C) → simulación de autorización → solución permanente → qué falta.
+- Tocar cualquier botón de escenario/origen/simulación cierra la guía y restaura los controles. Todo sigue rotulado como ilustrativo; la simulación de autorización no es una aprobación.
+
+## v17-3d1 — Tratamiento / DERM en 3D (mobile-first)
+- La pestaña ahora es una escena Three.js: el modelo 3D es el protagonista (visor ~76% de la pantalla) y los controles se reducen a dos grupos de píldoras (Hoy / Interino / Permanente · Garaje / Filtros).
+- Ajustes, hidráulica y lista DERM/visitas del 5/11 quedan en secciones plegables debajo del visor.
+- Bombas: dúplex Liberty D3648LSG203 (2 HP, cuenca Ø36½″, rieles, check, válvula, flotadores) según RJM P-102/P-200; las eyectoras viejas se muestran oxidadas. Si la cotización especifica otra bomba, hay que ajustar el modelo.
+- Vista de corte: las estaciones se elevan y amplían 3.2× para leerse (en realidad están bajo la losa). Toca una estación para acercar.
+- Guía interactiva (16 pasos) reutilizada con cámaras 3D; tarjeta compacta con botón de minimizar.
+- Sin cambios de fondo: no hay permiso Class V, descarga a Indian Creek no confirmada, conteo/estado de bombas por verificar.
+
+## v17-3d2 — NTU por etapa en la vista Filtros
+- Etiquetas 3D con NTU en A, tras 1, 2, 3 y B (verde ≤ referencia ilustrativa, ámbar > referencia) y panel "Turbidez por etapa" con barras.
+- Controles en Ajustes: turbidez cruda en A y referencia ilustrativa (29 NTU por defecto; NO es límite de DERM). Apagar etapas cambia los valores.
+- Reducciones por etapa son supuestos de ilustración (colador −10%, sedimentación −55%, bolsas −50%, cartucho −50%).
+- Nuevo paso 14 de la guía: "Qué se monitorea: turbidez (NTU)" (guía ahora de 17 pasos).
+- Al ver Filtros se oculta el garaje (ya no aparece el plano azul gigante); etiquetas más cortas.
+
+## v17-3d3 — Vista Filtros = esquema ilustrativo con NTU (como el mockup)
+- "Filtros" ahora abre el esquema SVG en "U" (A → 1 colador → 2 sedimentación → 3 bolsas → 4 cartucho → medidor/toma B → válvula DERM → Indian Creek), con NTU por tramo, agua que cambia de color y etapas clicables (descripción + NTU entrada → salida).
+- Versión vertical para móvil (letra legible) y horizontal para escritorio.
+- La guía resalta las etapas del paso actual y hace zoom en móvil; botón "Vista 3D" / "Esquema" para alternar con la escena 3D de los filtros.
+- Los NTU por etapa y la referencia de 29 NTU son ilustrativos (no son límite de DERM); C queda "por medir (DERM)".
