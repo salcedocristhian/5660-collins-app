@@ -11,6 +11,25 @@
   },
   "notices": [
     {
+      "id": "floor-2-pilot-nov-5",
+      "date": "2026-11-05",
+      "category": "corridor",
+      "priority": "normal",
+      "projectId": "corridor",
+      "title": {
+        "en": "Floor 2 pilot planned · field start pending",
+        "es": "Piloto previsto en piso 2 · inicio en campo pendiente"
+      },
+      "message": {
+        "en": "Monday, Nov 9 is a target for a small first section of Zone A. Floor 3 will be evaluated after the pilot. Floor 4 is waiting.",
+        "es": "El lunes 9 es la meta para un tramo pequeño de Zona A. El piso 3 se evaluará después del piloto. Piso 4 en espera."
+      },
+      "residentAction": {
+        "en": "Carpet removal options are Nov 11 or 12. Management will confirm the day and access hours with 48 hours’ notice. Contact management for essential access.",
+        "es": "Retiro de alfombra tentativo el 11 o 12. Administración confirmará día y horario con 48 horas de aviso. Coordine accesos esenciales con administración."
+      }
+    },
+    {
       "id": "elss-fire-alarm-reference-2026-11-03",
       "date": "2026-11-03",
       "category": "permits",
@@ -174,8 +193,12 @@
         "es": "Remediación y restauración de pasillos"
       },
       "summary": {
-        "en": "City portal screenshots shared October 31 show BC2628687 still Applied with no issue date. Intake and Fire Building passed October 29; Structural and Mechanical were Not Required October 29, and Electrical October 30. Building/Flood remain Under Review, due November 10; Plumbing/Planning/Elevator, due November 13. Submittal Version Complete remains Under Review. County approval 2027004562 was obtained October 22 and uploaded. Review due dates are not permit issuance or construction start dates.",
-        "es": "Las capturas municipales compartidas el 31 de octubre muestran BC2628687 Applied, sin fecha de emisión. Intake y Fire Building aprobaron el 29/oct; Structural y Mechanical figuran como no requeridos el 29/oct, y Electrical el 30/oct. Building/Flood siguen en revisión, con vencimiento 10/nov; Plumbing/Planning/Elevator, 13/nov. Submittal Version Complete sigue en revisión. La aprobación del Condado 2027004562 se obtuvo el 22/oct y se cargó. Las fechas de revisión no son fechas de emisión ni de inicio de obra."
+        "en": "Monday, Nov 9 is a target for a small first section of Zone A. Floor 3 will be evaluated after the pilot. Floor 4 is waiting.",
+        "es": "El lunes 9 es la meta para un tramo pequeño de Zona A. El piso 3 se evaluará después del piloto. Piso 4 en espera."
+      },
+      "next": {
+        "en": "Carpet removal options are Nov 11 or 12. Management will confirm the day and access hours with 48 hours’ notice. Contact management for essential access.",
+        "es": "Retiro de alfombra tentativo el 11 o 12. Administración confirmará día y horario con 48 horas de aviso. Coordine accesos esenciales con administración."
       }
     },
     {

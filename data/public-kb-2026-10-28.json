@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "version": "2026-11-03-sciens-fire-alarm-v1",
   "source": "5660 KB - Active Projects LIVE / Core Rules LIVE / FAQ Bilingual LIVE, modified Oct 27, 2026; Stone Coastal Resources Corrective Action Plan dated Oct 21, 2026; BC2628687 City portal screenshots supplied by PM October 31, 2026 (reviews Oct 29–30); Nov 2 telephone coordination with Ismel/SERVPRO: Nov 3 gym trade-inspection targets, Nov 4 tentative encapsulation, Nov 6 custom desiccant box target; no inspection results or machine install confirmed; Sciens Jany Martinez email Nov 3 providing fire-alarm application reference FP1126-7824 (City review/issuance not independently verified)",
-  "asOf": "2026-11-03",
+  "asOf": "2026-11-05",
   "isLiveSync": false,
   "notice": "This is a resident-safe published snapshot, not a live connection to the private Google Drive Knowledge Base. Corridor updated October 31; other projects retain their previous documented dates.",
   "projects": [
@@ -13,19 +13,19 @@
         "es": "Remediación y drywall de pasillos"
       },
       "status": {
-        "en": "Applied; City reviews in progress; not issued",
-        "es": "Solicitado; revisiones municipales en curso; no emitido"
+        "en": "Floor 2 pilot planned · field start pending",
+        "es": "Piloto previsto en piso 2 · inicio en campo pendiente"
       },
       "summary": {
-        "en": "City portal screenshots shared October 31 show BC2628687 still Applied with no issue date. Intake and Fire Building passed October 29; Structural and Mechanical were Not Required October 29, and Electrical October 30. Building/Flood remain Under Review, due November 10; Plumbing/Planning/Elevator, due November 13. Submittal Version Complete remains Under Review. County approval 2027004562 was obtained October 22 and uploaded. Review due dates are not permit issuance or construction start dates.",
-        "es": "Las capturas municipales compartidas el 31 de octubre muestran BC2628687 Applied, sin fecha de emisión. Intake y Fire Building aprobaron el 29/oct; Structural y Mechanical figuran como no requeridos el 29/oct, y Electrical el 30/oct. Building/Flood siguen en revisión, con vencimiento 10/nov; Plumbing/Planning/Elevator, 13/nov. Submittal Version Complete sigue en revisión. La aprobación del Condado 2027004562 se obtuvo el 22/oct y se cargó. Las fechas de revisión no son fechas de emisión ni de inicio de obra."
+        "en": "Monday, Nov 9 is a target for a small first section of Zone A. Floor 3 will be evaluated after the pilot. Floor 4 is waiting.",
+        "es": "El lunes 9 es la meta para un tramo pequeño de Zona A. El piso 3 se evaluará después del piloto. Piso 4 en espera."
       },
       "next": {
-        "en": "Follow up on Building/Flood by November 10 and Plumbing/Planning/Elevator by November 13. Demolition requires City issuance, applicable Fire/AHJ and environmental controls, and written work authorization. No start date confirmed.",
-        "es": "Seguimiento de Building/Flood al 10/nov y Plumbing/Planning/Elevator al 13/nov. La demolición requiere emisión municipal, controles de Bomberos y ambientales y autorización escrita. Sin fecha de inicio confirmada."
+        "en": "Carpet removal options are Nov 11 or 12. Management will confirm the day and access hours with 48 hours’ notice. Contact management for essential access.",
+        "es": "Retiro de alfombra tentativo el 11 o 12. Administración confirmará día y horario con 48 horas de aviso. Coordine accesos esenciales con administración."
       },
       "permit": "BC2628687",
-      "asOf": "2026-10-31"
+      "asOf": "2026-11-05"
     },
     {
       "id": "elevator",
@@ -335,8 +335,8 @@
         "es": "¿Qué cambió en la revisión del permiso de pasillos?"
       },
       "answer": {
-        "en": "City portal screenshots shared October 31 show BC2628687 still Applied with no issue date. Intake and Fire Building passed October 29; Structural and Mechanical were Not Required October 29, and Electrical October 30. Building/Flood remain Under Review, due November 10; Plumbing/Planning/Elevator, due November 13. Submittal Version Complete remains Under Review. County approval 2027004562 was obtained October 22 and uploaded. Review due dates are not permit issuance or construction start dates.",
-        "es": "Las capturas municipales compartidas el 31 de octubre muestran BC2628687 Applied, sin fecha de emisión. Intake y Fire Building aprobaron el 29/oct; Structural y Mechanical figuran como no requeridos el 29/oct, y Electrical el 30/oct. Building/Flood siguen en revisión, con vencimiento 10/nov; Plumbing/Planning/Elevator, 13/nov. Submittal Version Complete sigue en revisión. La aprobación del Condado 2027004562 se obtuvo el 22/oct y se cargó. Las fechas de revisión no son fechas de emisión ni de inicio de obra."
+        "en": "Nov 5 portal snapshot: reviews complete, balance $0, status Applied. Issuance and field authorization pending verification.",
+        "es": "Portal del 5 nov.: revisiones completas, saldo $0, estado Applied. Pendiente verificar emisión y autorización de campo."
       }
     },
     {
@@ -345,8 +345,8 @@
         "es": "¿Cuándo comenzará la remoción del drywall?"
       },
       "answer": {
-        "en": "Not until City permit BC2628687 is issued and Fire/AHJ workfront, egress, Fire Watch and environmental requirements are approved. No confirmed start date is available.",
-        "es": "No hasta que se emita BC2628687 y se aprueben condiciones de Bomberos, accesos y controles ambientales. No hay fecha confirmada."
+        "en": "Monday, Nov 9 is a target for a small first section of Zone A. Floor 3 will be evaluated after the pilot. Floor 4 is waiting.",
+        "es": "El lunes 9 es la meta para un tramo pequeño de Zona A. El piso 3 se evaluará después del piloto. Piso 4 en espera."
       }
     },
     {
