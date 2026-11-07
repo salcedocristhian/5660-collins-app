@@ -41,11 +41,18 @@ jobs:
           assert any(x.get('group')=='issued' and 'Hallway' in x['name']['en'] for x in schedule['timeline'])
           assert all(x['title'].get('en') and x['title'].get('es') for x in schedule['milestones'])
           assert schedule['milestones']==sorted(schedule['milestones'],key=lambda x:x['date'])
+          # November 7 PM clarification: Thursday-only (tentative), not Monday/Wednesday.
+          carpet = [x for x in schedule['milestones'] if 'carpet' in x['title']['en'].lower()]
+          assert len(carpet) == 1 and carpet[0]['date'] == '2026-11-12'
+          floor2_carpet = next(x for x in notices['notices'] if x['id']=='floor2-carpet-access-planning-2026-11-06')
+          assert 'Thursday, November 12' in floor2_carpet['message']['en']
+          assert 'tentative' in floor2_carpet['message']['en'].lower()
+          assert 'Thursday, November 12' in next(x for x in kb['faqs'] if 'carpet' in x['question']['en'].lower())['answer']['en']
           assert not any(x['projectId']=='corridor' and 'not issued' in x['message']['en'].lower() for x in notices['notices'])
           assert 'City permit BC2628687 remains pending' not in html
           assert 'const projectDefs=[' in html and 'residentFloorNotice' in html
           assert 'collins-language-changed' in html and 'collins-language-changed' in js
-          assert '20261107-resident-schedule1' in html and '20261107-resident-schedule1' in Path('sw.js').read_text()
+          assert '20261107-thu-film1' in html and '20261107-thu-film1' in Path('sw.js').read_text()
           embedded = re.search(r'<script type="application/json" id="residentKBBackup">(.*?)</script>',html,re.S)
           assert embedded is not None
           assert json.loads(embedded.group(1))==kb
