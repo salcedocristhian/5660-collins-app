@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: write
+  pages: write
 
 concurrency:
   group: pilot3-import-main
@@ -110,3 +111,20 @@ jobs:
           fi
           git commit -m 'Deploy Pilot 3 ZIP: hallway tour, permit status and resident experience'
           git push origin HEAD:main
+
+      - name: Request GitHub Pages rebuild after workflow-authored commit
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          status=$(curl -sS -o /tmp/pilot3-pages-build.json -w '%{http_code}' \
+            -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "https://api.github.com/repos/$GITHUB_REPOSITORY/pages/builds" || true)
+          if [[ "$status" != "201" && "$status" != "202" && "$status" != "204" ]]; then
+            echo "::warning::GitHub Pages rebuild was not confirmed (HTTP $status). Check Pages deployment."
+            cat /tmp/pilot3-pages-build.json || true
+          fi
