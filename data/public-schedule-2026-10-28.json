@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "asOf": "2026-11-07",
-  "source": "November 6, 2026 5660 LIVE KB permit/2-week Floor 2 pilot override and Relats stairs design; November 5 Floor 2 operations plan; November 3 gym/ELSS verification remains pending.",
+  "source": "November 7 Floor 2 Thursday carpet clarification; November 6 LIVE KB permit and two-week Floor 2 pilot; all other milestones unchanged unless source-verified.",
   "isVerifiedCalendar": false,
   "timeline": [
     {
@@ -125,30 +125,16 @@
       "status": "tentative"
     },
     {
-      "date": "2026-11-11",
-      "month": "NOV",
-      "day": "11",
-      "title": {
-        "en": "Floor 2 carpet · alternative date",
-        "es": "Piso 2 alfombra · fecha alternativa"
-      },
-      "detail": {
-        "en": "Alternative only. Holiday staffing and inspections must be confirmed; Management notice at least 48 hours in advance.",
-        "es": "Solo alternativa. Confirmar personal e inspecciones por el festivo; aviso de Administración con al menos 48 horas."
-      },
-      "status": "tentative"
-    },
-    {
       "date": "2026-11-12",
       "month": "NOV",
       "day": "12",
       "title": {
-        "en": "Floor 2 carpet · preferred target",
-        "es": "Piso 2 alfombra · meta preferida"
+        "en": "Floor 2 carpet removal · tentative Thursday",
+        "es": "Retiro de alfombra piso 2 · jueves tentativo"
       },
       "detail": {
-        "en": "Preferred but UNCONFIRMED; proposed 8 AM–5 PM work window on carpet day only. Management to confirm 48 hours ahead; contact Management for essential access.",
-        "es": "Preferida pero NO CONFIRMADA; ventana propuesta de 8 a. m. a 5 p. m. solo el día de retiro. Administración avisará 48 horas antes; solicitar acceso esencial a Administración."
+        "en": "Thursday, November 12 planning target ONLY (not Monday/early week). Proposed 8 AM–5 PM window requires contractor/Management confirmation and at least 48 hours' advance access notice.",
+        "es": "Meta tentativa únicamente el jueves 12 de noviembre (no lunes/inicio de semana). La ventana propuesta de 8 a. m. a 5 p. m. requiere confirmación del contratista/Administración y aviso de acceso con al menos 48 horas."
       },
       "status": "tentative"
     },
