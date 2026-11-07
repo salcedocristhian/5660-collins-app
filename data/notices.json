@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "version": "2026-11-07-hallway-issued-floor2-pilot-live-kb",
-  "publishedAt": "2026-11-07T16:15:10.671Z",
+  "version": "2026-11-07-floor2-carpet-thursday-film-alignment",
+  "publishedAt": "2026-11-07T18:55:24.007Z",
   "approvalStatus": "draft",
   "approvalNote": "Resident-safe project-information snapshot reconciled against November 6, 2026 LIVE KB. This is not a formal floor-access notice; Building Management confirms access windows and authorizes distribution. No push notifications are sent.",
   "property": {
@@ -36,16 +36,16 @@
       "priority": "important",
       "projectId": "floor2access",
       "title": {
-        "en": "Floor 2 carpet removal · tentative access planning",
-        "es": "Piso 2: retiro de alfombra · coordinación tentativa de acceso"
+        "en": "Floor 2 carpet · tentative Thursday, November 12",
+        "es": "Alfombra piso 2 · jueves 12 de noviembre tentativo"
       },
       "message": {
-        "en": "Carpet removal on Floor 2 is being considered for November 11 or 12, with November 12 preferred for planning. The tentative working window is 8 AM–5 PM on the confirmed carpet-removal day only. Building Management will confirm the actual date and resident-access window with at least 48 hours' notice. Emergency egress routes must remain available.",
-        "es": "Se evalúa retirar la alfombra del piso 2 el 11 o 12 de noviembre, con preferencia tentativa por el día 12. La ventana preliminar de trabajo sería de 8 a. m. a 5 p. m. únicamente el día confirmado. Administración comunicará la fecha real y las condiciones de acceso con al menos 48 horas de anticipación. Las salidas de emergencia deben mantenerse disponibles."
+        "en": "Carpet removal on Floor 2 is tentatively targeted for Thursday, November 12, 2026—not the beginning of the workweek. The proposed work window is 8 AM–5 PM, subject to contractor readiness and Building Management confirmation. Management will give at least 48 hours' notice of the actual access window. Emergency egress routes must remain available.",
+        "es": "El retiro de alfombra del piso 2 está previsto tentativamente para el jueves 12 de noviembre de 2026, no para el inicio de la semana. La ventana propuesta es de 8 a. m. a 5 p. m., sujeta a preparación del contratista y confirmación de Administración, que avisará el horario de acceso con al menos 48 horas. Las rutas de salida de emergencia deben permanecer disponibles."
       },
       "residentAction": {
-        "en": "If you need caregiver, mobility or essential access during the possible work window, contact Building Management in advance. Do not treat either date as confirmed.",
-        "es": "Si necesita acceso esencial, de cuidadores o asistencia de movilidad durante la posible ventana de trabajo, comuníquese con Administración con anticipación. Ninguna de las fechas está confirmada."
+        "en": "Residents requiring essential, mobility or caregiver access should coordinate with Building Management in advance. Thursday is a planning target, not a confirmed closure or appointment.",
+        "es": "Quienes necesiten acceso esencial, asistencia de movilidad o de cuidadores deben coordinar con Administración. El jueves es una meta tentativa, no un cierre ni una cita confirmados."
       }
     },
     {
@@ -423,8 +423,8 @@
         "es": "¿Cuándo retirarán la alfombra del piso 2?"
       },
       "answer": {
-        "en": "November 11 or 12 is under consideration, with November 12 preferred but not confirmed. Management will provide at least 48 hours' notice of the date and access window. Contact Management early for essential access or mobility assistance.",
-        "es": "Se evalúan el 11 o 12 de noviembre, con preferencia por el 12, sin confirmación. Administración avisará la fecha y ventana de acceso con al menos 48 horas. Contacte con anticipación a Administración si necesita acceso esencial o ayuda de movilidad."
+        "en": "Carpet removal is tentatively targeted for Thursday, November 12, 2026, not Monday. Management will confirm the access window with at least 48 hours' notice. Contact Management for mobility assistance or essential access; no mandatory closure is confirmed here.",
+        "es": "El retiro de alfombra se prevé tentativamente para el jueves 12 de noviembre de 2026, no para el lunes. Administración confirmará la ventana de acceso con al menos 48 horas. Contacte con Administración si necesita acceso esencial o asistencia de movilidad; aquí no se confirma un cierre obligatorio."
       }
     },
     {
