@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - '5660-collins-app-pilot3.zip'
+      - 'pilot3-transfer/**'
 
 permissions:
   contents: write
@@ -23,6 +23,36 @@ jobs:
         with:
           fetch-depth: 2
           persist-credentials: true
+
+      - name: Reassemble and verify Pilot 3 ZIP from base64 transfer parts
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import base64, hashlib
+          directory = Path("pilot3-transfer")
+          paths = [directory / f"part-{i:02d}.b64" for i in range(23)]
+          if not all(p.is_file() for p in paths):
+              raise SystemExit("One or more Pilot 3 transfer parts are missing")
+          other_files = [p for p in directory.iterdir() if p.is_file() and p not in paths]
+          if other_files:
+              raise SystemExit("Unexpected transfer files found")
+          output = Path("5660-collins-app-pilot3.zip")
+          with output.open("wb") as dst:
+              for i, path in enumerate(paths):
+                  payload = base64.b64decode(path.read_text(encoding="ascii").strip(), validate=True)
+                  expected = 300_000 if i < 22 else 55_652
+                  if len(payload) != expected:
+                      raise SystemExit(f"Invalid part {i} length {len(payload)}")
+                  dst.write(payload)
+          if output.stat().st_size != 6_655_652:
+              raise SystemExit("Final Pilot 3 ZIP size mismatch")
+          digest = hashlib.sha256(output.read_bytes()).hexdigest()
+          if digest != "d61d9d67d32eecea4e42354dd3520b54f353daadcc4321dfe43aab351eedb8dc":
+              raise SystemExit("Pilot 3 checksum mismatch " + digest)
+          print(f"Verified Pilot 3 ZIP: {digest}")
+          PY
 
       - name: Verify and import supplied ZIP without deleting existing files
         shell: bash
@@ -104,6 +134,7 @@ jobs:
           git branch "$BACKUP" HEAD^
           git push origin "$BACKUP"
           rm -f 5660-collins-app-pilot3.zip
+          rm -rf pilot3-transfer
           rm -f .github/workflows/import-pilot3.yml
           git add -A
           if git diff --cached --quiet; then
