@@ -5,6 +5,9 @@ on:
     paths:
       - 'scripts/patch_floor2_pilot_thursday.py'
       - '.github/workflows/patch-floor2-thursday.yml'
+      - 'data/notices.json'
+      - 'data/public-kb-2026-10-28.json'
+      - 'data/public-schedule-2026-10-28.json'
   workflow_dispatch:
 permissions:
   contents: write
