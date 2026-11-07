@@ -77,3 +77,28 @@
 - Cámara aérea con encuadre del lado completo y movimiento lateral lento; títulos de capítulo; vista exterior translúcida con pisos coloreados por oficio, etiquetas por piso, leyenda, contador de pisos con barreras y mini gráfico del zigzag.
 - Interfaz a pantalla completa: franja superior con íconos (edificio, pasillo, planos, pantalla completa), tarjeta compacta deslizable, botón "Volver al modelo" en los planos.
 - data/permits.json: BC2628687 emitido el 06/11/2026 con las inspecciones de la tarjeta. Fechas del tour tentativas; no representan trabajo ejecutado.
+
+## pilot4 · Ajustes de pantalla
+- El visor se ajusta a la pantalla visible (debajo del encabezado y sobre la barra inferior): la tarjeta del tour con ▶ se ve al abrir.
+- La barra de progreso de la tarjeta marca en color los pasos completados.
+
+## pilot5 · Simulador
+- Simulador debajo del visor: grupos de 3, 4 o 5 pisos (zigzag, gráfico, edificio y tour se recalculan), fecha de inicio, resultado de AirMD, velocidad y feriados (Veterans Day, Thanksgiving, Navidad, Año Nuevo, MLK).
+- Resumen en vivo: grupos, pisos con barreras a la vez, semanas de remediación y drywall, semana y fecha de fin con pintura/puertas/Sciens, pruebas de AirMD y semanas con fire watch. Aviso para grupos de 5 (Fire Marshal, cuadrillas y capacidad eléctrica).
+- Se ocultan las capas y la ficha del plan anterior; la ficha del piso resume Lado A y Lado B.
+
+## pilot6 · Elevador de servicio
+- Elevador de servicio ubicado en la abertura del muro oeste del tramo norte (según marca del PM): puerta y etiqueta "Elevador de servicio"; todas las cuadrillas, rollos de alfombra y bolsas entran y salen por ahí.
+
+## pilot7 · Elevador de servicio corregido
+- El elevador de servicio pasa al lado B del tramo norte (marca del PM): abertura en el muro B, pasillo corto marcado en amarillo y puerta del elevador detrás. Cuadrillas, material y relevos usan esa ruta.
+
+## pilot8 · Puerta del elevador y separación de personajes
+- Cabina del elevador de servicio detrás del muro B con la puerta en la cara donde llega el pasillo corto (marca del PM); ruta de cuadrillas ajustada.
+- Los personajes mantienen al menos ~2.6 ft de separación y los logos se escalonan en altura cuando hay varias personas cerca, para que se lean.
+
+## pilot9 · Acceso al vestíbulo de ascensores
+- El panel con moho que aparecía junto a las puertas de Superior era el acceso al vestíbulo de ascensores: queda como abertura permanente (no se muestra drywall ni se cuenta en el lado B) con la etiqueta "Acceso al vestíbulo de ascensores".
+
+## pilot10 · Acceso al vestíbulo libre
+- En el acceso al vestíbulo de ascensores se retiraron los montantes (framing) que quedaban en medio; la abertura queda libre con un marco blanco (jambas y cabezal).

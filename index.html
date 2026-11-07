@@ -8,7 +8,7 @@
 <link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./icons/icon-192.png">
 <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
 <link rel="stylesheet" href="./assets/resident-ios.css?v=20261029-android-reference17">
-<script src="./assets/resident-ios.js?v=20261107-pilot3" defer></script>
+<script src="./assets/resident-ios.js?v=20261107-pilot10" defer></script>
 <title>5660 Collins · Resident Progress</title>
 <style>
 #tab-schedule #scheduleSegment,#tab-schedule #timelinePanel,#tab-schedule #milestonePanel,#tab-schedule>.quiet-foot{display:none!important}
@@ -706,7 +706,7 @@ root.querySelectorAll("[data-msview]").forEach(b=>b.addEventListener("click",()=
 <script>
 (function(){function init(){
  const tab=document.getElementById('tab-progress'),picture=document.getElementById('modelPicture');
- const frame=document.createElement('iframe');frame.id='reconstructionFrame';frame.title='Reconstrucción interactiva de pasillos · planos Relats';frame.loading='lazy';frame.src='./reconstruction.html?v=20261107-pilot3';picture.appendChild(frame);
+ const frame=document.createElement('iframe');frame.id='reconstructionFrame';frame.title='Reconstrucción interactiva de pasillos · planos Relats';frame.loading='lazy';frame.src='./reconstruction.html?v=20261107-pilot10';picture.appendChild(frame);
  function currentFloor(){const select=document.getElementById('myFloorNumber');return select?select.value:'19';}
  function floorKey(f){return f==='PH'?'21':Number(f)<=16?'2-15':Number(f)<=21?'16-20':'21';}
  function sync(){const v=document.querySelector('#progressSegment [data-view].active')?.dataset.view;const active=v!=='storm';tab.classList.toggle('has-reconstruction',active);const visible=!tab.hidden&&active;
@@ -781,7 +781,7 @@ body.collins-immersive .tabbar,body.collins-immersive nav.bottom-nav,body.collin
  if(!tab||!picture||!seg)return;const btn=seg.querySelector('[data-view="storm"]');if(!btn)return;
  const f=document.createElement('iframe');f.id='stormFrame';f.title='Garage stormwater 3D construction simulation';
  let loaded=false;const lang=()=>document.documentElement.lang==='es'?'es':'en';
- function load(){if(loaded)return;loaded=true;if(window.__setStormSrc)window.__setStormSrc(f);else f.src='./stormwater.html?v=20261107-pilot3&lang='+lang();picture.appendChild(f);}
+ function load(){if(loaded)return;loaded=true;if(window.__setStormSrc)window.__setStormSrc(f);else f.src='./stormwater.html?v=20261107-pilot10&lang='+lang();picture.appendChild(f);}
  function post(m){try{f.contentWindow&&f.contentWindow.postMessage(m,'*');}catch(e){}}
  function sync(){const on=btn.classList.contains('active');tab.classList.toggle('has-storm',on);if(on)load();else if(loaded){loaded=false;try{f.removeAttribute('srcdoc');f.src='about:blank';f.remove();}catch(e){}}post({type:'collins-visibility',visible:on&&!tab.hidden});post({type:'collins-language',lang:lang()});}
  window.addEventListener('message',e=>{if(e.source===f.contentWindow&&e.data&&e.data.type==='collins-storm-height'&&Number.isFinite(e.data.height))f.style.height=Math.max(900,Math.min(2800,e.data.height))+'px';});
