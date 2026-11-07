@@ -1,0 +1,27 @@
+name: Apply verified Pilot10 ZIP update
+on:
+  push:
+    branches:
+      - deploy/pilot10-20261107
+    paths:
+      - '.github/workflows/apply-pilot10.yml'
+permissions:
+  contents: write
+jobs:
+  verify-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Verify uploaded ZIP hashes and update app
+        run: python .pilot10_apply.py
+      - name: Commit exactly the verified Pilot10 changes
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add --all
+          git diff --cached --check
+          git diff --cached --stat
+          git commit -m 'Deploy Pilot10 ZIP: verified 3D tour and cache updates'
+          git push origin HEAD:deploy/pilot10-20261107
