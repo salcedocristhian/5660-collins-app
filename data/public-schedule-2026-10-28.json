@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "asOf": "2026-11-03",
-  "source": "5660 KB Active Projects LIVE latest Oct 27 addenda; Master Permit Record Oct 27; corridor portal screenshots shared Oct 31 (other milestones unchanged); Nov 2 verbal gym schedule with SERVPRO (Nov 3 inspection target; Nov 4 encapsulation; Nov 6 custom box only, machine not scheduled); Nov 3 Sciens coordinator provided ELSS fire-alarm reference FP1126-7824, official City stage/issuance unverified",
+  "asOf": "2026-11-07",
+  "source": "November 6, 2026 5660 LIVE KB permit/2-week Floor 2 pilot override and Relats stairs design; November 5 Floor 2 operations plan; November 3 gym/ELSS verification remains pending.",
   "isVerifiedCalendar": false,
   "timeline": [
     {
@@ -22,7 +22,7 @@
       "start": 0,
       "length": 1,
       "group": "review",
-      "note": "Oct 30 tentative release; not issued"
+      "note": "FP0826-7612 City corrections; the Oct 30 release target passed without verified permit issuance."
     },
     {
       "name": {
@@ -32,7 +32,7 @@
       "start": 0,
       "length": 1,
       "group": "review",
-      "note": "Sciens supplied FP1126-7824 Nov 3; City review status, master association and issuance unverified."
+      "note": "Sciens FP1126-7824 application reference Nov 3; City approval/issuance unverified."
     },
     {
       "name": {
@@ -42,17 +42,27 @@
       "start": 0,
       "length": 1,
       "group": "notfiled",
-      "note": "Oct 30 signed submission package target"
+      "note": "Signed coordinated package submission and permit status unverified; no installation start approved."
     },
     {
       "name": {
-        "en": "Hallway permit",
-        "es": "Permiso pasillos"
+        "en": "Hallway permit · issued Nov 6",
+        "es": "Permiso de pasillos · emitido 6 nov"
       },
       "start": 1,
       "length": 1,
-      "group": "review",
-      "note": "Building/Flood due Nov 10; Plumbing/Planning/Elevator due Nov 13; review due dates, not issuance dates"
+      "group": "issued",
+      "note": "BC2628687 ISSUED Nov 6 with Permit Card; does not itself confirm start of construction."
+    },
+    {
+      "name": {
+        "en": "Floor 2 pilot · 2 weeks (tentative)",
+        "es": "Piloto piso 2 · 2 semanas (tentativo)"
+      },
+      "start": 1,
+      "length": 1,
+      "group": "pilot",
+      "note": "Nov 9 target start; two-week planning window Floor 2 ONLY. Other floors TBD pending actual production, AirMD clearance and Fire/AHJ approval."
     },
     {
       "name": {
@@ -66,13 +76,13 @@
     },
     {
       "name": {
-        "en": "Stair engineering",
-        "es": "Ingeniería escaleras"
+        "en": "Stair design · Relats (tentative)",
+        "es": "Diseño escaleras · Relats (tentativo)"
       },
-      "start": 1,
+      "start": 2,
       "length": 1,
       "group": "notfiled",
-      "note": "Coordinated package target week of Nov 10"
+      "note": "Engineering package targeted early December 2026; design only, no approved construction date."
     },
     {
       "name": {
@@ -87,258 +97,160 @@
   ],
   "milestones": [
     {
-      "month": "OCT",
-      "day": "30",
-      "title": {
-        "en": "Fire sprinkler permit FP0826-7612",
-        "es": "Permiso de rociadores FP0826-7612"
-      },
-      "detail": {
-        "en": "Contractor's possible release target; City approval not confirmed",
-        "es": "Objetivo tentativo del contratista; sin emisión confirmada"
-      }
-    },
-    {
-      "month": "OCT",
-      "day": "30",
-      "title": {
-        "en": "Smoke enclosure door package",
-        "es": "Paquete de puertas de humo"
-      },
-      "detail": {
-        "en": "Target for coordinated signed permit submission; not filed yet",
-        "es": "Fecha tentativa de planos firmados; sin radicación confirmada"
-      }
-    },
-    {
-      "month": "OCT",
-      "day": "30",
-      "title": {
-        "en": "Fire alarm engineering package",
-        "es": "Ingeniería de alarma de incendio"
-      },
-      "detail": {
-        "en": "Target for engineering readiness only; actual filing unverified",
-        "es": "Objetivo de entrega de ingeniería; radicación sin confirmar"
-      }
-    },
-    {
-      "month": "OCT",
-      "day": "30",
-      "title": {
-        "en": "Stair mechanical trade drawings",
-        "es": "Planos mecánicos de escaleras"
-      },
-      "detail": {
-        "en": "Mechanical trade target only, not full multidisciplinary set",
-        "es": "Objetivo solo mecánico; no paquete integral"
-      }
-    },
-    {
-      "month": "NOV",
-      "day": "01",
-      "title": {
-        "en": "Boiler correction/extension verification",
-        "es": "Verificar prórroga de calderas"
-      },
-      "detail": {
-        "en": "Conservative follow-up date; documents conflict between Nov 1 and Nov 2",
-        "es": "Seguimiento conservador; documentos señalan fechas 1 y 2"
-      }
-    },
-    {
-      "month": "NOV",
-      "day": "03",
-      "title": {
-        "en": "Gym electrical inspection",
-        "es": "Inspección eléctrica del gimnasio"
-      },
-      "detail": {
-        "en": "Planned by coordination for Nov 3; City booking and pass not yet verified",
-        "es": "Prevista por coordinación para el 3; cita y resultado municipal no verificados"
-      }
-    },
-    {
-      "month": "NOV",
-      "day": "03",
-      "title": {
-        "en": "Gym mechanical inspection",
-        "es": "Inspección mecánica del gimnasio"
-      },
-      "detail": {
-        "en": "Planned by coordination for Nov 3; City booking and pass not yet verified",
-        "es": "Prevista por coordinación para el 3; cita y resultado municipal no verificados"
-      }
-    },
-    {
-      "month": "NOV",
-      "day": "03",
-      "title": {
-        "en": "Gym plumbing inspection",
-        "es": "Inspección de plomería del gimnasio"
-      },
-      "detail": {
-        "en": "Planned by coordination for Nov 3; City booking and pass not yet verified",
-        "es": "Prevista por coordinación para el 3; cita y resultado municipal no verificados"
-      }
-    },
-    {
-      "month": "NOV",
-      "day": "04",
-      "title": {
-        "en": "Gym encapsulation · tentative",
-        "es": "Encapsulación del gimnasio · tentativa"
-      },
-      "detail": {
-        "en": "SERVPRO verbal schedule target; contingent on inspection outcomes, approvals and site readiness",
-        "es": "Meta verbal de SERVPRO; depende de inspecciones, autorizaciones y condiciones de obra"
-      }
-    },
-    {
+      "date": "2026-11-06",
       "month": "NOV",
       "day": "06",
       "title": {
-        "en": "Custom desiccant box · tentative",
-        "es": "Box a medida para desiccant · tentativo"
+        "en": "BC2628687 issued · Permit Card available",
+        "es": "BC2628687 emitido · Permit Card disponible"
       },
       "detail": {
-        "en": "Fabrication / installation target only. The DESICCANT MACHINE has no scheduled installation date.",
-        "es": "Solo objetivo de fabricación/instalación del box. La MÁQUINA DESICCANT no tiene fecha de instalación programada."
-      }
+        "en": "Confirmed from City permit documents supplied November 6; work still requires safety/site release.",
+        "es": "Confirmado en los documentos municipales del 6 de noviembre; el trabajo sigue sujeto a liberación y seguridad."
+      },
+      "status": "verified"
     },
     {
+      "date": "2026-11-09",
       "month": "NOV",
-      "day": "10",
+      "day": "09",
       "title": {
-        "en": "Stair coordinated engineering set",
-        "es": "Ingeniería integral de escaleras"
+        "en": "Floor 2 pilot · planned start",
+        "es": "Piloto piso 2 · inicio previsto"
       },
       "detail": {
-        "en": "Target week of Nov 10, tentative and subject to design closure",
-        "es": "Semana del 10 de noviembre, tentativo y sujeto a coordinación"
-      }
+        "en": "Two-week Floor 2-only pilot; November 9 is a TARGET, not confirmed mobilization. Confirm Fire Watch, egress and Management authorization.",
+        "es": "Piloto de dos semanas solo en piso 2; el 9 de noviembre es META, no movilización confirmada. Verificar Fire Watch, salidas y autorización de Administración."
+      },
+      "status": "tentative"
     },
     {
+      "date": "2026-11-11",
       "month": "NOV",
-      "day": "10",
+      "day": "11",
       "title": {
-        "en": "Hallway: Building / Flood reviews",
-        "es": "Pasillos: revisiones Building / Flood"
+        "en": "Floor 2 carpet · alternative date",
+        "es": "Piso 2 alfombra · fecha alternativa"
       },
       "detail": {
-        "en": "Portal review due dates; BC2628687 not issued. Not a construction start.",
-        "es": "Vencimientos de revisión del portal; BC2628687 no emitido. No es inicio de obra."
-      }
+        "en": "Alternative only. Holiday staffing and inspections must be confirmed; Management notice at least 48 hours in advance.",
+        "es": "Solo alternativa. Confirmar personal e inspecciones por el festivo; aviso de Administración con al menos 48 horas."
+      },
+      "status": "tentative"
     },
     {
+      "date": "2026-11-12",
+      "month": "NOV",
+      "day": "12",
+      "title": {
+        "en": "Floor 2 carpet · preferred target",
+        "es": "Piso 2 alfombra · meta preferida"
+      },
+      "detail": {
+        "en": "Preferred but UNCONFIRMED; proposed 8 AM–5 PM work window on carpet day only. Management to confirm 48 hours ahead; contact Management for essential access.",
+        "es": "Preferida pero NO CONFIRMADA; ventana propuesta de 8 a. m. a 5 p. m. solo el día de retiro. Administración avisará 48 horas antes; solicitar acceso esencial a Administración."
+      },
+      "status": "tentative"
+    },
+    {
+      "date": "2026-11-13",
       "month": "NOV",
       "day": "13",
       "title": {
-        "en": "Hallway: Plumbing / Planning / Elevator",
-        "es": "Pasillos: Plumbing / Planning / Elevator"
+        "en": "AirMD written release · provisional milestone",
+        "es": "AirMD liberación escrita · hito provisional"
       },
       "detail": {
-        "en": "Portal review due dates; issuance and work authorization still pending.",
-        "es": "Vencimientos de revisión del portal; emisión y autorización de trabajo pendientes."
-      }
+        "en": "Early-area written clearance is a TARGET only, if tested areas meet protocol; sampling is not clearance. Does NOT mean the full Floor 2 pilot is complete.",
+        "es": "La liberación escrita de áreas iniciales es solo META, si cumplen el protocolo; muestreo no equivale a clearance. NO significa finalización del piloto completo."
+      },
+      "status": "tentative"
     },
     {
+      "date": "2026-11-17",
       "month": "NOV",
       "day": "17",
       "title": {
         "en": "Parking lighting violation hearing",
-        "es": "Audiencia por iluminación del parqueadero"
+        "es": "Audiencia por infracción de iluminación"
       },
       "detail": {
-        "en": "9:00 AM in latest KB; time/appearance must be confirmed",
-        "es": "9:00 AM según KB más reciente; confirmar hora y comparecencia"
-      }
+        "en": "BVE26000408; 9:00 AM per KB. Management/team must reconfirm appearance and case instructions.",
+        "es": "BVE26000408; 9 a. m. según KB. Administración/equipo deben reconfirmar comparecencia e instrucciones."
+      },
+      "status": "follow-up"
     },
     {
+      "date": "2026-11-20",
+      "month": "NOV",
+      "day": "20",
+      "title": {
+        "en": "Floor 2 pilot · end-of-window review (indicative)",
+        "es": "Piloto piso 2 · revisión de cierre de ventana (indicativa)"
+      },
+      "detail": {
+        "en": "Illustrative end of a two-week planning window if mobilized Nov 9. Not a deadline for complete remediation, clearance or drywall; future floors remain unscheduled.",
+        "es": "Final ilustrativo de dos semanas si se moviliza el 9. No es promesa de remediación, liberación ni drywall terminados; otros pisos siguen sin programar."
+      },
+      "status": "tentative"
+    },
+    {
+      "date": "2026-11-26",
       "month": "NOV",
       "day": "26",
       "title": {
-        "en": "Garage permit administrative milestone",
-        "es": "Hito administrativo del permiso del garaje"
+        "en": "Garage permit administrative follow-up",
+        "es": "Seguimiento administrativo permiso garaje"
       },
       "detail": {
-        "en": "Reported BC2526722 preservation date, not construction completion",
-        "es": "Fecha reportada para mantener BC2526722 activo; no es fin de obra"
-      }
+        "en": "BC2526722 preservation/administrative date reported; confirm with permit team. Not a construction completion milestone.",
+        "es": "Fecha administrativa reportada para BC2526722; confirmar con equipo de permisos. No es fin de construcción."
+      },
+      "status": "follow-up"
     },
     {
-      "month": "NOV",
-      "day": "03",
+      "date": "2026-12-01",
+      "month": "DEC",
+      "day": "TBD",
       "title": {
-        "en": "ELSS fire alarm application reference",
-        "es": "Referencia de solicitud de alarma ELSS"
+        "en": "Relats stair engineering · early December target",
+        "es": "Ingeniería de escaleras Relats · meta principios de diciembre"
       },
       "detail": {
-        "en": "FP1126-7824 supplied by Sciens; City review and issuance unverified",
-        "es": "Sciens informó FP1126-7824; revisión y emisión municipal sin verificar"
-      }
+        "en": "Early December planning TARGET for engineered design package; specific delivery day, City review and construction start are not confirmed.",
+        "es": "Meta tentativa de principios de diciembre para el paquete de ingeniería; no hay día exacto, revisión municipal ni comienzo de obra confirmados."
+      },
+      "status": "tentative"
     }
   ],
   "gymUpcoming": [
     {
       "date": "2026-11-03",
       "title": {
-        "en": "Gym electrical inspection",
-        "es": "Inspección eléctrica del gimnasio"
+        "en": "Gym inspections · outcome verification needed",
+        "es": "Gimnasio · verificar resultados de inspecciones"
       },
       "detail": {
-        "en": "Planned by coordination for Nov 3; City booking and pass not yet verified",
-        "es": "Prevista por coordinación para el 3; cita y resultado municipal no verificados"
+        "en": "Electrical, Mechanical and Plumbing were targeted November 3; no City pass or final inspection results documented in LIVE KB. Reopening is not confirmed.",
+        "es": "Se preveían inspecciones Electrical, Mechanical y Plumbing el 3 de noviembre; el KB LIVE no confirma aprobaciones ni resultados finales. Reapertura no confirmada."
       },
-      "status": "planned"
-    },
-    {
-      "date": "2026-11-03",
-      "title": {
-        "en": "Gym mechanical inspection",
-        "es": "Inspección mecánica del gimnasio"
-      },
-      "detail": {
-        "en": "Planned by coordination for Nov 3; City booking and pass not yet verified",
-        "es": "Prevista por coordinación para el 3; cita y resultado municipal no verificados"
-      },
-      "status": "planned"
-    },
-    {
-      "date": "2026-11-03",
-      "title": {
-        "en": "Gym plumbing inspection",
-        "es": "Inspección de plomería del gimnasio"
-      },
-      "detail": {
-        "en": "Planned by coordination for Nov 3; City booking and pass not yet verified",
-        "es": "Prevista por coordinación para el 3; cita y resultado municipal no verificados"
-      },
-      "status": "planned"
+      "status": "verification"
     },
     {
       "date": "2026-11-04",
       "title": {
-        "en": "Gym encapsulation · tentative",
-        "es": "Encapsulación del gimnasio · tentativa"
+        "en": "Gym encapsulation · status to verify",
+        "es": "Gimnasio encapsulación · estado por verificar"
       },
       "detail": {
-        "en": "SERVPRO verbal schedule target; contingent on inspection outcomes, approvals and site readiness",
-        "es": "Meta verbal de SERVPRO; depende de inspecciones, autorizaciones y condiciones de obra"
+        "en": "November 4 was a tentative target dependent on inspections and work authorization; no completion or reopening confirmed.",
+        "es": "El 4 de noviembre era una meta tentativa dependiente de inspecciones y autorización; sin finalización ni reapertura confirmada."
       },
-      "status": "tentative"
-    },
-    {
-      "date": "2026-11-06",
-      "title": {
-        "en": "Custom desiccant box · tentative",
-        "es": "Box a medida para desiccant · tentativo"
-      },
-      "detail": {
-        "en": "Fabrication / installation target only. The DESICCANT MACHINE has no scheduled installation date.",
-        "es": "Solo objetivo de fabricación/instalación del box. La MÁQUINA DESICCANT no tiene fecha de instalación programada."
-      },
-      "status": "tentative"
+      "status": "verification"
     }
-  ]
+  ],
+  "scheduleNotice": {
+    "en": "Floor 2 is the only scheduled pilot workfront (two-week planning window; November 9 target). Other residential floors have no confirmed start dates. Dates below are conditional or verification milestones unless explicitly marked as issued.",
+    "es": "El piso 2 es el único frente planificado para el piloto (ventana de dos semanas; inicio objetivo el 9 de noviembre). No hay fecha confirmada para otros pisos residenciales. Las fechas son metas tentativas o hitos por verificar, salvo que se identifiquen como emitidos."
+  }
 }

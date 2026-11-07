@@ -8,13 +8,14 @@
 <link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./icons/icon-192.png">
 <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
 <link rel="stylesheet" href="./assets/resident-ios.css?v=20261029-android-reference17">
-<script src="./assets/resident-ios.js?v=20261107-pilot10" defer></script>
+<script src="./assets/resident-ios.js?v=20261107-resident-schedule1" defer></script>
 <title>5660 Collins · Resident Progress</title>
 <style>
 #tab-schedule #scheduleSegment,#tab-schedule #timelinePanel,#tab-schedule #milestonePanel,#tab-schedule>.quiet-foot{display:none!important}
 .master-schedule{background:#fff;border-radius:20px;padding:17px;margin:0 0 20px;color:#15251f}.ms-top{display:flex;justify-content:space-between;gap:8px;align-items:center}.ms-top strong{font-size:18px;display:block}.ms-top small{display:block;color:#66756f;margin-top:5px}.ms-pill{font-size:11px;border-radius:20px;padding:6px 10px;background:#f3efe7;color:#816233}.ms-tabs{display:flex;gap:4px;background:#eef1ee;padding:4px;border-radius:12px;margin:17px 0}.ms-tabs button{flex:1;border:0;border-radius:9px;background:transparent;padding:10px 5px;color:#50635b;font-weight:700;font-size:13px}.ms-tabs button.on{background:#fff;color:#1d4e44;box-shadow:0 1px 4px #0001}.ms-controls{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px;font-size:12px;color:#66756f}.ms-controls select{font:inherit;border:1px solid #d8dfdb;border-radius:8px;padding:6px;background:#fff;color:#183b32}.ms-item{border-top:1px solid #edf0ed;padding:12px 0}.ms-itemhead{display:flex;justify-content:space-between;gap:8px;align-items:center}.ms-itemhead strong{font-size:13px}.ms-itemhead small{font-size:12px;color:#65766e;white-space:nowrap}.ms-track{height:21px;background:#f0f2f0;border-radius:5px;position:relative;overflow:hidden;margin-top:8px}.ms-production,.ms-pilot{position:absolute;top:3px;height:15px;border-radius:4px}.ms-production{background:#23564c}.ms-pilot{background:#b58b48;z-index:1}.ms-detail{font-size:12px;color:#62736b;margin-top:7px;line-height:1.45}.ms-weeklabels{display:flex;justify-content:space-between;font-size:10px;color:#7c8982;margin:12px 0 0}.ms-key{display:flex;gap:12px;flex-wrap:wrap;font-size:11px;color:#63746c;margin-top:15px}.ms-key span{display:flex;align-items:center;gap:5px}.ms-key i{display:inline-block;width:10px;height:10px;border-radius:2px}.ms-disclaimer{font-size:11px;line-height:1.5;color:#85918a;border-top:1px solid #edf0ed;padding-top:14px;margin-top:16px}.ms-board{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.ms-column{background:#f3f5f3;border-radius:12px;padding:10px;min-width:0}.ms-column h3{font-size:12px;margin:0 0 9px;color:#52665c}.ms-card{background:#fff;border-radius:9px;padding:10px;margin-bottom:8px;box-shadow:0 1px 2px #0001}.ms-card strong{font-size:12px;display:block}.ms-card small{font-size:11px;color:#6a7b72;display:block;margin-top:5px}.ms-listrow{display:flex;justify-content:space-between;gap:10px;align-items:start;border-top:1px solid #edf0ed;padding:12px 0}.ms-listrow strong{font-size:13px}.ms-listrow small{display:block;color:#708077;font-size:11px;margin-top:4px}.ms-listrow b{font-size:13px;white-space:nowrap}
 .my-floor-select,.my-floor-info{background:#fff;border-radius:20px;padding:18px;margin:16px 0;color:#20382b}.my-floor-top{display:flex;justify-content:space-between;gap:8px;color:#728678;font-size:10px;font-weight:750;letter-spacing:.09em}.my-floor-select label{display:block;font-size:19px;font-weight:750;margin:15px 0 9px}.my-floor-select select{display:block;width:100%;border:1px solid #dce6de;border-radius:12px;padding:13px 14px;background:#f5f8f5;color:#254d37;font:inherit;font-size:16px}.my-floor-select p{font-size:12px;color:#7a8c80;margin:12px 0 0}.my-floor-info-head{display:flex;justify-content:space-between;gap:10px;align-items:center}.my-floor-info-head small{font-size:10px;color:#778c7b;letter-spacing:.09em}.my-floor-info h2{font-size:23px;margin:6px 0}.my-floor-status{font-size:10px;background:#f0f4f0;color:#5e7967;border-radius:18px;padding:8px}.my-floor-status-row{padding:13px 0;border-top:1px solid #edf0ed}.my-floor-status-row strong{font-size:14px}.my-floor-status-row p{font-size:13px;color:#6d8174;line-height:1.5;margin:6px 0 0}.my-floor-foot{font-size:11px;color:#87978b;line-height:1.5;margin-bottom:0}#tab-progress .sequence-card{margin:12px 0 15px;padding:15px 16px;border-radius:20px}#tab-progress .sequence-head{gap:10px;align-items:center}#tab-progress .sequence-copy h2{font-size:17px;line-height:1.2;margin:0 0 4px}#tab-progress .sequence-copy p{font-size:12px;line-height:1.35;margin:0}#tab-progress .sequence-controls{flex-shrink:0}#tab-progress .sequence-controls button{width:38px;height:38px;min-width:38px}#tab-progress .sequence-controls .play-primary{width:52px;height:52px;min-width:52px}#tab-progress .sequence-stage-note{font-size:12px;margin:8px 0 4px}#tab-progress .sequence-card input[type=range]{margin:8px 0 0}.floor-play-console{background:#fff;border-radius:24px;padding:16px;margin:14px 0;box-shadow:0 4px 24px rgba(30,65,46,.045)}#tab-progress .floor-play-console .my-floor-select{padding:0;margin:0;background:transparent;border-radius:0}#tab-progress .floor-play-console .my-floor-select label{font-size:15px;margin:11px 0 7px}#tab-progress .floor-play-console .my-floor-select select{padding:12px 14px;border:1px solid #d7e3db;background:#f5f8f5;border-radius:13px}#tab-progress .floor-play-console .my-floor-select p{margin:8px 0 0;font-size:11px}#tab-progress .floor-play-console .sequence-card{background:#f3f7f3;border:1px solid #e7eee8;border-radius:17px;margin:14px 0 0;padding:13px 12px}#tab-progress .floor-play-console .sequence-copy h2{font-size:15px;letter-spacing:-.02em}#tab-progress .floor-play-console .sequence-controls{gap:6px}#tab-progress .floor-play-console .sequence-controls button{width:35px;height:35px;min-width:35px}#tab-progress .floor-play-console .sequence-controls .play-primary{width:49px;height:49px;min-width:49px;box-shadow:0 4px 12px #1c5a432b}#tab-progress .floor-play-console .sequence-stage-note{margin:7px 0 4px}.sequence-mini-dock{display:none;position:fixed;bottom:calc(76px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);z-index:90;align-items:center;gap:8px;background:rgba(255,255,255,.97);border:1px solid #dfe8e0;box-shadow:0 10px 30px #123c2526;border-radius:999px;padding:8px 12px;max-width:calc(100vw - 32px);backdrop-filter:blur(16px)}.sequence-mini-dock.visible{display:flex}.sequence-mini-dock .mini-floor{font-size:12px;font-weight:700;color:#244a35;white-space:nowrap;padding:0 8px}.sequence-mini-dock button{width:36px;height:36px;border:0;border-radius:50%;background:#edf2ed;color:#244735;font-size:23px;cursor:pointer}.sequence-mini-dock .mini-play{background:#205a4b;color:white;width:45px;height:45px;font-size:18px}@media(max-width:420px){#tab-progress .floor-play-console .sequence-head{gap:6px}#tab-progress .floor-play-console .sequence-copy{min-width:0}#tab-progress .floor-play-console .sequence-copy h2{font-size:14px}#tab-progress .floor-play-console .sequence-copy p{font-size:10px}#tab-progress .floor-play-console .sequence-controls{gap:4px}}</style><style>.floor-sim-status{background:#edf3ef;border-radius:12px;padding:12px;margin-bottom:10px;display:grid;gap:5px}.floor-sim-status strong{font-size:13px;color:#1d4e44}.floor-sim-status small,.floor-sim-muted{font-size:12px;color:#718078;line-height:1.5}.floor-sim-summary{background:#fff;border-radius:20px;padding:17px;margin:18px 0 24px}.floor-sim-summary h3{font-size:19px;margin:0 0 7px}.floor-sim-row{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid #edf0ed;padding:9px 0;font-size:13px}.floor-sim-row b{white-space:nowrap;color:#24594e}.floor-sim-active{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}.floor-sim-active span{font-size:11px;background:#eef2ef;color:#26584d;border-radius:8px;padding:7px 9px}</style><style>.trade-seq-intro{font-size:13px;color:#697a71;padding:12px 15px}.trade-seq-row{padding:15px;border-top:1px solid #e8ece9}.trade-seq-active{background:#f7faf8}.trade-seq-head{display:flex;justify-content:space-between;align-items:start;gap:10px}.trade-seq-head strong{font-size:14px;color:#193e34}.trade-seq-head span{font-size:10px;color:#6c7b72;text-align:right;max-width:110px}.trade-seq-where{font-size:13px;font-weight:700;color:#356b59;margin-top:7px}.trade-seq-row p{font-size:13px;line-height:1.4;margin:6px 0;color:#3d5148}.trade-seq-row small{font-size:11px;color:#85918a}</style><style>
 /* Compact resident updates typography */
+#tab-schedule .gantt-bar.pilot{background:#b58b48!important}
 #tab-updates>h1{font-size:clamp(29px,8vw,37px)!important;line-height:1.12!important}
 #tab-updates .feature-card{padding:22px 23px!important}
 #tab-updates .feature-meta{font-size:12px!important;letter-spacing:.02em}
@@ -89,21 +90,16 @@ button:active,nav a:active{transform:scale(.96)}
 <main id="main" tabindex="-1">
 <section id="tab-updates" class="screen current" data-tab="updates" aria-labelledby="heading-updates">
 <h1 id="heading-updates" data-t="updates">Updates</h1>
-<div class="feature-card" id="featured"><div class="feature-meta"><span data-t="latest">LATEST</span><time id="featureDate">Nov 2</time></div><h2 id="featureTitle">Gym: trade inspections planned November 3</h2><p id="featureBody">Electrical, Mechanical and Plumbing inspections are planned for Tuesday, November 3; City bookings and results remain unverified. Gym encapsulation is tentatively targeted for Wednesday, November 4 pending inspection outcomes and authorization. There is no confirmed reopening date.</p></div>
+<div class="feature-card" id="featured"><div class="feature-meta"><span data-t="latest">LATEST</span><time id="featureDate">Nov 6</time></div><h2 id="featureTitle">Hallway permit issued · Floor 2 pilot planned</h2><p id="featureBody">BC2628687 was issued on November 6, 2026. A two-week pilot is planned only on Floor 2, targeting November 9 subject to readiness and authorization. Management will confirm access notices; other floors have no scheduled start.</p></div>
 <h2 class="section-heading" data-t="recent">Recent</h2>
-<div class="group-list" id="recentList" aria-live="polite">
-<div class="list-row"><span class="tile blue"><svg><use href="#ic-permits"/></svg></span><div class="row-copy"><strong>Hallway permit review advanced — not issued</strong><small>City portal screenshots shared October 31 show BC2628687 still Applied with no issue date. Intake and Fire Building passed October 29; Structural and…</small></div><time class="row-date">Oct 31</time></div>
-<div class="list-row"><span class="tile blue"><svg><use href="#ic-lamp"/></svg></span><div class="row-copy"><strong>Parking lot lighting application started</strong><small>The City registered the initial application for parking lot lighting under process BPI2650249 on October 27. It is in Initial status, not an issued…</small></div><time class="row-date">Oct 27</time></div>
-<div class="list-row"><span class="tile plum"><svg><use href="#ic-door"/></svg></span><div class="row-copy"><strong>Smoke enclosure doors — design coordination</strong><small>The architectural and engineering teams are reviewing revised drawings and fire-rating requirements. The permit package has not been confirmed submitted…</small></div><time class="row-date">Oct 27</time></div>
-<div class="list-row"><span class="tile teal"><svg><use href="#ic-elevator"/></svg></span><div class="row-copy"><strong>Service elevator — emergency repairs completed</strong><small>On October 26, VTS confirmed that the emergency repairs had been completed, required safety tests passed and the service elevator was operational. Further…</small></div><time class="row-date">Oct 26</time></div>
-</div>
+<div class="group-list" id="recentList" aria-live="polite"><div class="empty">Loading current project updates…</div></div>
 <h2 class="section-heading" data-t="allprojects">All project updates</h2>
 <p class="quiet-intro" data-t="projectexplainer">Select a project for the latest documented status and next step.</p>
 <div class="group-list" id="projectList"><div class="empty">Loading project information…</div></div>
 <h2 class="section-heading" data-t="questions">Resident questions</h2>
 <div class="group-list faq-list" id="faqList"></div>
-<p class="quiet-foot" id="kbFoot">Resident-safe KB snapshot · Oct 27, 2026 · Not a live City or Google Drive feed.</p>
-<p class="quiet-foot" id="updateFoot">Project information · Updated Oct 27, 2026</p>
+<p class="quiet-foot" id="kbFoot">Resident-safe KB snapshot · Nov 7, 2026 · Not a live City or Google Drive feed.</p>
+<p class="quiet-foot" id="updateFoot">Project information · Updated Nov 7, 2026</p>
 </section>
 <section id="tab-progress" class="screen" data-tab="progress" aria-labelledby="heading-progress" hidden>
 <h1 id="heading-progress" data-t="progress">Progress</h1>
@@ -132,32 +128,37 @@ button:active,nav a:active{transform:scale(.96)}
 </section>
 <section id="tab-schedule" class="screen" data-tab="schedule" aria-labelledby="heading-schedule" hidden>
 <h1 id="heading-schedule" data-t="schedule">Schedule</h1>
+
 <div class="resident-floor-module" style="background:#fff;border-radius:20px;padding:20px;margin:0 0 22px;color:#14241f">
-<div style="font-size:12px;letter-spacing:.08em;color:#66756f;font-weight:700">HALLWAY RESTORATION · RESIDENT INFORMATION</div>
-<h2 style="font-size:25px;line-height:1.2;margin:10px 0 8px">Your floor schedule</h2>
-<p style="color:#66756f;margin:0 0 18px;font-size:15px">Select your floor to see remediation, drywall reconstruction and resident notices.</p>
-<label for="residentFloor" style="display:block;font-weight:700;margin-bottom:8px">Select floor</label>
-<select id="residentFloor" style="width:100%;padding:14px;border:1px solid #d7ddda;border-radius:12px;background:#f5f6f4;color:#14241f;font:inherit"></select>
-<div style="background:#f3f5f3;border-radius:14px;padding:16px;margin-top:16px">
-<div id="residentFloorHeading" style="font-weight:750;font-size:20px">Floor 2</div>
-<div style="margin-top:12px;font-weight:700">Hallway remediation</div><p style="margin:4px 0 12px;color:#53645d;font-size:14px">Prior remediation work reported complete. Floor-specific final clearance should be verified.</p>
-<div style="font-weight:700">Drywall reconstruction</div><p style="margin:4px 0 12px;color:#53645d;font-size:14px">Start date not confirmed. City permit BC2628687 remains pending in the latest available project status.</p>
-<div style="font-weight:700">Finishing and painting</div><p style="margin:4px 0;color:#53645d;font-size:14px">Schedule to be announced after reconstruction planning is confirmed.</p>
-</div>
-<div style="margin-top:16px;border-left:3px solid #b48c4c;padding:4px 0 4px 12px;color:#596960;font-size:14px"><strong>Resident notice:</strong> No confirmed floor-specific start notice has been issued here. Dates will be posted only after project-team verification. Tentative dates will be clearly identified.</div>
+  <div id="residentFloorKicker" style="font-size:12px;letter-spacing:.08em;color:#66756f;font-weight:700">HALLWAY RESTORATION · RESIDENT INFORMATION</div>
+  <h2 id="residentFloorTitle" style="font-size:25px;line-height:1.2;margin:10px 0 8px">Your floor schedule</h2>
+  <p id="residentFloorIntro" style="color:#66756f;margin:0 0 18px;font-size:15px">Select your floor for documented status and conditional next steps.</p>
+  <label id="residentFloorSelectLabel" for="residentFloor" style="display:block;font-weight:700;margin-bottom:8px">Select floor</label>
+  <select id="residentFloor" style="width:100%;padding:14px;border:1px solid #d7ddda;border-radius:12px;background:#f5f6f4;color:#14241f;font:inherit"></select>
+  <div style="background:#f3f5f3;border-radius:14px;padding:16px;margin-top:16px">
+    <div id="residentFloorHeading" style="font-weight:750;font-size:20px">Floor 2</div>
+    <p id="residentFloorStatus" style="font-weight:700;font-size:14px;margin:8px 0;color:#8a6727">Two-week pilot planned · start not confirmed</p>
+    <div id="residentRemediationLabel" style="margin-top:12px;font-weight:700">Hallway remediation</div>
+    <p id="residentRemediationText" style="margin:4px 0 12px;color:#53645d;font-size:14px">Two-week pilot on Floor 2 only; November 9 is a tentative start, not proof work began.</p>
+    <div id="residentDrywallLabel" style="font-weight:700">Drywall reconstruction</div>
+    <p id="residentDrywallText" style="margin:4px 0 12px;color:#53645d;font-size:14px">Follows written AirMD area clearance and required inspections; no start date confirmed.</p>
+    <div id="residentFinishLabel" style="font-weight:700">Finishing and painting</div>
+    <p id="residentFinishText" style="margin:4px 0;color:#53645d;font-size:14px">To be scheduled after verified releases and reconstruction.</p>
+  </div>
+  <div id="residentFloorNotice" style="margin-top:16px;border-left:3px solid #b48c4c;padding:4px 0 4px 12px;color:#596960;font-size:14px"><strong>Resident notice:</strong> Carpet removal on November 11 or 12 is tentative. Management will confirm the date and any access window with at least 48 hours’ notice. Emergency exit access must remain available.</div>
 </div>
 <div class="master-schedule" id="gymInspectionCard" aria-live="polite" hidden></div>
 <h2 class="section-heading">Building schedule</h2>
 <div class="master-schedule" id="masterSchedule">
  <div class="ms-top"><div><strong>Master Construction Schedule</strong><small>Weekly planning · preliminary forecasts</small></div><span class="ms-pill">Draft</span></div>
  <div class="ms-tabs" role="tablist" aria-label="Construction schedule views"><button type="button" class="on" data-msview="gantt">Gantt</button><button type="button" data-msview="list">List</button><button type="button" data-msview="kanban">Kanban</button></div>
- <div class="ms-controls"><label>Window <select id="msWindow"><option value="12">12 weeks</option><option value="26" selected>26 weeks</option><option value="52">52 weeks</option></select></label><span>W1 = Oct 26–Nov 1 · estimated starts</span></div>
+ <div class="ms-controls"><label>Window <select id="msWindow"><option value="12">12 weeks</option><option value="26" selected>26 weeks</option><option value="52">52 weeks</option></select></label><span>W1 = Oct 26–Nov 1 · Floor 2 target begins W3; other starts TBD</span></div>
  <div id="msContent" aria-live="polite"></div>
  <div class="ms-key"><span><i style="background:#b58b48"></i> Pilot / calibration</span><span><i style="background:#23564c"></i> Field production</span><span><i style="background:#d7dcd9"></i> Not scheduled</span></div>
- <p class="ms-disclaimer">Preliminary schedule. Durations are planning estimates, not confirmed start dates or contractual commitments. The gold segment marks the first on-site week of each new scope (pilot). All plotted starts are tentative, contingent on permit issuance and notice to proceed. The first on-site week of each new scope is for mobilization, pilot execution and production calibration while productive work proceeds. Forecasts will be reviewed after actual field productivity is measured. Permit issuance, inspections, site conditions and coordination may change the sequence. Floor-specific notices will be issued when confirmed.</p>
+ <p class="ms-disclaimer">Preliminary planning schedule, not a guaranteed construction calendar. Only the two-week Floor 2 pilot has a target start (November 9), conditional on contractor and Management release, access, Fire Watch and environmental controls. The issued corridor permit does not itself establish work commencement. The team will review production and AirMD clearance before assigning any dates to other floors; no automatic three-floor rollout is approved. All other workstreams and durations remain subject to their own permits and verification.</p>
 </div>
 <div class="segmented" id="scheduleSegment" role="tablist" aria-label="Schedule view"><button class="active" data-schedule="timeline" type="button" role="tab" aria-selected="true" data-t="timeline">Timeline</button><button data-schedule="milestones" type="button" role="tab" aria-selected="false" data-t="milestones">Milestones</button></div>
-<div id="timelinePanel"><div class="timeline-card"><div class="timeline-scroll"><div class="timeline-grid" id="timelineGrid"></div></div><div class="timeline-legend"><span><b class="legend-dot issued"></b><span data-t="permitissued">Permit issued</span></span><span><b class="legend-dot review"></b><span data-t="permitreview">Permit in review</span></span><span><b class="legend-dot notfiled"></b><span data-t="permitnotfiled">Not filed</span></span><span><i class="legend-today"></i><span data-t="today">Today</span></span></div></div></div>
+<div id="timelinePanel"><div class="timeline-card"><div class="timeline-scroll"><div class="timeline-grid" id="timelineGrid"></div></div><div class="timeline-legend"><span><b class="legend-dot issued"></b><span data-t="permitissued">Permit issued</span></span><span><b class="legend-dot review"></b><span data-t="permitreview">Permit in review</span></span><span><b class="legend-dot notfiled"></b><span data-t="permitnotfiled">Not filed</span></span><span><i class="legend-today"></i><span data-t="today">Today</span></span><span><b class="legend-dot pilot" style="background:#b58b48"></b><span id="pilotLegendText">Floor 2 pilot · tentative</span></span></div></div></div>
 <div id="milestonePanel"><h2 class="section-heading" data-t="nextmilestones">Next milestones</h2><div class="group-list" id="milestoneList"></div></div>
 <p class="quiet-foot" data-t="schnote">Planning outlook only. Dates may shift after design reviews, permitting and contractor scheduling.</p>
 </section>
@@ -186,52 +187,67 @@ button:active,nav a:active{transform:scale(.96)}
 <div class="sheet-backdrop" id="detailBackdrop" hidden></div>
 <div class="detail-sheet" id="permitDetail" role="dialog" aria-modal="true" aria-labelledby="detailTitle" hidden><div class="sheet-handle"></div><button class="sheet-close" id="detailClose" type="button" aria-label="Close"><svg><use href="#ic-close"/></svg></button><div id="detailContents"></div></div>
 <script>
+
 (function(){
 const select=document.getElementById('residentFloor');
 const heading=document.getElementById('residentFloorHeading');
 if(!select||!heading)return;
-for(let floor=2;floor<=21;floor++){const option=document.createElement('option');option.value=String(floor);option.textContent='Floor '+floor;select.appendChild(option);}
-const ph=document.createElement('option');ph.value='PH';ph.textContent='Penthouse';select.appendChild(ph);
+for(let floor=2;floor<=21;floor++){const o=document.createElement('option');o.value=String(floor);select.appendChild(o);}
+const ph=document.createElement('option');ph.value='PH';select.appendChild(ph);
 let saved;try{saved=localStorage.getItem('collinsResidentFloor')}catch(e){}
 if(saved&&Array.from(select.options).some(o=>o.value===saved))select.value=saved;
-function refresh(){heading.textContent=select.value==='PH'?'Penthouse':'Floor '+select.value;try{localStorage.setItem('collinsResidentFloor',select.value)}catch(e){}}
-select.addEventListener('change',refresh);refresh();
+const copy={
+en:{kicker:'HALLWAY RESTORATION · RESIDENT INFORMATION',title:'Your floor schedule',intro:'Select a floor for documented status and conditional next steps.',select:'Select floor',floor:'Floor',penthouse:'Penthouse',pilot:'Two-week pilot planned · start not confirmed',other:'Awaiting Floor 2 pilot results · no confirmed start',remediation:'Hallway remediation',drywall:'Drywall reconstruction',finishing:'Finishing and painting',r2:'Floor 2 only: two-week pilot targeting November 9, subject to workfront readiness, Fire Watch and Management authorization.',ro:'No new selective drywall work date is confirmed for this floor. Later groups are conditional on the Floor 2 pilot, clearances, staffing and Fire/AHJ requirements.',d2:'AirMD sampling alone is not written clearance. Reconstruction follows area-specific written release, applicable inspections and safety requirements.',do:'Not scheduled. Future drywall work will be sequenced only after Floor 2 pilot results and required releases.',f2:'Finishing will follow completed and approved drywall work; no final finish date is confirmed.',fo:'Not scheduled for this floor.',n2:'<strong>Resident notice:</strong> November 11 or 12 is being considered for Floor 2 carpet removal; November 12 is preferred but unconfirmed. Management will provide at least 48 hours’ notice of any access window. Contact Management for essential access; emergency egress must remain open.',no:'<strong>Resident notice:</strong> Management will announce any floor-specific start dates and access requirements when confirmed. No automatic start is scheduled for Floors 3–PH.'},
+es:{kicker:'RESTAURACIÓN DE PASILLOS · INFORMACIÓN PARA RESIDENTES',title:'Cronograma de tu piso',intro:'Selecciona un piso para consultar el estado documentado y próximos pasos sujetos a confirmación.',select:'Seleccionar piso',floor:'Piso',penthouse:'Penthouse',pilot:'Piloto de dos semanas previsto · inicio sin confirmar',other:'A la espera del piloto del piso 2 · sin fecha confirmada',remediation:'Remediación de pasillos',drywall:'Reconstrucción de drywall',finishing:'Acabados y pintura',r2:'Solo piso 2: piloto de dos semanas con objetivo de inicio el 9 de noviembre, sujeto a preparación, Fire Watch y autorización de Administración.',ro:'No hay fecha confirmada de nueva demolición selectiva en este piso. Los grupos siguientes dependen del piloto, liberaciones, personal y Bomberos/AHJ.',d2:'El muestreo de AirMD no equivale a liberación escrita. La reconstrucción requiere autorización escrita por área, inspecciones y seguridad.',do:'Sin programar. La secuencia se definirá después de los resultados del piloto y liberaciones necesarias.',f2:'Los acabados siguen al drywall terminado y aprobado; no hay fecha final confirmada.',fo:'Sin programación para este piso.',n2:'<strong>Aviso para residentes:</strong> Se evalúa el retiro de alfombra del piso 2 el 11 o 12 de noviembre; se prefiere tentativamente el 12. Administración confirmará cualquier ventana de acceso con al menos 48 horas. Contacte con Administración para acceso esencial; las salidas de emergencia permanecerán disponibles.',no:'<strong>Aviso para residentes:</strong> Administración comunicará las fechas por piso y requisitos de acceso cuando se confirmen. No hay inicio automático para pisos 3–PH.'}
+};
+function refresh(){
+ const lang=document.documentElement.lang==='es'?'es':'en',t=copy[lang],isPilot=select.value==='2';
+ heading.textContent=select.value==='PH'?t.penthouse:t.floor+' '+select.value;
+ for(const [id,value] of Object.entries({residentFloorKicker:t.kicker,residentFloorTitle:t.title,residentFloorIntro:t.intro,residentFloorSelectLabel:t.select,residentFloorStatus:isPilot?t.pilot:t.other,residentRemediationLabel:t.remediation,residentRemediationText:isPilot?t.r2:t.ro,residentDrywallLabel:t.drywall,residentDrywallText:isPilot?t.d2:t.do,residentFinishLabel:t.finishing,residentFinishText:isPilot?t.f2:t.fo})){const el=document.getElementById(id);if(el)el.textContent=value;}
+ const note=document.getElementById('residentFloorNotice');if(note)note.innerHTML=isPilot?t.n2:t.no;
+ for(const opt of select.options)opt.textContent=opt.value==='PH'?t.penthouse:t.floor+' '+opt.value;
+ try{localStorage.setItem('collinsResidentFloor',select.value)}catch(e){}
+}
+select.addEventListener('change',refresh);
+window.addEventListener('collins-language-changed',refresh);
+refresh();
+
 })();
 </script>
 <script>
 (function(){
-const projects=[
-{name:"Fire Sprinkler · ELSS",weeks:20,start:7,status:"Permitting",rate:"Corridors 1 floor/week after each hallway group is released (hallway weeks 4–23) · separate crew · inspection, hydrostatic test and acceptance tracked separately",permit:"FP0826-7612 · Oct 30 issuance target"},
-{name:"Fire Alarm · ELSS",weeks:20,start:8,status:"Planning",rate:"Corridors 1 floor/week, one week behind sprinklers (hallway weeks 5–24; ~24 weeks total, ~28 with planning allowance) · integrated test and final acceptance not assumed",permit:"FP1126-7824 · City status unverified"},
-{name:"Smoke Enclosure Doors",weeks:12,start:5,status:"Permitting",rate:"2 floors/week · ~11 installation weeks · separate dependency, not part of the hallway/sprinkler/alarm sequence",permit:"Nov 27 issuance estimate"},
-{name:"Hallway Remediation / Drywall",weeks:21,start:4,status:"Permitting",rate:"~21 weeks · 3-week rolling sequence per 3-floor group (7 groups), longer if an AirMD PRV fails · same schedule as the 3D model",permit:"BC2628687 · City pending"},
-{name:"Stair Pressurization / Dampers",weeks:22,start:18,status:"Planning",rate:"17–26 weeks · equipment, controls, commissioning",permit:"Jan–Feb 2027 issuance forecast"},
-{name:"Garage Dewatering / Stormwater",weeks:18,start:null,status:"Permitting",rate:"13–22 weeks · start TBD pending revised scope",permit:"BC2526722 · not issued"},
-{name:"Parking Lot Lighting",weeks:3,start:9,status:"Permitting",rate:"3 field weeks after permit; pilot in week 1",permit:"BPI2650249 · intake only"},
-{name:"Gym & Sauna Restoration",weeks:6,start:0,status:"In Progress",rate:"4–8 weeks remaining · no new pilot",permit:"BC2627814 · issued",pilot:false},
-{name:"Gym Fire Alarm / Equipment",weeks:3,start:7,status:"Planning",rate:"2–4 weeks · subject to approvals",permit:"Permit unverified"},
-{name:"Chiller Mechanical / Electrical",weeks:5,start:0,status:"In Progress",rate:"4–6 weeks remaining · verify",permit:"Trade permit unverified",pilot:false},
-{name:"Chiller Pump Replacement",weeks:5,start:null,status:"Planning",rate:"4–5 weeks · start TBD",permit:"Unverified"},
-{name:"Boiler / Storage Tank",weeks:6,start:null,status:"Permitting",rate:"4–8 weeks · correction release pending",permit:"MEC2605382"},
-{name:"Stairwell Guardrails",weeks:null,start:null,status:"Permitting",rate:"Duration TBD",permit:"BC2628393"},
-{name:"Planter Restoration",weeks:null,start:null,status:"Planning",rate:"Duration TBD",permit:"Engineering pending"}
+
+const projectDefs=[
+{name:{en:"Hallway · Floor 2 pilot",es:"Pasillos · piloto piso 2"},weeks:2,start:2,statusKey:"Planning",status:{en:"Planned · not started",es:"Previsto · sin iniciar"},rate:{en:"Two-week pilot, November 9 target. Floor 2 only; not a promise of complete clearance or rebuild.",es:"Piloto de dos semanas, inicio objetivo 9 de noviembre. Solo piso 2; no promete clearance ni drywall completo."},permit:"BC2628687 · issued Nov 6",pilot:true},
+{name:{en:"Other floors · hallway work",es:"Otros pisos · trabajos de pasillos"},weeks:null,start:null,statusKey:"Planning",status:{en:"Awaiting Floor 2 results",es:"Pendiente de resultados del piso 2"},rate:{en:"Possible groups of three simultaneous floors only after pilot productivity, AirMD and Fire/AHJ controls. Dates TBD.",es:"Posibles grupos de tres pisos simultáneos solo tras evaluar piloto, AirMD y condiciones de Bomberos/AHJ. Fechas por definir."},permit:"BC2628687 · issued Nov 6",pilot:false},
+{name:{en:"Fire Sprinkler · ELSS",es:"Rociadores · ELSS"},weeks:null,start:null,statusKey:"Permitting",status:{en:"City corrections",es:"Correcciones de la Ciudad"},rate:{en:"FP0826-7612 remains subject to City approval; field rollout cannot be assigned from an expired target.",es:"FP0826-7612 pendiente de aprobación municipal; sin inicio programado confirmado."},permit:"FP0826-7612 · not verified issued",pilot:false},
+{name:{en:"Fire Alarm · ELSS",es:"Alarma de incendios · ELSS"},weeks:null,start:null,statusKey:"Permitting",status:{en:"Application reference received",es:"Referencia de solicitud recibida"},rate:{en:"Sciens provided FP1126-7824; City review, master linkage and permit issuance remain unverified.",es:"Sciens proporcionó FP1126-7824; revisión, vínculo master y emisión sin verificar."},permit:"FP1126-7824 · status unverified",pilot:false},
+{name:{en:"Smoke Enclosure Doors",es:"Puertas de contención de humo"},weeks:null,start:null,statusKey:"Permitting",status:{en:"Coordinated drawings pending",es:"Planos coordinados pendientes"},rate:{en:"Door installation start is not confirmed pending design and permit.",es:"No hay inicio confirmado de instalación; faltan diseño y permiso."},permit:"Permit not confirmed",pilot:false},
+{name:{en:"Stair Pressurization / Extraction",es:"Presurización escaleras / extracción"},weeks:null,start:null,statusKey:"Planning",status:{en:"Engineering development",es:"Ingeniería en desarrollo"},rate:{en:"Relats design package targeted early December 2026; no construction dates or approved damper details.",es:"Relats prevé paquete de diseño a principios de diciembre 2026; sin fechas de obra ni dampers aprobados."},permit:"Design only · City status pending",pilot:false},
+{name:{en:"Garage Dewatering / Stormwater",es:"Bombeo y pluvial del garaje"},weeks:null,start:null,statusKey:"Permitting",status:{en:"Permit coordination",es:"Coordinación de permiso"},rate:{en:"BC2526722 is not confirmed issued; administrative follow-up November 26.",es:"BC2526722 no está confirmado emitido; seguimiento administrativo 26 de noviembre."},permit:"BC2526722 · pending",pilot:false},
+{name:{en:"Parking Lot Lighting",es:"Iluminación de estacionamientos"},weeks:null,start:null,statusKey:"Permitting",status:{en:"Initial process only",es:"Solo trámite inicial"},rate:{en:"BPI2650249 is intake only. Approximately three weeks of field installation after an issued trade permit and mobilization.",es:"BPI2650249 es solo trámite inicial. Aproximadamente tres semanas de instalación después de permiso y movilización."},permit:"BPI2650249 · not issued",pilot:false},
+{name:{en:"Gym & Sauna Restoration",es:"Restauración gimnasio y sauna"},weeks:null,start:null,statusKey:"In Progress",status:{en:"Work / inspection verification",es:"Verificación de obra e inspecciones"},rate:{en:"BC2627814 issued October 1; November 3 inspection results and reopening are not verified.",es:"BC2627814 emitido el 1 de octubre; no están verificados resultados del 3 de noviembre ni reapertura."},permit:"BC2627814 · issued",pilot:false},
+{name:{en:"Chiller / Controls",es:"Chiller y controles"},weeks:null,start:null,statusKey:"In Progress",status:{en:"Coordination / verify",es:"Coordinación / verificar"},rate:{en:"Equipment/control connections and individual trade permits require verification.",es:"Conexiones y permisos de trades por verificar."},permit:"Trade permit status unverified",pilot:false},
+{name:{en:"Boiler / Storage Tank",es:"Calderas y tanque"},weeks:null,start:null,statusKey:"Permitting",status:{en:"Corrections pending",es:"Correcciones pendientes"},rate:{en:"No confirmed construction start.",es:"Sin inicio de construcción confirmado."},permit:"MEC2605382 · corrections",pilot:false},
+{name:{en:"Stairwell Guardrails",es:"Barandas de escaleras"},weeks:null,start:null,statusKey:"Permitting",status:{en:"Review / corrections",es:"Revisión / correcciones"},rate:{en:"Installation not scheduled.",es:"Instalación sin programar."},permit:"BC2628393 · review",pilot:false},
+{name:{en:"Planter Restoration",es:"Restauración de jardineras"},weeks:null,start:null,statusKey:"Planning",status:{en:"Engineering pending",es:"Ingeniería pendiente"},rate:{en:"Survey/engineering deliverables pending. No start confirmed.",es:"Pendiente entrega de levantamiento/ingeniería. Sin fecha confirmada."},permit:"No permit confirmed",pilot:false}
 ];
 let view="gantt";const root=document.getElementById("masterSchedule"),out=document.getElementById("msContent");if(!root||!out)return;
 const safe=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-function render(){const n=Number(document.getElementById("msWindow").value);root.querySelectorAll("[data-msview]").forEach(b=>{const on=b.dataset.msview===view;b.classList.toggle("on",on);b.setAttribute("aria-selected",String(on))});
+function render(){const pick=v=>typeof v==="string"?v:(v?.[document.documentElement.lang]||v?.en||"");const projects=projectDefs.map(p=>({...p,name:pick(p.name),status:pick(p.status),rate:pick(p.rate)}));const pilotLegend=document.getElementById("pilotLegendText");if(pilotLegend)pilotLegend.textContent=document.documentElement.lang==="es"?"Piloto piso 2 · tentativo":"Floor 2 pilot · tentative";const n=Number(document.getElementById("msWindow").value);root.querySelectorAll("[data-msview]").forEach(b=>{const on=b.dataset.msview===view;b.classList.toggle("on",on);b.setAttribute("aria-selected",String(on))});
 if(view==="list"){out.innerHTML=projects.map(p=>'<div class="ms-listrow"><div><strong>'+safe(p.name)+'</strong><small>'+safe(p.status)+' · '+safe(p.permit)+'</small><small>'+safe(p.rate)+'</small></div><b>'+(p.weeks?p.weeks+' wk':'TBD')+'</b></div>').join("");return}
-if(view==="kanban"){out.innerHTML='<div class="ms-board">'+["Planning","Permitting","In Progress","Completed"].map(status=>'<div class="ms-column"><h3>'+status+' · '+projects.filter(p=>p.status===status).length+'</h3>'+projects.filter(p=>p.status===status).map(p=>'<div class="ms-card"><strong>'+safe(p.name)+'</strong><small>'+(p.weeks?p.weeks+' weeks':'TBD')+'</small><small>'+safe(p.permit)+'</small></div>').join("")+'</div>').join("")+'</div>';return}
+if(view==="kanban"){out.innerHTML='<div class="ms-board">'+["Planning","Permitting","In Progress","Completed"].map(status=>'<div class="ms-column"><h3>'+status+' · '+projects.filter(p=>p.statusKey===status).length+'</h3>'+projects.filter(p=>p.statusKey===status).map(p=>'<div class="ms-card"><strong>'+safe(p.name)+'</strong><small>'+(p.weeks?p.weeks+' weeks':'TBD')+'</small><small>'+safe(p.permit)+'</small></div>').join("")+'</div>').join("")+'</div>';return}
 out.innerHTML='<div class="ms-weeklabels"><span>W1</span><span>W'+Math.ceil(n/4)+'</span><span>W'+Math.ceil(n/2)+'</span><span>W'+Math.ceil(n*3/4)+'</span><span>W'+n+'</span></div>'+projects.map(p=>{const bar=p.start===null?'':('<span class="ms-production" style="left:'+(p.start/n*100)+'%;width:'+(Math.min(p.weeks||0,n-p.start)/n*100)+'%"></span>'+(p.pilot===false?'':'<span class="ms-pilot" style="left:'+(p.start/n*100)+'%;width:'+(100/n)+'%"></span>'));return '<div class="ms-item"><div class="ms-itemhead"><strong>'+safe(p.name)+'</strong><small>'+(p.weeks?p.weeks+' weeks':'TBD')+'</small></div><div class="ms-track">'+bar+'</div><div class="ms-detail">'+safe(p.status)+' · '+safe(p.rate)+'<br>Tentative field start · '+safe(p.permit)+'</div></div>'}).join("");
 }
-root.querySelectorAll("[data-msview]").forEach(b=>b.addEventListener("click",()=>{view=b.dataset.msview;render()}));document.getElementById("msWindow").addEventListener("change",render);render();
+root.querySelectorAll("[data-msview]").forEach(b=>b.addEventListener("click",()=>{view=b.dataset.msview;render()}));document.getElementById("msWindow").addEventListener("change",render);window.addEventListener("collins-language-changed",render);render();
 })();
 </script><script type="application/json" id="residentKBBackup">{
   "schemaVersion": 1,
-  "version": "2026-11-03-sciens-fire-alarm-v1",
-  "source": "5660 KB - Active Projects LIVE / Core Rules LIVE / FAQ Bilingual LIVE, modified Oct 27, 2026; Stone Coastal Resources Corrective Action Plan dated Oct 21, 2026; BC2628687 City portal screenshots supplied by PM October 31, 2026 (reviews Oct 29–30); Nov 2 telephone coordination with Ismel/SERVPRO: Nov 3 gym trade-inspection targets, Nov 4 tentative encapsulation, Nov 6 custom desiccant box target; no inspection results or machine install confirmed; Sciens Jany Martinez email Nov 3 providing fire-alarm application reference FP1126-7824 (City review/issuance not independently verified)",
-  "asOf": "2026-11-03",
+  "version": "2026-11-07-resident-safe-nov6-hallway-stairs",
+  "source": "5660 KB - Active Projects LIVE / Core Rules LIVE / FAQ Bilingual LIVE; November 6 permit and Floor 2 pilot overrides; November 6 Relats pressurization engineering update; Floor 2 operating plan November 5, 2026. Other project states retain last verified source dates.",
+  "asOf": "2026-11-07",
   "isLiveSync": false,
-  "notice": "This is a resident-safe published snapshot, not a live connection to the private Google Drive Knowledge Base. Corridor updated October 31; other projects retain their previous documented dates.",
+  "notice": "Published resident-safe snapshot of LIVE KB as of November 7, 2026. This file is not a live Google Drive or City portal sync. Management must confirm site readiness and resident-access notices.",
   "projects": [
     {
       "id": "corridor",
@@ -240,19 +256,19 @@ root.querySelectorAll("[data-msview]").forEach(b=>b.addEventListener("click",()=
         "es": "Remediación y drywall de pasillos"
       },
       "status": {
-        "en": "Applied; City reviews in progress; not issued",
-        "es": "Solicitado; revisiones municipales en curso; no emitido"
+        "en": "Issued November 6, 2026 · Floor 2 pilot planned",
+        "es": "Emitido el 6 de noviembre de 2026 · piloto del piso 2 planificado"
       },
       "summary": {
-        "en": "City portal screenshots shared October 31 show BC2628687 still Applied with no issue date. Intake and Fire Building passed October 29; Structural and Mechanical were Not Required October 29, and Electrical October 30. Building/Flood remain Under Review, due November 10; Plumbing/Planning/Elevator, due November 13. Submittal Version Complete remains Under Review. County approval 2027004562 was obtained October 22 and uploaded. Review due dates are not permit issuance or construction start dates.",
-        "es": "Las capturas municipales compartidas el 31 de octubre muestran BC2628687 Applied, sin fecha de emisión. Intake y Fire Building aprobaron el 29/oct; Structural y Mechanical figuran como no requeridos el 29/oct, y Electrical el 30/oct. Building/Flood siguen en revisión, con vencimiento 10/nov; Plumbing/Planning/Elevator, 13/nov. Submittal Version Complete sigue en revisión. La aprobación del Condado 2027004562 se obtuvo el 22/oct y se cargó. Las fechas de revisión no son fechas de emisión ni de inicio de obra."
+        "en": "The City of Miami Beach issued selective corridor drywall permit BC2628687 on November 6, 2026, with the Permit Card available (expiration May 5, 2027). Approved scope covers gypsum-board removal in typical corridor areas on Floors 2 through PH as shown in the plans; this is not blanket ceiling removal or authorization of other ELSS trades. A TWO-WEEK pilot is planned on Floor 2 only, with a November 9 target start subject to readiness and formal release. SERVPRO remediation, cleaning, AirMD post-remediation verification and written area-specific clearance precede drywall reconstruction and applicable inspections. Later groups of potentially THREE floors simultaneously may be considered only after pilot results and Fire/AHJ, staffing, resource and clearance review. No other floor starts are confirmed.",
+        "es": "La Ciudad de Miami Beach emitió el permiso BC2628687 el 6 de noviembre de 2026 y ya se cuenta con Permit Card (vence 5 de mayo de 2027). El alcance aprobado contempla retiro selectivo de gypsum board en áreas típicas de pasillos de los pisos 2 al PH, según planos; no autoriza retiro general de cielos rasos ni trabajos ELSS independientes. Se planifica un piloto de DOS SEMANAS únicamente en el piso 2, con inicio objetivo el 9 de noviembre, sujeto a preparación y liberación formal. La remediación y limpieza de SERVPRO, la verificación de AirMD y la liberación escrita por área preceden la reconstrucción de drywall y las inspecciones aplicables. Grupos futuros de potencialmente TRES pisos simultáneos dependerán de los resultados del piloto y de Bomberos/AHJ, personal, recursos y clearance. No hay fechas para otros pisos."
       },
       "next": {
-        "en": "Follow up on Building/Flood by November 10 and Plumbing/Planning/Elevator by November 13. Demolition requires City issuance, applicable Fire/AHJ and environmental controls, and written work authorization. No start date confirmed.",
-        "es": "Seguimiento de Building/Flood al 10/nov y Plumbing/Planning/Elevator al 13/nov. La demolición requiere emisión municipal, controles de Bomberos y ambientales y autorización escrita. Sin fecha de inicio confirmada."
+        "en": "Confirm Monday November 9 field readiness, safety/Fire Watch coverage and Management authorization. Management to issue resident-specific access notices (carpet removal November 11 or 12 remains tentative, with 48-hour advance notice). Record pilot results before scheduling any upper floors.",
+        "es": "Confirmar preparación para el lunes 9 de noviembre, Fire Watch y seguridad, y autorización de Administración. Administración emitirá avisos específicos de acceso (retiro de alfombra el 11 o 12 es tentativo, con 48 horas de anticipación). Documentar los resultados antes de programar pisos superiores."
       },
       "permit": "BC2628687",
-      "asOf": "2026-10-31"
+      "asOf": "2026-11-06"
     },
     {
       "id": "elevator",
@@ -361,18 +377,19 @@ root.querySelectorAll("[data-msview]").forEach(b=>b.addEventListener("click",()=
         "es": "Presurización de escaleras y dampers"
       },
       "status": {
-        "en": "Engineering in coordination",
-        "es": "Ingeniería en coordinación"
+        "en": "Relats design development · target early December",
+        "es": "Diseño en desarrollo por Relats · meta principios de diciembre"
       },
       "summary": {
-        "en": "Mechanical trade drawings had an October 30 tentative target. A fully coordinated engineering package was being planned around the week of November 10. Generator/electrical coordination and structural review remained dependencies; no issued smoke-control permit was confirmed.",
-        "es": "Planos mecánicos con objetivo tentativo 30 de octubre; paquete integral coordinado previsto para la semana del 10 de noviembre. Faltaban coordinación eléctrica/generador y revisión estructural. No había permiso emitido confirmado."
+        "en": "Relats is developing pressurization of both stairways, controlled pressure relief and a coordinated corridor smoke-extraction concept. Existing chases/plenum and access through common areas are being evaluated; equipment, damper arrangement, emergency power, airflows and routing remain subject to detailed engineering and AHJ review. The engineering package is targeted for early December 2026, not a confirmed installation date.",
+        "es": "Relats desarrolla la presurización de ambas escaleras, alivio controlado de presión y un concepto coordinado de extracción de humo de pasillos. Se evalúan ductos/plenum existentes y rutas por áreas comunes; equipos, dampers, energía de emergencia, caudales y trazados requieren ingeniería detallada y revisión del AHJ. El paquete de ingeniería tiene meta para principios de diciembre de 2026, no una fecha de instalación confirmada."
       },
       "next": {
-        "en": "Confirm separately the mechanical drawing milestone and the coordinated multidisciplinary package.",
-        "es": "Confirmar por separado la entrega mecánica y el paquete multidisciplinario coordinado."
+        "en": "Coordinate preliminary damper-access locations with hallway drywall restoration to minimize rework; receive engineered package, reviews, permits and construction proposals before setting installation dates.",
+        "es": "Coordinar accesos previstos a dampers con la reconstrucción de drywall para reducir retrabajos; obtener ingeniería, revisiones, permisos y propuestas antes de fijar fechas de instalación."
       },
-      "permit": ""
+      "permit": "",
+      "asOf": "2026-11-06"
     },
     {
       "id": "garage",
@@ -525,12 +542,12 @@ root.querySelectorAll("[data-msview]").forEach(b=>b.addEventListener("click",()=
         "es": "Requisitos dependen de la obra activa"
       },
       "summary": {
-        "en": "Outside Fire Watch for interim stabilization ended operationally October 5 after the initial encapsulation phase. That does not release future rated-wall demolition from Fire/AHJ requirements. Floor 21 and Penthouse final corridor plastic removal clearance should not be presumed without written confirmation.",
-        "es": "La vigilancia externa de la estabilización interina terminó operativamente el 5 de octubre. Eso no elimina requisitos de Bomberos para futuras demoliciones de muros resistentes al fuego. No presumir liberación final de los pisos 21 y PH sin confirmación escrita."
+        "en": "Outside Fire Watch for the earlier interim encapsulation phase ended operationally October 5. New selective corridor drywall demolition can require Fire Watch until rated walls are reinstated and accepted, as directed by Fire/AHJ. The Floor 2 pilot must maintain applicable coverage, egress and temporary life-safety controls. No new Fire Watch completion or blanket waiver is confirmed.",
+        "es": "El Fire Watch externo de la fase provisional de encapsulación terminó operativamente el 5 de octubre. La nueva demolición selectiva de drywall puede requerir vigilancia hasta reponer y aceptar las paredes clasificadas, según Bomberos/AHJ. El piloto del piso 2 debe mantener cobertura, accesos de salida y controles temporales aplicables. No se ha confirmado una exención general del Fire Watch."
       },
       "next": {
-        "en": "Confirm Fire/AHJ-approved conditions for each new corridor workfront.",
-        "es": "Confirmar condiciones de Bomberos para cada sector nuevo."
+        "en": "Confirm coverage roster, handoffs and workfront safety with Fire and Management before Floor 2 starts.",
+        "es": "Confirmar personal, relevos y seguridad con Bomberos y Administración antes de iniciar el piso 2."
       },
       "permit": ""
     },
@@ -558,32 +575,32 @@ root.querySelectorAll("[data-msview]").forEach(b=>b.addEventListener("click",()=
   "faqs": [
     {
       "question": {
-        "en": "What changed in the hallway permit review?",
-        "es": "¿Qué cambió en la revisión del permiso de pasillos?"
+        "en": "Has hallway permit BC2628687 been issued?",
+        "es": "¿Ya fue emitido el permiso BC2628687 de pasillos?"
       },
       "answer": {
-        "en": "City portal screenshots shared October 31 show BC2628687 still Applied with no issue date. Intake and Fire Building passed October 29; Structural and Mechanical were Not Required October 29, and Electrical October 30. Building/Flood remain Under Review, due November 10; Plumbing/Planning/Elevator, due November 13. Submittal Version Complete remains Under Review. County approval 2027004562 was obtained October 22 and uploaded. Review due dates are not permit issuance or construction start dates.",
-        "es": "Las capturas municipales compartidas el 31 de octubre muestran BC2628687 Applied, sin fecha de emisión. Intake y Fire Building aprobaron el 29/oct; Structural y Mechanical figuran como no requeridos el 29/oct, y Electrical el 30/oct. Building/Flood siguen en revisión, con vencimiento 10/nov; Plumbing/Planning/Elevator, 13/nov. Submittal Version Complete sigue en revisión. La aprobación del Condado 2027004562 se obtuvo el 22/oct y se cargó. Las fechas de revisión no son fechas de emisión ni de inicio de obra."
+        "en": "Yes. Miami Beach issued BC2628687 on November 6, 2026, and a Permit Card is available. The permit covers selective corridor gypsum-board removal according to approved plans; separate project trade permits, Fire/AHJ requirements and inspections are not automatically cleared.",
+        "es": "Sí. Miami Beach emitió BC2628687 el 6 de noviembre de 2026 y existe Permit Card. Cubre retiro selectivo de drywall en pasillos conforme a planos; no aprueba automáticamente permisos de otros trades ni sustituye requisitos e inspecciones de Bomberos/AHJ."
       }
     },
     {
       "question": {
-        "en": "When will hallway drywall removal start?",
-        "es": "¿Cuándo comenzará la remoción del drywall?"
+        "en": "When will the Floor 2 hallway pilot begin?",
+        "es": "¿Cuándo comenzará el piloto del piso 2?"
       },
       "answer": {
-        "en": "Not until City permit BC2628687 is issued and Fire/AHJ workfront, egress, Fire Watch and environmental requirements are approved. No confirmed start date is available.",
-        "es": "No hasta que se emita BC2628687 y se aprueben condiciones de Bomberos, accesos y controles ambientales. No hay fecha confirmada."
+        "en": "A two-week pilot is planned exclusively for Floor 2, targeting Monday, November 9, 2026. That is not a confirmed work start: mobilization, access controls, Fire Watch, environmental conditions and Management/contractor authorization must be verified before work begins. Floor 3 and higher have no confirmed starts.",
+        "es": "Se planifica un piloto de dos semanas exclusivamente en el piso 2, con inicio objetivo el lunes 9 de noviembre de 2026. No es un inicio confirmado: deben verificarse movilización, accesos, Fire Watch, condiciones ambientales y autorización. El piso 3 y superiores no tienen inicio confirmado."
       }
     },
     {
       "question": {
-        "en": "Does County approval mean the City demolition permit was issued?",
-        "es": "¿La aprobación del Condado equivale al permiso de demolición?"
+        "en": "Does the County approval establish the current hallway permit status?",
+        "es": "¿La aprobación del Condado determina el estado actual del permiso de pasillos?"
       },
       "answer": {
-        "en": "No. County approval 2027004562 was obtained October 22 and uploaded; City permit BC2628687 still shows Applied with no issue date in screenshots shared October 31.",
-        "es": "No. La aprobación 2027004562 se obtuvo el 22/oct y se cargó; BC2628687 sigue Applied, sin fecha de emisión, en las capturas compartidas el 31/oct."
+        "en": "County approval 2027004562 was obtained October 22, 2026. Separately, the City issued BC2628687 on November 6, 2026, as verified from City permit documents supplied by the project team. The issued permit does not itself confirm start of work or completion of inspections.",
+        "es": "El Condado aprobó 2027004562 el 22 de octubre de 2026. Por separado, la Ciudad emitió BC2628687 el 6 de noviembre de 2026, según documentación municipal aportada por el equipo. El permiso emitido no confirma por sí solo inicio de obra ni inspecciones terminadas."
       }
     },
     {
@@ -685,6 +702,46 @@ root.querySelectorAll("[data-msview]").forEach(b=>b.addEventListener("click",()=
         "en": "Sciens provided application reference FP1126-7824 on November 3. City review and issuance are still being verified. A reference number alone is not an issued permit.",
         "es": "Sciens facilitó la referencia FP1126-7824 el 3 de noviembre. El estado de revisión y la emisión municipal siguen pendientes de verificación. Tener un número no significa que el permiso esté emitido."
       }
+    },
+    {
+      "question": {
+        "en": "How many floors will be worked on at the same time after the pilot?",
+        "es": "¿En cuántos pisos trabajarán al mismo tiempo después del piloto?"
+      },
+      "answer": {
+        "en": "The team may consider groups of three simultaneous floors after evaluating actual Floor 2 production, AirMD clearance turnaround, staffing, power, inspections and Fire/AHJ conditions. This is conditional, not three floors per week, and no subsequent floor dates or four-floor approval have been established.",
+        "es": "Después de evaluar los rendimientos reales del piso 2, los tiempos de AirMD, personal, energía, inspecciones y condiciones de Bomberos/AHJ, podrían considerarse grupos de tres pisos simultáneos. Es una posibilidad, no tres pisos por semana, y no hay fechas de pisos siguientes ni aprobación de cuatro pisos."
+      }
+    },
+    {
+      "question": {
+        "en": "When will Floor 2 carpet removal take place?",
+        "es": "¿Cuándo retirarán la alfombra del piso 2?"
+      },
+      "answer": {
+        "en": "November 11 or 12 is being considered; Thursday November 12 is preferred for planning, but neither date is confirmed. Building Management will give at least 48 hours' notice of the actual working window. Residents needing mobility, caregiver or essential access should contact Management.",
+        "es": "Se evalúan el 11 o 12 de noviembre; se prefiere tentativamente el jueves 12, pero ninguna fecha está confirmada. Administración avisará la ventana de trabajo con al menos 48 horas. Quienes necesiten asistencia de movilidad, cuidadores o acceso esencial deben comunicarse con Administración."
+      }
+    },
+    {
+      "question": {
+        "en": "Has AirMD given written clearance for the Floor 2 pilot?",
+        "es": "¿AirMD entregó liberación escrita para el piloto del piso 2?"
+      },
+      "answer": {
+        "en": "No written pilot clearance is confirmed. A planned sampling visit or sample collection does not constitute a written pass. Drywall reconstruction for an identified area depends on the written release and applicable inspections and safety conditions.",
+        "es": "No se ha confirmado liberación escrita del piloto. Una visita o toma de muestras prevista no equivale a aprobación escrita. La reconstrucción de un área requiere su liberación escrita y las inspecciones y condiciones de seguridad aplicables."
+      }
+    },
+    {
+      "question": {
+        "en": "What is the stair pressurization design status?",
+        "es": "¿Cuál es el estado del diseño de presurización de escaleras?"
+      },
+      "answer": {
+        "en": "Relats is developing dual-stair pressurization with pressure relief and coordinated corridor extraction. The design package is targeted for early December 2026. No construction start or final damper configuration is approved or confirmed.",
+        "es": "Relats desarrolla la presurización de ambas escaleras con alivio de presión y extracción coordinada en pasillos. El paquete de diseño se espera para principios de diciembre de 2026. No hay inicio de obra ni configuración final de dampers aprobada o confirmada."
+      }
     }
   ]
 }</script>
@@ -706,7 +763,7 @@ root.querySelectorAll("[data-msview]").forEach(b=>b.addEventListener("click",()=
 <script>
 (function(){function init(){
  const tab=document.getElementById('tab-progress'),picture=document.getElementById('modelPicture');
- const frame=document.createElement('iframe');frame.id='reconstructionFrame';frame.title='Reconstrucción interactiva de pasillos · planos Relats';frame.loading='lazy';frame.src='./reconstruction.html?v=20261107-pilot10';picture.appendChild(frame);
+ const frame=document.createElement('iframe');frame.id='reconstructionFrame';frame.title='Reconstrucción interactiva de pasillos · planos Relats';frame.loading='lazy';frame.src='./reconstruction.html?v=20261107-resident-schedule1';picture.appendChild(frame);
  function currentFloor(){const select=document.getElementById('myFloorNumber');return select?select.value:'19';}
  function floorKey(f){return f==='PH'?'21':Number(f)<=16?'2-15':Number(f)<=21?'16-20':'21';}
  function sync(){const v=document.querySelector('#progressSegment [data-view].active')?.dataset.view;const active=v!=='storm';tab.classList.toggle('has-reconstruction',active);const visible=!tab.hidden&&active;
@@ -781,7 +838,7 @@ body.collins-immersive .tabbar,body.collins-immersive nav.bottom-nav,body.collin
  if(!tab||!picture||!seg)return;const btn=seg.querySelector('[data-view="storm"]');if(!btn)return;
  const f=document.createElement('iframe');f.id='stormFrame';f.title='Garage stormwater 3D construction simulation';
  let loaded=false;const lang=()=>document.documentElement.lang==='es'?'es':'en';
- function load(){if(loaded)return;loaded=true;if(window.__setStormSrc)window.__setStormSrc(f);else f.src='./stormwater.html?v=20261107-pilot10&lang='+lang();picture.appendChild(f);}
+ function load(){if(loaded)return;loaded=true;if(window.__setStormSrc)window.__setStormSrc(f);else f.src='./stormwater.html?v=20261107-resident-schedule1&lang='+lang();picture.appendChild(f);}
  function post(m){try{f.contentWindow&&f.contentWindow.postMessage(m,'*');}catch(e){}}
  function sync(){const on=btn.classList.contains('active');tab.classList.toggle('has-storm',on);if(on)load();else if(loaded){loaded=false;try{f.removeAttribute('srcdoc');f.src='about:blank';f.remove();}catch(e){}}post({type:'collins-visibility',visible:on&&!tab.hidden});post({type:'collins-language',lang:lang()});}
  window.addEventListener('message',e=>{if(e.source===f.contentWindow&&e.data&&e.data.type==='collins-storm-height'&&Number.isFinite(e.data.height))f.style.height=Math.max(900,Math.min(2800,e.data.height))+'px';});

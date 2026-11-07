@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "version": "2026-11-03-sciens-fire-alarm-v1",
-  "source": "5660 KB - Active Projects LIVE / Core Rules LIVE / FAQ Bilingual LIVE, modified Oct 27, 2026; Stone Coastal Resources Corrective Action Plan dated Oct 21, 2026; BC2628687 City portal screenshots supplied by PM October 31, 2026 (reviews Oct 29–30); Nov 2 telephone coordination with Ismel/SERVPRO: Nov 3 gym trade-inspection targets, Nov 4 tentative encapsulation, Nov 6 custom desiccant box target; no inspection results or machine install confirmed; Sciens Jany Martinez email Nov 3 providing fire-alarm application reference FP1126-7824 (City review/issuance not independently verified)",
-  "asOf": "2026-11-03",
+  "version": "2026-11-07-resident-safe-nov6-hallway-stairs",
+  "source": "5660 KB - Active Projects LIVE / Core Rules LIVE / FAQ Bilingual LIVE; November 6 permit and Floor 2 pilot overrides; November 6 Relats pressurization engineering update; Floor 2 operating plan November 5, 2026. Other project states retain last verified source dates.",
+  "asOf": "2026-11-07",
   "isLiveSync": false,
-  "notice": "This is a resident-safe published snapshot, not a live connection to the private Google Drive Knowledge Base. Corridor updated October 31; other projects retain their previous documented dates.",
+  "notice": "Published resident-safe snapshot of LIVE KB as of November 7, 2026. This file is not a live Google Drive or City portal sync. Management must confirm site readiness and resident-access notices.",
   "projects": [
     {
       "id": "corridor",
@@ -13,19 +13,19 @@
         "es": "Remediación y drywall de pasillos"
       },
       "status": {
-        "en": "Applied; City reviews in progress; not issued",
-        "es": "Solicitado; revisiones municipales en curso; no emitido"
+        "en": "Issued November 6, 2026 · Floor 2 pilot planned",
+        "es": "Emitido el 6 de noviembre de 2026 · piloto del piso 2 planificado"
       },
       "summary": {
-        "en": "City portal screenshots shared October 31 show BC2628687 still Applied with no issue date. Intake and Fire Building passed October 29; Structural and Mechanical were Not Required October 29, and Electrical October 30. Building/Flood remain Under Review, due November 10; Plumbing/Planning/Elevator, due November 13. Submittal Version Complete remains Under Review. County approval 2027004562 was obtained October 22 and uploaded. Review due dates are not permit issuance or construction start dates.",
-        "es": "Las capturas municipales compartidas el 31 de octubre muestran BC2628687 Applied, sin fecha de emisión. Intake y Fire Building aprobaron el 29/oct; Structural y Mechanical figuran como no requeridos el 29/oct, y Electrical el 30/oct. Building/Flood siguen en revisión, con vencimiento 10/nov; Plumbing/Planning/Elevator, 13/nov. Submittal Version Complete sigue en revisión. La aprobación del Condado 2027004562 se obtuvo el 22/oct y se cargó. Las fechas de revisión no son fechas de emisión ni de inicio de obra."
+        "en": "The City of Miami Beach issued selective corridor drywall permit BC2628687 on November 6, 2026, with the Permit Card available (expiration May 5, 2027). Approved scope covers gypsum-board removal in typical corridor areas on Floors 2 through PH as shown in the plans; this is not blanket ceiling removal or authorization of other ELSS trades. A TWO-WEEK pilot is planned on Floor 2 only, with a November 9 target start subject to readiness and formal release. SERVPRO remediation, cleaning, AirMD post-remediation verification and written area-specific clearance precede drywall reconstruction and applicable inspections. Later groups of potentially THREE floors simultaneously may be considered only after pilot results and Fire/AHJ, staffing, resource and clearance review. No other floor starts are confirmed.",
+        "es": "La Ciudad de Miami Beach emitió el permiso BC2628687 el 6 de noviembre de 2026 y ya se cuenta con Permit Card (vence 5 de mayo de 2027). El alcance aprobado contempla retiro selectivo de gypsum board en áreas típicas de pasillos de los pisos 2 al PH, según planos; no autoriza retiro general de cielos rasos ni trabajos ELSS independientes. Se planifica un piloto de DOS SEMANAS únicamente en el piso 2, con inicio objetivo el 9 de noviembre, sujeto a preparación y liberación formal. La remediación y limpieza de SERVPRO, la verificación de AirMD y la liberación escrita por área preceden la reconstrucción de drywall y las inspecciones aplicables. Grupos futuros de potencialmente TRES pisos simultáneos dependerán de los resultados del piloto y de Bomberos/AHJ, personal, recursos y clearance. No hay fechas para otros pisos."
       },
       "next": {
-        "en": "Follow up on Building/Flood by November 10 and Plumbing/Planning/Elevator by November 13. Demolition requires City issuance, applicable Fire/AHJ and environmental controls, and written work authorization. No start date confirmed.",
-        "es": "Seguimiento de Building/Flood al 10/nov y Plumbing/Planning/Elevator al 13/nov. La demolición requiere emisión municipal, controles de Bomberos y ambientales y autorización escrita. Sin fecha de inicio confirmada."
+        "en": "Confirm Monday November 9 field readiness, safety/Fire Watch coverage and Management authorization. Management to issue resident-specific access notices (carpet removal November 11 or 12 remains tentative, with 48-hour advance notice). Record pilot results before scheduling any upper floors.",
+        "es": "Confirmar preparación para el lunes 9 de noviembre, Fire Watch y seguridad, y autorización de Administración. Administración emitirá avisos específicos de acceso (retiro de alfombra el 11 o 12 es tentativo, con 48 horas de anticipación). Documentar los resultados antes de programar pisos superiores."
       },
       "permit": "BC2628687",
-      "asOf": "2026-10-31"
+      "asOf": "2026-11-06"
     },
     {
       "id": "elevator",
@@ -134,18 +134,19 @@
         "es": "Presurización de escaleras y dampers"
       },
       "status": {
-        "en": "Engineering in coordination",
-        "es": "Ingeniería en coordinación"
+        "en": "Relats design development · target early December",
+        "es": "Diseño en desarrollo por Relats · meta principios de diciembre"
       },
       "summary": {
-        "en": "Mechanical trade drawings had an October 30 tentative target. A fully coordinated engineering package was being planned around the week of November 10. Generator/electrical coordination and structural review remained dependencies; no issued smoke-control permit was confirmed.",
-        "es": "Planos mecánicos con objetivo tentativo 30 de octubre; paquete integral coordinado previsto para la semana del 10 de noviembre. Faltaban coordinación eléctrica/generador y revisión estructural. No había permiso emitido confirmado."
+        "en": "Relats is developing pressurization of both stairways, controlled pressure relief and a coordinated corridor smoke-extraction concept. Existing chases/plenum and access through common areas are being evaluated; equipment, damper arrangement, emergency power, airflows and routing remain subject to detailed engineering and AHJ review. The engineering package is targeted for early December 2026, not a confirmed installation date.",
+        "es": "Relats desarrolla la presurización de ambas escaleras, alivio controlado de presión y un concepto coordinado de extracción de humo de pasillos. Se evalúan ductos/plenum existentes y rutas por áreas comunes; equipos, dampers, energía de emergencia, caudales y trazados requieren ingeniería detallada y revisión del AHJ. El paquete de ingeniería tiene meta para principios de diciembre de 2026, no una fecha de instalación confirmada."
       },
       "next": {
-        "en": "Confirm separately the mechanical drawing milestone and the coordinated multidisciplinary package.",
-        "es": "Confirmar por separado la entrega mecánica y el paquete multidisciplinario coordinado."
+        "en": "Coordinate preliminary damper-access locations with hallway drywall restoration to minimize rework; receive engineered package, reviews, permits and construction proposals before setting installation dates.",
+        "es": "Coordinar accesos previstos a dampers con la reconstrucción de drywall para reducir retrabajos; obtener ingeniería, revisiones, permisos y propuestas antes de fijar fechas de instalación."
       },
-      "permit": ""
+      "permit": "",
+      "asOf": "2026-11-06"
     },
     {
       "id": "garage",
@@ -298,12 +299,12 @@
         "es": "Requisitos dependen de la obra activa"
       },
       "summary": {
-        "en": "Outside Fire Watch for interim stabilization ended operationally October 5 after the initial encapsulation phase. That does not release future rated-wall demolition from Fire/AHJ requirements. Floor 21 and Penthouse final corridor plastic removal clearance should not be presumed without written confirmation.",
-        "es": "La vigilancia externa de la estabilización interina terminó operativamente el 5 de octubre. Eso no elimina requisitos de Bomberos para futuras demoliciones de muros resistentes al fuego. No presumir liberación final de los pisos 21 y PH sin confirmación escrita."
+        "en": "Outside Fire Watch for the earlier interim encapsulation phase ended operationally October 5. New selective corridor drywall demolition can require Fire Watch until rated walls are reinstated and accepted, as directed by Fire/AHJ. The Floor 2 pilot must maintain applicable coverage, egress and temporary life-safety controls. No new Fire Watch completion or blanket waiver is confirmed.",
+        "es": "El Fire Watch externo de la fase provisional de encapsulación terminó operativamente el 5 de octubre. La nueva demolición selectiva de drywall puede requerir vigilancia hasta reponer y aceptar las paredes clasificadas, según Bomberos/AHJ. El piloto del piso 2 debe mantener cobertura, accesos de salida y controles temporales aplicables. No se ha confirmado una exención general del Fire Watch."
       },
       "next": {
-        "en": "Confirm Fire/AHJ-approved conditions for each new corridor workfront.",
-        "es": "Confirmar condiciones de Bomberos para cada sector nuevo."
+        "en": "Confirm coverage roster, handoffs and workfront safety with Fire and Management before Floor 2 starts.",
+        "es": "Confirmar personal, relevos y seguridad con Bomberos y Administración antes de iniciar el piso 2."
       },
       "permit": ""
     },
@@ -331,32 +332,32 @@
   "faqs": [
     {
       "question": {
-        "en": "What changed in the hallway permit review?",
-        "es": "¿Qué cambió en la revisión del permiso de pasillos?"
+        "en": "Has hallway permit BC2628687 been issued?",
+        "es": "¿Ya fue emitido el permiso BC2628687 de pasillos?"
       },
       "answer": {
-        "en": "City portal screenshots shared October 31 show BC2628687 still Applied with no issue date. Intake and Fire Building passed October 29; Structural and Mechanical were Not Required October 29, and Electrical October 30. Building/Flood remain Under Review, due November 10; Plumbing/Planning/Elevator, due November 13. Submittal Version Complete remains Under Review. County approval 2027004562 was obtained October 22 and uploaded. Review due dates are not permit issuance or construction start dates.",
-        "es": "Las capturas municipales compartidas el 31 de octubre muestran BC2628687 Applied, sin fecha de emisión. Intake y Fire Building aprobaron el 29/oct; Structural y Mechanical figuran como no requeridos el 29/oct, y Electrical el 30/oct. Building/Flood siguen en revisión, con vencimiento 10/nov; Plumbing/Planning/Elevator, 13/nov. Submittal Version Complete sigue en revisión. La aprobación del Condado 2027004562 se obtuvo el 22/oct y se cargó. Las fechas de revisión no son fechas de emisión ni de inicio de obra."
+        "en": "Yes. Miami Beach issued BC2628687 on November 6, 2026, and a Permit Card is available. The permit covers selective corridor gypsum-board removal according to approved plans; separate project trade permits, Fire/AHJ requirements and inspections are not automatically cleared.",
+        "es": "Sí. Miami Beach emitió BC2628687 el 6 de noviembre de 2026 y existe Permit Card. Cubre retiro selectivo de drywall en pasillos conforme a planos; no aprueba automáticamente permisos de otros trades ni sustituye requisitos e inspecciones de Bomberos/AHJ."
       }
     },
     {
       "question": {
-        "en": "When will hallway drywall removal start?",
-        "es": "¿Cuándo comenzará la remoción del drywall?"
+        "en": "When will the Floor 2 hallway pilot begin?",
+        "es": "¿Cuándo comenzará el piloto del piso 2?"
       },
       "answer": {
-        "en": "Not until City permit BC2628687 is issued and Fire/AHJ workfront, egress, Fire Watch and environmental requirements are approved. No confirmed start date is available.",
-        "es": "No hasta que se emita BC2628687 y se aprueben condiciones de Bomberos, accesos y controles ambientales. No hay fecha confirmada."
+        "en": "A two-week pilot is planned exclusively for Floor 2, targeting Monday, November 9, 2026. That is not a confirmed work start: mobilization, access controls, Fire Watch, environmental conditions and Management/contractor authorization must be verified before work begins. Floor 3 and higher have no confirmed starts.",
+        "es": "Se planifica un piloto de dos semanas exclusivamente en el piso 2, con inicio objetivo el lunes 9 de noviembre de 2026. No es un inicio confirmado: deben verificarse movilización, accesos, Fire Watch, condiciones ambientales y autorización. El piso 3 y superiores no tienen inicio confirmado."
       }
     },
     {
       "question": {
-        "en": "Does County approval mean the City demolition permit was issued?",
-        "es": "¿La aprobación del Condado equivale al permiso de demolición?"
+        "en": "Does the County approval establish the current hallway permit status?",
+        "es": "¿La aprobación del Condado determina el estado actual del permiso de pasillos?"
       },
       "answer": {
-        "en": "No. County approval 2027004562 was obtained October 22 and uploaded; City permit BC2628687 still shows Applied with no issue date in screenshots shared October 31.",
-        "es": "No. La aprobación 2027004562 se obtuvo el 22/oct y se cargó; BC2628687 sigue Applied, sin fecha de emisión, en las capturas compartidas el 31/oct."
+        "en": "County approval 2027004562 was obtained October 22, 2026. Separately, the City issued BC2628687 on November 6, 2026, as verified from City permit documents supplied by the project team. The issued permit does not itself confirm start of work or completion of inspections.",
+        "es": "El Condado aprobó 2027004562 el 22 de octubre de 2026. Por separado, la Ciudad emitió BC2628687 el 6 de noviembre de 2026, según documentación municipal aportada por el equipo. El permiso emitido no confirma por sí solo inicio de obra ni inspecciones terminadas."
       }
     },
     {
@@ -457,6 +458,46 @@
       "answer": {
         "en": "Sciens provided application reference FP1126-7824 on November 3. City review and issuance are still being verified. A reference number alone is not an issued permit.",
         "es": "Sciens facilitó la referencia FP1126-7824 el 3 de noviembre. El estado de revisión y la emisión municipal siguen pendientes de verificación. Tener un número no significa que el permiso esté emitido."
+      }
+    },
+    {
+      "question": {
+        "en": "How many floors will be worked on at the same time after the pilot?",
+        "es": "¿En cuántos pisos trabajarán al mismo tiempo después del piloto?"
+      },
+      "answer": {
+        "en": "The team may consider groups of three simultaneous floors after evaluating actual Floor 2 production, AirMD clearance turnaround, staffing, power, inspections and Fire/AHJ conditions. This is conditional, not three floors per week, and no subsequent floor dates or four-floor approval have been established.",
+        "es": "Después de evaluar los rendimientos reales del piso 2, los tiempos de AirMD, personal, energía, inspecciones y condiciones de Bomberos/AHJ, podrían considerarse grupos de tres pisos simultáneos. Es una posibilidad, no tres pisos por semana, y no hay fechas de pisos siguientes ni aprobación de cuatro pisos."
+      }
+    },
+    {
+      "question": {
+        "en": "When will Floor 2 carpet removal take place?",
+        "es": "¿Cuándo retirarán la alfombra del piso 2?"
+      },
+      "answer": {
+        "en": "November 11 or 12 is being considered; Thursday November 12 is preferred for planning, but neither date is confirmed. Building Management will give at least 48 hours' notice of the actual working window. Residents needing mobility, caregiver or essential access should contact Management.",
+        "es": "Se evalúan el 11 o 12 de noviembre; se prefiere tentativamente el jueves 12, pero ninguna fecha está confirmada. Administración avisará la ventana de trabajo con al menos 48 horas. Quienes necesiten asistencia de movilidad, cuidadores o acceso esencial deben comunicarse con Administración."
+      }
+    },
+    {
+      "question": {
+        "en": "Has AirMD given written clearance for the Floor 2 pilot?",
+        "es": "¿AirMD entregó liberación escrita para el piloto del piso 2?"
+      },
+      "answer": {
+        "en": "No written pilot clearance is confirmed. A planned sampling visit or sample collection does not constitute a written pass. Drywall reconstruction for an identified area depends on the written release and applicable inspections and safety conditions.",
+        "es": "No se ha confirmado liberación escrita del piloto. Una visita o toma de muestras prevista no equivale a aprobación escrita. La reconstrucción de un área requiere su liberación escrita y las inspecciones y condiciones de seguridad aplicables."
+      }
+    },
+    {
+      "question": {
+        "en": "What is the stair pressurization design status?",
+        "es": "¿Cuál es el estado del diseño de presurización de escaleras?"
+      },
+      "answer": {
+        "en": "Relats is developing dual-stair pressurization with pressure relief and coordinated corridor extraction. The design package is targeted for early December 2026. No construction start or final damper configuration is approved or confirmed.",
+        "es": "Relats desarrolla la presurización de ambas escaleras con alivio de presión y extracción coordinada en pasillos. El paquete de diseño se espera para principios de diciembre de 2026. No hay inicio de obra ni configuración final de dampers aprobada o confirmada."
       }
     }
   ]
