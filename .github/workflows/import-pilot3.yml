@@ -1,0 +1,112 @@
+name: Import 5660 Collins Pilot 3 ZIP
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '5660-collins-app-pilot3.zip'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pilot3-import-main
+  cancel-in-progress: false
+
+jobs:
+  import-pilot3:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+          persist-credentials: true
+
+      - name: Verify and import supplied ZIP without deleting existing files
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path, PurePosixPath
+          from zipfile import ZipFile
+          import json, stat
+
+          archive = Path('5660-collins-app-pilot3.zip')
+          if not archive.is_file():
+              raise SystemExit('Expected ZIP is missing')
+          count = 0
+          total = 0
+          with ZipFile(archive) as z:
+              infos = z.infolist()
+              if len(infos) > 300:
+                  raise SystemExit('ZIP contains too many entries')
+              for item in infos:
+                  name = item.filename
+                  if '\\' in name or name.startswith('/'):
+                      raise SystemExit('Invalid archive path: ' + name)
+                  parts = PurePosixPath(name).parts
+                  if not parts or parts[0] != '5660-collins-app-main':
+                      raise SystemExit('Unexpected ZIP top-level folder: ' + name)
+                  relative = parts[1:]
+                  if not relative or item.is_dir():
+                      continue
+                  if any(part in ('.', '..', '') for part in relative):
+                      raise SystemExit('Unsafe archive path: ' + name)
+                  if relative[0] in ('.git', '.github'):
+                      raise SystemExit('Refusing to overwrite repository control files')
+                  mode = (item.external_attr >> 16) & 0o170000
+                  if mode == stat.S_IFLNK:
+                      raise SystemExit('Symlinks are not permitted')
+                  if item.file_size > 12_000_000:
+                      raise SystemExit('Individual ZIP member exceeds size limit')
+                  total += item.file_size
+                  if total > 50_000_000:
+                      raise SystemExit('ZIP exceeds expanded size limit')
+                  target = Path(*relative)
+                  if target.suffix.lower() not in ('.html', '.js', '.json', '.css', '.md', '.jpg', '.jpeg', '.png', '.webmanifest'):
+                      raise SystemExit('Unexpected file extension: ' + str(target))
+                  target.parent.mkdir(parents=True, exist_ok=True)
+                  target.write_bytes(z.read(item))
+                  count += 1
+
+          if count < 50:
+              raise SystemExit('The expected application files were not found')
+          for required in ('index.html', 'reconstruction.html', 'data/permits.json', 'data/public-kb-2026-10-28.json', 'floor-2-pilot.html'):
+              if not Path(required).exists():
+                  raise SystemExit('Required app or preserved existing file is missing: ' + required)
+          if '20261107-pilot3' not in Path('index.html').read_text(encoding='utf-8'):
+              raise SystemExit('Index does not appear to be Pilot 3')
+          for path in Path('data').glob('*.json'):
+              json.loads(path.read_text(encoding='utf-8'))
+          print(f'Imported {count} ZIP files ({total:,} uncompressed bytes); preserved existing files.')
+          PY
+
+      - name: Validate JavaScript and diff
+        shell: bash
+        run: |
+          set -euo pipefail
+          find assets -maxdepth 1 -name '*.js' -print0 | xargs -0 -r -n1 node --check
+          node --check sw.js
+          node --check OneSignalSDKWorker.js
+          node --check OneSignalSDKUpdaterWorker.js
+          git diff --check
+          git status --short
+
+      - name: Back up pre-import revision and publish Pilot 3
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          BACKUP="backup/before-pilot3-import-${GITHUB_RUN_ID}"
+          git branch "$BACKUP" HEAD^
+          git push origin "$BACKUP"
+          rm -f 5660-collins-app-pilot3.zip
+          rm -f .github/workflows/import-pilot3.yml
+          git add -A
+          if git diff --cached --quiet; then
+            echo 'Nothing to commit'; exit 0
+          fi
+          git commit -m 'Deploy Pilot 3 ZIP: hallway tour, permit status and resident experience'
+          git push origin HEAD:main
