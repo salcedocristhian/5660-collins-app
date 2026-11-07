@@ -220,6 +220,30 @@
     },
     {
       "month": "NOV",
+      "day": "10",
+      "title": {
+        "en": "Hallway: Building / Flood reviews",
+        "es": "Pasillos: revisiones Building / Flood"
+      },
+      "detail": {
+        "en": "Portal review due dates; BC2628687 not issued. Not a construction start.",
+        "es": "Vencimientos de revisión del portal; BC2628687 no emitido. No es inicio de obra."
+      }
+    },
+    {
+      "month": "NOV",
+      "day": "13",
+      "title": {
+        "en": "Hallway: Plumbing / Planning / Elevator",
+        "es": "Pasillos: Plumbing / Planning / Elevator"
+      },
+      "detail": {
+        "en": "Portal review due dates; issuance and work authorization still pending.",
+        "es": "Vencimientos de revisión del portal; emisión y autorización de trabajo pendientes."
+      }
+    },
+    {
+      "month": "NOV",
       "day": "17",
       "title": {
         "en": "Parking lighting violation hearing",
@@ -252,18 +276,6 @@
       "detail": {
         "en": "FP1126-7824 supplied by Sciens; City review and issuance unverified",
         "es": "Sciens informó FP1126-7824; revisión y emisión municipal sin verificar"
-      }
-    },
-    {
-      "month": "NOV",
-      "day": "09",
-      "title": {
-        "en": "Floor 2 pilot planned · field start pending",
-        "es": "Piloto previsto en piso 2 · inicio en campo pendiente"
-      },
-      "detail": {
-        "en": "Monday, Nov 9 is a target for a small first section of Zone A. Floor 3 will be evaluated after the pilot. Floor 4 is waiting.",
-        "es": "El lunes 9 es la meta para un tramo pequeño de Zona A. El piso 3 se evaluará después del piloto. Piso 4 en espera."
       }
     }
   ],

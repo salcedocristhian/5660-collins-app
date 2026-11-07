@@ -57,3 +57,23 @@
 - Updated Permits register, JS fallback, bilingual resident KB and FAQ, project news status, schedule reference, offline KB backup, cache versions and main navigation. Added a concise in-app informational notice; **no push notification sent**.
 - City receipt, plan-review stage, master permit relationship, issuance and work authorization remain unverified. Do not confuse with sprinkler FP0826-7612 or gym/Genset fire alarm.
 - No budgets or costs modified.
+
+## pilot1 · Hallway Remediation: piloto del piso 2 dentro del modelo real
+- La secuencia del piloto reemplaza el plan de 24 semanas en Interior y Building, sin cambiar la torre real (podio, piscina, plantas, marina), la geometría de Relats ni el drywall con moho existente.
+- Zonas por lado de pared y tramo: A1 (fucsia, lado derecho del tramo norte en la imagen marcada), B1 (morado, enfrente), A2 (fucsia, borde superior de ambos brazos y tramo central), B2 (morado, bordes inferiores). Barrera de 2 ft y paso previsto de 3 ft del lado libre.
+- Recorrido guiado de 16 pasos estilo DERM (lunes 9 a domingo 15 de noviembre de 2026): edificio, zonas, recorrido inicial, caja GFCI, barrera A1, retiro del drywall con moho, limpieza y preparación de A2, relevo de las 5, noche con fire watch, AirMD, espera del clearance escrito, reconstrucción, cruce A1→B1, alfombra y Ram Board, cierre del viernes y fin de semana.
+- Personajes con logo (MTD, ANGEL Electrical, SERVPRO, AirMD, Drywall, inspección simulada, logística) y fire watch como bombero; caja GFCI y air scrubber según fotos.
+- Luces del pasillo según las fotos (luminarias bajas junto al zócalo, EXIT y colgante al fondo; sin cuadros). Día, atardecer, noche y amanecer.
+- Escenarios: AirMD pasa / correcciones / reporte demorado; miércoles trabaja o libre; alfombra jueves, miércoles o no; A2 simultánea o solo preparación.
+- Building muestra el estado del piloto (piso 2), piso 3 como próxima fase y el resto en espera.
+- Incluye stormwater.html con las correcciones de Treatment / DERM.
+
+## pilot3 · Hallway Remediation: tour guiado cinematográfico (permiso BC2628687 emitido 06/11/2026)
+- Progress con una sola pestaña "Hallway Remediation" (edificio exterior + pasillo en un mismo recorrido) y "Storm drains". Solo una escena 3D activa a la vez: Storm drains se carga al abrirse y se descarga al salir; el modelo del edificio se pausa.
+- Tour de 21 pasos: entrada desde el edificio con corte del piso 2; piloto del piso 2 por lados (lado A completo semana 1, prueba AirMD lunes 16, clearance y cambio al lado B, drywall con inspecciones 1180/1150 como programadas, prueba del lado B, drywall B con pausa de Thanksgiving, pintura blanca, Superior Doors, Sciens rociadores y alarma); interludio exterior de la semana 3 y plan completo semanas 5–13 en zigzag por grupos de 4 pisos (3–6, 7–10, 11/12/14/15, 16–19, 20/21/PH), máximo 4 pisos con barreras (barreras del grupo nuevo después del clearance del martes).
+- Barreras de 2 ft desde la cara del panel con moho hacia el centro del pasillo; paso de 3 ft del otro lado; línea verde solo con barreras.
+- Personajes: máximo 3 por equipo (ala norte, oeste y este); logos sin fondo sobre la cabeza; etiquetas con la acción solo de cerca; AirMD recorre todo el lado por el pasillo.
+- Tiempo sin horas: reloj, sol/luna, días y semana; noches rápidas; fire watch breve.
+- Cámara aérea con encuadre del lado completo y movimiento lateral lento; títulos de capítulo; vista exterior translúcida con pisos coloreados por oficio, etiquetas por piso, leyenda, contador de pisos con barreras y mini gráfico del zigzag.
+- Interfaz a pantalla completa: franja superior con íconos (edificio, pasillo, planos, pantalla completa), tarjeta compacta deslizable, botón "Volver al modelo" en los planos.
+- data/permits.json: BC2628687 emitido el 06/11/2026 con las inspecciones de la tarjeta. Fechas del tour tentativas; no representan trabajo ejecutado.

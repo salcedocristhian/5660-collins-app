@@ -84,7 +84,8 @@ details ul{margin:6px 0 0;padding-left:18px;color:var(--muted);font-size:.76rem;
 .tsinfo{position:absolute;left:8px;right:8px;bottom:8px;background:rgba(255,255,255,.96);color:#17231F;border-radius:12px;padding:8px 11px;font-size:.78rem;line-height:1.4;box-shadow:0 4px 16px rgba(0,0,0,.25)}.tsinfo[hidden]{display:none!important}.tsinfo b{display:block;font-size:.84rem}
 .thint{position:absolute;left:10px;bottom:10px;font-size:.7rem;color:#C9D3CE;background:rgba(15,26,30,.6);padding:4px 9px;border-radius:999px;pointer-events:none}
 .tcard{position:absolute;left:8px;right:8px;bottom:8px;max-height:46%;overflow:auto;background:rgba(255,255,255,.96);color:#17231F;border-radius:14px;padding:9px 11px 8px;box-shadow:0 6px 22px rgba(0,0,0,.4)}
-@media (min-width:760px){.tcard{right:auto;width:380px}}
+@media (min-width:760px){.tcard{right:auto;width:340px;max-height:40%}
+.tcard .tch small+button{min-width:36px}}
 .tch{display:flex;justify-content:space-between;align-items:center}
 .tcard small{font-size:.68rem;color:#5E6E66;font-variant-numeric:tabular-nums}
 .tcard b{display:block;font-size:.92rem;font-weight:600;line-height:1.25}
@@ -118,6 +119,7 @@ details ul{margin:6px 0 0;padding-left:18px;color:var(--muted);font-size:.76rem;
 .chip.r{background:#8A3B17}.chip.a{background:#8E6A3E}.chip.g{background:var(--petrol)}
 .tnote{font-size:.74rem;color:var(--muted);line-height:1.5;margin:0}
 @media (max-width:560px){.tv{height:min(72svh,640px);min-height:400px;border-radius:14px}.tseg button{padding:0 9px;font-size:.7rem;height:28px}}
+.tcomp{position:absolute;right:12px;top:52px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.92);box-shadow:0 2px 8px rgba(0,0,0,.25);pointer-events:none}.tcomp i{position:absolute;inset:0;display:flex;align-items:flex-start;justify-content:center;font:700 12px/1 system-ui,sans-serif;color:#8A3B17;padding-top:3px;transform-origin:50% 50%}.tcomp i::after{content:'';position:absolute;left:50%;top:15px;margin-left:-4px;border:4px solid transparent;border-bottom:12px solid #8A3B17;border-top:0}
 </style></head>
 <body>
 <div class="wrap">
@@ -132,6 +134,7 @@ details ul{margin:6px 0 0;padding-left:18px;color:var(--muted);font-size:.76rem;
    <div class="tcard" id="tCard" hidden></div>
    <div class="tbars" id="tBars" hidden></div>
    <div class="thint" id="tHint"></div>
+   <div class="tcomp" id="tComp" aria-hidden="true"><i id="tCompN">N</i></div>
   </div>
   <details class="tdet"><summary id="tSumSet"></summary><div class="tdb">
    <div class="tlbl" id="tLblSrc"></div><div class="tseg tsrc" id="tSrc"></div>
@@ -766,7 +769,7 @@ const SSC=3.2; /* estaciones ampliadas 2.4x para legibilidad (no a escala) */
 function label(fn,o){o=o||{};const cvs=document.createElement('canvas');cvs.width=512;cvs.height=96;const tex=new TH.CanvasTexture(cvs);
  const sp=new TH.Sprite(new TH.SpriteMaterial({map:tex,transparent:true,depthTest:false,sizeAttenuation:false}));sp.renderOrder=20;sp.userData={fn,o,cvs,tex,view:o.view||'gar'};drawLabel(sp);
  const sc=(o.sc||1)*.15;sp.scale.set(sc,sc*96/512,1);labels.push(sp);return sp;}
-function drawLabel(sp){const {fn,o,cvs,tex}=sp.userData;const c=cvs.getContext('2d');c.clearRect(0,0,512,96);const t=fn();c.font='600 40px sans-serif';const w=Math.min(504,c.measureText(t).width+40);
+function drawLabel(sp){const {fn,o,cvs,tex}=sp.userData;const c=cvs.getContext('2d');c.clearRect(0,0,512,96);const t=fn();let fs=40;c.font='600 '+fs+'px sans-serif';while(c.measureText(t).width>452&&fs>22){fs-=2;c.font='600 '+fs+'px sans-serif';}const w=Math.min(504,c.measureText(t).width+40);
  c.fillStyle=(o.bgf?o.bgf():o.bg)||'rgba(23,37,31,.88)';roundRect(c,(512-w)/2,12,w,72,28);c.fill();c.fillStyle=o.fg||'#fff';c.textAlign='center';c.textBaseline='middle';c.fillText(t,256,49);tex.needsUpdate=true;}
 function relabel(){labels.forEach(drawLabel);}
 function ringTex(){const c=document.createElement('canvas');c.width=c.height=128;const g=c.getContext('2d');g.strokeStyle='#C99B62';g.lineWidth=10;g.beginPath();g.arc(64,64,54,0,7);g.stroke();g.fillStyle='rgba(201,155,98,.16)';g.fill();return new TH.CanvasTexture(c);}
@@ -791,8 +794,8 @@ function build(){
 }
 function buildGarage(){
  const ground=new TH.Mesh(new TH.PlaneGeometry(1600,1200),M(0xD3D8D4,{roughness:1}));ground.rotation.x=-Math.PI/2;ground.position.set(150,-1.2,-60);root.add(ground);
- const creek=new TH.Mesh(new TH.PlaneGeometry(900,170),M(0x2F6F8F,{roughness:.2,metalness:.1,transparent:true,opacity:.9}));creek.rotation.x=-Math.PI/2;creek.position.set(0,-.5,-100.4-85);gar.add(creek);
- const cl=label(()=>'Indian Creek · '+T('NOT confirmed','NO confirmado'),{bg:'rgba(47,111,143,.92)',sc:1.25});cl.position.set(-60,6,-135);gar.add(cl);
+ const creek=new TH.Mesh(new TH.PlaneGeometry(900,170),M(0x2F6F8F,{roughness:.95,metalness:0,transparent:true,opacity:.9}));creek.rotation.x=-Math.PI/2;creek.position.set(0,-.5,-100.4-85);gar.add(creek);
+ const cl=label(()=>'Indian Creek · '+T('NOT confirmed','NO confirmado'),{bg:'rgba(47,111,143,.92)',sc:1.25});{let mx=0,n=0;D.outline.forEach(([x])=>{mx+=x;n++;});cl.position.set(n?mx/n:0,6,-122);}gar.add(cl);
  // floor with pump pits cut out
  const shp=new TH.Shape(D.outline.map(([x,z])=>new TH.Vector2(x,-z)));ST.forEach(s=>{const h=new TH.Path();h.absarc(s.x,-s.z,3.3*SSC,0,Math.PI*2,true);shp.holes.push(h);});
  const fg=new TH.ExtrudeGeometry(shp,{depth:.6,bevelEnabled:false,curveSegments:24});fg.rotateX(-Math.PI/2);fg.translate(0,-.6,0);
@@ -824,7 +827,7 @@ function buildGarage(){
   const vg=new TH.Group();vg.position.set(s.x,.9,s.zt);const body=new TH.Mesh(new TH.SphereGeometry(.85,16,12),M(0x9AA3A8,{metalness:.8,roughness:.3}));vg.add(body);
   const h=new TH.Mesh(new TH.BoxGeometry(2.6,.25,.3),M(0xB0302A));h.position.y=1.0;vg.add(h);vg.userData.h=h;
   const ring=new TH.Mesh(new TH.TorusGeometry(1.35,.2,8,24),new TH.MeshBasicMaterial({color:0xC0392B}));ring.rotation.x=Math.PI/2;ring.position.y=.3;vg.add(ring);vg.userData.ring=ring;
-  const vl=label(()=>S.auth?T('open (sim.)','abierta (sim.)'):T('closed · DERM','cerrada · DERM'),{sc:.62,bg:'rgba(138,59,23,.92)'});vl.position.set(s.x+5,5,s.zt);gar.add(vl);vg.userData.lb=vl;
+  const vl=label(()=>S.auth?T('open (sim.)','abierta (sim.)'):T('closed · DERM','cerrada · DERM'),{sc:.9,bg:'rgba(138,59,23,.95)'});vl.position.set(s.x+5,5,s.zt);gar.add(vl);vg.userData.lb=vl;
   gar.add(vg);valveG.push(vg);
   // skid placeholder
   const sk=new TH.Group();sk.position.set(s.x+5,2,(s.z+s.zt)/2);const eg=new TH.LineSegments(new TH.EdgesGeometry(new TH.BoxGeometry(5,4,Math.max(6,Math.abs(s.zt-s.z)*.45))),new TH.LineBasicMaterial({color:0xC99B62}));sk.add(eg);
@@ -1066,7 +1069,7 @@ const STEPS=[
 {v:'gar',scn:'perm',rain:60,cam:[-1.5,-13,290,0,56],t:['Permanent solution (RJM design)','Solución permanente (diseño RJM)'],x:['Miranda’s design replaces the stations with duplex units (two pumps each, with floats), relines the underground pipe and renews the above-ground piping (green lines overhead). Treatment and sampling points are defined with DERM and the engineer of record.','El diseño de Miranda reemplaza las estaciones por unidades dúplex (dos bombas cada una, con flotadores), relina la tubería subterránea y renueva la aérea (líneas verdes en el techo). El tratamiento y los puntos de muestreo se definen con DERM y el ingeniero de récord.']},
 {v:'gar',scn:'int',rain:50,cam:[-5,-92,250,0,42,true],rg:'valves',t:['What is missing before discharging','Qué falta antes de descargar'],x:['Missing: Class V permit (not filed), authorization to discharge to Indian Creek, a formal Board decision, confirmation of BC2526722, lab results and the Nov 5 site visits (scheduled, not done). Approving the concept is not authorizing construction.','Falta: permiso Class V (no solicitado), autorización de descarga a Indian Creek, decisión formal de la Junta, confirmar BC2526722, resultados de laboratorio y las visitas del 5/11 (programadas, no realizadas). Aprobar el concepto no es autorizar la obra.']}
 ];
-const G={on:false,i:0,t:0,playing:false,snap:null,step:null,min:false};
+const G={on:false,i:0,t:0,playing:false,snap:null,step:null,min:true};
 const durOf=st=>Math.max(9,st.x[li()].length/15+4);
 function cardHTML(){const st=G.step,n=STEPS.length;const bar=STEPS.map((_,k)=>`<button type="button" class="tgd" data-g="goto" data-i="${k}" aria-label="${k+1}"><i><b class="tgfill" style="width:${k<G.i?100:0}%"></b></i></button>`).join('');
  return `<div class="tch"><small>${T('Step','Paso')} ${G.i+1} ${T('of','de')} ${n}</small><button type="button" class="tmin" data-g="min" aria-label="min">${G.min?'▴':'▾'}</button></div><b>${st.t[li()]}</b>${G.min?'':`<p>${st.x[li()]}</p>`}<div class="tcnav"><button type="button" data-g="prev" aria-label="${T('Previous','Anterior')}">‹</button><button type="button" data-g="play" class="tcp" aria-label="play">${G.playing?'❚❚':'▶'}</button><button type="button" data-g="next" aria-label="${T('Next','Siguiente')}">›</button><div class="tgseg">${bar}</div><button type="button" data-g="exit" aria-label="${T('Close guide','Cerrar guía')}">✕</button></div>`;}
@@ -1077,7 +1080,7 @@ function goStep(i){i=Math.max(0,Math.min(STEPS.length-1,i));const st=STEPS[i],pr
  S.scn=st.scn;S.auth=!!st.auth;S.rain=st.rain;S.q=35;S.n=4;S.strn=true;S.sed=true;S.bag=true;S.cart=!!st.cart;S.src='rain';S.view=st.v;
  syncInputs();ui();renderCard();aim(st.cam,st.v);setStageOpacity();
  try{$('tv').scrollIntoView({behavior:'smooth',block:'nearest'});}catch(e){}}
-function guideStart(){if(G.on)return;G.snap=Object.assign({},S);G.on=true;G.playing=true;G.min=false;S.play=true;goStep(0);}
+function guideStart(){if(G.on)return;G.snap=Object.assign({},S);G.on=true;G.playing=true;G.min=true;S.play=true;goStep(0);}
 function guideExit(){if(!G.on)return;Object.assign(S,G.snap);G.on=false;G.playing=false;G.step=null;ptsA=[];ptsB=[];held=0;syncInputs();renderCard();ui();aim(VIEWCFG[S.view],S.view);setStageOpacity();}
 /* ---------- animation ---------- */
 const NP=520;let pA,pB;
@@ -1087,6 +1090,7 @@ const SRC={rain:new TH.Color(0x3B82A6),gw:new TH.Color(0x4AA387),mix:new TH.Colo
 const TONES=['#7a4e22','#9c7b4f','#bba784','#cfd8d2','#e2ece9'].map(c=>new TH.Color(c));
 function stgList(){return ['strn','sed','bag','cart'].filter(k=>S[k]);}
 function frame(now){raf=requestAnimationFrame(frame);const dt=Math.min(.05,(now-(last||now))/1000);last=now;
+ {const fx=controls.target.x-cam.position.x,fz=controls.target.z-cam.position.z;const a=Math.atan2(-fx,-fz)*180/Math.PI;const cn=document.getElementById('tCompN');if(cn&&Math.abs((cn._a||0)-a)>.5){cn._a=a;cn.style.transform='rotate('+a.toFixed(1)+'deg)';}}
  // guide timer
  if(G.on&&G.playing){G.t+=dt;if(G.t>=durOf(G.step)){if(G.i<STEPS.length-1)goStep(G.i+1);else{G.playing=false;renderCard();}}}
  if(G.on){const d=durOf(G.step);document.querySelectorAll('#tCard .tgfill').forEach((e,k)=>{e.style.width=(k<G.i?100:k>G.i?0:Math.min(100,G.t/d*100))+'%';});}
