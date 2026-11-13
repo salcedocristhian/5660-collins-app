@@ -1,5 +1,13 @@
 # Changelog
 
+## November 13, 2026 — Operational budget register (separate from assessment)
+- Add a visible 'Operational — Not Part of Assessment' panel for elevator-related work, planters, HVAC, gym/sauna and miscellaneous operating costs, with pending-documentation statuses (unknown amounts are not zero).
+- Preserve the $7.5M Special Assessment, current project allocations, graphs, and existing cost figures; do not transfer expenses before HOA invoice/funding verification.
+- Track Pancho budget reconciliation, Tiana gym records and Owen Fire Watch check issuance as unverified follow-ups.
+- Correct outdated BC2628687 permit-pending language without claiming work executed or invoiced.
+- Refresh Budget navigation version and resident PWA cache.
+
+
 ## v12-progress (2026-10-27)
 - Sequence renamed **Progress**; model-first layout; disclosures moved below the sequence.
 - New **Permits** tab driven by `data/permits.json` (23 records from the Oct 27 Master Permit Exhibit).
