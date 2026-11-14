@@ -1,5 +1,11 @@
 # Changelog
 
+## November 13, 2026 — SPA expenses ledger reconciliation
+- Sync reported (Bill/Expense) lines from FINAL - Assessment Spreadsheet / SPA expenses (gid 1150414805): Dewatering $71,102.50; Elevator Shoring $106,498.47; Structural Repairs $42,400.00; Planters $58,300.00; Central HVAC remains $1,311,014.66.
+- Project overview: Elevator + Structural $148,898.47, Planters $58,300.00. Correct details to match group totals and avoid allocating planters twice.
+- Do not treat Bills as confirmed cash paid. Operational non-assessment placeholders and approved total assessment remain unchanged.
+
+
 ## November 13, 2026 — Compact Operational Budget v2
 - Revert to the previous Budget design and preserve all existing assessment figures/charts.
 - Replace detailed operational commentary with a compact numeric tracking table (Elevator, Planters, HVAC, Gym & Sauna, Miscellaneous, Total).
