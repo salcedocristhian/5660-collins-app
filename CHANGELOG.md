@@ -1,5 +1,13 @@
 # Changelog
 
+## November 14, 2026 — MTD test Remediation reconciliation
+- Correct the ambiguous $658,566.25 figure: it is exactly formula MTD test EB6, summing planned budget categories in row 6 (EF:EX), not one approved contract.
+- MTD test expense category entries in row 20 sum to $418,234.92: $359,919.17 Phase 2, $19,203.75 Phase 1, $6,037.50 Carpet Cleaning, $22,000 Construction Admin/Temporary Dehumidification, $11,074.50 Fire Watch. Derived budget difference $240,331.33.
+- MTD test overall expense and balance cells ED20:ED21 currently have #REF! errors. Show calculated subtotals with explicit caution; do not imply book-confirmed cash or add to Oct 9 $2,288,111.13 accounting actual.
+- Leave $1,039,295 Contingency budget and $42,266.28 accounting contingency expense out of the Remediation card; they refer to different scope totals.
+- Sort Remediation as third by MTD-tracked expenses (different source explicitly labeled); retain category bar design, scope budgets, and collapsed unspent categories.
+
+
 ## November 14, 2026 — Rank financial projects by spending
 - Arrange the six Assessment Projects sections from highest to lowest recorded accounting expense: HVAC, ELSS, SIRS, Dewatering, Remediation (not separately reconciled), Exterior (no recorded spending).
 - Order the SIRS components by recorded expense: Elevator, Planters, Structural Repairs.
