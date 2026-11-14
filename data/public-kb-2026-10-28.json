@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "version": "2026-11-07-floor2-carpet-thursday-film-alignment",
-  "source": "5660 KB - Active Projects LIVE / Core Rules LIVE / FAQ Bilingual LIVE; November 6 permit and Floor 2 pilot overrides; November 6 Relats pressurization engineering update; Floor 2 operating plan November 5, 2026. Other project states retain last verified source dates. November 7 PM clarification: Floor 2 carpet-removal cinematic and planning target is tentative Thursday November 12, not Monday/early week.",
-  "asOf": "2026-11-07",
+  "version": "20261113-sidea-containment-firewatch-v13",
+  "source": "Updated November 13, 2026 from live project KB and user's direct Friday field observations; prior November 6 permit record remains valid. This is a dated snapshot, not a live sync.",
+  "asOf": "2026-11-13",
   "isLiveSync": false,
-  "notice": "Published resident-safe snapshot of LIVE KB as of November 7, 2026. This file is not a live Google Drive or City portal sync. Management must confirm site readiness and resident-access notices.",
+  "notice": "Resident-safe source snapshot as of November 13, 2026. Corridor Side A containment status is from on-site observation; RMD visit and carpet removal remain planned for next week. Official access notices come from Building Management. No direct live Google Drive or City portal sync.",
   "projects": [
     {
       "id": "corridor",
@@ -13,19 +13,19 @@
         "es": "Remediación y drywall de pasillos"
       },
       "status": {
-        "en": "Issued November 6, 2026 · Floor 2 pilot planned",
-        "es": "Emitido el 6 de noviembre de 2026 · piloto del piso 2 planificado"
+        "en": "Floor 2 Side A contained · Floor 3 Side A nearly contained",
+        "es": "Piso 2 lado A con containment · piso 3 lado A casi terminado"
       },
       "summary": {
-        "en": "The City of Miami Beach issued selective corridor drywall permit BC2628687 on November 6, 2026, with the Permit Card available (expiration May 5, 2027). Approved scope covers gypsum-board removal in typical corridor areas on Floors 2 through PH as shown in the plans; this is not blanket ceiling removal or authorization of other ELSS trades. A TWO-WEEK pilot is planned on Floor 2 only, with a November 9 target start subject to readiness and formal release. SERVPRO remediation, cleaning, AirMD post-remediation verification and written area-specific clearance precede drywall reconstruction and applicable inspections. Later groups of potentially THREE floors simultaneously may be considered only after pilot results and Fire/AHJ, staffing, resource and clearance review. No other floor starts are confirmed.",
-        "es": "La Ciudad de Miami Beach emitió el permiso BC2628687 el 6 de noviembre de 2026 y ya se cuenta con Permit Card (vence 5 de mayo de 2027). El alcance aprobado contempla retiro selectivo de gypsum board en áreas típicas de pasillos de los pisos 2 al PH, según planos; no autoriza retiro general de cielos rasos ni trabajos ELSS independientes. Se planifica un piloto de DOS SEMANAS únicamente en el piso 2, con inicio objetivo el 9 de noviembre, sujeto a preparación y liberación formal. La remediación y limpieza de SERVPRO, la verificación de AirMD y la liberación escrita por área preceden la reconstrucción de drywall y las inspecciones aplicables. Grupos futuros de potencialmente TRES pisos simultáneos dependerán de los resultados del piloto y de Bomberos/AHJ, personal, recursos y clearance. No hay fechas para otros pisos."
+        "en": "Confirmed on site Friday, November 13: temporary containment was installed on Floor 2, Side A; on Floor 3, Side A, installation covered most of that side but was still partial. City selective corridor permit BC2628687 was issued November 6. This is not proof that carpet removal, drywall demolition, environmental clearance or rated-wall restoration has been completed. The approximately two-week Floor 2 pilot remains subject to field measurement and safety/inspection controls; future floor groupings are not yet authorized.",
+        "es": "Confirmado en visita al edificio el viernes 13 de noviembre: se instaló el containment temporal en el piso 2, lado A; en el piso 3, lado A, se cubrió casi todo el sector, pero aún no está completo. El permiso municipal BC2628687 fue emitido el 6 de noviembre. Esto no significa que estén completos el retiro de alfombra, la demolición de drywall, la liberación ambiental o la reconstrucción de paredes resistentes al fuego. El piloto de aproximadamente dos semanas del piso 2 depende de resultados y medidas de seguridad; no hay nuevos grupos de pisos autorizados."
       },
       "next": {
-        "en": "Confirm November 9 pilot field readiness, Fire Watch coverage and Management authorization. Floor 2 carpet removal is tentatively planned for THURSDAY, November 12 only (proposed 8 AM–5 PM), with Management notice at least 48 hours in advance. Future floors await pilot results.",
-        "es": "Confirmar la preparación del piloto del 9 de noviembre, Fire Watch y autorización de Administración. El retiro de alfombra del piso 2 se prevé tentativamente SOLO para el JUEVES 12 de noviembre (ventana propuesta de 8 a. m. a 5 p. m.), con aviso de Administración al menos 48 horas antes. Los pisos siguientes esperan resultados."
+        "en": "During November 16–20, an RMD site visit and corridor carpet removal are anticipated; vendor identity, dates, affected floors and access arrangements still need confirmation. Verify completion of Floor 3 Side A containment. Fire Watch will continue during November 14–15. Management will announce any access requirements.",
+        "es": "Durante el 16 al 20 de noviembre se prevén la visita de RMD y el retiro de alfombra; falta confirmar proveedor, fechas, pisos y accesos. Verificar terminación del containment del piso 3, lado A. El Fire Watch continuará el 14 y 15 de noviembre. La Administración comunicará cualquier requisito de acceso."
       },
       "permit": "BC2628687",
-      "asOf": "2026-11-06"
+      "asOf": "2026-11-13"
     },
     {
       "id": "elevator",
@@ -295,18 +295,19 @@
         "es": "Vigilancia contra incendio y pasillos"
       },
       "status": {
-        "en": "Requirements depend on active work",
-        "es": "Requisitos dependen de la obra activa"
+        "en": "Weekend coverage continues Nov 14–15",
+        "es": "Cobertura continúa el 14–15 de noviembre"
       },
       "summary": {
-        "en": "Outside Fire Watch for the earlier interim encapsulation phase ended operationally October 5. New selective corridor drywall demolition can require Fire Watch until rated walls are reinstated and accepted, as directed by Fire/AHJ. The Floor 2 pilot must maintain applicable coverage, egress and temporary life-safety controls. No new Fire Watch completion or blanket waiver is confirmed.",
-        "es": "El Fire Watch externo de la fase provisional de encapsulación terminó operativamente el 5 de octubre. La nueva demolición selectiva de drywall puede requerir vigilancia hasta reponer y aceptar las paredes clasificadas, según Bomberos/AHJ. El piloto del piso 2 debe mantener cobertura, accesos de salida y controles temporales aplicables. No se ha confirmado una exención general del Fire Watch."
+        "en": "Per the November 13 field update, Fire Watch will remain in place over the November 14–15 weekend while corridor containment work protections continue. Maintain Fire/AHJ requirements and unobstructed exit routes. No guard count or release has been verified in this update.",
+        "es": "Según el avance del 13 de noviembre, el Fire Watch continuará el fin de semana del 14–15 mientras se mantienen las protecciones del containment en pasillos. Se deben respetar requisitos de Bomberos/AHJ y las salidas despejadas. Esta actualización no verifica cantidad de guardias ni liberación del servicio."
       },
       "next": {
-        "en": "Confirm coverage roster, handoffs and workfront safety with Fire and Management before Floor 2 starts.",
-        "es": "Confirmar personal, relevos y seguridad con Bomberos y Administración antes de iniciar el piso 2."
+        "en": "Confirm coverage and handoff with Building Management after the weekend; maintain required fire safety measures.",
+        "es": "Confirmar cobertura y relevos con Administración después del fin de semana; mantener las medidas de seguridad."
       },
-      "permit": ""
+      "permit": "",
+      "asOf": "2026-11-13"
     },
     {
       "id": "waterfront",
@@ -332,6 +333,26 @@
   "faqs": [
     {
       "question": {
+        "en": "What containment work was observed on November 13?",
+        "es": "¿Qué containment se instaló al 13 de noviembre?"
+      },
+      "answer": {
+        "en": "Floor 2 Side A containment was installed; Floor 3 Side A was nearly complete but still partial. This was a field observation, not confirmation that demolition, carpet removal or environmental clearance has occurred.",
+        "es": "Se instaló containment en el lado A del piso 2; en el lado A del piso 3 avanzó casi por completo, pero todavía estaba parcial. Fue una observación en obra, no confirmación de demolición, retiro de alfombra ni liberación ambiental."
+      }
+    },
+    {
+      "question": {
+        "en": "Will Fire Watch remain over the November 14–15 weekend?",
+        "es": "¿Se mantendrá el Fire Watch el fin de semana del 14–15?"
+      },
+      "answer": {
+        "en": "Yes. Fire Watch is scheduled to continue through Saturday and Sunday, November 14–15. Required fire safety and emergency egress protections remain in force; no release has been reported.",
+        "es": "Sí. Está previsto mantener el Fire Watch durante el sábado 14 y domingo 15 de noviembre. Continúan las medidas de seguridad contra incendio y salidas de emergencia; no se ha informado liberación del servicio."
+      }
+    },
+    {
+      "question": {
         "en": "Has hallway permit BC2628687 been issued?",
         "es": "¿Ya fue emitido el permiso BC2628687 de pasillos?"
       },
@@ -346,8 +367,8 @@
         "es": "¿Cuándo comenzará el piloto del piso 2?"
       },
       "answer": {
-        "en": "A two-week pilot is planned exclusively for Floor 2, targeting Monday, November 9, 2026. That is not a confirmed work start: mobilization, access controls, Fire Watch, environmental conditions and Management/contractor authorization must be verified before work begins. Floor 3 and higher have no confirmed starts.",
-        "es": "Se planifica un piloto de dos semanas exclusivamente en el piso 2, con inicio objetivo el lunes 9 de noviembre de 2026. No es un inicio confirmado: deben verificarse movilización, accesos, Fire Watch, condiciones ambientales y autorización. El piso 3 y superiores no tienen inicio confirmado."
+        "en": "The initial approximately two-week Floor 2 pilot is underway as a containment/workfront preparation phase: by Friday November 13, containment had been installed on Floor 2 Side A. Floor 3 Side A containment was nearly—but not completely—installed. This does not confirm demolition or clearance. Subsequent sequencing remains contingent on field results and Fire/AHJ review.",
+        "es": "El piloto inicial de aproximadamente dos semanas del piso 2 se encuentra en fase de preparación del sector de obra: al viernes 13 de noviembre ya se instaló containment en el lado A del piso 2. En el piso 3, lado A, casi terminó, pero aún estaba parcial. No significa demolición ni liberación ambiental. La secuencia posterior dependerá de resultados y Bomberos/AHJ."
       }
     },
     {
@@ -476,8 +497,8 @@
         "es": "¿Cuándo retirarán la alfombra del piso 2?"
       },
       "answer": {
-        "en": "Floor 2 carpet removal is tentatively targeted for Thursday, November 12, 2026. It is not planned at the start of the workweek. The tentative 8 AM–5 PM access window requires Management confirmation and at least 48 hours' notice. Residents needing caregiver, mobility or essential access should contact Management.",
-        "es": "El retiro de alfombra del piso 2 está previsto tentativamente para el jueves 12 de noviembre de 2026, no al comienzo de la semana. La ventana tentativa de 8 a. m. a 5 p. m. requiere confirmación de Administración y aviso con al menos 48 horas. Quienes necesiten cuidadores, asistencia de movilidad o acceso esencial deben contactar a Administración."
+        "en": "The earlier November 12 target was tentative and is superseded. Carpet removal is now anticipated during November 16–20, 2026, with exact start date and affected areas to be confirmed by Building Management. A visit by RMD is also anticipated that week. Removal has not been confirmed completed.",
+        "es": "La fecha anterior del 12 de noviembre era tentativa y ha quedado sustituida. Ahora se prevé el retiro de alfombra durante el 16 al 20 de noviembre de 2026, con fecha y áreas por confirmar por Administración. También se prevé una visita de RMD. No se ha confirmado que el retiro esté completado."
       }
     },
     {
