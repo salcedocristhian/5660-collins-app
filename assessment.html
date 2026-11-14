@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f2f3f1"><title>Financial Overview · 5660 Collins</title><meta name="app-version" content="2026-11-13-compact-ops-v2">
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f2f3f1"><title>Financial Overview · 5660 Collins</title><meta name="app-version" content="2026-11-13-spa-expenses-v3">
 <style>
 *{box-sizing:border-box}body{margin:0;background:#f2f3f1;color:#17201d;font:16px -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}.wrap{max-width:820px;margin:auto;padding:30px 18px 90px}a{color:inherit}.back{display:inline-flex;gap:8px;text-decoration:none;color:#426157;font-size:14px;margin-bottom:25px}.eyebrow{font-size:12px;font-weight:750;letter-spacing:.11em;color:#537368;text-transform:uppercase}h1{font-size:clamp(32px,7vw,46px);letter-spacing:-.045em;margin:8px 0 6px}h2{font-size:21px;letter-spacing:-.025em;margin:0 0 14px}p{color:#64726d;line-height:1.5}.sub{margin-top:0}.pill{display:inline-block;border:1px solid #c8d7d1;border-radius:99px;padding:7px 12px;color:#426157;font-size:12px;font-weight:650;margin:8px 0 20px}.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.stat,.panel{background:#fff;border:1px solid #e2e7e3;border-radius:20px;padding:20px}.stat small{color:#697872;display:block;font-size:12px}.stat strong{display:block;font-size:clamp(24px,5vw,34px);letter-spacing:-.04em;margin:8px 0}.stat span{font-size:11px;color:#7b8983}.panel{margin-top:14px;padding:22px}.barrow{display:grid;grid-template-columns:1fr auto;gap:6px 12px;margin:17px 0}.barrow .name{font-size:13px;font-weight:600}.barrow .value{font-size:13px;font-variant-numeric:tabular-nums}.track{grid-column:1/-1;background:#edf1ee;border-radius:9px;height:12px;overflow:hidden}.fill{height:100%;background:#568a76;border-radius:9px}.legend{display:flex;gap:18px;font-size:12px;color:#677670}.dot{width:9px;height:9px;border-radius:3px;display:inline-block;margin-right:5px}.budgetgrid{display:grid;grid-template-columns:1fr auto;gap:7px;font-size:13px;margin-top:13px}.budgetgrid>div{padding:9px 0;border-bottom:1px solid #edf0ed}.muted{color:#6c7973}.notice{border-left:3px solid #c28e50;background:#fffaf1;border-radius:8px;padding:13px 16px;color:#775b32;font-size:13px;line-height:1.5;margin:20px 0}.foot{font-size:12px;line-height:1.6;margin-top:20px}button{font:inherit;border:0;background:#e3eae6;border-radius:30px;padding:10px 15px;color:#36584b;cursor:pointer}.header{display:flex;justify-content:space-between;align-items:center;gap:10px}@media(min-width:640px){.stats{grid-template-columns:repeat(4,minmax(0,1fr))}}@media(max-width:420px){.stat{padding:14px}.panel{padding:17px}}
 
@@ -84,6 +84,7 @@ document.addEventListener('DOMContentLoaded',()=>{if(matchMedia('(prefers-reduce
 <div class="panel" id="budget-basis"><h2>About these figures</h2><p>Budgets follow the Board budget sheet: Amount Budgeted for Projects $6,460,481.00 + Contingency $1,039,519.00 = $7,500,000.00. The 10 itemized projects add up to $6,367,961.00; the remaining $92,520.00 is shown as “Breakdown Pending” until the Board provides updated figures by project in November. Budgets do not change when estimates move. Reported costs are invoices and confirmed payments recorded so far; they are not cash paid. Cash paid will be reconciled to the Association’s HOA books in the next review.</p></div>
 <div class="panel" id="contingency-panel"></div>
 <div class="panel"><h2>Project Budget Allocation</h2><p>Tap any chart segment or project name to explore the financial details.</p><div class="donut-layout"><div class="donut-shell"><svg id="budget-donut" viewBox="0 0 240 240" aria-label="Interactive budget chart"></svg><div class="donut-center" id="donut-center"></div></div><div class="donut-legend" id="budget-legend"></div></div></div><div class="panel"><h2>Budget vs. Reported Costs</h2><p>Project budgets compared with reported costs and trade invoices.</p><div class="legend"><span><i class="dot" style="background:#9db3c8"></i>Project Budget</span><span><i class="dot" style="background:#568a76"></i>Reported Costs</span></div><div id="comparison"></div></div><div class="panel"><h2>Project Budget Used (%)</h2><p>Share of each project budget represented by reported costs.</p><div id="utilization"></div></div><div class="panel"><h2>Project Financial Overview</h2><p>Projects ranked by budget. Select one to reveal financial metrics and trade details.</p><div id="project-cards"></div></div><div class="panel"><h2>Project Cost Breakdown</h2><p>Explore individual project costs and balances.</p><div id="trade-breakdown"></div></div></div>
+<!-- Source: FINAL - Assessment Spreadsheet / SPA expenses (gid 1150414805), reviewed 2026-11-13. The figures are Bill/Expense ledger amounts, NOT verified cash disbursements; operational categories remain separate and unquantified. -->
 <script>
 const fmt=n=>n===null?"Not consolidated":"$"+n.toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});
 const projects=[
@@ -91,13 +92,13 @@ const projects=[
 {id:"hvac",name:"Central HVAC",budget:1647000,spent:1311014.66,partial:false,note:"Recorded HVAC expenses, paid through the Association SPA account."},
 {id:"contingency",name:"Contingency Reserve",budget:1039519,spent:418234.92,partial:true,note:"Work paid out of contingency funds. Mold Remediation is assigned here."},
 {id:"exterior2028",name:"2028 Exterior Restoration",budget:1057563,spent:0,partial:false,note:"Work planned for 2028. No costs recorded."},
-{id:"dewater",name:"Dewatering",budget:372000,spent:70452.50,partial:true,note:"Recorded soft costs only."},
-{id:"elevator",name:"Elevator Shoring and Structural Repairs",budget:230600,spent:193327.97,partial:false,note:"Otis, FPL vault, inspection engineering, complete structural, planters, roof concrete louvers, overhead beam repairs, South Lot."},
+{id:"dewater",name:"Dewatering",budget:372000,spent:71102.50,partial:true,note:"Recorded soft costs only."},
+{id:"elevator",name:"Elevator Shoring and Structural Repairs",budget:230600,spent:148898.47,partial:false,note:"Elevator shoring and structural repairs; reported SPA costs."},
 {id:"garage",name:"Concrete Restoration Garage (2nd Level N & S)",budget:150630,spent:0,partial:false,note:"Concrete repair at various locations."},
 {id:"driveway",name:"Driveway",budget:145000,spent:0,partial:false,note:"Pavers and handicap lift."},
 {id:"joints",name:"Expansion Joints Exterior Walls",budget:102500,spent:0,partial:false,note:"Replacement of main expansion joints in the building."},
 {id:"coating",name:"Concrete Coating Acrylic Resurface (2nd Level)",budget:74543,spent:0,partial:false,note:"Repair pavers (South lot), repaint lower garage, epoxy injection at joint slab."},
-{id:"planters",name:"Waterproofing Membrane Planters",budget:25625,spent:0,partial:false,note:"Waterproof planters in deck."},
+{id:"planters",name:"Waterproofing Membrane Planters",budget:25625,spent:58300,partial:false,note:"Waterproof planters in deck."},
 {id:"pending",name:"Project Budget · Breakdown Pending",budget:92520,spent:null,partial:false,note:"Difference between the Board budget sheet (Amount Budgeted for Projects $6,460,481.00) and the 10 itemized project budgets ($6,367,961.00). The Board will provide the breakdown by project in November; until then it is not assigned to any project."}];
 const trades={
 contingency:[
@@ -122,8 +123,8 @@ elss:[
 {name:"ELSS budget not yet assigned to a contract",budget:43738,amount:0,items:[]},
 {name:"Fire Dampers",budget:42000,amount:0,items:[]},
 {name:"Pressurization",budget:null,amount:0,items:[]}],
-dewater:[{name:"Engineering",amount:43872.50,items:[]},{name:"Jet Washing / Camera (source document to confirm)",amount:26580,items:[]}],
-elevator:[{name:"Elevator Shoring",amount:105427.97,items:[]},{name:"Structural Repairs",amount:42400,items:[]},{name:"Planter Waterproofing",amount:45500,items:[]}],
+dewater:[{name:"Engineering",amount:44522.50,items:[]},{name:"Jet Washing / Camera",amount:26580,items:[]}],
+elevator:[{name:"Elevator Shoring",amount:106498.47,items:[]},{name:"Structural Repairs",amount:42400,items:[]}],
 exterior2028:[
 {name:"Balconies, waterproofing, resurface, common",budget:197881,amount:0,items:[["Balconies waterproof",0]]},
 {name:"Concrete Restoration, Balconies",budget:249025,amount:0,items:[["Concrete restoration",0]]},
@@ -135,7 +136,7 @@ garage:[{name:"Concrete repair various locations",budget:150630,amount:0,items:[
 driveway:[{name:"Pavers and handicap lift",budget:145000,amount:0,items:[]}],
 joints:[{name:"Replacement of main expansion joints in the building",budget:102500,amount:0,items:[]}],
 coating:[{name:"Repair pavers (South lot), repaint lower garage, epoxy injection at joint slab",budget:74543,amount:0,items:[]}],
-planters:[{name:"Waterproof planters in deck",budget:25625,amount:0,items:[]}]};
+planters:[{name:"Waterproof planters in deck",budget:25625,amount:58300,items:[]}]};
 const subcontractorRegister=[
 {name:"Superior Door Contractors",trade:"Smoke Enclosure Doors",budget:232000,paidConfirmed:113410,source:"Project representative confirmation; MTD G703 Billing Period 1",entries:[{app:1,amount:113410,kind:"confirmed",description:"Confirmed payment to Superior Doors"}]},
 {name:"Sciens Building Solutions",trade:"Fire Alarm",budget:616000,entries:[{app:2,amount:61600,description:"Project Startup & Administration"},{app:2,amount:123200,description:"Engineering & Design"}]},
