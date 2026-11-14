@@ -1,5 +1,13 @@
 # Changelog
 
+## November 14, 2026 — Apple-style Budget UI v6
+- Put the original interactive budget-allocation donut before the financial tracking report.
+- Replace the horizontally scrolling 8-column report with 12 responsive expandable project cards, prioritizing five highest-budget projects and a single Show All control.
+- Chart selections navigate to the matching coded construction cards instead of displaying legacy expense figures from an older snapshot. Preserve chart and existing underlying calculations in hidden compatibility nodes.
+- Preserve source numbers: MTD Test $7.5M total, October 9 2026 accounting report $6,349,693 allocation, $2,288,111.13 spent, $4,061,581.87 remaining, and 73 SPA expense transactions in optional invoice details.
+- Keep 2028 and 2030 allocation cards. Update cache and Budget tab routing.
+
+
 ## November 14, 2026 — Construction budget + accounting code report
 - MTD test is the reference for the full $7,500,000 construction budget: $6,460,481 projects + $1,039,519 contingency.
 - Render the October 9 accounting printout as coded 2026 financial tracker (12 lines): $6,349,693 budget, $695,049.97 prior actual, $1,593,061.16 2026 actual, $2,288,111.13 total spent, $4,061,581.87 remaining.
