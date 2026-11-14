@@ -1,5 +1,12 @@
 # Changelog
 
+## November 14, 2026 — Prioritize nonzero project information
+- Hide four project cards with $0.00 recorded spending from the main Budget tracker, prioritizing eight active, nonzero projects.
+- Hide zero-valued prior-years and YTD breakdown cells and empty no-budget labels on active cards. Preserve nonzero approved budgets and future budget allocations, which remain collapsed by default.
+- Keep the chart-first navigation, MTD Miscellaneous $82,000 tracking, $7,500,000 assessment and $2,288,111.13 recorded spending untouched.
+- Version Budget URL and PWA cache.
+
+
 ## November 14, 2026 — Miscellaneous MTD test cost tracking
 - Show Miscellaneous within ELSS using current MTD test values: $150,000 budget, $82,000 project expenses and $68,000 remaining (54.7% used).
 - Show the $32,000 Remediation & Stairwell Railing and $50,000 Corrected Rousseau Contractors Proposal line values only as MTD test category tracking; they sum to $82,000.
