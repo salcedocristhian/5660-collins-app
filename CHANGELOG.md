@@ -1,5 +1,12 @@
 # Changelog
 
+## November 14, 2026 — Consolidated SPA expense ledger
+- Replace blank operational placeholders with actual SPA expense records from the FINAL Assessment Spreadsheet, tab SPA expenses, gid 1150414805.
+- Add 8 expandable categories and 73 original dated vendor entries. Total: $1,711,577.19 (Bills + Expenses minus a $450 Deposit).
+- Show the ledger total on the dashboard; label as recorded SPA expenses, NOT verified cash paid. Preserve all existing assessment project allocation values and charts.
+- Keep separately funded operating costs out of this SPA ledger until source documents support them.
+
+
 ## November 13, 2026 — SPA expenses ledger reconciliation
 - Sync reported (Bill/Expense) lines from FINAL - Assessment Spreadsheet / SPA expenses (gid 1150414805): Dewatering $71,102.50; Elevator Shoring $106,498.47; Structural Repairs $42,400.00; Planters $58,300.00; Central HVAC remains $1,311,014.66.
 - Project overview: Elevator + Structural $148,898.47, Planters $58,300.00. Correct details to match group totals and avoid allocating planters twice.
