@@ -1,5 +1,13 @@
 # Changelog
 
+## November 14, 2026 — Construction budget + accounting code report
+- MTD test is the reference for the full $7,500,000 construction budget: $6,460,481 projects + $1,039,519 contingency.
+- Render the October 9 accounting printout as coded 2026 financial tracker (12 lines): $6,349,693 budget, $695,049.97 prior actual, $1,593,061.16 2026 actual, $2,288,111.13 total spent, $4,061,581.87 remaining.
+- Add codes 2382.03 / 2382.04 / 2382.05 / 2382.08 / 2382.10 / 2382.11 / 2382.13 / 2382.14, expandable SPA vendor entries, and MTD test construction estimate details; bid estimates are not booked as spent.
+- Show 2028 $1,057,563 and 2030 $92,744 as separate forward allocations (2026 + 2028 + 2030 = $7.5M). Keep old interactive charts under optional disclosure and refresh PWA.
+- Sources: MTD test (gid 94632371), SPA expenses (gid 1150414805), October 9, 2026 accounting printout.
+
+
 ## November 14, 2026 — Consolidated SPA expense ledger
 - Replace blank operational placeholders with actual SPA expense records from the FINAL Assessment Spreadsheet, tab SPA expenses, gid 1150414805.
 - Add 8 expandable categories and 73 original dated vendor entries. Total: $1,711,577.19 (Bills + Expenses minus a $450 Deposit).
