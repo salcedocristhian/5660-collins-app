@@ -1,5 +1,15 @@
 # Changelog
 
+## November 14, 2026 — Pancho financial presentation correction
+- Restored clear tan and green paired bars, Budgeted vs Expensed, with percent expensed for each active assessment group.
+- Replaced confusing Project Spending list with six ordered Assessment Projects sections: SIRS, HVAC, ELSS, Dewatering, Exterior Concrete Restoration, Remediation.
+- Separated Operational Acct Sourced Projects: Hand Rail Stairwell, Gym, Boiler Room; no invented expense numbers.
+- ELSS subtotal: $2,562,500 approved budget vs $2,518,761.56 itemized projected expense. The October 9 actual of $523,357.65 remains a separate accounting figure; 2027 forecast sheet lists $563,470 to date, subject to reconciliation.
+- Explicit correction: ELSS Miscellaneous $150,000 budget and 0% expensed. $32,000/$50,000 MTD test line items are proposed scopes, not actual expensed.
+- Remediation is assessment-funded from contingency; it is not a second addition to the assessment. Recorded remediation-specific expenses remain unconfirmed.
+- Preserve full $7,500,000 assessment allocation, existing chart, details for actual-expense projects, source citations, and PWA compatibility.
+
+
 ## November 14, 2026 — Prioritize nonzero project information
 - Hide four project cards with $0.00 recorded spending from the main Budget tracker, prioritizing eight active, nonzero projects.
 - Hide zero-valued prior-years and YTD breakdown cells and empty no-budget labels on active cards. Preserve nonzero approved budgets and future budget allocations, which remain collapsed by default.
