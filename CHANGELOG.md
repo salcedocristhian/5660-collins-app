@@ -1,5 +1,12 @@
 # Changelog
 
+## November 14, 2026 — Rank financial projects by spending
+- Arrange the six Assessment Projects sections from highest to lowest recorded accounting expense: HVAC, ELSS, SIRS, Dewatering, Remediation (not separately reconciled), Exterior (no recorded spending).
+- Order the SIRS components by recorded expense: Elevator, Planters, Structural Repairs.
+- Preserve the operating-account grouping, source figures, full total assessment, chart, two-colored bars, ELSS Miscellaneous 0% expensed, and all expandable detail.
+- Version the Budget deep link and PWA cache.
+
+
 ## November 14, 2026 — Pancho financial presentation correction
 - Restored clear tan and green paired bars, Budgeted vs Expensed, with percent expensed for each active assessment group.
 - Replaced confusing Project Spending list with six ordered Assessment Projects sections: SIRS, HVAC, ELSS, Dewatering, Exterior Concrete Restoration, Remediation.
