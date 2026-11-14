@@ -1,5 +1,13 @@
 # Changelog
 
+## November 14, 2026 — MTD test-first budget and Pancho group navigation
+- Render the six assessment categories in Pancho's requested order. Preserve original MTD test scope titles and their budget and expense tracking, with expense-active trades in descending order within each section.
+- Use accountant printout codes 2382.03, .04, .05, .08, .10, .11 only for matching categories. Show 2382.13 strictly as a contingency funding code, not as a Remediation expense code.
+- MTD values: SIRS $256,225/$193,327.97; HVAC $1,647,000/$1,311,014.66; ELSS $2,562,500 approved/$2,518,761.56 projected/$563,470 expense-to-date from 2027 tracker; Dewatering combined $699,673/$70,452.50; Exterior $1,294,583 scope; Contingency-funded work $658,566.25 scoped/$418,234.92 itemized tracking.
+- Follow Pancho on Miscellaneous ($150,000 budget / 0% expensed) and disclose conflicting $82,000 entry in MTD test. Keep accountant photo totals as independent snapshot and do not double count Remediation/Contingency.
+- Operational project labels: Hand Rail Stairwell, Gym, Boiler Room, Parking Lot Lighting, with unverified figures hidden. Keep original donut, controls, scripts, and PWA cache routing.
+
+
 ## November 14, 2026 — MTD test Remediation reconciliation
 - Correct the ambiguous $658,566.25 figure: it is exactly formula MTD test EB6, summing planned budget categories in row 6 (EF:EX), not one approved contract.
 - MTD test expense category entries in row 20 sum to $418,234.92: $359,919.17 Phase 2, $19,203.75 Phase 1, $6,037.50 Carpet Cleaning, $22,000 Construction Admin/Temporary Dehumidification, $11,074.50 Fire Watch. Derived budget difference $240,331.33.
