@@ -31,28 +31,36 @@ jobs:
           js = Path('assets/resident-ios.js').read_text(encoding='utf-8')
           corridor = next(x for x in permits['items'] if x['number']=='BC2628687')
           assert corridor['group']=='issued' and 'November 6' in corridor['status']
+          # Nov 13 verified Side A containment supersedes previous planning-only statements.
           kb_corridor = next(x for x in kb['projects'] if x['id']=='corridor')
-          assert 'Issued November 6' in kb_corridor['status']['en']
-          assert 'Floor 2' in kb_corridor['summary']['en'] and 'THREE' in kb_corridor['summary']['en']
-          assert 'issued November 6' in notices['notices'][0]['message']['en']
-          assert notices['notices'][0]['date']=='2026-11-06'
-          assert 'two-week' in notices['notices'][0]['message']['en']
+          assert kb_corridor['permit']=='BC2628687'
+          assert 'November 6' in kb_corridor['summary']['en']
+          assert 'Floor 2' in kb_corridor['summary']['en'] and 'Floor 3' in kb_corridor['summary']['en']
+          assert 'partial' in kb_corridor['summary']['en']
+          latest = notices['notices'][0]
+          assert latest['date']=='2026-11-13'
+          assert latest['id']=='corridor-containment-sidea-field-2026-11-13'
+          assert 'Floor 2, Side A' in latest['message']['en']
+          assert 'Floor 3, Side A' in latest['message']['en']
+          assert 'not yet fully complete' in latest['message']['en']
+          assert kb['asOf']=='2026-11-13'
+          assert any(x['id']=='firewatch-weekend-2026-11-13' and 'November 14' in x['message']['en'] for x in notices['notices'])
+          assert any(x['id']=='corridor-carpet-rmd-followup-2026-11-13' and 'November 16' in x['message']['en'] for x in notices['notices'])
           assert any(x.get('group')=='pilot' for x in schedule['timeline'])
           assert any(x.get('group')=='issued' and 'Hallway' in x['name']['en'] for x in schedule['timeline'])
           assert all(x['title'].get('en') and x['title'].get('es') for x in schedule['milestones'])
           assert schedule['milestones']==sorted(schedule['milestones'],key=lambda x:x['date'])
-          # November 7 PM clarification: Thursday-only (tentative), not Monday/Wednesday.
+          # Historical November 12 schedule milestone is superseded; new dates are not invented.
           carpet = [x for x in schedule['milestones'] if 'carpet' in x['title']['en'].lower()]
-          assert len(carpet) == 1 and carpet[0]['date'] == '2026-11-12'
+          assert len(carpet)==1 and carpet[0]['date']=='2026-11-12'
           floor2_carpet = next(x for x in notices['notices'] if x['id']=='floor2-carpet-access-planning-2026-11-06')
-          assert 'Thursday, November 12' in floor2_carpet['message']['en']
-          assert 'tentative' in floor2_carpet['message']['en'].lower()
-          assert 'Thursday, November 12' in next(x for x in kb['faqs'] if 'carpet' in x['question']['en'].lower())['answer']['en']
+          assert 'supersedes' in floor2_carpet['message']['en']
+          assert 'November 16' in next(x for x in kb['faqs'] if 'carpet' in x['question']['en'].lower())['answer']['en']
           assert not any(x['projectId']=='corridor' and 'not issued' in x['message']['en'].lower() for x in notices['notices'])
           assert 'City permit BC2628687 remains pending' not in html
           assert 'const projectDefs=[' in html and 'residentFloorNotice' in html
           assert 'collins-language-changed' in html and 'collins-language-changed' in js
-          assert '20261107-thu-film1' in html and '20261107-thu-film1' in Path('sw.js').read_text()
+          assert '20261113-sidea-containment-firewatch-v13' in html and '20261113-sidea-containment-firewatch-v13' in Path('sw.js').read_text()
           embedded = re.search(r'<script type="application/json" id="residentKBBackup">(.*?)</script>',html,re.S)
           assert embedded is not None
           assert json.loads(embedded.group(1))==kb
