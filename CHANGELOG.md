@@ -1,5 +1,12 @@
 # Changelog
 
+## November 14, 2026 — Miscellaneous MTD test cost tracking
+- Show Miscellaneous within ELSS using current MTD test values: $150,000 budget, $82,000 project expenses and $68,000 remaining (54.7% used).
+- Show the $32,000 Remediation & Stairwell Railing and $50,000 Corrected Rousseau Contractors Proposal line values only as MTD test category tracking; they sum to $82,000.
+- Keep the Oct 9 accounting screenshot total $2,288,111.13 unchanged. Do not reclassify to Operational / Not Part of Assessment without source-of-funds confirmation.
+- Preserve original chart-first styling, all project cards, forecasts and underlying budget allocations.
+
+
 ## November 14, 2026 — Apple-style Budget UI v6
 - Put the original interactive budget-allocation donut before the financial tracking report.
 - Replace the horizontally scrolling 8-column report with 12 responsive expandable project cards, prioritizing five highest-budget projects and a single Show All control.
