@@ -1,5 +1,13 @@
 # Changelog
 
+## November 13, 2026 — Hallway Side A containment, RMD planning and weekend Fire Watch
+- Update resident Updates / Latest with the Nov 13 field observation: Floor 2 Side A containment installed; Floor 3 Side A mostly installed but still partial.
+- Publish two companion notices (RMD/carpet anticipated week Nov 16–20; Fire Watch continuing Nov 14–15) and keep the past November 12 carpet target as superseded history, not a current schedule.
+- Refresh dated resident-safe KB JSON for corridor, Fire Watch and bilingual FAQs. Preserve issued City permit BC2628687 and distinguish containment prep from carpet removal, drywall demolition, clearance and final restoration.
+- Keep Building Management as the source of formal access notices; do not invent RMD identification, confirmed visit, specific carpet-removal day, Fire Watch guard count or work authorization.
+- Maintain approvalStatus=draft and avoid push notifications. Update app data-fetch cache busting, static no-JS fallback and PWA cache version; leave unrelated tabs and schedule unchanged.
+
+
 ## November 14, 2026 — MTD test-first budget and Pancho group navigation
 - Render the six assessment categories in Pancho's requested order. Preserve original MTD test scope titles and their budget and expense tracking, with expense-active trades in descending order within each section.
 - Use accountant printout codes 2382.03, .04, .05, .08, .10, .11 only for matching categories. Show 2382.13 strictly as a contingency funding code, not as a Remediation expense code.
