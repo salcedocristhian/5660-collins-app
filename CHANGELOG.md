@@ -1,5 +1,11 @@
 # Changelog
 
+## November 13, 2026 — Compact Operational Budget v2
+- Revert to the previous Budget design and preserve all existing assessment figures/charts.
+- Replace detailed operational commentary with a compact numeric tracking table (Elevator, Planters, HVAC, Gym & Sauna, Miscellaneous, Total).
+- Unknown non-assessment amounts display as dashes, not zero or estimated costs; assessment totals are not changed.
+
+
 ## November 13, 2026 — Operational budget register (separate from assessment)
 - Add a visible 'Operational — Not Part of Assessment' panel for elevator-related work, planters, HVAC, gym/sauna and miscellaneous operating costs, with pending-documentation statuses (unknown amounts are not zero).
 - Preserve the $7.5M Special Assessment, current project allocations, graphs, and existing cost figures; do not transfer expenses before HOA invoice/funding verification.
