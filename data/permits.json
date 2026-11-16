@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "version": "2026-11-07-bc2628687-issued-pilot2w",
-  "updatedAt": "2026-11-07",
+  "version": "2026-11-16-mec2605440-issued",
+  "updatedAt": "2026-11-16",
   "approvalStatus": "draft",
-  "approvalNote": "Source-based resident snapshot updated from Nov 6 City permit card and Nov 6 LIVE KB. No permit is represented as issued unless supported by documentation; no automatic resident notifications.",
+  "approvalNote": "Permit register updated from November 10 City-issued pump permit card, supplied November 16. No automatic resident notifications; separate review and clearance requirements remain.",
   "display": {
     "showCodeCases": false
   },
@@ -304,14 +304,23 @@
     },
     {
       "id": "chillerpump",
-      "group": "verify",
+      "group": "issued",
       "scope": "Chiller pump replacement",
-      "number": "Application ID not provided",
-      "status": "Trane reports submitted; verify",
-      "next": "Verify",
+      "number": "MEC2605440",
+      "status": "Issued November 10, 2026 (City permit card)",
+      "next": "Confirm inspection schedule/results with Trane and City; Mechanical Rough (1430), Fire Final (3099), Mechanical Final (1499).",
       "bond": "TBD",
-      "duration": "2–4 weeks, est.",
-      "completion": "TBD"
+      "duration": "TBD — no schedule verified",
+      "completion": "Not verified",
+      "note": "City of Miami Beach Building Permit and Inspection Record, MEC2605440, dated November 10, 2026. Trane US Inc. [CAC023485]. Scope: replace four 15 HP pumps. Permit card lists Mechanical Rough, Fire Final and Mechanical Final inspections; no inspection dates/results shown. This permit is specific to the four pumps; it does not independently verify permits for other chiller mechanical/electrical or controls work.",
+      "document": {
+        "type": "Building Permit and Inspection Record",
+        "name": "Building Permit Card (1).pdf",
+        "sourceDate": "2026-11-10",
+        "receivedDate": "2026-11-16",
+        "repositoryPdfUploaded": false,
+        "submittalRecord": "submittals/chiller-pumps/MEC2605440.md"
+      }
     },
     {
       "id": "elss",
@@ -367,6 +376,7 @@
     "Project correspondence, Sep–Oct 2026",
     "City portal screenshots BC2628687 supplied Oct 31, 2026; completed reviews Oct 29–30",
     "Jany Martinez (Sciens | Empire Division), RE: FIRE ALARM APPLICATION email received Nov 3, 2026; FP1126-7824 supplied; City issuance unverified",
-    "Building Permit Card BC2628687 dated 11/06/2026 (supplied Nov 6, 2026)"
+    "Building Permit Card BC2628687 dated 11/06/2026 (supplied Nov 6, 2026)",
+    "City of Miami Beach Building Permit and Inspection Record, MEC2605440, dated 11/10/2026 (supplied Nov 16, 2026; original PDF repository upload pending)"
   ]
 }

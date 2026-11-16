@@ -227,7 +227,7 @@ const projectDefs=[
 {name:{en:"Garage Dewatering / Stormwater",es:"Bombeo y pluvial del garaje"},weeks:null,start:null,statusKey:"Permitting",status:{en:"Permit coordination",es:"Coordinación de permiso"},rate:{en:"BC2526722 is not confirmed issued; administrative follow-up November 26.",es:"BC2526722 no está confirmado emitido; seguimiento administrativo 26 de noviembre."},permit:"BC2526722 · pending",pilot:false},
 {name:{en:"Parking Lot Lighting",es:"Iluminación de estacionamientos"},weeks:null,start:null,statusKey:"Permitting",status:{en:"Initial process only",es:"Solo trámite inicial"},rate:{en:"BPI2650249 is intake only. Approximately three weeks of field installation after an issued trade permit and mobilization.",es:"BPI2650249 es solo trámite inicial. Aproximadamente tres semanas de instalación después de permiso y movilización."},permit:"BPI2650249 · not issued",pilot:false},
 {name:{en:"Gym & Sauna Restoration",es:"Restauración gimnasio y sauna"},weeks:null,start:null,statusKey:"In Progress",status:{en:"Work / inspection verification",es:"Verificación de obra e inspecciones"},rate:{en:"BC2627814 issued October 1; November 3 inspection results and reopening are not verified.",es:"BC2627814 emitido el 1 de octubre; no están verificados resultados del 3 de noviembre ni reapertura."},permit:"BC2627814 · issued",pilot:false},
-{name:{en:"Chiller / Controls",es:"Chiller y controles"},weeks:null,start:null,statusKey:"In Progress",status:{en:"Coordination / verify",es:"Coordinación / verificar"},rate:{en:"Equipment/control connections and individual trade permits require verification.",es:"Conexiones y permisos de trades por verificar."},permit:"Trade permit status unverified",pilot:false},
+{name:{en:"Chiller / Controls",es:"Chiller y controles"},weeks:null,start:null,statusKey:"In Progress",status:{en:"Pump permit issued; other work to verify",es:"Permiso de bombas emitido; resto por verificar"},rate:{en:"MEC2605440, issued Nov 10, covers four 15 HP pumps only. Other controls/trade permits and inspection results are unverified.",es:"MEC2605440, emitido el 10 de noviembre, cubre solo cuatro bombas de 15 HP. Otros permisos e inspecciones sin verificar."},permit:"MEC2605440 · pumps only",pilot:false},
 {name:{en:"Boiler / Storage Tank",es:"Calderas y tanque"},weeks:null,start:null,statusKey:"Permitting",status:{en:"Corrections pending",es:"Correcciones pendientes"},rate:{en:"No confirmed construction start.",es:"Sin inicio de construcción confirmado."},permit:"MEC2605382 · corrections",pilot:false},
 {name:{en:"Stairwell Guardrails",es:"Barandas de escaleras"},weeks:null,start:null,statusKey:"Permitting",status:{en:"Review / corrections",es:"Revisión / correcciones"},rate:{en:"Installation not scheduled.",es:"Instalación sin programar."},permit:"BC2628393 · review",pilot:false},
 {name:{en:"Planter Restoration",es:"Restauración de jardineras"},weeks:null,start:null,statusKey:"Planning",status:{en:"Engineering pending",es:"Ingeniería pendiente"},rate:{en:"Survey/engineering deliverables pending. No start confirmed.",es:"Pendiente entrega de levantamiento/ingeniería. Sin fecha confirmada."},permit:"No permit confirmed",pilot:false}
@@ -462,14 +462,14 @@ root.querySelectorAll("[data-msview]").forEach(b=>b.addEventListener("click",()=
         "es": "Verificación pendiente"
       },
       "summary": {
-        "en": "Trane and communications vendors were coordinating equipment connectivity. Management reported a chiller-pump permit application but no official City number or receipt was available for independent verification. A completed or issued permit cannot be presumed.",
-        "es": "Trane y proveedores coordinaban conectividad de equipos. Administración reportó una solicitud de permiso para bombas, pero no hay número municipal ni recibo verificado. No se debe presumir permiso emitido."
+        "en": "Trane and communications vendors were coordinating equipment connectivity. City permit MEC2605440, dated November 10, 2026, authorizes replacement of four 15 HP pumps. This does not verify other chiller electrical, mechanical or controls permits, nor completed inspections.",
+        "es": "Trane y proveedores coordinaban conectividad de equipos. El permiso municipal MEC2605440, fechado el 10 de noviembre de 2026, autoriza reemplazar cuatro bombas de 15 HP. Otros permisos de chiller, eléctricos o de controles e inspecciones siguen sin verificar."
       },
       "next": {
-        "en": "Confirm permit number and official City status; coordinate a single approved controls/communications layout.",
-        "es": "Confirmar número y estado municipal y coordinar un solo diseño aprobado de comunicaciones."
+        "en": "Coordinate the City inspections for MEC2605440 and confirm separate controls/communications and trade permit requirements.",
+        "es": "Coordinar inspecciones de MEC2605440 y verificar por separado los permisos y diseños de comunicaciones/controles."
       },
-      "permit": ""
+      "permit": "MEC2605440 (pumps only)"
     },
     {
       "id": "planters",
