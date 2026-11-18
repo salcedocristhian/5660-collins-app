@@ -289,6 +289,10 @@ body.pilot #bldPanel .transport,body.pilot .bscen,body.pilot #guideBtnB,body.pil
  .wrap .detail{grid-template-columns:1fr!important}
 }
 </style>
+<style id="hide-drawings-controls">
+/* Retire the unused Drawings/Planos UI without altering the 3D model or source plan files. */
+#bpBtn,.pviews [data-pv="p"],#stStatus [data-sheet],#bp{display:none!important}
+</style>
 </head>
 <body>
 <div class="wrap">

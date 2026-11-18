@@ -1,15 +1,72 @@
 {
   "schemaVersion": 1,
-  "version": "20261113-sidea-containment-firewatch-v13",
-  "publishedAt": "2026-11-13",
+  "version": "20261118-pilot-and-permit-updates-v14",
+  "publishedAt": "2026-11-18",
   "approvalStatus": "draft",
-  "approvalNote": "Resident-safe project update based on November 13, 2026 on-site management observation and KB entry. Not a formal access notice; exact Air MD visit/carpet-removal schedule is pending Management/vendor confirmation. No push notification has been sent.",
+  "approvalNote": "November 18 updates are based on the Project Manager's latest field and permitting reports. The Air MD clearance, City framing inspection, and permit reviews remain pending; the hearing order has not been independently checked. Historical notices are retained. Not a formal resident access notice; no push notification has been sent.",
   "property": {
     "name": "5660 Collins Avenue",
     "location": "Miami Beach, Florida",
     "managementEmail": "Manager@5660condo.com"
   },
   "notices": [
+    {
+      "id": "corridor-pilot-sidea-posttest-2026-11-18",
+      "date": "2026-11-18",
+      "category": "construction",
+      "priority": "important",
+      "projectId": "corridor",
+      "title": {
+        "en": "Floor 2 pilot · Side A remediation and testing completed",
+        "es": "Piloto piso 2 · remediación y prueba del lado A realizadas"
+      },
+      "message": {
+        "en": "In the pilot's first week, the team completed Side A containment, selective drywall removal and remediation. Air MD performed post-remediation testing on Monday, November 16. The written clearance report is expected Thursday, November 19, but has not been received or approved. Current report turnaround is about three business days; a possible 24–48-hour turnaround for Side B and later tests is being discussed, not confirmed. If clearance is satisfactory, the team will request the required City framing inspection. Drywall installation follows inspection approval; no installation date is confirmed.",
+        "es": "Durante la primera semana del piloto se completaron el containment, retiro selectivo de drywall y remediación del lado A. Air MD realizó el post-remediation test el lunes 16 de noviembre. Se espera el clearance escrito el jueves 19, pero no se ha recibido ni aprobado. La entrega toma aproximadamente tres días hábiles; se conversa una posible reducción a 24–48 horas para el lado B y pruebas posteriores, aún sin confirmar. Con un clearance satisfactorio se solicitará la inspección municipal de framing. El drywall se instalará después de aprobar la inspección; todavía no hay fecha confirmada."
+      },
+      "residentAction": {
+        "en": "Please follow Building Management's floor-specific access notices. Sampling does not mean the area has been cleared or reopened.",
+        "es": "Siga los avisos de acceso de la Administración para su piso. La toma de muestras no significa que el área esté liberada o reabierta."
+      }
+    },
+    {
+      "id": "parking-hearing-electrical-intake-2026-11-18",
+      "date": "2026-11-18",
+      "category": "infrastructure",
+      "priority": "important",
+      "projectId": "parking",
+      "title": {
+        "en": "Parking lights · new electrical application and compliance date",
+        "es": "Luces del estacionamiento · nuevo trámite y plazo de cumplimiento"
+      },
+      "message": {
+        "en": "The initial BPI2650249 record was closed and replaced by electrical application ELC2617980. Documents were uploaded November 17 and await clerk review; no electrical permit has been issued. According to the project team's report of the November 17 Special Magistrate hearing, case SMB2026-04192 has a March 17, 2027 compliance deadline requiring an issued permit and a completed final inspection. The team is requesting the written hearing record to verify the terms.",
+        "es": "Se cerró el trámite inicial BPI2650249 y se creó la solicitud eléctrica ELC2617980. Los documentos se subieron el 17 de noviembre y esperan revisión de clerks; el permiso eléctrico no está emitido. Según el reporte del equipo sobre la audiencia del 17 de noviembre, el caso SMB2026-04192 tiene plazo de cumplimiento hasta el 17 de marzo de 2027 y exige permiso emitido e inspección final completada. Se solicitará el acta escrita para verificar los términos."
+      },
+      "residentAction": {
+        "en": "No new lighting installation date is confirmed; Management will share any resident impacts.",
+        "es": "No hay fecha confirmada de instalación; Administración informará cualquier impacto a residentes."
+      }
+    },
+    {
+      "id": "elss-and-handrail-submittal-update-2026-11-18",
+      "date": "2026-11-18",
+      "category": "permits",
+      "priority": "normal",
+      "projectId": "alarm",
+      "title": {
+        "en": "Fire protection and handrail permits · review update",
+        "es": "Permisos de protección contra incendio y barandas · avance"
+      },
+      "message": {
+        "en": "Fire Alarm FP1126-7824: 32 uploaded pages/files must be resubmitted as one combined PDF. Fire Sprinkler FP0826-7612: a file was uploaded November 17 and remains pending review. Handrail BC2628393: Building, Fire Building, Public Works and Structural reviews remain outstanding, with a reported December 3 review deadline. Leonor will follow up with Building and Structural. None of these updates indicates permit issuance.",
+        "es": "Fire Alarm FP1126-7824: las 32 páginas/archivos subidos deben volver a presentarse como un solo PDF. Fire Sprinkler FP0826-7612: se subió un archivo el 17 de noviembre y sigue pendiente de revisión. Handrail BC2628393: faltan las revisiones Building, Fire Building, Public Works y Structural, con fecha límite de revisión reportada para el 3 de diciembre. Leonor dará seguimiento a Building y Structural. Ninguno de estos avances significa que se haya emitido el permiso."
+      },
+      "residentAction": {
+        "en": "No resident action is required while the project team coordinates City reviews.",
+        "es": "No se requiere acción de residentes mientras el equipo coordina las revisiones municipales."
+      }
+    },
     {
       "id": "corridor-containment-sidea-field-2026-11-13",
       "date": "2026-11-13",
@@ -250,22 +307,22 @@
         "es": "Remediación y restauración de pasillos"
       },
       "summary": {
-        "en": "City corridor permit BC2628687 was issued November 6, 2026. On Friday, November 13, temporary containment was installed on Floor 2 Side A and was nearly complete—but still partial—on Floor 3 Side A. These observations do not establish completed carpet removal or drywall demolition. The roughly two-week Floor 2 pilot remains an evaluation phase; subsequent workfronts require review of actual productivity and Fire/AHJ requirements. A visit by Air MD and carpet removal are anticipated during November 16–20, with timing pending confirmation. Fire Watch continues November 14–15.",
-        "es": "El permiso municipal BC2628687 fue emitido el 6 de noviembre de 2026. El viernes 13 se instaló containment temporal en el piso 2, lado A; en el piso 3, lado A, casi se completó, pero todavía está parcial. Esto no confirma retiro de alfombra ni demolición de drywall. El piloto de aproximadamente dos semanas del piso 2 sigue como fase de evaluación; los siguientes sectores dependerán de resultados y requisitos de Bomberos/AHJ. Se prevén visita de Air MD y retiro de alfombra del 16 al 20 de noviembre, con horarios por confirmar. El Fire Watch continúa el 14 y 15."
+        "en": "Permit BC2628687 was issued November 6. In the first week of the Floor 2 pilot, Side A containment, drywall removal and remediation were completed, with Air MD post-remediation testing performed November 16. Written clearance is expected November 19, not yet received. City framing inspection and its approval must precede drywall installation. Floor 3 Side A containment was previously reported nearly complete on November 13; no further Floor 3 progress is confirmed.",
+        "es": "El permiso BC2628687 se emitió el 6 de noviembre. En la primera semana del piloto del piso 2 se completaron containment, retiro de drywall y remediación del lado A, y Air MD realizó el post-remediation test el 16 de noviembre. Se espera el clearance escrito el 19, todavía pendiente. La inspección municipal de framing y su aprobación deben preceder la instalación de drywall. El 13 de noviembre el containment del lado A del piso 3 estaba casi completo; no se ha confirmado un avance posterior de ese piso."
       }
     },
     {
       "id": "parking",
       "category": "infrastructure",
-      "permit": "BPI2650249",
+      "permit": "ELC2617980",
       "status": "in-progress",
       "title": {
         "en": "Parking lot lighting",
         "es": "Iluminación de estacionamientos"
       },
       "summary": {
-        "en": "City initial application registered October 27. Electrical construction permit has not yet been issued.",
-        "es": "Solicitud inicial registrada el 27 de octubre. Aún no se ha emitido el permiso eléctrico de construcción."
+        "en": "Initial BPI2650249 was closed and replaced with ELC2617980. Files uploaded November 17 await clerk review; electrical permit not issued. Team-reported hearing compliance deadline for SMB2026-04192 is March 17, 2027, with an issued permit and final inspection required; written order pending verification.",
+        "es": "BPI2650249 fue cerrado y sustituido por ELC2617980. Los archivos del 17 de noviembre esperan revisión de clerks; permiso no emitido. El equipo reporta plazo al 17 de marzo de 2027 para SMB2026-04192, con permiso emitido e inspección final; falta verificar el acta escrita."
       }
     },
     {
@@ -292,8 +349,8 @@
         "es": "Sistema de rociadores"
       },
       "summary": {
-        "en": "City plan review continues. The October 30 permit target is tentative and subject to City approval.",
-        "es": "Continúa la revisión municipal. El objetivo del 30 de octubre es tentativo y sujeto a aprobación de la Ciudad."
+        "en": "Fire Sprinkler FP0826-7612: an additional file was uploaded November 17, 2026 and remains pending City review; the permit is not confirmed issued.",
+        "es": "Fire Sprinkler FP0826-7612: se subió un archivo adicional el 17 de noviembre de 2026 y sigue pendiente de revisión municipal; no se confirma permiso emitido."
       }
     },
     {
@@ -306,8 +363,8 @@
         "es": "Modernización de alarma de incendios"
       },
       "summary": {
-        "en": "Sciens provided fire alarm application reference FP1126-7824 on November 3. The City review stage, master relationship and permit issuance are not yet confirmed.",
-        "es": "Sciens proporcionó la referencia de solicitud de alarma FP1126-7824 el 3 de noviembre. No se han confirmado la fase de revisión, vinculación al master ni emisión."
+        "en": "Fire Alarm FP1126-7824: 32 files/pages were uploaded but must be resubmitted together as one PDF. City approval and permit issuance remain pending.",
+        "es": "Fire Alarm FP1126-7824: se subieron 32 archivos/páginas, pero deben volver a presentarse juntos en un solo PDF. Siguen pendientes la aprobación y emisión municipal."
       }
     },
     {
@@ -491,8 +548,8 @@
         "es": "¿Air MD ya liberó el pasillo del piloto del piso 2?"
       },
       "answer": {
-        "en": "No written pilot-area clearance has been confirmed. Sampling, inspection, written clearance and required approvals are distinct milestones. Reconstruction will follow written clearance for each identified area and applicable inspections.",
-        "es": "No se ha confirmado liberación escrita de las áreas del piloto. Muestreo, inspección, liberación escrita y aprobaciones son hitos distintos. La reconstrucción requiere liberación escrita de cada área e inspecciones aplicables."
+        "en": "Air MD performed Side A post-remediation testing November 16. Written clearance is expected November 19 but remains pending. An acceptable result will allow the team to request the required City framing inspection; drywall installation follows inspection approval. Testing does not equal clearance.",
+        "es": "Air MD realizó la prueba post-remediación del lado A el 16 de noviembre. Se espera el clearance escrito el 19, pero sigue pendiente. Un resultado satisfactorio permitirá solicitar la inspección de framing; el drywall se instalará después de aprobarla. La prueba no equivale a liberación."
       }
     },
     {

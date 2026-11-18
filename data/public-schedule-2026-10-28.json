@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "asOf": "2026-11-07",
-  "source": "November 7 Floor 2 Thursday carpet clarification; November 6 LIVE KB permit and two-week Floor 2 pilot; all other milestones unchanged unless source-verified.",
+  "asOf": "2026-11-18",
+  "source": "November 18 Project Manager update: pilot Side A remediation and Air MD test, November 17 permit uploads, Special Magistrate hearing and Handrail review deadline. Older planning targets are retained as historical, not completed milestones.",
   "isVerifiedCalendar": false,
   "timeline": [
     {
@@ -143,14 +143,28 @@
       "month": "NOV",
       "day": "13",
       "title": {
-        "en": "AirMD written release · provisional milestone",
-        "es": "AirMD liberación escrita · hito provisional"
+        "en": "Air MD written release · superseded target",
+        "es": "Air MD liberación escrita · meta anterior sustituida"
       },
       "detail": {
-        "en": "Early-area written clearance is a TARGET only, if tested areas meet protocol; sampling is not clearance. Does NOT mean the full Floor 2 pilot is complete.",
-        "es": "La liberación escrita de áreas iniciales es solo META, si cumplen el protocolo; muestreo no equivale a clearance. NO significa finalización del piloto completo."
+        "en": "Historical November 13 target was not confirmed. Air MD testing took place November 16; new written-clearance expectation is November 19, pending result.",
+        "es": "La meta histórica del 13 de noviembre no fue confirmada. Air MD realizó la prueba el 16; se espera el informe escrito el 19, pendiente de resultado."
       },
       "status": "tentative"
+    },
+    {
+      "date": "2026-11-16",
+      "month": "NOV",
+      "day": "16",
+      "title": {
+        "en": "Air MD · Side A post-remediation test performed",
+        "es": "Air MD · prueba post-remediación del lado A realizada"
+      },
+      "detail": {
+        "en": "Post-remediation testing performed in the Floor 2 pilot Side A. Results and written clearance are separate, still-pending steps.",
+        "es": "Prueba post-remediación realizada en el lado A del piloto del piso 2. Resultados y clearance escrito son pasos separados y pendientes."
+      },
+      "status": "verified"
     },
     {
       "date": "2026-11-17",
@@ -161,10 +175,24 @@
         "es": "Audiencia por infracción de iluminación"
       },
       "detail": {
-        "en": "BVE26000408; 9:00 AM per KB. Management/team must reconfirm appearance and case instructions.",
-        "es": "BVE26000408; 9 a. m. según KB. Administración/equipo deben reconfirmar comparecencia e instrucciones."
+        "en": "Special Magistrate case SMB2026-04192 / BVE26000408. The PM reports a March 17, 2027 compliance deadline requiring permit issuance and final inspection; written order pending verification.",
+        "es": "Caso del magistrado SMB2026-04192 / BVE26000408. El PM reporta plazo al 17 de marzo de 2027, con permiso emitido e inspección final; falta verificar el acta escrita."
       },
-      "status": "follow-up"
+      "status": "verified"
+    },
+    {
+      "date": "2026-11-19",
+      "month": "NOV",
+      "day": "19",
+      "title": {
+        "en": "Air MD Side A clearance · expected, not received",
+        "es": "Clearance de Air MD lado A · esperado, no recibido"
+      },
+      "detail": {
+        "en": "Expected written report after November 16 sampling. If satisfactory, request City framing inspection; drywall installation only after approval. A faster 24–48-hour turnaround for future tests is unconfirmed.",
+        "es": "Informe esperado después de muestreo del 16. Si es satisfactorio, solicitar inspección de framing; instalar drywall solo con aprobación. Reducir próximas pruebas a 24–48 horas sigue sin confirmar."
+      },
+      "status": "tentative"
     },
     {
       "date": "2026-11-20",
@@ -207,6 +235,34 @@
         "es": "Meta tentativa de principios de diciembre para el paquete de ingeniería; no hay día exacto, revisión municipal ni comienzo de obra confirmados."
       },
       "status": "tentative"
+    },
+    {
+      "date": "2026-12-03",
+      "month": "DEC",
+      "day": "03",
+      "title": {
+        "en": "Handrail BC2628393 · City review deadline",
+        "es": "Handrail BC2628393 · fecha límite de revisión municipal"
+      },
+      "detail": {
+        "en": "Reported City review due date; Building, Fire Building, Public Works and Structural remain pending. Leonor will request Building and Structural review. Not a confirmed permit issue date.",
+        "es": "Fecha municipal de revisión reportada; faltan Building, Fire Building, Public Works y Structural. Leonor solicitará Building y Structural. No es fecha confirmada de emisión."
+      },
+      "status": "follow-up"
+    },
+    {
+      "date": "2027-03-17",
+      "month": "MAR",
+      "day": "17",
+      "title": {
+        "en": "Parking lighting case · compliance deadline reported",
+        "es": "Iluminación del estacionamiento · plazo de cumplimiento reportado"
+      },
+      "detail": {
+        "en": "SMB2026-04192 requires issued ELC permit and completed final inspection by this date per the project team's November 17 hearing report. Obtain written order; not proof the case is closed.",
+        "es": "SMB2026-04192 requiere permiso ELC emitido e inspección final completada para esta fecha según el reporte de la audiencia del 17. Solicitar acta escrita; no significa caso cerrado."
+      },
+      "status": "follow-up"
     }
   ],
   "gymUpcoming": [
@@ -236,7 +292,7 @@
     }
   ],
   "scheduleNotice": {
-    "en": "Floor 2 is the only scheduled pilot workfront (two-week planning window; November 9 target). Other residential floors have no confirmed start dates. Dates below are conditional or verification milestones unless explicitly marked as issued.",
-    "es": "El piso 2 es el único frente planificado para el piloto (ventana de dos semanas; inicio objetivo el 9 de noviembre). No hay fecha confirmada para otros pisos residenciales. Las fechas son metas tentativas o hitos por verificar, salvo que se identifiquen como emitidos."
+    "en": "Floor 2 Side A pilot remediation and November 16 testing are reported complete; written clearance and City framing inspection remain pending. Other floors have no confirmed production dates. Expected reports and City review due dates are not approvals or completed inspections.",
+    "es": "La remediación del lado A del piloto del piso 2 y la prueba del 16 están reportadas como realizadas; faltan clearance escrito e inspección de framing. Otros pisos no tienen fechas confirmadas. Informes esperados y plazos de revisión no equivalen a aprobaciones ni inspecciones completadas."
   }
 }
