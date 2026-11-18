@@ -114,6 +114,44 @@
       'Operational projects are tracked separately from the Special Assessment. '
       + 'Any budget or expense values require documented funding and accounting sources.';
 
+    // Presentation-only cleanup: legacy source notes refer to a prior snapshot,
+    // and must not be mistaken for the current HOA Books accounting ledger.
+    const allocationCaption = chart.querySelector('.ac-asof');
+    if (allocationCaption) allocationCaption.textContent = 'Construction estimate · 2026';
+    const allocationBasis = chart.querySelector('.ac-small');
+    if (allocationBasis) allocationBasis.textContent = 'Construction planning total';
+    const chartEyebrow = chart.querySelector('.ac-eyebrow');
+    if (chartEyebrow) chartEyebrow.textContent = 'Construction budget · Special Assessment';
+    const constructionKicker = construction.querySelector('.p-header .p-kicker');
+    if (constructionKicker) constructionKicker.textContent = 'CONSTRUCTION BUDGET · SCOPE TRACKING';
+    const trackerKey = construction.querySelector('.p-key > span:nth-child(2)');
+    if (trackerKey) trackerKey.lastChild.textContent = 'Tracker entries · not confirmed paid';
+    construction.querySelectorAll('.pt-note').forEach(node => {
+      node.hidden = true;
+    });
+    const miscSource = construction.querySelector('.p-important small');
+    if (miscSource) miscSource.textContent = 'Construction scope tracker';
+    const remediation = construction.querySelector('.p-group[data-group="remediation"]');
+    const groupList = construction.querySelector('.p-group-list');
+    if (remediation && groupList) {
+      const fundedSection = element('section', 'hoa-funded-section',
+        '<h3>Contingency-Funded Projects</h3>'
+        + '<p>Separate planning group; budget allocations are not additional HOA expenses. '
+        + 'Actual posted and paid expenses remain in Financial Overview.</p>');
+      groupList.parentNode.insertBefore(fundedSection, groupList.nextSibling);
+      fundedSection.appendChild(remediation);
+      const remediationLabel = remediation.querySelector('.p-group-name small');
+      if (remediationLabel) remediationLabel.textContent = 'Funded from contingency · construction tracking';
+    }
+    const walker = document.createTreeWalker(constructionPanel, NodeFilter.SHOW_TEXT);
+    while (walker.nextNode()) {
+      const node = walker.currentNode;
+      node.nodeValue = node.nodeValue
+        .replace(/MTD test/gi, 'Construction tracker')
+        .replace(/Pancho\s*\/\s*2027 tracker/gi, 'Construction scope tracker')
+        .replace(/\bMTD budget\b/gi, 'Scope budget');
+    }
+
     function select(name) {
       const panels = {financial:financialPanel,construction:constructionPanel,operational:operationalPanel};
       for (const [key, node] of Object.entries(panels)) node.hidden = key !== name;
