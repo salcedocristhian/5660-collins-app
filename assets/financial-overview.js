@@ -43,10 +43,13 @@
     </p>
     <section class="hoa-motion-card" aria-labelledby="hoa-distribution-title">
       <h2 class="hoa-motion-title" id="hoa-distribution-title">Expense Distribution</h2>
-      <p class="hoa-motion-helper">Eight HOA accounting categories. Select a bar to expand its payment summary and filter the transactions below.</p>
+      <p class="hoa-motion-helper">How the recorded expenses are distributed across eight HOA accounting categories. Select any category to see its payment details and related transactions.</p>
       <div class="hoa-distribution-wrap">
-        <svg class="hoa-distribution-chart" id="hoa-distribution-chart" viewBox="0 0 240 240" aria-label="Interactive expense distribution by accounting category"></svg>
-        <div class="hoa-category-list" id="hoa-category-list"></div>
+        <div class="hoa-chart-visual">
+          <svg class="hoa-distribution-chart" id="hoa-distribution-chart" viewBox="0 0 240 240" aria-label="Interactive expense distribution by accounting category"></svg>
+          <p class="hoa-chart-caption">Recorded HOA expenses · by account</p>
+        </div>
+        <div class="hoa-category-list" id="hoa-category-list" aria-label="HOA expense categories"></div>
       </div>
     </section>
     <section class="hoa-motion-card" aria-labelledby="hoa-invoices-title">
@@ -193,23 +196,26 @@
     const circumference = 2 * Math.PI * 88;
     let offset = 0;
     let segments = '<circle cx="120" cy="120" r="88" stroke="#e9eeea" stroke-width="21" fill="none"/>';
+    let categoryArcs = '';
     ledger.categories.forEach((category, index) => {
       const distance = category.amount / total * circumference;
       const pressed = category.account === focusedAccount;
-      segments += '<circle class="hoa-chart-segment" data-account="' + safe(category.account)
+      categoryArcs += '<circle class="hoa-chart-segment" data-account="' + safe(category.account)
         + '" tabindex="0" role="button" aria-label="' + safe(category.name) + ', ' + safe(money(category.amount))
         + '" aria-pressed="' + pressed + '" cx="120" cy="120" r="88" fill="none" stroke="' + palette[index]
         + '" stroke-dasharray="' + distance + ' ' + (circumference - distance)
-        + '" stroke-dashoffset="' + (-offset) + '" transform="rotate(-90 120 120)"/>';
+        + '" stroke-dashoffset="' + (-offset) + '"/>';
       offset += distance;
     });
+    // Only the non-interactive parent group is rotated; arcs keep native SVG geometry.
+    segments += '<g transform="rotate(-90 120 120)">' + categoryArcs + '</g>';
     const selection = selectedCategory();
     segments += '<text class="hoa-chart-label" x="120" y="111" font-size="11" font-weight="700">'
-      + (selection ? safe(selection.account) : 'ALL EXPENSES') + '</text>'
+      + (selection ? 'ACCOUNT ' + safe(selection.account) : 'HOA BOOKS') + '</text>'
       + '<text class="hoa-chart-label" x="120" y="136" font-size="20" font-weight="780">'
       + safe(money(selection ? selection.amount : ledger.total).replace(/\.\d\d$/, '')) + '</text>'
       + '<text class="hoa-chart-label" x="120" y="153" font-size="11">'
-      + (selection ? ((selection.amount / ledger.total)*100).toFixed(1) + '% of recorded' : 'HOA BOOKS') + '</text>';
+      + (selection ? ((selection.amount / ledger.total)*100).toFixed(1) + '% of recorded' : 'RECORDED EXPENSES') + '</text>';
     svg.innerHTML = segments;
     legend.classList.toggle('hoa-bars-animate', animateBars);
     legend.innerHTML = ledger.categories.map((item,index) => {
@@ -227,7 +233,7 @@
         + '"></span><span class="hoa-category-main"><span class="hoa-category-name">'
         + safe(item.name) + '</span><span class="hoa-category-bar" aria-hidden="true"><i style="--bar-width:'
         + pct.toFixed(2) + '%;--bar-color:' + palette[index] + ';--bar-delay:' + (index*45)
-        + 'ms"></i></span></span><span class="hoa-category-numbers"><strong>'
+        + 'ms"></i></span><span class="hoa-category-code">Account ' + safe(item.account) + '</span></span><span class="hoa-category-numbers"><strong>'
         + safe(money(item.amount)) + '</strong><small>' + pct.toFixed(1)
         + '% <span class="hoa-chevron" aria-hidden="true">⌄</span></small></span></button>'
         + '<div class="hoa-category-inline" id="hoa-category-inline-' + index + '"'
