@@ -3,7 +3,7 @@
   "version": "20261113-sidea-containment-firewatch-v13",
   "publishedAt": "2026-11-13",
   "approvalStatus": "draft",
-  "approvalNote": "Resident-safe project update based on November 13, 2026 on-site management observation and KB entry. Not a formal access notice; exact RMD visit/carpet-removal schedule is pending Management/vendor confirmation. No push notification has been sent.",
+  "approvalNote": "Resident-safe project update based on November 13, 2026 on-site management observation and KB entry. Not a formal access notice; exact Air MD visit/carpet-removal schedule is pending Management/vendor confirmation. No push notification has been sent.",
   "property": {
     "name": "5660 Collins Avenue",
     "location": "Miami Beach, Florida",
@@ -21,8 +21,8 @@
         "es": "Pasillos · containment instalado en piso 2, lado A"
       },
       "message": {
-        "en": "As observed on Friday, November 13: containment was installed on Floor 2, Side A. On Floor 3, Side A, containment is in place across most of the side, but that section is not yet fully complete. This is containment progress only—not confirmation of carpet removal, drywall demolition or environmental clearance. Fire Watch will continue through the November 14–15 weekend. An RMD visit and corridor carpet removal are anticipated next week, November 16–20; exact dates and affected areas are pending coordination.",
-        "es": "Avance observado el viernes 13 de noviembre: se instaló el containment en el piso 2, lado A. En el piso 3, lado A, se cubrió casi todo ese sector, pero el containment sigue parcialmente pendiente. Este avance corresponde únicamente al containment; no confirma retiro de alfombra o drywall ni liberación ambiental. El Fire Watch continuará durante el fin de semana del 14 al 15 de noviembre. Para la semana del 16 al 20 se prevén una visita de RMD y retiro de alfombra, con fechas y áreas por coordinar."
+        "en": "As observed on Friday, November 13: containment was installed on Floor 2, Side A. On Floor 3, Side A, containment is in place across most of the side, but that section is not yet fully complete. This is containment progress only—not confirmation of carpet removal, drywall demolition or environmental clearance. Fire Watch will continue through the November 14–15 weekend. An Air MD visit and corridor carpet removal are anticipated next week, November 16–20; exact dates and affected areas are pending coordination.",
+        "es": "Avance observado el viernes 13 de noviembre: se instaló el containment en el piso 2, lado A. En el piso 3, lado A, se cubrió casi todo ese sector, pero el containment sigue parcialmente pendiente. Este avance corresponde únicamente al containment; no confirma retiro de alfombra o drywall ni liberación ambiental. El Fire Watch continuará durante el fin de semana del 14 al 15 de noviembre. Para la semana del 16 al 20 se prevén una visita de Air MD y retiro de alfombra, con fechas y áreas por coordinar."
       },
       "residentAction": {
         "en": "Follow any Building Management access instructions and keep emergency exit routes clear. No resident-specific closure or carpet-removal window has been confirmed.",
@@ -36,12 +36,12 @@
       "priority": "normal",
       "projectId": "floor2access",
       "title": {
-        "en": "Next week · RMD visit and carpet removal anticipated",
-        "es": "Próxima semana · visita de RMD y retiro de alfombra previstos"
+        "en": "Next week · Air MD visit and carpet removal anticipated",
+        "es": "Próxima semana · visita de Air MD y retiro de alfombra previstos"
       },
       "message": {
-        "en": "The project team is expecting an RMD site visit and corridor carpet removal during the week of November 16–20, 2026. The vendor identity/details, attendance, exact floor sections and work/access times still require confirmation. The previous tentative November 12 carpet date is no longer a current schedule. Carpet removal has not been reported as completed.",
-        "es": "El equipo prevé una visita de RMD y el retiro de alfombra de pasillos durante la semana del 16 al 20 de noviembre de 2026. Falta confirmar la identificación y visita del proveedor, las áreas por piso y los horarios de obra/acceso. La fecha tentativa anterior del 12 de noviembre ya no representa la programación vigente. No se ha informado que el retiro de alfombra haya terminado."
+        "en": "The project team is expecting an Air MD site visit and corridor carpet removal during the week of November 16–20, 2026. Air MD attendance, exact floor sections and work/access times still require confirmation. The previous tentative November 12 carpet date is no longer a current schedule. Carpet removal has not been reported as completed.",
+        "es": "El equipo prevé una visita de Air MD y el retiro de alfombra de pasillos durante la semana del 16 al 20 de noviembre de 2026. Falta confirmar la asistencia de Air MD, las áreas por piso y los horarios de obra/acceso. La fecha tentativa anterior del 12 de noviembre ya no representa la programación vigente. No se ha informado que el retiro de alfombra haya terminado."
       },
       "residentAction": {
         "en": "Building Management will confirm affected areas and any required notices. Do not assume a fixed carpet-removal date or blocked hallway access.",
@@ -250,8 +250,8 @@
         "es": "Remediación y restauración de pasillos"
       },
       "summary": {
-        "en": "City corridor permit BC2628687 was issued November 6, 2026. On Friday, November 13, temporary containment was installed on Floor 2 Side A and was nearly complete—but still partial—on Floor 3 Side A. These observations do not establish completed carpet removal or drywall demolition. The roughly two-week Floor 2 pilot remains an evaluation phase; subsequent workfronts require review of actual productivity and Fire/AHJ requirements. A visit by RMD and carpet removal are anticipated during November 16–20, with timing pending confirmation. Fire Watch continues November 14–15.",
-        "es": "El permiso municipal BC2628687 fue emitido el 6 de noviembre de 2026. El viernes 13 se instaló containment temporal en el piso 2, lado A; en el piso 3, lado A, casi se completó, pero todavía está parcial. Esto no confirma retiro de alfombra ni demolición de drywall. El piloto de aproximadamente dos semanas del piso 2 sigue como fase de evaluación; los siguientes sectores dependerán de resultados y requisitos de Bomberos/AHJ. Se prevén visita de RMD y retiro de alfombra del 16 al 20 de noviembre, con horarios por confirmar. El Fire Watch continúa el 14 y 15."
+        "en": "City corridor permit BC2628687 was issued November 6, 2026. On Friday, November 13, temporary containment was installed on Floor 2 Side A and was nearly complete—but still partial—on Floor 3 Side A. These observations do not establish completed carpet removal or drywall demolition. The roughly two-week Floor 2 pilot remains an evaluation phase; subsequent workfronts require review of actual productivity and Fire/AHJ requirements. A visit by Air MD and carpet removal are anticipated during November 16–20, with timing pending confirmation. Fire Watch continues November 14–15.",
+        "es": "El permiso municipal BC2628687 fue emitido el 6 de noviembre de 2026. El viernes 13 se instaló containment temporal en el piso 2, lado A; en el piso 3, lado A, casi se completó, pero todavía está parcial. Esto no confirma retiro de alfombra ni demolición de drywall. El piloto de aproximadamente dos semanas del piso 2 sigue como fase de evaluación; los siguientes sectores dependerán de resultados y requisitos de Bomberos/AHJ. Se prevén visita de Air MD y retiro de alfombra del 16 al 20 de noviembre, con horarios por confirmar. El Fire Watch continúa el 14 y 15."
       }
     },
     {
@@ -480,8 +480,8 @@
         "es": "¿Cuándo retirarán la alfombra del piso 2?"
       },
       "answer": {
-        "en": "The former tentative Thursday, November 12 target is no longer current. Carpet removal is anticipated the week of November 16–20 alongside a planned RMD visit; exact dates and areas are not confirmed. Management will communicate any access windows. No completed carpet removal has been reported.",
-        "es": "La fecha tentativa anterior del jueves 12 ya no está vigente. El retiro de alfombra se prevé para la semana del 16 al 20 de noviembre, junto con una visita prevista de RMD; no están confirmados los días ni las áreas. La Administración comunicará los accesos. No se ha informado un retiro completado."
+        "en": "The former tentative Thursday, November 12 target is no longer current. Carpet removal is anticipated the week of November 16–20 alongside a planned Air MD visit; exact dates and areas are not confirmed. Management will communicate any access windows. No completed carpet removal has been reported.",
+        "es": "La fecha tentativa anterior del jueves 12 ya no está vigente. El retiro de alfombra se prevé para la semana del 16 al 20 de noviembre, junto con una visita prevista de Air MD; no están confirmados los días ni las áreas. La Administración comunicará los accesos. No se ha informado un retiro completado."
       }
     },
     {
