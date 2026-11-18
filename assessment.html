@@ -388,7 +388,10 @@ button:active,nav a:active{transform:scale(.96)}
 document.addEventListener('DOMContentLoaded',()=>{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
  document.querySelectorAll('.stat strong').forEach(el=>{const m=el.textContent.match(/^\$([\d,]+)$/);if(!m)return;const v=+m[1].replace(/,/g,'');const t0=performance.now();
   const step=now=>{const k=Math.min(1,(now-t0)/900),e=1-Math.pow(1-k,3);el.textContent='$'+Math.round(v*e).toLocaleString('en-US');if(k<1)requestAnimationFrame(step);};requestAnimationFrame(step);});});
-</script></head><body><div class="wrap"><div class="header"><a class="back" href="./index.html#updates">← Back to resident app</a><button onclick="window.print()">Print</button></div><div class="eyebrow">5660 Collins Avenue · Project Financial Overview</div><h1>Budget</h1><p class="sub">MTD construction budget, grouped for the Board.</p>
+</script><link rel="stylesheet" href="./assets/premium-motion.css?v=preview20261118">
+<script src="./assets/premium-motion.js?v=preview20261118" defer></script>
+<script src="./assets/financial-overview.js?v=preview20261118" defer></script>
+</head><body><div class="wrap"><div class="header"><a class="back" href="./index.html#updates">← Back to resident app</a><button onclick="window.print()">Print</button></div><div class="eyebrow">5660 Collins Avenue · Project Financial Overview</div><h1>Budget</h1><p class="sub">MTD construction budget, grouped for the Board.</p>
 <section class="panel ac-chart" aria-labelledby="ac-alloc-heading">
  <div class="ac-eyebrow">5660 Collins · Special Assessment</div>
  <div class="ac-chart-heading"><div><h2 id="ac-alloc-heading">Budget allocation</h2><p>Explore each project</p></div><span class="ac-asof">MTD test · 2026</span></div>
