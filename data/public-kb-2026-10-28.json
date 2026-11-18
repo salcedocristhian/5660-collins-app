@@ -417,8 +417,8 @@
         "es": "¿Todos los pasillos pasaron la evaluación ambiental?"
       },
       "answer": {
-        "en": "No such building-wide clearance has been established. AirMD floor/area-specific verification is a separate required control; limited sample results do not prove all materials or floors are cleared.",
-        "es": "No hay liberación ambiental general confirmada. AirMD verifica sectores específicos; resultados limitados no liberan todos los materiales ni pisos."
+        "en": "No such building-wide clearance has been established. Air MD floor/area-specific verification is a separate required control; limited sample results do not prove all materials or floors are cleared.",
+        "es": "No hay liberación ambiental general confirmada. Air MD verifica sectores específicos; resultados limitados no liberan todos los materiales ni pisos."
       }
     },
     {
@@ -487,8 +487,8 @@
         "es": "¿En cuántos pisos trabajarán al mismo tiempo después del piloto?"
       },
       "answer": {
-        "en": "The team may consider groups of three simultaneous floors after evaluating actual Floor 2 production, AirMD clearance turnaround, staffing, power, inspections and Fire/AHJ conditions. This is conditional, not three floors per week, and no subsequent floor dates or four-floor approval have been established.",
-        "es": "Después de evaluar los rendimientos reales del piso 2, los tiempos de AirMD, personal, energía, inspecciones y condiciones de Bomberos/AHJ, podrían considerarse grupos de tres pisos simultáneos. Es una posibilidad, no tres pisos por semana, y no hay fechas de pisos siguientes ni aprobación de cuatro pisos."
+        "en": "The team may consider groups of three simultaneous floors after evaluating actual Floor 2 production, Air MD clearance turnaround, staffing, power, inspections and Fire/AHJ conditions. This is conditional, not three floors per week, and no subsequent floor dates or four-floor approval have been established.",
+        "es": "Después de evaluar los rendimientos reales del piso 2, los tiempos de Air MD, personal, energía, inspecciones y condiciones de Bomberos/AHJ, podrían considerarse grupos de tres pisos simultáneos. Es una posibilidad, no tres pisos por semana, y no hay fechas de pisos siguientes ni aprobación de cuatro pisos."
       }
     },
     {
@@ -503,8 +503,8 @@
     },
     {
       "question": {
-        "en": "Has AirMD given written clearance for the Floor 2 pilot?",
-        "es": "¿AirMD entregó liberación escrita para el piloto del piso 2?"
+        "en": "Has Air MD given written clearance for the Floor 2 pilot?",
+        "es": "¿Air MD entregó liberación escrita para el piloto del piso 2?"
       },
       "answer": {
         "en": "No written pilot clearance is confirmed. A planned sampling visit or sample collection does not constitute a written pass. Drywall reconstruction for an identified area depends on the written release and applicable inspections and safety conditions.",
