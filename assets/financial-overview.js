@@ -13,7 +13,6 @@
     c => ({'&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'}[c]));
   const palette = ['#1f6456','#57948a','#789c70','#9fb7a4',
     '#b28d5d','#416f8c','#a77c74','#839096'];
-  const motionReduced = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let ledger = null;
   let focusedAccount = null;
   let paymentFilter = 'all';
@@ -44,12 +43,11 @@
     </p>
     <section class="hoa-motion-card" aria-labelledby="hoa-distribution-title">
       <h2 class="hoa-motion-title" id="hoa-distribution-title">Expense Distribution</h2>
-      <p class="hoa-motion-helper">Recorded expenses organized by the eight HOA accounting categories. Select any segment for the supporting transactions.</p>
+      <p class="hoa-motion-helper">Eight HOA accounting categories. Select a bar to expand its payment summary and filter the transactions below.</p>
       <div class="hoa-distribution-wrap">
         <svg class="hoa-distribution-chart" id="hoa-distribution-chart" viewBox="0 0 240 240" aria-label="Interactive expense distribution by accounting category"></svg>
         <div class="hoa-category-list" id="hoa-category-list"></div>
       </div>
-      <div id="hoa-category-detail" class="hoa-category-detail" aria-live="polite"></div>
     </section>
     <section class="hoa-motion-card" aria-labelledby="hoa-invoices-title">
       <h2 class="hoa-motion-title" id="hoa-invoices-title">Recorded Transactions</h2>
@@ -65,7 +63,6 @@
       <div id="hoa-record-count" class="hoa-motion-helper" role="status"></div>
       <div id="hoa-ledger-list" class="hoa-ledger-list"></div>
       <button type="button" id="hoa-ledger-more" class="hoa-ledger-more" data-hoa-more="true" hidden>Show more transactions</button>
-      <div id="hoa-invoice-details" class="hoa-invoice-details" hidden></div>
     </section>`;
   }
 
@@ -163,7 +160,7 @@
       for (const [key, node] of Object.entries(panels)) node.hidden = key !== name;
       tabs.querySelectorAll('[data-hoa-tab]').forEach(button =>
         button.setAttribute('aria-selected', String(button.dataset.hoaTab === name)));
-      if (name === 'financial') requestAnimationFrame(() => renderDistribution());
+      if (name === 'financial') requestAnimationFrame(() => renderDistribution(true));
     }
     tabs.querySelectorAll('[data-hoa-tab]').forEach(button =>
       button.addEventListener('click', () => select(button.dataset.hoaTab)));
@@ -187,7 +184,7 @@
   function selectedCategory() {
     return ledger && ledger.categories.find(c => c.account === focusedAccount);
   }
-  function renderDistribution() {
+  function renderDistribution(animateBars = false) {
     if (!ledger) return;
     const svg = document.getElementById('hoa-distribution-chart');
     const legend = document.getElementById('hoa-category-list');
@@ -214,16 +211,32 @@
       + '<text class="hoa-chart-label" x="120" y="153" font-size="11">'
       + (selection ? ((selection.amount / ledger.total)*100).toFixed(1) + '% of recorded' : 'HOA BOOKS') + '</text>';
     svg.innerHTML = segments;
-    legend.innerHTML = ledger.categories.map((item,index) =>
-      '<button type="button" class="hoa-category-choice" data-account="' + safe(item.account)
-      + '" aria-pressed="' + (item.account === focusedAccount) + '"><i style="background:'
-      + palette[index] + '"></i><span>' + safe(item.name) + '</span><b>'
-      + safe(money(item.amount)) + '</b></button>').join('');
-    document.getElementById('hoa-category-detail').innerHTML =
-      '<div><small>' + (selection ? safe(selection.name) : 'Total recorded expenses')
-      + '</small><strong>' + safe(money(selection ? selection.amount : ledger.total))
-      + '</strong></div><button type="button" data-hoa-clear="true"'
-      + (selection ? '' : ' disabled') + '>Show all</button>';
+    legend.classList.toggle('hoa-bars-animate', animateBars);
+    legend.innerHTML = ledger.categories.map((item,index) => {
+      const chosen = item.account === focusedAccount;
+      const matching = ledger.rows.filter(row => row.account === item.account);
+      const paid = matching.filter(row => !!row.paidOn)
+        .reduce((sum,row) => sum + row.amount, 0);
+      const outstanding = matching.filter(row => !row.paidOn)
+        .reduce((sum,row) => sum + row.amount, 0);
+      const pct = item.amount / total * 100;
+      return '<div class="hoa-category-item' + (chosen ? ' is-open' : '') + '">'
+        + '<button type="button" class="hoa-category-choice" data-account="' + safe(item.account)
+        + '" aria-expanded="' + chosen + '" aria-controls="hoa-category-inline-' + index
+        + '"><span class="hoa-category-swatch" style="background:' + palette[index]
+        + '"></span><span class="hoa-category-main"><span class="hoa-category-name">'
+        + safe(item.name) + '</span><span class="hoa-category-bar" aria-hidden="true"><i style="--bar-width:'
+        + pct.toFixed(2) + '%;--bar-color:' + palette[index] + ';--bar-delay:' + (index*45)
+        + 'ms"></i></span></span><span class="hoa-category-numbers"><strong>'
+        + safe(money(item.amount)) + '</strong><small>' + pct.toFixed(1)
+        + '% <span class="hoa-chevron" aria-hidden="true">⌄</span></small></span></button>'
+        + '<div class="hoa-category-inline" id="hoa-category-inline-' + index + '"'
+        + (chosen ? '' : ' hidden') + '><div><small>Paid to Date</small><strong>'
+        + safe(money(paid)) + '</strong></div><div><small>Outstanding</small><strong>'
+        + safe(money(outstanding)) + '</strong></div><p>' + matching.length
+        + ' HOA transaction' + (matching.length === 1 ? '' : 's')
+        + ' · Matching records are filtered below.</p></div></div>';
+    }).join('');
   }
   function renderLedger() {
     if (!ledger) return;
@@ -235,36 +248,32 @@
         .some(item => String(item ?? '').toLowerCase().includes(searchQuery)))
       .sort((a,b) => b.date.localeCompare(a.date));
     const visible = records.slice(0,visibleRowLimit);
-    list.innerHTML = visible.map(row =>
-      '<button type="button" class="hoa-ledger-row" data-hoa-invoice="' + row.index
+    list.innerHTML = visible.map(row => {
+      const expanded = row.index === focusedInvoice;
+      return '<div class="hoa-ledger-entry' + (expanded ? ' is-open' : '') + '">'
+      + '<button type="button" class="hoa-ledger-row" data-hoa-invoice="' + row.index
+      + '" aria-expanded="' + expanded + '" aria-controls="hoa-ledger-detail-' + row.index
       + '"><div><strong>' + safe(row.vendor) + '</strong><small>'
       + safe(date(row.date)) + ' · ' + safe(row.category) + '</small><span class="hoa-pill'
       + (!row.paidOn ? ' open' : '') + '">' + (row.paidOn ? 'Paid' : 'Outstanding')
-      + '</span></div><span class="hoa-value">' + safe(money(row.amount)) + '</span></button>'
-    ).join('');
+      + '</span></div><span class="hoa-value">' + safe(money(row.amount))
+      + '</span><span class="hoa-invoice-chevron" aria-hidden="true">⌄</span></button>'
+      + '<div class="hoa-ledger-inline-detail" id="hoa-ledger-detail-' + row.index + '"'
+      + (expanded ? '' : ' hidden') + '><dl>'
+      + '<div><dt>Reference</dt><dd>' + safe(row.reference || 'Not provided') + '</dd></div>'
+      + '<div><dt>Recorded</dt><dd>' + safe(date(row.date)) + '</dd></div>'
+      + '<div><dt>Paid on</dt><dd>' + (row.paidOn ? safe(date(row.paidOn)) : 'Not paid') + '</dd></div>'
+      + '<div><dt>Account</dt><dd>' + safe(row.account) + '</dd></div>'
+      + '<div><dt>Transaction type</dt><dd>' + safe(row.type) + '</dd></div>'
+      + '<div><dt>Paid from</dt><dd>' + safe(row.paidFrom) + '</dd></div>'
+      + '</dl></div></div>';
+    }).join('');
     document.getElementById('hoa-record-count').textContent =
       'Showing ' + visible.length + ' of ' + records.length + ' matching transactions · '
       + ledger.rows.length + ' in HOA Books';
     const more = document.getElementById('hoa-ledger-more');
     more.hidden = visible.length >= records.length;
     more.textContent = 'Show ' + Math.min(12, records.length-visible.length) + ' more transactions';
-    const details = document.getElementById('hoa-invoice-details');
-    const chosen = ledger.rows[focusedInvoice];
-    if (!chosen || !records.some(row => row.index === focusedInvoice)) {
-      details.hidden = true; details.innerHTML = '';
-      return;
-    }
-    details.hidden = false;
-    details.innerHTML = '<h3>Transaction Details</h3><dl>'
-      + '<div><dt>Vendor</dt><dd>' + safe(chosen.vendor) + '</dd></div>'
-      + '<div><dt>Amount</dt><dd>' + safe(money(chosen.amount)) + '</dd></div>'
-      + '<div><dt>Recorded</dt><dd>' + safe(date(chosen.date)) + '</dd></div>'
-      + '<div><dt>Paid on</dt><dd>' + (chosen.paidOn ? safe(date(chosen.paidOn)) : 'Not paid') + '</dd></div>'
-      + '<div><dt>Reference</dt><dd>' + safe(chosen.reference || 'Not provided') + '</dd></div>'
-      + '<div><dt>Account</dt><dd>' + safe(chosen.account) + '</dd></div>'
-      + '<div><dt>Transaction type</dt><dd>' + safe(chosen.type) + '</dd></div>'
-      + '<div><dt>Paid from</dt><dd>' + safe(chosen.paidFrom) + '</dd></div>'
-      + '</dl><button type="button" data-hoa-close-details="true">Close details</button>';
   }
   function selectAccount(account) {
     focusedAccount = focusedAccount === account ? null : account;
@@ -278,7 +287,6 @@
     financial.addEventListener('click', event => {
       const category = event.target.closest('[data-account]');
       if (category) { selectAccount(category.dataset.account); return; }
-      if (event.target.closest('[data-hoa-clear]')) { focusedAccount = null; focusedInvoice = -1; visibleRowLimit = 12; renderDistribution(); renderLedger(); return; }
       const filter = event.target.closest('[data-hoa-filter]');
       if (filter) {
         paymentFilter = filter.dataset.hoaFilter; focusedInvoice = -1; visibleRowLimit = 12;
@@ -289,12 +297,10 @@
       if (event.target.closest('[data-hoa-more]')) { visibleRowLimit += 12; renderLedger(); return; }
       const invoice = event.target.closest('[data-hoa-invoice]');
       if (invoice) {
-        focusedInvoice = Number(invoice.dataset.hoaInvoice); renderLedger();
-        document.getElementById('hoa-invoice-details')?.scrollIntoView({
-          behavior: motionReduced() ? 'auto' : 'smooth', block: 'nearest'
-        }); return;
+        const selected = Number(invoice.dataset.hoaInvoice);
+        focusedInvoice = focusedInvoice === selected ? -1 : selected;
+        renderLedger(); return;
       }
-      if (event.target.closest('[data-hoa-close-details]')) {focusedInvoice = -1; renderLedger();}
     });
     financial.addEventListener('input', event => {
       if (event.target.id !== 'hoa-ledger-search') return;
@@ -330,7 +336,7 @@
       animateNumber(document.getElementById('hoa-recorded-total'), ledger.total);
       animateNumber(document.getElementById('hoa-paid-total'), ledger.paid);
       animateNumber(document.getElementById('hoa-outstanding-total'), ledger.outstanding);
-      renderDistribution(); renderLedger();
+      renderDistribution(true); renderLedger();
       window.__collinsFinancialQA = Object.freeze({
         source: ledger.source, periodEnd: ledger.end,
         categoryCount: ledger.categories.length,
@@ -339,7 +345,6 @@
       });
     } catch (error) {
       status.textContent = 'The HOA detail ledger could not be loaded. No estimated or replacement amounts are shown.';
-      document.getElementById('hoa-category-detail').textContent = 'Source verification unavailable.';
       document.getElementById('hoa-recorded-total').textContent = 'Unavailable';
       document.getElementById('hoa-paid-total').textContent = 'Unavailable';
       document.getElementById('hoa-outstanding-total').textContent = 'Unavailable';
