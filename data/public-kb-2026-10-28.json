@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "version": "20261113-sidea-containment-firewatch-v13",
-  "source": "Updated November 13, 2026 from live project KB and user's direct Friday field observations; prior November 6 permit record remains valid. This is a dated snapshot, not a live sync.",
-  "asOf": "2026-11-13",
+  "version": "20261118-pilot-and-permit-updates-v14",
+  "source": "November 18, 2026 Project Manager field and City-permitting coordination reports; prior November 6 issued corridor permit remains valid. This is a dated resident-safe snapshot, not a live Google Drive or City portal sync.",
+  "asOf": "2026-11-18",
   "isLiveSync": false,
-  "notice": "Resident-safe source snapshot as of November 13, 2026. Corridor Side A containment status is from on-site observation; Air MD visit and carpet removal remain planned for next week. Official access notices come from Building Management. No direct live Google Drive or City portal sync.",
+  "notice": "Resident-safe update as of November 18, 2026. Floor 2 Side A remediation and November 16 Air MD post-remediation testing were reported completed; written clearance and City framing inspection remain pending. Parking and ELSS application reviews are not issued permits. Management provides formal access notices. No live Google Drive or City portal sync.",
   "projects": [
     {
       "id": "corridor",
@@ -13,19 +13,19 @@
         "es": "Remediación y drywall de pasillos"
       },
       "status": {
-        "en": "Floor 2 Side A contained · Floor 3 Side A nearly contained",
-        "es": "Piso 2 lado A con containment · piso 3 lado A casi terminado"
+        "en": "Floor 2 Side A remediated and sampled · clearance pending",
+        "es": "Piso 2 lado A remediado y muestreado · clearance pendiente"
       },
       "summary": {
-        "en": "Confirmed on site Friday, November 13: temporary containment was installed on Floor 2, Side A; on Floor 3, Side A, installation covered most of that side but was still partial. City selective corridor permit BC2628687 was issued November 6. This is not proof that carpet removal, drywall demolition, environmental clearance or rated-wall restoration has been completed. The approximately two-week Floor 2 pilot remains subject to field measurement and safety/inspection controls; future floor groupings are not yet authorized.",
-        "es": "Confirmado en visita al edificio el viernes 13 de noviembre: se instaló el containment temporal en el piso 2, lado A; en el piso 3, lado A, se cubrió casi todo el sector, pero aún no está completo. El permiso municipal BC2628687 fue emitido el 6 de noviembre. Esto no significa que estén completos el retiro de alfombra, la demolición de drywall, la liberación ambiental o la reconstrucción de paredes resistentes al fuego. El piloto de aproximadamente dos semanas del piso 2 depende de resultados y medidas de seguridad; no hay nuevos grupos de pisos autorizados."
+        "en": "Permit BC2628687 was issued November 6. During the first week of the Floor 2 pilot, Side A containment, selective drywall removal and remediation were completed. Air MD performed post-remediation testing Monday, November 16. Written clearance is expected Thursday, November 19, but remains pending. Earlier Floor 3 Side A containment was reported nearly complete November 13 without a later completion update. No other floor rollout is confirmed.",
+        "es": "El permiso BC2628687 se emitió el 6 de noviembre. En la primera semana del piloto del piso 2 se completaron el containment, retiro selectivo del drywall y remediación del lado A. Air MD realizó el post-remediation test el lunes 16 de noviembre. Se espera el clearance escrito el jueves 19, aún pendiente. El containment del lado A del piso 3 se reportó casi completo el 13, sin confirmación posterior. No hay expansión confirmada a otros pisos."
       },
       "next": {
-        "en": "During November 16–20, an Air MD site visit and corridor carpet removal are anticipated; visit timing, affected floors and access arrangements still need confirmation. Verify completion of Floor 3 Side A containment. Fire Watch will continue during November 14–15. Management will announce any access requirements.",
-        "es": "Durante el 16 al 20 de noviembre se prevén la visita de Air MD y el retiro de alfombra; falta confirmar fechas, pisos y accesos. Verificar terminación del containment del piso 3, lado A. El Fire Watch continuará el 14 y 15 de noviembre. La Administración comunicará cualquier requisito de acceso."
+        "en": "Review Air MD's area-specific written clearance. Current turnaround is about three business days; possible 24–48-hour service for Side B and later tests is under discussion, not confirmed. If clearance is satisfactory, request the City framing inspection; install drywall only after its approval. Confirm Side B work and resident access separately through Management.",
+        "es": "Revisar el clearance escrito de Air MD por sector. La entrega actual es de unos tres días hábiles; se conversa reducirla a 24–48 horas para el lado B y pruebas posteriores, sin confirmar. Si es satisfactorio, solicitar inspección municipal de framing; instalar drywall solo después de aprobarla. Confirmar por separado el trabajo del lado B y accesos con Administración."
       },
       "permit": "BC2628687",
-      "asOf": "2026-11-13"
+      "asOf": "2026-11-18"
     },
     {
       "id": "elevator",
@@ -54,18 +54,18 @@
         "es": "Iluminación del estacionamiento"
       },
       "status": {
-        "en": "Initial application; not issued",
-        "es": "Solicitud inicial; no emitido"
+        "en": "ELC2617980 · clerk review pending; not issued",
+        "es": "ELC2617980 · revisión de clerks pendiente; no emitido"
       },
       "summary": {
-        "en": "On October 27 the City registered BPI2650249 in INITIAL status. Scope: 9 new 12-foot parking poles and 7 wall-mounted exterior fixtures. This is a process-initiation record, not an electrical construction permit. The lighting code case remains open pending resolution.",
-        "es": "El 27 de octubre la Ciudad registró BPI2650249 en estado INITIAL. Alcance: 9 postes de 12 pies y 7 luminarias exteriores de pared. Es un inicio de trámite, no un permiso eléctrico emitido. El caso de infracción sigue pendiente."
+        "en": "BPI2650249 was closed and replaced by electrical application ELC2617980. Files were uploaded November 17, awaiting clerk review, not issuance. The project team reports a March 17, 2027 compliance deadline for Special Magistrate case SMB2026-04192; compliance requires an issued electrical permit and final inspection. The written hearing record remains to be verified.",
+        "es": "BPI2650249 se cerró y fue sustituido por la solicitud eléctrica ELC2617980. Los archivos se subieron el 17 de noviembre y esperan revisión de clerks; el permiso no está emitido. El equipo informa plazo de cumplimiento hasta el 17 de marzo de 2027 para el caso SMB2026-04192; se requiere permiso emitido e inspección final. Falta verificar el acta escrita."
       },
       "next": {
-        "en": "Complete the subsequent electrical permit documentation and City review. Installation is estimated to require about three weeks after permit issuance and field mobilization.",
-        "es": "Completar documentación eléctrica y revisión municipal. La instalación se estima en unas tres semanas después del permiso y la movilización."
+        "en": "Obtain clerk intake acceptance, complete reviews and issuance, then perform work and final inspection well before March 17. Approximately three weeks of field work after issuance is only a planning estimate.",
+        "es": "Obtener aceptación de clerks, completar revisiones y emisión, ejecutar el trabajo e inspección final antes del 17 de marzo. Las tres semanas de obra después del permiso son solo un estimado."
       },
-      "permit": "BPI2650249"
+      "permit": "ELC2617980"
     },
     {
       "id": "doors",
@@ -94,16 +94,16 @@
         "es": "Rociadores contra incendio (ELSS)"
       },
       "status": {
-        "en": "City plan review / corrections",
-        "es": "Revisión municipal / correcciones"
+        "en": "November 17 file uploaded · pending review",
+        "es": "Archivo subido el 17 de noviembre · revisión pendiente"
       },
       "summary": {
-        "en": "Application FP0826-7612 was filed August 31. The September 23 fire-pump flow test was supplied for review. City review and correction coordination continued October 27; no issued sprinkler permit was confirmed.",
-        "es": "La solicitud FP0826-7612 se presentó el 31 de agosto. La prueba de caudal del 23 de septiembre fue enviada para revisión. Al 27 de octubre seguían las correcciones; no había permiso emitido confirmado."
+        "en": "Fire Sprinkler FP0826-7612 received an additional uploaded file on November 17; City review is pending. No permit issuance is confirmed.",
+        "es": "Para Fire Sprinkler FP0826-7612 se subió un archivo adicional el 17 de noviembre; sigue pendiente de revisión de la Ciudad. No se confirma emisión del permiso."
       },
       "next": {
-        "en": "October 30 was a contractor target for possible permit release, subject to City approval; confirm actual review and issuance.",
-        "es": "El 30 de octubre era una fecha tentativa del contratista, sujeta a la Ciudad; confirmar revisión y emisión."
+        "en": "Verify City review results, outstanding corrections and next resubmittal/issuance requirements.",
+        "es": "Verificar resultados de revisión, correcciones y siguientes requisitos para radicación y emisión."
       },
       "permit": "FP0826-7612"
     },
@@ -114,16 +114,16 @@
         "es": "Alarma de incendio general (ELSS)"
       },
       "status": {
-        "en": "Application reference received · City status unverified",
-        "es": "Número de solicitud recibido · estado municipal por verificar"
+        "en": "32 uploaded pages · combined PDF resubmittal required",
+        "es": "32 páginas subidas · resubir un solo PDF"
       },
       "summary": {
-        "en": "Sciens supplied the building-wide ELSS fire alarm application reference FP1126-7824 on November 3. The City filing receipt, review outcomes, master permit association and permit issuance have not been verified. The building-wide system is separate from the gym/Genset scope and sprinkler permit FP0826-7612.",
-        "es": "Sciens proporcionó la referencia de solicitud FP1126-7824 para la alarma ELSS del edificio el 3 de noviembre. Aún no se han verificado el comprobante municipal, los resultados de revisión, la vinculación al master permit ni la emisión. Este alcance es distinto al gimnasio/Genset y al permiso de rociadores FP0826-7612."
+        "en": "For Fire Alarm FP1126-7824, 32 files/pages are uploaded. City staff requested all pages be resubmitted together as one PDF, not separately. This is a correction request and does not indicate permit approval or issuance.",
+        "es": "Para Fire Alarm FP1126-7824 se subieron 32 archivos/páginas. La Ciudad pidió volver a subir todas las páginas juntas en un único PDF, no separadas. Es una corrección y no significa que el permiso esté aprobado o emitido."
       },
       "next": {
-        "en": "Obtain City application receipt, review status, corrections and master-trade association from Sciens.",
-        "es": "Solicitar a Sciens el comprobante municipal, estado de revisión, correcciones y vinculación al master permit."
+        "en": "Ask Sciens to consolidate the complete ordered plan set into one PDF and verify the City accepts the corrected upload.",
+        "es": "Pedir a Sciens consolidar los planos completos en un solo PDF y verificar aceptación de la nueva entrega municipal."
       },
       "permit": "FP1126-7824"
     },
@@ -255,16 +255,16 @@
         "es": "Barandas de escaleras"
       },
       "status": {
-        "en": "Review / corrections",
-        "es": "Revisión / correcciones"
+        "en": "Four City discipline reviews pending · December 3 review deadline",
+        "es": "Cuatro revisiones municipales pendientes · fecha límite 3 de diciembre"
       },
       "summary": {
-        "en": "City record BC2628393 was undergoing comments and special-inspection coordination at the latest documented review; issuance is not confirmed.",
-        "es": "BC2628393 estaba en coordinación de comentarios e inspección especial; la emisión no está confirmada."
+        "en": "Handrail BC2628393 remains in City review. Building, Fire Building, Public Works and Structural are outstanding. The project team reports a December 3, 2026 review deadline; issuance is not confirmed.",
+        "es": "Handrail BC2628393 sigue en revisión municipal. Faltan Building, Fire Building, Public Works y Structural. El equipo reporta fecha límite de revisión el 3 de diciembre de 2026; no se confirma emisión."
       },
       "next": {
-        "en": "Confirm corrected structural drawings and current City review status.",
-        "es": "Confirmar planos estructurales corregidos y estado municipal."
+        "en": "Leonor will request Building and Structural reviews; verify progress in Fire Building and Public Works before December 3.",
+        "es": "Leonor pedirá las revisiones de Building y Structural; verificar avances de Fire Building y Public Works antes del 3 de diciembre."
       },
       "permit": "BC2628393"
     },
@@ -367,8 +367,8 @@
         "es": "¿Cuándo comenzará el piloto del piso 2?"
       },
       "answer": {
-        "en": "The initial approximately two-week Floor 2 pilot is underway as a containment/workfront preparation phase: by Friday November 13, containment had been installed on Floor 2 Side A. Floor 3 Side A containment was nearly—but not completely—installed. This does not confirm demolition or clearance. Subsequent sequencing remains contingent on field results and Fire/AHJ review.",
-        "es": "El piloto inicial de aproximadamente dos semanas del piso 2 se encuentra en fase de preparación del sector de obra: al viernes 13 de noviembre ya se instaló containment en el lado A del piso 2. En el piso 3, lado A, casi terminó, pero aún estaba parcial. No significa demolición ni liberación ambiental. La secuencia posterior dependerá de resultados y Bomberos/AHJ."
+        "en": "The approximately two-week Floor 2 pilot is underway. In the first week, Side A containment, drywall removal and remediation were completed, followed by Air MD testing November 16. Written clearance is expected November 19 but remains pending. No confirmed drywall installation or upper-floor rollout date exists.",
+        "es": "El piloto de aproximadamente dos semanas del piso 2 está en marcha. En la primera semana se completaron containment, retiro de drywall y remediación del lado A, seguidos de la prueba de Air MD el 16 de noviembre. Se espera el clearance escrito el 19, todavía pendiente. No hay fecha confirmada de instalación de drywall ni expansión a pisos superiores."
       }
     },
     {
@@ -397,8 +397,8 @@
         "es": "¿Ya emitieron el permiso de luces del estacionamiento?"
       },
       "answer": {
-        "en": "No. BPI2650249 is an initial City process record, not an issued construction permit.",
-        "es": "No. BPI2650249 es una solicitud inicial, no un permiso de construcción emitido."
+        "en": "No. Initial BPI2650249 was closed and replaced by electrical application ELC2617980. Files uploaded November 17 await clerk review; the permit remains unissued. The team reports March 17, 2027 as the case SMB2026-04192 compliance deadline, subject to verification of the written hearing record.",
+        "es": "No. El trámite BPI2650249 se cerró y fue sustituido por la solicitud eléctrica ELC2617980. Los archivos subidos el 17 de noviembre esperan revisión; el permiso no está emitido. El equipo reporta el 17 de marzo de 2027 como plazo del caso SMB2026-04192, pendiente de verificar el acta escrita."
       }
     },
     {
@@ -477,8 +477,8 @@
         "es": "¿Cuál es el número del permiso de alarma ELSS?"
       },
       "answer": {
-        "en": "Sciens provided application reference FP1126-7824 on November 3. City review and issuance are still being verified. A reference number alone is not an issued permit.",
-        "es": "Sciens facilitó la referencia FP1126-7824 el 3 de noviembre. El estado de revisión y la emisión municipal siguen pendientes de verificación. Tener un número no significa que el permiso esté emitido."
+        "en": "Fire Alarm FP1126-7824 has 32 uploaded pages/files. City staff requested they be consolidated into a single PDF and resubmitted. Review and permit issuance remain pending.",
+        "es": "Fire Alarm FP1126-7824 tiene 32 páginas/archivos subidos. La Ciudad pidió consolidarlos en un solo PDF y volver a presentarlos. La revisión y emisión siguen pendientes."
       }
     },
     {
@@ -507,8 +507,8 @@
         "es": "¿Air MD entregó liberación escrita para el piloto del piso 2?"
       },
       "answer": {
-        "en": "No written pilot clearance is confirmed. A planned sampling visit or sample collection does not constitute a written pass. Drywall reconstruction for an identified area depends on the written release and applicable inspections and safety conditions.",
-        "es": "No se ha confirmado liberación escrita del piloto. Una visita o toma de muestras prevista no equivale a aprobación escrita. La reconstrucción de un área requiere su liberación escrita y las inspecciones y condiciones de seguridad aplicables."
+        "en": "Air MD completed post-remediation testing in Side A on Monday, November 16. Written clearance is expected Thursday, November 19, but has not been received. If satisfactory, the team will request the City's framing inspection. Drywall will be installed only after the required inspection approval. Faster 24–48-hour clearance turnaround for future tests is under discussion, not confirmed.",
+        "es": "Air MD realizó la prueba post-remediación del lado A el lunes 16 de noviembre. Se espera el clearance escrito el jueves 19, pero no se ha recibido. Si es satisfactorio, se solicitará la inspección municipal de framing. El drywall se instalará solo después de aprobar la inspección. Se analiza entregar futuras pruebas en 24–48 horas, aún sin confirmar."
       }
     },
     {

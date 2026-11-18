@@ -31,21 +31,27 @@ jobs:
           js = Path('assets/resident-ios.js').read_text(encoding='utf-8')
           corridor = next(x for x in permits['items'] if x['number']=='BC2628687')
           assert corridor['group']=='issued' and 'November 6' in corridor['status']
-          # Nov 13 verified Side A containment supersedes previous planning-only statements.
+          # Nov 18 update supersedes Nov 13 planning-only statements while retaining dated history.
           kb_corridor = next(x for x in kb['projects'] if x['id']=='corridor')
           assert kb_corridor['permit']=='BC2628687'
           assert 'November 6' in kb_corridor['summary']['en']
-          assert 'Floor 2' in kb_corridor['summary']['en'] and 'Floor 3' in kb_corridor['summary']['en']
-          assert 'partial' in kb_corridor['summary']['en']
+          assert 'Floor 2' in kb_corridor['summary']['en'] and 'November 16' in kb_corridor['summary']['en']
+          assert 'November 19' in kb_corridor['summary']['en'] and 'pending' in kb_corridor['summary']['en']
           latest = notices['notices'][0]
-          assert latest['date']=='2026-11-13'
-          assert latest['id']=='corridor-containment-sidea-field-2026-11-13'
-          assert 'Floor 2, Side A' in latest['message']['en']
-          assert 'Floor 3, Side A' in latest['message']['en']
-          assert 'not yet fully complete' in latest['message']['en']
-          assert kb['asOf']=='2026-11-13'
+          assert latest['date']=='2026-11-18'
+          assert latest['id']=='corridor-pilot-sidea-posttest-2026-11-18'
+          assert 'November 16' in latest['message']['en']
+          assert 'November 19' in latest['message']['en']
+          assert 'not been received' in latest['message']['en']
+          assert kb['asOf']=='2026-11-18'
+          assert notices['version']==kb['version']=='20261118-pilot-and-permit-updates-v14'
+          assert any(x['id']=='corridor-containment-sidea-field-2026-11-13' for x in notices['notices'])
           assert any(x['id']=='firewatch-weekend-2026-11-13' and 'November 14' in x['message']['en'] for x in notices['notices'])
           assert any(x['id']=='corridor-carpet-rmd-followup-2026-11-13' and 'November 16' in x['message']['en'] for x in notices['notices'])
+          assert any(x['number']=='ELC2617980' and x['group']=='review' for x in permits['items'])
+          assert not any(x['id']=='lighting' and x['number']=='BPI2650249' for x in permits['items'])
+          assert any(x['date']=='2027-03-17' for x in schedule['milestones'])
+          assert any(x['date']=='2026-12-03' for x in schedule['milestones'])
           assert any(x.get('group')=='pilot' for x in schedule['timeline'])
           assert any(x.get('group')=='issued' and 'Hallway' in x['name']['en'] for x in schedule['timeline'])
           assert all(x['title'].get('en') and x['title'].get('es') for x in schedule['milestones'])
@@ -60,7 +66,10 @@ jobs:
           assert 'City permit BC2628687 remains pending' not in html
           assert 'const projectDefs=[' in html and 'residentFloorNotice' in html
           assert 'collins-language-changed' in html and 'collins-language-changed' in js
-          assert '20261113-sidea-containment-firewatch-v13' in html and '20261113-sidea-containment-firewatch-v13' in Path('sw.js').read_text()
+          assert '20261118-pilot-and-permit-updates-v14' in html and '20261118-pilot-and-permit-updates-v14' in Path('sw.js').read_text()
+          viewer = Path('reconstruction.html').read_text(encoding='utf-8')
+          assert 'id="hide-drawings-controls"' in viewer
+          assert '#bpBtn,.pviews [data-pv="p"],#stStatus [data-sheet],#bp{display:none!important}' in viewer
           embedded = re.search(r'<script type="application/json" id="residentKBBackup">(.*?)</script>',html,re.S)
           assert embedded is not None
           assert json.loads(embedded.group(1))==kb

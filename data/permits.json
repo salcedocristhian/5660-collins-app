@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "version": "2026-11-16-mec2605440-issued",
-  "updatedAt": "2026-11-16",
+  "version": "2026-11-18-corridor-and-permit-updates",
+  "updatedAt": "2026-11-18",
   "approvalStatus": "draft",
-  "approvalNote": "Permit register updated from November 10 City-issued pump permit card, supplied November 16. No automatic resident notifications; separate review and clearance requirements remain.",
+  "approvalNote": "November 18 project-team permit-status and pilot update; written magistrate order and City portal review results still need verification. November 10 pump permit card remains the verified source for MEC2605440. No automatic resident notifications.",
   "display": {
     "showCodeCases": false
   },
@@ -44,12 +44,12 @@
       "group": "review",
       "scope": "Fire sprinkler (ELSS)",
       "number": "FP0826-7612",
-      "status": "City comments; correction package resubmittal",
-      "next": "Target Oct 30, 2026",
+      "status": "File uploaded November 17; City review pending",
+      "next": "Confirm review of November 17 upload and remaining City corrections",
       "bond": "Yes",
       "duration": "10 months",
       "completion": "Aug 2027, est.",
-      "note": "Submitted Aug 31. First City comments Sep 18. Updated fire pump flow test performed Sep 23. Additional stairwell heads under City comments."
+      "note": "Submitted Aug 31. First City comments Sep 18. Updated fire pump flow test performed Sep 23. Project team reports one additional file uploaded November 17; no acceptance or issued permit confirmed."
     },
     {
       "id": "corridor",
@@ -57,11 +57,11 @@
       "scope": "Hallway remediation / drywall",
       "number": "BC2628687",
       "status": "Issued November 6, 2026",
-      "next": "Before and during Floor 2 pilot: confirm Management/contractor release, required Fire Watch and egress controls, AirMD area clearances, and required City inspections. Two-week Floor 2-only pilot target start Nov 9, conditional. Subsequent floors TBD.",
+      "next": "Floor 2 Side A remediated and sampled Nov 16. Await Air MD written clearance expected Nov 19, then coordinate required City framing inspection; drywall installation follows approval. Side B timing and 24–48h future test turnaround remain unconfirmed.",
       "bond": "Yes",
       "duration": "Floor 2 pilot: two weeks planned; total building duration TBD after pilot",
       "completion": "Not confirmed; dependent on pilot, clearances and inspections",
-      "note": "City of Miami Beach Building Work Permit and Permit Card dated November 6, 2026 confirm issuance of BC2628687 (master reference BPI2649156; expiration May 5, 2027; IVR 403996). Scope: selective corridor gypsum-board removal on Floors 2 through PH per approved plans. Pilot targets Floor 2 only from November 9 for a two-week planning window; no start or completion independently confirmed. Permit does not approve separate ELSS trade work or certify completed inspections.",
+      "note": "City of Miami Beach Work Permit and Permit Card dated November 6, 2026 confirm issuance of BC2628687 (master BPI2649156; expires May 5, 2027; IVR 403996). The PM reported Side A containment, selective drywall removal and remediation completed in the Floor 2 pilot's first week, with Air MD post-remediation testing November 16. Clearance and framing inspection remain pending; this is not authorization to close the wall. Other floors and ELSS trades remain separate.",
       "reviewPath": [
         {
           "label": "Application filed",
@@ -136,25 +136,25 @@
       "id": "lighting",
       "group": "review",
       "scope": "Parking lot lighting",
-      "number": "BPI2650249",
-      "status": "Intake only; not an issued permit",
-      "next": "Nov–Dec 2026, est.",
+      "number": "ELC2617980",
+      "status": "November 17 documents uploaded; clerk review pending; not issued",
+      "next": "Clerk acceptance, electrical plan reviews, issuance and final inspection before March 17, 2027",
       "bond": "No",
       "duration": "3 weeks (field)",
-      "completion": "Jan–Feb 2027, est.",
-      "note": "Process initiation only. Linked to violation BVE26000408."
+      "completion": "By March 17, 2027 per team-reported hearing deadline, subject to written-order verification",
+      "note": "Former BPI2650249 intake record is CLOSED. New electrical application ELC2617980 created; files uploaded November 17 await clerk review. Related code violation BVE26000408 / magistrate case SMB2026-04192. Hearing report requires ISSUED permit and completed final inspection by March 17, 2027; written City order pending verification. Field construction estimate remains approximately three weeks after issuance."
     },
     {
       "id": "guardrails",
       "group": "review",
       "scope": "Stairwell guardrails",
       "number": "BC2628393",
-      "status": "Review / corrections",
-      "next": "TBD",
+      "status": "Building, Fire Building, Public Works and Structural reviews pending",
+      "next": "City review deadline December 3, 2026 (reported); Leonor following up Building and Structural",
       "bond": "TBD",
       "duration": "TBD",
       "completion": "TBD",
-      "note": "City comments outstanding since Aug 27."
+      "note": "City review pending with four disciplines listed November 18. December 3 is a reported review due date, not a confirmed issuance or construction deadline."
     },
     {
       "id": "boiler",
@@ -228,12 +228,12 @@
       "group": "review",
       "scope": "Fire alarm (ELSS)",
       "number": "FP1126-7824",
-      "status": "Application reference provided by Sciens; City review and issuance not verified",
-      "next": "Confirm City filing, review status and master association",
+      "status": "32 pages/files uploaded; one combined PDF resubmittal required",
+      "next": "Sciens to consolidate all 32 pages into one ordered PDF and resubmit for City review",
       "bond": "Yes",
       "duration": "10 months",
       "completion": "Sep 2027, est.",
-      "note": "Sciens project coordinator Jany Martinez provided FP1126-7824 in email RE: FIRE ALARM APPLICATION on Nov 3, 2026. No official City receipt, discipline review status, approved plans or issued permit card was supplied. Separate from sprinkler FP0826-7612 and gym/Genset work."
+      "note": "Sciens supplied FP1126-7824 Nov 3. As reported November 18, 32 separate files/pages are on the application and the City requested a single combined PDF upload. No issued permit card has been supplied. Separate from sprinkler FP0826-7612 and gym/Genset work."
     },
     {
       "id": "doors",
@@ -340,11 +340,11 @@
       "scope": "Lighting violation",
       "number": "BVE26000408",
       "status": "Code case",
-      "next": "Hearing Nov 17, 2026, 9:00 AM",
+      "next": "SMB2026-04192: March 17, 2027 compliance deadline reported; issued electrical permit and final inspection required",
       "bond": "No",
       "duration": "—",
       "completion": "—",
-      "note": "Present BPI2650249 and correction plan."
+      "note": "November 17 Special Magistrate hearing: project team reports March 17, 2027 compliance deadline, $100 per day afterward, plus $144 administrative cost; confirm terms in written hearing order. Old BPI2650249 closed and replaced by ELC2617980. Earlier February 16 / March 1 references are not controlling for this specific case."
     },
     {
       "id": "bvm",

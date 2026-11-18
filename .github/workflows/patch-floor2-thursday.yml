@@ -4,10 +4,8 @@ on:
     branches: [main, 'fix/pilot-carpet-thursday-20261107']
     paths:
       - 'scripts/patch_floor2_pilot_thursday.py'
-      - '.github/workflows/patch-floor2-thursday.yml'
-      - 'data/notices.json'
-      - 'data/public-kb-2026-10-28.json'
-      - 'data/public-schedule-2026-10-28.json'
+  # This one-time November 7 film patch has already been applied. Resident-content
+  # updates are validated by validate-resident-content.yml and must not rerun it.
   workflow_dispatch:
 permissions:
   contents: write
