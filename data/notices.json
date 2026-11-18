@@ -78,8 +78,8 @@
         "es": "Permiso de pasillos emitido · piloto de dos semanas en piso 2"
       },
       "message": {
-        "en": "City permit BC2628687 was issued November 6, 2026, and the Permit Card is available. A two-week pilot is planned exclusively on Floor 2, with November 9 as a target start subject to field readiness and Management/contractor authorization. SERVPRO remediation, AirMD verification and drywall reconstruction will be sequenced using actual results. Other floors have no confirmed start dates.",
-        "es": "El permiso municipal BC2628687 fue emitido el 6 de noviembre de 2026 y ya está disponible el Permit Card. Se planifica un piloto de dos semanas únicamente en el piso 2, con inicio objetivo el 9 de noviembre, sujeto a las condiciones en obra y autorización de Administración/contratista. La remediación de SERVPRO, verificación de AirMD y reconstrucción de drywall se coordinarán según los resultados. No hay fechas de inicio confirmadas para otros pisos."
+        "en": "City permit BC2628687 was issued November 6, 2026, and the Permit Card is available. A two-week pilot is planned exclusively on Floor 2, with November 9 as a target start subject to field readiness and Management/contractor authorization. SERVPRO remediation, Air MD verification and drywall reconstruction will be sequenced using actual results. Other floors have no confirmed start dates.",
+        "es": "El permiso municipal BC2628687 fue emitido el 6 de noviembre de 2026 y ya está disponible el Permit Card. Se planifica un piloto de dos semanas únicamente en el piso 2, con inicio objetivo el 9 de noviembre, sujeto a las condiciones en obra y autorización de Administración/contratista. La remediación de SERVPRO, verificación de Air MD y reconstrucción de drywall se coordinarán según los resultados. No hay fechas de inicio confirmadas para otros pisos."
       },
       "residentAction": {
         "en": "Floor 2 residents: watch for Management's formal notices on work areas and access; no confirmed closure or mandatory action is announced here.",
@@ -469,8 +469,8 @@
         "es": "¿Para qué sirve el piloto de dos semanas en el piso 2?"
       },
       "answer": {
-        "en": "The team will measure actual remediation, cleaning, AirMD verification and drywall-reconstruction production and handoffs. Written area-specific AirMD clearance and any required inspections must precede reconstruction. Only after evaluating the pilot may the team consider groups of potentially three floors simultaneously; no upper-floor dates are confirmed.",
-        "es": "Se medirán los rendimientos reales de remediación, limpieza, verificación de AirMD y reconstrucción de drywall. Cada área necesita liberación escrita de AirMD y las inspecciones aplicables antes de reconstruir. Solo después del piloto se podrá evaluar trabajar potencialmente en grupos de tres pisos simultáneos; no hay fechas para los pisos superiores."
+        "en": "The team will measure actual remediation, cleaning, Air MD verification and drywall-reconstruction production and handoffs. Written area-specific Air MD clearance and any required inspections must precede reconstruction. Only after evaluating the pilot may the team consider groups of potentially three floors simultaneously; no upper-floor dates are confirmed.",
+        "es": "Se medirán los rendimientos reales de remediación, limpieza, verificación de Air MD y reconstrucción de drywall. Cada área necesita liberación escrita de Air MD y las inspecciones aplicables antes de reconstruir. Solo después del piloto se podrá evaluar trabajar potencialmente en grupos de tres pisos simultáneos; no hay fechas para los pisos superiores."
       }
     },
     {
@@ -487,8 +487,8 @@
     {
       "id": "q-airmd-clearance-pilot",
       "question": {
-        "en": "Has AirMD cleared the Floor 2 pilot hallway?",
-        "es": "¿AirMD ya liberó el pasillo del piloto del piso 2?"
+        "en": "Has Air MD cleared the Floor 2 pilot hallway?",
+        "es": "¿Air MD ya liberó el pasillo del piloto del piso 2?"
       },
       "answer": {
         "en": "No written pilot-area clearance has been confirmed. Sampling, inspection, written clearance and required approvals are distinct milestones. Reconstruction will follow written clearance for each identified area and applicable inspections.",
