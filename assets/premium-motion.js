@@ -19,7 +19,8 @@
   document.addEventListener('pointerdown', event => {
     if (!safeMotion()) return;
     const target = event.target.closest(interactive);
-    if (!target || target.disabled || target.closest('[hidden]')) return;
+    // Never transform SVG chart segments. Their geometry is viewBox-based.
+    if (!target || target instanceof SVGElement || target.disabled || target.closest('[hidden]')) return;
     clearPress();
     lastPressed = target;
     target.classList.add('collins-touched');
@@ -30,37 +31,17 @@
   );
   window.addEventListener('blur', clearPress);
 
-  document.addEventListener('click', event => {
-    if (!safeMotion()) return;
-    const target = event.target.closest('.project-row, .permit-row, .project-card, .hoa-category-choice, .hoa-tab, .ms-tabs button');
-    if (!target || typeof target.animate !== 'function') return;
-    try {
-      target.animate([
-        { transform: 'scale(.987)', opacity: .87 },
-        { transform: 'scale(1)', opacity: 1 }
-      ], { duration: 280, easing: 'cubic-bezier(.22,1,.36,1)' });
-    } catch (_) { /* Optional enhancement only. */ }
-  }, { passive: true });
-
   document.addEventListener('DOMContentLoaded', () => {
-    // Keep model viewers intact: these observers never reach inside an iframe.
-    const nav = document.querySelector('.bottom-tabs');
-    if (nav && safeMotion()) {
-      nav.animate?.([
-        { opacity: .75, transform: window.innerWidth >= 1100 ? 'translateY(12px)' : 'translate(-50%, 14px)' },
-        { opacity: 1, transform: window.innerWidth >= 1100 ? 'translateY(0)' : 'translate(-50%, 0)' }
-      ], { duration: 450, easing: 'cubic-bezier(.22,1,.36,1)' });
-    }
-
+    // Animate only opacity on a tab change; layout geometry remains stable.
     document.querySelectorAll('.screen').forEach(screen => {
       const observer = new MutationObserver(records => {
         if (!safeMotion()) return;
         if (!records.some(record => record.attributeName === 'hidden')) return;
         if (!screen.hidden && typeof screen.animate === 'function') {
           screen.animate([
-            { opacity: .48, transform: 'translateY(9px)' },
-            { opacity: 1, transform: 'translateY(0)' }
-          ], { duration: 310, easing: 'cubic-bezier(.22,1,.36,1)' });
+            { opacity: .65 },
+            { opacity: 1 }
+          ], { duration: 170, easing: 'ease-out' });
         }
       });
       observer.observe(screen, { attributes: true, attributeFilter: ['hidden'] });
