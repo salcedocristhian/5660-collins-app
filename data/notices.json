@@ -1,15 +1,34 @@
 {
   "schemaVersion": 1,
-  "version": "20261118-pilot-and-permit-updates-v14",
-  "publishedAt": "2026-11-18",
+  "version": "20261120-gym-remediation-update-v15",
+  "publishedAt": "2026-11-20",
   "approvalStatus": "draft",
-  "approvalNote": "November 18 updates are based on the Project Manager's latest field and permitting reports. The Air MD clearance, City framing inspection, and permit reviews remain pending; the hearing order has not been independently checked. Historical notices are retained. Not a formal resident access notice; no push notification has been sent.",
+  "approvalNote": "Gym update provided by management November 20. November 17 inspection passes and financial transactions are reported, not independently reconciled. November 19 Angeltronics assessment is scheduled but outcome unverified. No push notification sent.",
   "property": {
     "name": "5660 Collins Avenue",
     "location": "Miami Beach, Florida",
     "managementEmail": "Manager@5660condo.com"
   },
   "notices": [
+    {
+      "id": "gym-remediation-2026-11-20",
+      "date": "2026-11-20",
+      "category": "construction",
+      "priority": "normal",
+      "projectId": "gym",
+      "title": {
+        "en": "Gym remediation · inspections passed; remaining work under coordination",
+        "es": "Remediación del gimnasio · inspecciones aprobadas; trabajos pendientes en coordinación"
+      },
+      "message": {
+        "en": "Management reports SERVPRO completed wall encapsulation and passed mechanical, electrical and framing inspections November 17. Genset's $15,806 proposal payment was approved November 5 and deposited November 12, after a November 10 prewire visit. A $25,312.68 gym insurance check has been received but is pending deposit. Angeltronics was scheduled November 19 to assess electrical work excluded from Genset's proposal; the outcome is unconfirmed. Sciens' gym fire alarm plans await City approval. A scope coordination meeting with Norman Goldberg, Vic Ruggiero and Genset's John Bryant is pending. SERVPRO estimates approximately 2½ months to reopening, subject to remaining work; no opening date is confirmed.",
+        "es": "Administración informa que SERVPRO completó la encapsulación de paredes y pasó las inspecciones mecánica, eléctrica y de framing el 17 de noviembre. El pago de la propuesta de Genset por $15,806 se aprobó el 5 y se depositó el 12 de noviembre, tras una visita de evaluación de precableado el día 10. Se recibió un cheque del seguro por $25,312.68, pendiente de depósito. Angeltronics tenía prevista una evaluación el 19 de noviembre de los trabajos eléctricos excluidos de la propuesta de Genset; no se ha confirmado el resultado. Los planos de alarma del gimnasio de Sciens esperan aprobación municipal. Está pendiente una reunión de coordinación de alcance con Norman Goldberg, Vic Ruggiero y John Bryant de Genset. SERVPRO estima aproximadamente 2½ meses para reabrir, sujeto a trabajos pendientes; no existe fecha confirmada."
+      },
+      "residentAction": {
+        "en": "The gym remains closed. Management will communicate the confirmed reopening date once remaining work and approvals are complete.",
+        "es": "El gimnasio permanece cerrado. Administración informará la fecha de reapertura confirmada cuando concluyan los trabajos y aprobaciones pendientes."
+      }
+    },
     {
       "id": "corridor-pilot-sidea-posttest-2026-11-18",
       "date": "2026-11-18",
