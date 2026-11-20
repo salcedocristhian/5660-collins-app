@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "version": "20261118-pilot-and-permit-updates-v14",
-  "source": "November 18, 2026 Project Manager field and City-permitting coordination reports; prior November 6 issued corridor permit remains valid. This is a dated resident-safe snapshot, not a live Google Drive or City portal sync.",
-  "asOf": "2026-11-18",
+  "version": "20261120-gym-remediation-update-v15",
+  "source": "November 18, 2026 Project Manager field and City-permitting coordination reports; prior November 6 issued corridor permit remains valid. This is a dated resident-safe snapshot, not a live Google Drive or City portal sync. Gym remediation update supplied by management November 20, 2026; reported inspections and transactions not independently reconciled.",
+  "asOf": "2026-11-20",
   "isLiveSync": false,
   "notice": "Resident-safe update as of November 18, 2026. Floor 2 Side A remediation and November 16 Air MD post-remediation testing were reported completed; written clearance and City framing inspection remain pending. Parking and ELSS application reviews are not issued permits. Management provides formal access notices. No live Google Drive or City portal sync.",
   "projects": [
@@ -175,18 +175,19 @@
         "es": "Restauración del gimnasio y sauna"
       },
       "status": {
-        "en": "Permit issued · Trade inspections planned Nov 3",
-        "es": "Permiso emitido · Inspecciones previstas 3 nov."
+        "en": "Remediation progressing · inspections passed Nov 17; remaining scope pending",
+        "es": "Remediación en progreso · inspecciones aprobadas 17 nov.; alcance restante pendiente"
       },
       "summary": {
-        "en": "Building permit BC2627814 was issued October 1. Electrical, Mechanical and Plumbing inspections are being coordinated for Tuesday, November 3, 2026; City bookings and passes have not been verified. Gym encapsulation is tentatively planned for Wednesday, November 4, subject to inspection results, approvals and readiness. A custom box for the desiccant is a tentative Friday, November 6 goal; the desiccant machine itself is NOT scheduled. No reopening date is confirmed.",
-        "es": "El permiso BC2627814 fue emitido el 1 de octubre. Se coordinan inspecciones de Electrical, Mechanical y Plumbing para el martes 3 de noviembre de 2026; no se han verificado las citas ni los resultados oficiales de la Ciudad. La encapsulación del gimnasio es tentativa para el miércoles 4, sujeta a inspecciones, autorizaciones y condiciones de obra. El box a medida para el desiccant es un objetivo tentativo para el viernes 6; la instalación de la máquina NO está programada. No hay fecha confirmada de reapertura."
+        "en": "Management reports that Genset's $15,806 gym remediation proposal was approved for payment November 5, Genset visited for a prewire assessment November 10, and $15,806 was deposited to Genset's account November 12. SERVPRO completed wall encapsulation and reportedly passed mechanical, electrical and framing inspections November 17. A $25,312.68 gym insurance check was received but has not yet been deposited. These figures are separate transactions, not a total project cost or confirmation of full insurance recovery.",
+        "es": "Administración informa que el pago de la propuesta de remediación del gimnasio de Genset por $15,806 fue aprobado el 5 de noviembre, Genset visitó el 10 de noviembre para evaluar el precableado y se depositaron $15,806 en la cuenta de Genset el 12 de noviembre. SERVPRO completó la encapsulación de paredes y, según lo informado, pasó las inspecciones mecánica, eléctrica y de framing el 17 de noviembre. Se recibió un cheque del seguro del gimnasio por $25,312.68, aún pendiente de depósito. Estos montos corresponden a transacciones distintas, no al costo total ni a la recuperación completa del seguro."
       },
       "next": {
-        "en": "Verify each Nov 3 City inspection booking and result separately; confirm eligibility and authorization before Nov 4 encapsulation. Do not schedule the desiccant machine or promise reopening.",
-        "es": "Verificar por separado la programación y el resultado municipal de cada inspección del 3 de noviembre; confirmar autorizaciones antes de encapsular el 4. No programar el desiccant ni prometer reapertura."
+        "en": "Angeltronics was scheduled to assess electrical work excluded from Genset's proposal on November 19; completion/results are not yet confirmed. Sciens' gym fire alarm plans await City approval. A meeting with Norman Goldberg, Vic Ruggiero and Genset's John Bryant remains pending to finalize the remaining scope. SERVPRO estimates reopening in approximately 2½ months, conditional on remaining work and coordination; this is not a confirmed reopening date. Verify November 19 assessment and City inspection records.",
+        "es": "Angeltronics tenía programada para el 19 de noviembre una evaluación del trabajo eléctrico excluido de la propuesta de Genset; no se ha confirmado su realización ni resultados. Los planos de alarma contra incendios del gimnasio de Sciens esperan aprobación municipal. Está pendiente una reunión con Norman Goldberg, Vic Ruggiero y John Bryant de Genset para definir el alcance restante. SERVPRO estima una reapertura en aproximadamente 2½ meses, condicionada a los trabajos y coordinación pendientes; no es una fecha confirmada. Verificar la evaluación del 19 y los registros de inspecciones municipales."
       },
-      "permit": "BC2627814"
+      "permit": "BC2627814",
+      "asOf": "2026-11-20"
     },
     {
       "id": "boilers",
