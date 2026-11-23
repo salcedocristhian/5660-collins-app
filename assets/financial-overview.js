@@ -3,6 +3,7 @@
 (() => {
   'use strict';
   const dataUrl = './data/hoa-ledger-20261117.json';
+  const originalBudgetUrl = './data/assessment-baseline-2025.json';
   const money = amount => new Intl.NumberFormat('en-US', {
     style: 'currency', currency: 'USD', minimumFractionDigits: 2
   }).format(Number(amount) || 0);
@@ -11,6 +12,9 @@
   }).format(new Date(value + 'T12:00:00Z')) : '—';
   const safe = input => String(input == null ? '' : input).replace(/[&<>"']/g,
     c => ({'&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'}[c]));
+  const whole = amount => new Intl.NumberFormat('en-US', {
+    style: 'currency', currency: 'USD', maximumFractionDigits: 0
+  }).format(amount);
   const palette = ['#1f6456','#57948a','#789c70','#9fb7a4',
     '#b28d5d','#416f8c','#a77c74','#839096'];
   let ledger = null;
@@ -38,6 +42,7 @@
     <p class="hoa-motion-meta">
       Source: HOA Books · Special Assessment 2025 II, Project Expenses.<br>
       Reporting period: January 1, 2025 – November 17, 2026.
+      This is a dated HOA Books export, not a live accounting connection.
       Amounts include project expenses paid from the Operating Account; those
       payments are already included in the totals and are not added again.
     </p>
@@ -69,6 +74,136 @@
     </section>`;
   }
 
+  function validateOriginalBudget(source) {
+    const sum = items => items.reduce((total, item) => total + item.amount, 0);
+    if (!source || !Array.isArray(source.periods) || source.periods.length !== 3 ||
+        !Number.isFinite(source.originalContingency) ||
+        !Number.isFinite(source.assessmentTotal) ||
+        !Number.isFinite(source.proposedRemediationScope) ||
+        !Number.isFinite(source.mtdRemediationTrackerEntries))
+      throw new Error('Missing original assessment budget fields');
+    for (const period of source.periods) {
+      if (!Number.isInteger(period.year) || !Array.isArray(period.items) ||
+          !period.items.every(item => item.id && item.name && Number.isFinite(item.amount) && item.amount >= 0) ||
+          Math.abs(sum(period.items) - period.projectSubtotal) > .01)
+        throw new Error('Assessment line items do not match period total: ' + period.year);
+    }
+    const projectTotal = source.periods.reduce((total, period) => total + period.projectSubtotal, 0);
+    if (Math.abs(projectTotal + source.originalContingency - source.assessmentTotal) > .01)
+      throw new Error('Original assessment total does not reconcile');
+    if (source.periods.map(period => period.year).join(',') !== '2026,2028,2030')
+      throw new Error('Unexpected original assessment periods');
+    if (!Array.isArray(source.trackerComparisons) || source.trackerComparisons.length !== 2 ||
+        !source.trackerComparisons.every(item => Number.isFinite(item.originalBudget) &&
+          Number.isFinite(item.mtdPlanningEstimate) && Number.isFinite(item.mtdTrackedEntries)))
+      throw new Error('Tracker comparison data is incomplete');
+    return projectTotal;
+  }
+
+  function markPlanningComparisons(source) {
+    for (const item of source.trackerComparisons) {
+      const section = document.querySelector('.p-group[data-group="' + item.id + '"]');
+      if (!section) continue;
+      const caption = section.querySelector('.p-group-name small');
+      if (caption) caption.textContent = '2025 assessment budget · MTD scope review';
+      const summary = section.querySelector('.p-group-values');
+      if (summary) summary.innerHTML = '<strong>' + safe(whole(item.originalBudget))
+        + '</strong><small>Original budget · MTD estimate ' + safe(whole(item.mtdPlanningEstimate))
+        + ' under review</small>';
+      const body = section.querySelector('.p-group-body');
+      const existingForecast = body && body.querySelector('.pt-forecast');
+      if (existingForecast) existingForecast.textContent =
+        'Original assessment budget: ' + whole(item.originalBudget)
+        + ' · MTD planning estimate: ' + whole(item.mtdPlanningEstimate)
+        + ' · MTD tracker entries: ' + money(item.mtdTrackedEntries);
+      const budgetBar = section.querySelector(':scope > .p-bars .p-barrow:first-child b');
+      if (budgetBar) budgetBar.textContent = money(item.originalBudget);
+      const comparisonBars = section.querySelector(':scope > .p-bars');
+      if (comparisonBars) comparisonBars.hidden = false;
+      const trackingBar = section.querySelector(':scope > .p-bars .p-barrow:nth-child(2)');
+      if (trackingBar) {
+        const pct = item.mtdTrackedEntries / item.originalBudget * 100;
+        const fill = trackingBar.querySelector('i');
+        if (fill) fill.style.width = Math.min(100, pct).toFixed(1) + '%';
+        const label = trackingBar.querySelector('span');
+        if (label) label.textContent = 'MTD entries';
+      }
+      const detail = element('p', 'hoa-budget-variance-note',
+        '<strong>Budget reconciliation:</strong> Original ' + safe(whole(item.originalBudget))
+        + ' · MTD planning ' + safe(whole(item.mtdPlanningEstimate))
+        + ' · Difference +' + safe(whole(item.mtdPlanningEstimate-item.originalBudget))
+        + '. ' + safe(item.status));
+      if (body) body.prepend(detail);
+    }
+  }
+
+  function renderOriginalBudget(source, projectTotal) {
+    const panel = document.getElementById('hoa-original-budget');
+    if (!panel) return;
+    const flagged = source.periods[0].items.filter(item => item.reviewedByEvelyn);
+    const flaggedTotal = flagged.reduce((total, item) => total + item.amount, 0);
+    const proposed = source.proposedRemediationScope;
+    const illustrativeRemaining = source.originalContingency - proposed;
+    const pct = Math.max(0, Math.min(100, proposed / source.originalContingency * 100));
+    panel.innerHTML = '<div class="hoa-original-head"><div><span class="hoa-original-kicker">Original 2025 Special Assessment</span>'
+      + '<h2>Approved budget baseline</h2><p>Original project allocations from the SPA schedule, separate from later MTD estimates and HOA recorded expenses.</p>'
+      + '</div><span class="hoa-original-status">Baseline snapshot</span></div>'
+      + '<div class="hoa-original-metrics">'
+      + '<div class="hoa-original-primary"><small>Total assessment</small><strong>' + safe(whole(source.assessmentTotal)) + '</strong></div>'
+      + '<div><small>Original project allocations</small><strong>' + safe(whole(projectTotal)) + '</strong></div>'
+      + '<div><small>Original contingency</small><strong>' + safe(whole(source.originalContingency)) + '</strong></div></div>'
+      + '<div class="hoa-original-periods">' + source.periods.map(period =>
+        '<div><small>' + period.year + ' planned projects</small><strong>' + safe(whole(period.projectSubtotal)) + '</strong></div>'
+      ).join('') + '</div>'
+      + '<section class="hoa-original-reserve" aria-labelledby="hoa-reserve-title"><div class="hoa-original-section-head">'
+      + '<h3 id="hoa-reserve-title">Contingency reserve</h3><span>Proposed allocation · review needed</span></div>'
+      + '<div class="hoa-original-reserve-row"><span>Original SPA contingency</span><strong>' + safe(whole(source.originalContingency)) + '</strong></div>'
+      + '<div class="hoa-original-reserve-row"><span>MTD remediation scopes proposed</span><strong>−' + safe(money(proposed)) + '</strong></div>'
+      + '<div class="hoa-original-reserve-balance"><span>Potential unallocated balance</span><strong>' + safe(money(illustrativeRemaining)) + '</strong></div>'
+      + '<div class="hoa-original-progress" aria-label="' + pct.toFixed(1) + '% provisionally allocated"><span style="width:' + pct.toFixed(1) + '%"></span></div>'
+      + '<p class="hoa-original-disclosure">Illustration only if the proposed remediation scopes are authorized against contingency. '
+      + 'These amounts are not confirmed cash expenditures or an approved transfer. The MTD tracker lists '
+      + safe(money(source.mtdRemediationTrackerEntries)) + ' in scope entries; HOA recorded payments are reported separately. '
+      + 'The 2030 projects remain separately budgeted and are not assumed to be available contingency.</p></section>'
+      + '<section class="hoa-original-review" aria-labelledby="hoa-review-title"><div class="hoa-original-section-head">'
+      + '<h3 id="hoa-review-title">Original 2026 line items</h3><span>' + safe(whole(flaggedTotal)) + ' highlighted for review</span></div>'
+      + '<p>These four approved budget lines are included in the 2026 total; they are not additional funding.</p>'
+      + flagged.map(item => '<div class="hoa-original-line" data-original-budget="' + safe(item.id) + '"><span>'
+        + safe(item.name) + '</span><strong>' + safe(whole(item.amount)) + '</strong></div>').join('') + '</section>'
+      + '<details class="hoa-original-details"><summary>View all original budget line items <span aria-hidden="true">⌄</span></summary>'
+      + source.periods.map(period => '<div class="hoa-original-year"><h4>' + period.year + ' planned projects</h4>'
+        + period.items.map(item => '<div class="hoa-original-line"><span>' + safe(item.name)
+          + '</span><strong>' + safe(whole(item.amount)) + '</strong></div>').join('')
+        + '<div class="hoa-original-line total"><span>Subtotal</span><strong>'
+        + safe(whole(period.projectSubtotal)) + '</strong></div></div>').join('')
+      + '</details><p class="hoa-original-source">Source: ' + safe(source.source)
+      + ' · snapshot reviewed ' + safe(date(source.sourceAsOf))
+      + '. This is a static assessment schedule; the HOA Books expense report has a separate reporting date.</p>';
+    markPlanningComparisons(source);
+    window.__collinsOriginalBudgetQA = Object.freeze({
+      assessedTotal: source.assessmentTotal, projectTotal,
+      originalContingency: source.originalContingency,
+      highlighted2026: flaggedTotal, provisionalRemaining: illustrativeRemaining,
+      reconciled: true
+    });
+  }
+
+  async function loadOriginalBudget() {
+    const panel = document.getElementById('hoa-original-budget');
+    if (!panel) return;
+    try {
+      const response = await fetch(originalBudgetUrl, {cache:'no-store'});
+      if (!response.ok) throw new Error('HTTP ' + response.status);
+      const source = await response.json();
+      const projectTotal = validateOriginalBudget(source);
+      renderOriginalBudget(source, projectTotal);
+    } catch (error) {
+      panel.innerHTML = '<h2>Original assessment budget unavailable</h2>'
+        + '<p>The budget source could not be verified. No provisional figures are shown.</p>';
+      console.error('Original assessment validation:', error);
+    }
+  }
+
   function buildTabStructure() {
     const chart = document.querySelector('section.ac-chart');
     const construction = document.getElementById('construction-budget-report');
@@ -93,12 +228,31 @@
     mount.insertBefore(constructionPanel, chart);
     mount.insertBefore(operationalPanel, chart);
     constructionPanel.appendChild(element('p', 'hoa-construction-notice',
-      '<strong>Construction budget estimate.</strong> Budgeted values are from the existing project construction tracker. '
+      '<strong>Construction budget cross-check.</strong> The original 2025 assessment schedule is listed below. '
+      + 'The MTD project tracker may include expanded scopes, which are not automatically approved budget increases. '
       + 'The prior tracked-expense figures are not verified HOA cash-paid totals. '
       + 'Project-level Paid to Date comparisons remain under reconciliation; they are not represented as confirmed payments here.'));
+    const originalPanel = element('section', 'hoa-original-budget',
+      '<p>Loading the original 2025 assessment schedule…</p>');
+    originalPanel.id = 'hoa-original-budget';
+    originalPanel.setAttribute('aria-label', 'Original 2025 assessment budget and contingency reconciliation');
+    constructionPanel.appendChild(originalPanel);
     constructionPanel.appendChild(chart);
     constructionPanel.appendChild(construction);
     operationalPanel.appendChild(operational);
+    // Do not present MTD planning estimates as approved budget figures while
+    // the original SPA schedule is still loading or cannot be verified.
+    for (const id of ['dewater', 'exterior']) {
+      const group = construction.querySelector('.p-group[data-group="' + id + '"]');
+      if (!group) continue;
+      const caption = group.querySelector('.p-group-name small');
+      if (caption) caption.textContent = 'Original 2025 budget verification pending';
+      const summary = group.querySelector('.p-group-values');
+      if (summary) summary.innerHTML =
+        '<strong>Verifying budget</strong><small>MTD estimate is not an approved budget</small>';
+      const bars = group.querySelector(':scope > .p-bars');
+      if (bars) bars.hidden = true;
+    }
     const staleSummary = construction.querySelector('.pt-summary');
     if (staleSummary) staleSummary.hidden = true;
     const intro = document.querySelector('body > .wrap > .sub');
@@ -123,13 +277,13 @@
     // Presentation-only cleanup: legacy source notes refer to a prior snapshot,
     // and must not be mistaken for the current HOA Books accounting ledger.
     const allocationCaption = chart.querySelector('.ac-asof');
-    if (allocationCaption) allocationCaption.textContent = 'Construction estimate · 2026';
+    if (allocationCaption) allocationCaption.textContent = 'Original 2025 assessment';
     const allocationBasis = chart.querySelector('.ac-small');
-    if (allocationBasis) allocationBasis.textContent = 'Construction planning total';
+    if (allocationBasis) allocationBasis.textContent = 'Original assessment total';
     const chartEyebrow = chart.querySelector('.ac-eyebrow');
-    if (chartEyebrow) chartEyebrow.textContent = 'Construction budget · Special Assessment';
+    if (chartEyebrow) chartEyebrow.textContent = 'Original 2025 Special Assessment';
     const constructionKicker = construction.querySelector('.p-header .p-kicker');
-    if (constructionKicker) constructionKicker.textContent = 'CONSTRUCTION BUDGET · SCOPE TRACKING';
+    if (constructionKicker) constructionKicker.textContent = 'MTD CONSTRUCTION TRACKER · SCOPE ESTIMATES';
     const trackerKey = construction.querySelector('.p-key > span:nth-child(2)');
     if (trackerKey) trackerKey.lastChild.textContent = 'Tracker entries · not confirmed paid';
     construction.querySelectorAll('.pt-note').forEach(node => {
@@ -324,6 +478,7 @@
   async function init() {
     if (!document.getElementById('construction-budget-report')) return;
     if (!buildTabStructure()) return;
+    loadOriginalBudget();
     bindControls();
     const status = document.getElementById('hoa-record-count');
     status.textContent = 'Loading the HOA accounting report…';
