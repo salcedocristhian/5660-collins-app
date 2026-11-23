@@ -1,0 +1,52 @@
+{
+  "source": "FINAL - Assessment Spreadsheet / SPA tab",
+  "sourceAsOf": "2026-11-22",
+  "sourceSheetId": 0,
+  "assessmentTotal": 7500000,
+  "originalContingency": 1039295,
+  "periods": [
+    {
+      "year": 2026,
+      "projectSubtotal": 5310398,
+      "items": [
+        { "id": "elevator", "name": "Elevator Shoring and Structure Repairs", "amount": 183000 },
+        { "id": "structural", "name": "Structural Repairs", "amount": 47600 },
+        { "id": "planters", "name": "Waterproofing Membrane Planters", "amount": 25625 },
+        { "id": "joints", "name": "Expansion Joints Exterior Walls", "amount": 102500, "reviewedByEvelyn": true },
+        { "id": "garage", "name": "Concrete Restoration Garage (2nd Level N & S)", "amount": 150630, "reviewedByEvelyn": true },
+        { "id": "dewater", "name": "Garage Dewatering", "amount": 372000 },
+        { "id": "coating", "name": "Concrete Coating Acrylic Resurface (2nd Level)", "amount": 74543, "reviewedByEvelyn": true },
+        { "id": "hvac", "name": "Central HVAC Chillers", "amount": 1647000 },
+        { "id": "elss", "name": "Engineer Life Safety Plan", "amount": 2562500 },
+        { "id": "driveway", "name": "Driveway", "amount": 145000, "reviewedByEvelyn": true }
+      ]
+    },
+    {
+      "year": 2028,
+      "projectSubtotal": 1057563,
+      "items": [
+        { "id": "balcony-waterproofing", "name": "Balconies, Waterproofing and Resurface", "amount": 197881 },
+        { "id": "balcony-concrete", "name": "Concrete Restoration, Balconies", "amount": 249025 },
+        { "id": "exterior-paint", "name": "Painting, Waterproofing and Stucco Repairs", "amount": 258464 },
+        { "id": "exterior-walls", "name": "Restoration, Exterior Walls Common Areas", "amount": 87487 },
+        { "id": "railings", "name": "Railing, Metal Picket, Common", "amount": 258300 },
+        { "id": "access-control", "name": "Access Control, Slide Gate Common", "amount": 6406 }
+      ]
+    },
+    {
+      "year": 2030,
+      "projectSubtotal": 92744,
+      "items": [
+        { "id": "gate-operators", "name": "Access Control, Slide Gate Operators", "amount": 4156 },
+        { "id": "stair-concrete", "name": "Concrete Restoration, Staircase", "amount": 39542 },
+        { "id": "seawall", "name": "Seawall", "amount": 49046 }
+      ]
+    }
+  ],
+  "trackerComparisons": [
+    { "id": "dewater", "name": "Garage Dewatering", "originalBudget": 372000, "mtdPlanningEstimate": 699673, "mtdTrackedEntries": 70452.50, "status": "Classification review: MTD estimate also includes $327,673 of garage concrete work." },
+    { "id": "exterior", "name": "2028 Exterior Concrete Restoration", "originalBudget": 1057563, "mtdPlanningEstimate": 1294583, "mtdTrackedEntries": 0, "status": "The $237,020 variance is not an authorized increase until independently confirmed." }
+  ],
+  "proposedRemediationScope": 658566.25,
+  "mtdRemediationTrackerEntries": 418234.92
+}

@@ -1,5 +1,14 @@
 # Changelog
 
+## November 23, 2026 — Evelyn review: original assessment baseline and contingency
+- Add a read-only, validated snapshot of the `SPA` tab in `FINAL - Assessment Spreadsheet`, last modified November 22, 2026. It reconciles to the original $7,500,000 assessment: $6,460,705 project allocations (2026, 2028, 2030) and $1,039,295 contingency. No Google Sheet cells or HOA transactions are changed.
+- Show the four 2026 assessment lines cited in Evelyn's November 21 email separately: Expansion Joints ($102,500), Garage Concrete Restoration ($150,630), Acrylic Resurface ($74,543) and Driveway ($145,000), totaling $472,673 already inside the original allocation.
+- Separate the original 2025 budgets from MTD planning estimates for Dewatering ($372,000 vs. $699,673) and 2028 Exterior Restoration ($1,057,563 vs. $1,294,583). Variances of $327,673 and $237,020 are under review, not approved increases.
+- Show an explicitly illustrative contingency roll-forward: $1,039,295 original reserve less $658,566.25 proposed remediation scopes = $380,728.75 potentially unallocated. Do not classify this as cash available or as an approved transfer. The $92,744 in 2030 allocations remains project funding, pending any documented reallocation.
+- Clarify that the HOA Books financial report is a November 17 static export, not a live ledger integration. Keep accounting costs, project-level tracker entries and contractual commitments separate.
+- Update the approved-assessment chart allocations (including fully itemized 2030 work), the budget deep link and asset cache-busting versions. Preserve other resident-app sections, 3D viewers and the original HOA ledger file.
+- Release gate: reconcile Evelyn's $1,132,039 contingency statement with the original SPA schedule and confirm the classification and authority for both planning-estimate variances with Pancho, Douglas and the Association before describing any variance as authorized.
+
 ## November 13, 2026 — Hallway Side A containment, RMD planning and weekend Fire Watch
 - Update resident Updates / Latest with the Nov 13 field observation: Floor 2 Side A containment installed; Floor 3 Side A mostly installed but still partial.
 - Publish two companion notices (RMD/carpet anticipated week Nov 16–20; Fire Watch continuing Nov 14–15) and keep the past November 12 carpet target as superseded history, not a current schedule.
