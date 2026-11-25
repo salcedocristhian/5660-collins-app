@@ -141,13 +141,14 @@
     const groupList = construction.querySelector('.p-group-list');
     if (remediation && groupList) {
       const fundedSection = element('section', 'hoa-funded-section',
-        '<h3>Contingency-Funded Projects</h3>'
-        + '<p>Separate planning group; budget allocations are not additional HOA expenses. '
+        '<h3>Contingency Reserve · $1,039,295.00</h3>'
+        + '<p>Remediation is a scope funded from this reserve. Its $658,566.25 planned scope '
+        + 'is not the overall contingency budget and must not be added to it. '
         + 'Actual posted and paid expenses remain in Financial Overview.</p>');
       groupList.parentNode.insertBefore(fundedSection, groupList.nextSibling);
       fundedSection.appendChild(remediation);
       const remediationLabel = remediation.querySelector('.p-group-name small');
-      if (remediationLabel) remediationLabel.textContent = 'Funded from contingency · construction tracking';
+      if (remediationLabel) remediationLabel.textContent = 'Remediation scope estimate · within contingency reserve';
     }
     const walker = document.createTreeWalker(constructionPanel, NodeFilter.SHOW_TEXT);
     while (walker.nextNode()) {
